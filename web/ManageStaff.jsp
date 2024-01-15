@@ -130,7 +130,7 @@
 
                                         // Output staff details in table rows
                                         out.println("<tr>");
-                                        out.println("<td>" + ID + "</td>");
+//                                        out.println("<td>" + ID + "</td>");
                                         out.println("<td>" + IC + "</td>");
                                         out.println("<td>" + Name + "</td>");
                                         out.println("<td>" + Email + "</td>");

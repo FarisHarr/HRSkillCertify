@@ -22,6 +22,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         <link rel="stylesheet" href="CSS/Login.css" />
+        <!--<link rel="stylesheet" href="CSS/bootstrap.min.css" />-->
         <title>Login</title>
     </head>
 
@@ -58,6 +59,12 @@
             </form>
         </div>
 
+          <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--        <script src="JS/jquery-3.3.1.slim.min.js"></script>
+        <script src="JS/popper.min.js"></script>
+        <script src="JS/bootstrap.min.js"></script>
+        <script src="JS/jquery-3.3.1.min.js"></script>      -->
         <script>
 
             function restrictToNumbers(inputElement) {

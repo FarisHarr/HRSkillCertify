@@ -225,7 +225,7 @@ button {
     text-align: center;
     padding: 20px;
     width: 100%;
-    height: auto;
+    height: 90vh;
     background-color: #f0f0f0;
 }
 
@@ -451,11 +451,6 @@ input[type=number] {
     cursor: pointer;
     margin: 20px 10px; /* Adjust the side gap as needed */
 }
-
-
-
-
-
 
 
 footer {
