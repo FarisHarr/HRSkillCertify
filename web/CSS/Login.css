@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../IMG/BG.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    display: flex;
+    font-size: 40px;
+    justify-content: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin: 2%;
+    text-shadow: 5px 5px 4px rgba(0, 0, 0, 1); 
+    color: rgb(190, 190, 190);
+}
+
+.logo {
+    position: absolute;
+    top: 25px; /* Adjusted margin-top to top */
+    right: 270px; /* Adjusted margin-right to right */
+    height: 135px;
+    width: 150px;
+}
+
+/*h2 {
+    margin-top: 180px;  Added margin-top to create space between image and heading 
+    text-align: center;  Centered the heading 
+}*/
+
+
+/* container */
+.container {
+    display: flex;
+    justify-content: center;
+    height: 90%;
+    width: 60%;
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 30px;
+}
+
+/* login form */
+.form {
+    display: flex;
+    width: 55%;
+    flex-direction: column;
+    align-items: center;
+    background :transparent;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+.form h2 {
+    font-size: 3rem;
+    margin-left: 130px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: black;
+    text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.box {
+    padding: 12px;
+    width: 65%;
+    margin: 15px;
+    background-color: rgb(230, 230, 230);
+    border: 1px solid black;
+    outline: none;
+    border-radius: 15px;
+}
+
+
+#submit {
+    padding: 5px 30px;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    background-color: #00000090;
+    border: 1px solid black;
+    color: rgb(255, 255, 255);
+    text-shadow: 5px 5px 4px rgba(0, 0, 0, 1); 
+    font-weight: bold;
+    outline: none;
+    border-radius: 10px;
+}
+
+#submit:hover {
+    cursor: pointer;
+    background-color: #00ca54;
+    /* border: 1px solid black; */
+}
+
+.form a {
+    text-decoration: none;
+    color: rgb(200, 200, 200);
+    margin-top: 20px;
+}
+
+p.new{
+    color: rgb(200, 200, 200);
+}
+a.pass {
+    font-size: 12px;
+    margin-left: 40%;
+    margin-top: -2%;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+p.new{
+    font-size: 13px;
+}
+
+
+a.pass:hover {
+    color: #ff2f2f;
+}
+
+a:hover {
+    color: #00b7ff;
+}
+
+footer {
+    background-color: #a5a5a5;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-toggle {
+    cursor: pointer;
+    position: absolute;
+    margin-top: 252px;
+    margin-left: 225px;
+}

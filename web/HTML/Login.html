@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <link rel="stylesheet" href="/web/CSS/Login.css" />
+        <title>Login</title>
+    </head>
+
+    <body>
+        <h1>Enhance Your Certificate Now !!</h1>
+        <div class="container">
+            <form action="YourServletOrAction" class="form" method="POST">
+                <a href="MainPage.jsp">
+                    <img class="logo" src="/web/IMG/HRSCLogo.png" alt="logo">
+                </a>
+                <h2>LOGIN </h2>
+                <input type="text" name="ic" class="box" placeholder="Enter IC Number" oninput="restrictToNumbers(this);" maxlength="12" required>
+                <input type="password" name="password" id="passwordInput" class="box" placeholder="Enter Password" required>
+                <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility()"></i>
+                <a href="#" class="pass">Forgot Password?</a>
+                <!-- <input type="submit" value="LOG IN" id="submit"> -->
+                <a href="HomePage.html" id="submit">LOGIN</a>
+
+                <!--         <%
+                                    String IC = request.getParameter("IC");
+                                    String Password = request.getParameter("Password");
+                
+                                    if (IC != null && Password != null) {
+                                        try {
+                                            Class.forName("com.mysql.jdbc.Driver");
+                                            String myURL = "jdbc:mysql://localhost/hrsc";
+                                            Connection myConnection = DriverManager.getConnection(myURL, "root", "admin");
+                
+                                            String sSelectQry = "SELECT * FROM candidate WHERE cand_IC = ? AND cand_Pass = ?";
+                                            PreparedStatement myPS = myConnection.prepareStatement(sSelectQry);
+                                            myPS.setString(1, IC);
+                                            myPS.setString(2, Password);
+                                            ResultSet resultSet = myPS.executeQuery();
+                
+                                            if (resultSet.next()) {
+                                                // User found, set session and redirect to home page
+                                                HttpSession loginsession = request.getSession();
+                                                session.setAttribute("candidateID", resultSet.getString("cand_ID"));
+                                                response.sendRedirect("HomePage.jsp");
+                                            } else {
+                                                // User not found, display error message
+                                                out.println("<span style='color: red;'>Invalid IC or password. Please try again.</span>");
+                                            }
+                
+                                            myConnection.close();
+                                        } catch (ClassNotFoundException | SQLException e) {
+                                            e.printStackTrace();
+                                            out.println("<span style='color: red;'>An error occurred. Please try again later.</span>");
+                                        }
+                                    }
+                                %>  -->
+
+                <br>
+                <p class="new">New to HR SkillCertify? <a href="Register.html">Register Here</a></p>
+                <br>
+                <p class="new"><a href="LoginStaff.html">Staff</a></p>
+                <br>
+            </form>
+        </div>
+
+        <script>
+
+            function restrictToNumbers(inputElement) {
+                inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
+            }
+
+            function togglePasswordVisibility() {
+                var passwordInput = document.getElementById("passwordInput");
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                } else {
+                    passwordInput.type = "password";
+                }
+            }
+        </script>
+    </body>
+
+    <footer>
+        <p>&copy; HR SkillCertify 2023</p>
+    </footer>
+</html>

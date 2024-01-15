@@ -1,0 +1,127 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 Dec 2023, 10:31:53 pm
+    Author     : FarisHarr
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('../IMG/BG.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* h1 {
+    display: flex;
+    font-size: 40px;
+    justify-content: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin: 1%;
+    color: rgb(190, 190, 190);
+} */
+
+/* container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120%;
+    /* Adjusted to full viewport height */
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Slightly modified box shadow */
+}
+
+/* login form */
+.form {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    border: 1px solid black;
+    border-radius: 10px;
+    text-shadow: 5px 5px 4px rgba(0, 0, 0, 1);
+    color: rgb(190, 190, 190);
+    margin-right: 20px;
+
+}
+
+.form h2 {
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 30px;
+}
+
+.box {
+    padding: 12px;
+    width: 55%;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    outline: none;
+    border-radius: 15px;
+}
+
+#submit {
+    padding: 5px 30px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    background-color: #00000090;
+    border: 1px solid black;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    outline: none;
+    border-radius: 10px;
+}
+
+#submit:hover {
+    cursor: pointer;
+    background-color: #00ca54;
+    /* border: 1px solid black; */
+}
+
+.form a {
+    text-decoration: none;
+    color: rgb(190, 190, 190);
+    margin-top: 20px;
+}
+
+.form a:hover {
+    color: #c2f9ff;
+}
+
+
+
+/* terms */
+.terms {
+    margin-top: 0.2rem;
+}
+
+.terms input {
+    height: 1em;
+    width: 1em;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.terms label {
+    font-size: 0.7rem;
+}
+
+footer {
+    background-color: #a5a5a5;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

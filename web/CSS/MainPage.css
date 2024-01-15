@@ -1,0 +1,415 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 Dec 2023, 10:31:38 pm
+    Author     : FarisHarr
+*/
+
+/* NavBar */
+body {
+    background-color: aliceblue;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: auto;
+    height: 65px;
+    background-color: rgb(190, 190, 190);
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+h2{
+    text-align: center;
+}
+
+nav.pic {
+    text-align: right;
+}
+
+* {
+    margin: 0;
+}
+
+
+li,
+a,
+button {
+    font-weight: 300;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+.logo {
+    height: 70px;
+    width: 70px;
+}
+
+
+.dropdown {
+    position: relative;
+    list-style: none;
+    color: #000000;
+
+}
+
+.nav-link {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px;
+    margin-right: 60px;
+    text-decoration: none;
+    border-radius: 10px;
+    color: white;
+    background-color: green;
+    transition: color 0.3s; /* Added transition for a smooth color change */
+}
+
+.nav-link:hover {
+    color: gray;
+    background-color: blue;
+}
+
+
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    list-style: none;
+    background-color: #001b40;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #0088a9;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+
+}
+
+.dropdown-content li {
+    margin-bottom: 5px;
+}
+
+
+.dropdown-content a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.dropdown-content a:hover {
+    border-radius: 10px;
+    color: #0088a9;
+    background-color: #001b40;
+}
+
+.navbar {
+    background-color: #001b40;
+    overflow: hidden;
+    width: 150px;
+    /* Set a fixed width for the vertical bar */
+}
+
+.navbar a {
+    display: block;
+    color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+footer {
+    background-color: rgb(190, 190, 190);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 100px;
+}
+
+@-webkit-keyframes fadein{
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes fadein{
+    100%{
+        opacity: 1;
+    }
+}
+
+header h2{
+    font-family: "Quicksand, sans-serif";
+    color: white;
+}
+
+header nav{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: -15px;
+}
+header nav li{
+    margin: 0 15px;
+    color: white;
+}
+@media (max-width: 1000px){
+    header{
+        padding: 20px 50px;
+    }
+}
+
+
+@media (max-width: 700px){
+    header{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    header h2{
+        margin-bottom: 15px;
+    }
+}
+
+.hero{
+    position: relative;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    color: white;
+}
+
+.hero .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: -1;
+    background-color: #80a3db;
+    animation: 10s change 1s infinite linear; /* Increased duration for smoother transition */
+    transition: background-image 1s ease-in-out; /* Added transition property */
+}
+
+@keyframes change {
+    0% {
+        background-image: url('../IMG/1.jpg');
+    }
+    10% {
+        background-image: url('../IMG/1.jpg'); /* Added intermediate step */
+    }
+    25% {
+        background-image: url('../IMG/2.jpg');
+    }
+    35% {
+        background-image: url('../IMG/2.jpg'); /* Added intermediate step */
+    }
+    50% {
+        background-image: url('../IMG/3.jpg');
+    }
+    60% {
+        background-image: url('../IMG/3.jpg'); /* Added intermediate step */
+    }
+    75% {
+        background-image: url('../IMG/1.jpg');
+    }
+    85% {
+        background-image: url('../IMG/1.jpg'); /* Added intermediate step */
+    }
+    100% {
+        background-image: url('../IMG/2.jpg');
+    }
+}
+
+
+.hero h1{
+    font: bold 60px "Open Sans", sans-serif;
+    margin-bottom: 40px;
+    color: white;
+}
+.hero h3{
+    font: normal 28px "Open Sans", sans-serif;
+    margin-bottom: 40px;
+    color: white;
+}
+.hero a.btn{
+    padding: 20px 46px;
+}
+.hero-content-area{
+    opacity: 0;
+    margin-top: 100px;
+    -webkit-animation: 1s slidefade 1s forwards;
+    animation: 1s slidefade 1s forwards;
+}
+@-webkit-keyframes slidefade{
+    100%{
+        opacity: 1;
+        margin: 0;
+    }
+}
+@keyframes slidefade{
+    100%{
+        opacity: 1;
+        margin: 0;
+    }
+}
+
+
+.grid{
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+hr{
+    width: 100%;
+    height: 2px;
+    background-color: #b53f3f;
+    border: 0;
+    margin-bottom: 50px;
+}
+
+
+
+@media (max-width: 800px){
+
+    .hero{
+        min-height: 600px;
+    }
+    .hero h1{
+        font-size: 48px;
+    }
+
+    .hero h3{
+        font-size: 24px;
+    }
+
+    .hero a.btn{
+        padding: 15px 40px;
+    }
+
+}
+
+
+/*
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+Section Configurations
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*/
+section h3.title{
+    text-transform: capitalize;
+    font: bold 32px "Open Sans", sans-serif;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+
+.destinations .grid li{
+    height: 350px;
+    padding: 20px;
+    background-clip: content-box;
+    background-size: cover;
+    background-position: center;
+}
+
+.destinations .grid li.small{
+    -ms-flex-preferred-size: 30%;
+    flex-basis: 30%;
+}
+
+.destnations .grid li.large{
+    -ms-flex-preferred-size: 70%;
+    flex-basis: 70%;
+}
+
+/*---------------------
+        Contact Section
+---------------------*/
+
+.contact{
+    background-color: #f7f7f7;
+}
+
+.contact form{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    max-width: 800px;
+    width: 80%;
+}
+
+.contact form input{
+    padding: 15px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin-right: 30px;
+    font-size: 18px;
+    color: #555;
+}
+
+.contact form .btn{
+    padding: 18px 42px;
+}
+
+
+@media (max-width: 800px){
+
+    .contact form input{
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        margin: 0 0 20px 0;
+    }
+
+}

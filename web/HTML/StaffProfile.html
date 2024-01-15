@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/web/CSS/ManagerProfile.css">
+        <title>Manager Profile</title>
+    </head>
+
+    <body>
+
+        <header>
+            <div class="main">
+                <a href="StaffDashbord.html">
+                    <img class="logo" src="/web/IMG/HRSCLogo.png" alt="logo">
+                </a>
+                <nav>
+                    <ul class="nav_links">
+                        <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
+                    </ul>
+                </nav>
+            </div>
+            <nav>
+                <li class="dropdown">
+                    <!-- <a class="nav-link">Account</a> -->
+                    <a class="nav-link">Manager</a>
+                    <ul class="dropdown-content">
+                        <li><a href="CandidateProfile.html">Profile</a></li>
+                        <li><a href="MainPage.html">Sign Out</a></li>
+                    </ul>
+                </li>
+            </nav>
+        </header>
+
+        <div class="co">
+            <div class="navbar" id="myNavbar">
+                <a href="StaffProfile.html">User Profile</a>
+                <a href="ManagePayment.html">Manage Payment</a>
+                <a href="ManageCertificate.html">Manage Certificate</a>
+                <a href="ViewFeedback.html">View Feedback</a>
+                <a href="ManageCandidate.html">Manage Candidate</a>
+            </div>
+
+            <div class="container">
+                <div class="title">
+                    <h1>User Profile</h1>
+                    <h3 name="name"> Name : <%= Name%></h3>
+                    <h3 name="ic"> IC Number : <%= IC%></h3>
+                    <h3 name="email"> Email : <%= Email%></h3>
+                    <h3 name="password"> Password : <%= Password%></h3>
+                    <h3 name="phone"> Phone : <%= Phone%></h3>
+                    <h3 name="address"> Address : <%= Address%></h3>
+                </div>
+                <a href="#">
+                    <button class="profile-update-button">EDIT</button>
+                </a> 
+            </div>
+        </div>
+
+        <footer>
+            <p>© HR SkillCertify 2023</p>
+        </footer>
+
+        <script>
+            function toggleNavbar() {
+                var navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('minimized');
+            }
+        </script>
+
+    </body>
+
+</html>

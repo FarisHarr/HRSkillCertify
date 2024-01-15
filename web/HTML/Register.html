@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>Register Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/web/CSS/Register.css">
+    </head>
+    <body>
+        <div class="container">
+         
+            <form action="" class="form" method="post">
+                <h2>SIGN UP</h2>
+                <input type="text" name="ic" id="ic" class="box" placeholder="Enter Your IC NUmber" oninput="restrictToNumbers(this);" maxlength="12" required>
+                <input type="text" name="name" id="name" class="box" placeholder="Enter Your Name" required>
+                <input type="email" name="email" id="email" class="box" placeholder="Enter Your Email"required>
+                <input type="text" name="password" id="password" class="box" placeholder="Enter Password" required>
+                <!-- <input type="text" name="phone" id="phone" class="box" placeholder="Enter Phone Number" onkeypress="return validateNumber(event)"; required>
+                <input type="text" name="address" id="address" class="box" placeholder="Enter Address" required> -->
+                <div class="terms">
+                    <input type="checkbox" id="checkbox" required>
+                    <label for="checkbox" required>I agree to these <a href="#">Terms & Conditions</a></label>
+                </div>
+                 <!--<input type="submit" id="submit" value="REGISTER">--> 
+                <a href="Login.html" id="submit">REGISTER</a>
+                <p class="new"><a href="Login.html">Back</a></p>
+                <br>
+            </form>
+
+            <!-- <%
+                    candidate.setIC(request.getParameter("IC"));
+                    candidate.setName(request.getParameter("Name"));
+                    candidate.setEmail(request.getParameter("Email"));
+                    candidate.setPassword(request.getParameter("Password"));
+                    candidate.setPhone(request.getParameter("Phone"));
+                    candidate.setAddress(request.getParameter("Address"));
+
+                    int result;
+
+                    //          String myURL = "jdbc:mysql://localhost:3306/hrsc=root&password=admin";
+                    Class.forName("com.mysql.jdbc.Driver");
+                    String myURL = "jdbc:mysql://localhost/hrsc";
+                    //          Connection myConnection = DriverManager.getConnection(myURL, "root", "admin");
+
+                    try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); 
+                    PreparedStatement myPS = myConnection.prepareStatement("INSERT INTO candidate(cand_IC, cand_Name, cand_Email, cand_Pass, cand_Phone, cand_Add) VALUES (?,?,?,?,?,?)")) {
+
+                        myPS.setString(1, candidate.getIC());
+                        myPS.setString(2, candidate.getName());
+                        myPS.setString(3, candidate.getEmail());
+                        myPS.setString(4, candidate.getPassword());
+                        myPS.setString(5, candidate.getPhone());
+                        myPS.setString(6, candidate.getAddress());
+
+                        result = myPS.executeUpdate();
+
+                        if (result > 0) {
+                            response.sendRedirect("Login.jsp"); // Redirect to login page
+                        } else {
+                            out.println("Registration failed. Please try again."); // Display error message
+                        }
+
+                    } catch (SQLException e) {
+                        e.printStackTrace(); // Log the exception
+                    }
+                %> -->
+        </div>
+        <script>
+            function restrictToNumbers(inputElement) {
+            inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
+        }
+            function validateNumber(event) {
+                // Get the key code of the pressed key
+                var keyCode = event.which ? event.which : event.keyCode;
+
+                // Allow only numbers (0-9) and special keys like backspace, delete, etc.
+                if (keyCode >= 48 && keyCode <= 57 || keyCode === 8 || keyCode === 46 || keyCode === 37 || keyCode === 390) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
+    </body>
+    <footer>
+        <p>&copy; HR SkillCertify 2023</p>
+    </footer>
+</html>

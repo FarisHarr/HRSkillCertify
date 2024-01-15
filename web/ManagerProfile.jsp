@@ -1,0 +1,130 @@
+<%-- 
+    Document   : ManagerProfile
+    Created on : 5 Jan 2024, 4:43:37 pm
+    Author     : FarisHarr
+--%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.sql.*" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="CSS/ManagerProfile.css">
+        <title>Manager Profile</title>
+    </head>
+
+    <body>
+        
+
+        <%
+            //           HttpSession loginsession = request.getSession();
+            String staffID = (String) session.getAttribute("staffID");
+
+            if (staffID != null) {
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                    PreparedStatement ps = con.prepareStatement("SELECT * FROM staff WHERE staff_ID = ? ");
+                    ps.setString(1, staffID);
+                    ResultSet rs = ps.executeQuery();
+
+                    if (rs.next()) {
+                        String ID = rs.getString("staff_ID");
+                        String IC = rs.getString("staff_IC");
+                        String Name = rs.getString("staff_Name");
+                        String Email = rs.getString("staff_Email");
+                        String Password = rs.getString("staff_Pass");
+                        String Phone = rs.getString("staff_Phone");
+//                        String Role = rs.getString("roles");
+%>
+
+        <header>
+            <div class="main">
+                <a href="StaffDashboard.jsp">
+                    <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
+                </a>
+                <nav>
+                    <ul class="nav_links">
+                        <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
+                    </ul>
+                </nav>
+            </div>
+            <nav>
+                <li class="dropdown">
+                    <a class="nav-link">Manager</a>
+                    <ul class="dropdown-content">
+                        <li><a href="ManagerProfile.jsp">Profile</a></li>
+                        <li><a href="MainPage.jsp">Sign Out</a></li>
+                    </ul>
+                </li>
+            </nav>
+        </header>
+
+        <div class="co">
+            <div class="navbar" id="myNavbar">
+                <a href="ManagerProfile.jsp">User Profile</a>
+                <a href="#">Manage Payment</a>
+                <a href="#">Manage Certificate</a>
+                <a href="#">View Feedback</a>
+                <a href="ManageCandidate.jsp">Manage Candidate</a>
+            </div>
+
+            <div class="container">
+                <div class="title">
+                    <h1>User Profile</h1>
+                    <h3 name="name"> Name : <%= Name%></h3>
+                    <h3 name="ic"> IC : <%= IC%></h3>
+                    <h3 name="email"> Email : <%= Email%></h3>
+                    <!--<h3 name="password"> Password : <%= Password%></h3>-->
+                    <h3 name="phone"> Phone : <%= Phone%></h3>
+                </div>
+
+                <a href="EditStaff.jsp?id=<%= ID%>">
+                    <button class="profile-update-button">EDIT</button>
+                </a> 
+                    
+            </div>
+        </div>
+
+        <%
+                    } else {
+                        out.println("Customer not found.");
+                    }
+
+                    rs.close();
+                    ps.close();
+                    con.close();
+                } catch (Exception e) {
+                    out.println("Error: " + e);
+                }
+            } else {
+                // If the session doesn't exist or customerID is not set, redirect to the login page
+                response.sendRedirect("Login.jsp");
+            }
+        %>
+
+
+        <footer>
+            <p>© HR SkillCertify 2023</p>
+        </footer>
+
+        <script>
+            function toggleNavbar() {
+                var navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('minimized');
+            }
+        </script>
+
+    </body>
+
+</html>
+
+
+
+
+
+

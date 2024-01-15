@@ -1,0 +1,137 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 Dec 2023, 10:31:20 pm
+    Author     : FarisHarr
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #d9d9d9;
+    background-image: url('..IMG/BG.jpg');
+    background-image: url(/web/IMG/BG.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    display: flex;
+    font-size: 50px;
+    justify-content: center;
+    color: rgb(190, 190, 190);
+    margin: 2%;
+}
+
+/* container */
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 60%;
+    /* border: 1px solid black; */
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    /* box-shadow: 15px 15px 20px black; */
+}
+
+.radio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* login form */
+.form {
+    display: flex;
+    width: 55%;
+    flex-direction: column;
+    align-items: center;
+    background :transparent;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-right: 15px;
+    margin-bottom :50px;
+}
+
+.form h2 {
+    font-size: 2.5rem;
+    margin-top: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.form h5 {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
+}
+
+
+.box {
+    padding: 12px;
+    width: 65%;
+    margin: 15px;
+    color: rgb(255, 255, 255);
+    background-color: #333333bb;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+#submit {
+    padding: 5px 30px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    background-color: #455d5f;
+    border: 1px solid black;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 1); 
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    outline: none;
+    border-radius: 10px;
+}
+
+#submit:hover {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: #00b356;
+    /* border: 1px solid black; */
+}
+
+.form a {
+    font-size: 15px;
+    text-decoration: none;
+    color: rgb(118, 118, 118);
+    margin-top: 20px;
+}
+
+.password-toggle {
+    cursor: pointer;
+    position: absolute;
+    color: grey;
+    margin-top: 285px;
+    margin-left: 225px;
+}
+
+
+.form a:hover {
+    color: #c2f9ff;
+}
+
+
+footer {
+    background-color: #455d5f;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
