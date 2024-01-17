@@ -75,23 +75,23 @@
                     <h2>UPDATE PROFILE</h2>
                     <input type="hidden" name="id" value="<%= ID%>">
 
-                    <label for="ic">IC Number:</label>
+                    <label for="ic">IC Number :</label>
                     <input type="text" name="ic" value="<%= IC%>">
 
-                    <label for="name">Name:</label>
+                    <label for="name">Name :</label>
                     <input type="text" name="name" value="<%= Name%>">
 
-                    <label for="email">Email:</label>
+                    <label for="email">Email :</label>
                     <input type="email" name="email" value="<%= Email%>">
 
-                    <label for="password">Password:</label>
+                    <label for="password">Password :</label>
                     <input type="text" name="password" value="<%= Password%>">
 
-                    <label for="phone">Phone Number:</label>
+                    <label for="phone">Phone Number :</label>
                     <input type="text" name="phone" value="<%= Phone%>" oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="12" 
                            placeholder="Enter Phone Number" required>
 
-                    <label for="address">Address:</label>
+                    <label for="address">Address :</label>
                     <input type="text" name="address" value="<%= Address%>">
 
                     <input class="submit" type="submit" value="Update">

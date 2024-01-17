@@ -140,8 +140,8 @@
                                         out.println("<td>");
 
                                         // ni popup
-                                        out.println("<a onclick=\"showDeletePopup('" + ID + "')\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
-//                                        out.println("<a href=\"DeleteStaff.jsp?staff_ID=" + ID + "\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
+//                                        out.println("<a onclick=\"showDeletePopup('" + ID + "')\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
+                                        out.println("<a href=\"DeleteStaff.jsp?staff_ID=" + ID + "\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
                                         out.println("</td>");
                                         out.println("</tr>");
                                     }

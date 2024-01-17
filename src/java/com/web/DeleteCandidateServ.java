@@ -28,7 +28,7 @@ public class DeleteCandidateServ extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String staffID = request.getParameter("candidateID");
+        String candID = request.getParameter("candID");
         String action = request.getParameter("action");
 
         if (action != null && action.equals("Delete")) {
@@ -36,7 +36,7 @@ public class DeleteCandidateServ extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
                 try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin")) {
                     PreparedStatement pst = con.prepareStatement("DELETE FROM candidate WHERE cand_ID = ?");
-                    pst.setString(1, staffID);
+                    pst.setString(1, candID);
                     int rowsDeleted = pst.executeUpdate();
                     
                     if (rowsDeleted > 0) {

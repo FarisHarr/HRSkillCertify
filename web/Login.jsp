@@ -38,7 +38,7 @@
                 <input type="text" name="IC" id="IC" class="box" placeholder="Enter IC Number" oninput="restrictToNumbers(this);" maxlength="12" required>
                 <input type="password" name="Password" id="passwordInput" class="box" placeholder="Enter Password" required>
                 <i class="fas fa-eye password-toggle" onclick="togglePasswordVisibility()"></i>
-                <a href="#" class="pass">Forgot Password?</a>
+                <a href="HTML/ForgotPassword.html" class="pass">Forgot Password?</a>
                 <input type="submit" value="LOG IN" id="submit"> 
                 <!--<a href="#" id="submit">LOGIN</a>-->
 

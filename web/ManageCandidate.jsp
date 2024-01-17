@@ -52,7 +52,7 @@
             </div>
 
             <div class="info">
-                <button onclick="refreshSalesReport()">Refresh</button>
+                <button onclick="refresh()">Refresh</button>
                 <h2>Manage Candidate</h2>
 
                 <!--<button class="register-product-button" onclick="showPopup()">Register Staff</button>-->
@@ -106,8 +106,8 @@
                                                 + "<img src=\"IMG/editicon.png\" alt=\"edit\"></a>");
                                         out.println("</td>");
                                         out.println("<td>");
-//                                        out.println("<a href=\"DeleteStaff.jsp?cand_ID=" + ID + "\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
-                                        out.println("<a onclick=\"showDeletePopup('" + ID + "')\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
+                                        out.println("<a href=\"DeleteCandidate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
+//                                        out.println("<a onclick=\"showDeletePopup('" + ID + "')\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
                                         out.println("</td>");
                                         out.println("</tr>");
                                     }
@@ -242,6 +242,10 @@
                 } else {
                     return false;
                 }
+            }
+            // Refresh sales report by reloading the page
+            function refresh() {
+                location.reload();
             }
 
         </script>

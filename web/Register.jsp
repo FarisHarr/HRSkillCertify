@@ -15,12 +15,22 @@
                 <input type="text" name="Name" id="Name" class="box" placeholder="Enter Your Name" required>
                 <input type="email" name="Email" id="Email" class="box" placeholder="Enter Your Email" required>
                 <input type="text" name="Password" id="Password" class="box" placeholder="Enter Password" required>
-<!--                <input type="text" name="Phone" id="Phone" class="box" placeholder="Enter Phone Number" onkeypress="return validateNumber(event)" required>
-                <input type="text" name="Address" id="Address" class="box" placeholder="Enter Address" required>-->
+                <!--                <input type="text" name="Phone" id="Phone" class="box" placeholder="Enter Phone Number" onkeypress="return validateNumber(event)" required>
+                                <input type="text" name="Address" id="Address" class="box" placeholder="Enter Address" required>-->
                 <div class="terms">
                     <input type="checkbox" id="checkbox" required>
-                    <label for="checkbox">I agree to these <a href="#">Terms & Conditions</a></label>
+                    <label for="checkbox">I agree to these <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:90eee9d7-8512-4a6f-8d1f-f21ff5372a31" target="_blank">Terms & Conditions</a></label>
                 </div>
+
+                <br>
+                <%
+                    String errorMessage = (String) request.getAttribute("errorMessage");
+                    if (errorMessage != null) {
+                %>
+                <span style='color: red;'><%= errorMessage%></span>
+                <%
+                    }
+                %>
                 <input type="submit" id="submit" value="REGISTER"> 
                 <p class="new"><a href="Login.jsp">Back</a></p>
                 <br>

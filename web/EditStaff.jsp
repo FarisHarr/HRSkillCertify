@@ -30,7 +30,7 @@
             </div>
             <nav>
                 <li class="dropdown">
-                    <a class="nav-link">Account</a>
+                    <a class="nav-link">Manager</a>
                     <ul class="dropdown-content">
                         <li><a href="#">User Info</a></li>
                         <li><a href="MainPage.jsp">Sign Out</a></li>
@@ -94,7 +94,7 @@
 
 
                 <input class="submit" type="submit" value="Update">
-                <!--<p class="new"><a href="AdminProfile.jsp">Back</a></p>-->
+                <p class="new"><a href="ManagerProfile.jsp">Back</a></p>
             </form>
         </div>
 

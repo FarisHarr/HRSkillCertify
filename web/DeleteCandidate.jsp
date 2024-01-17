@@ -1,6 +1,6 @@
 <%-- 
-    Document   : DeleteStaff
-    Created on : 7 Jan 2024, 10:56:50 pm
+    Document   : DeleteCandidate
+    Created on : 17 Jan 2024, 6:41:27 pm
     Author     : FarisHarr
 --%>
 
@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Delete Staff</title>
+        <title>Delete Candidate</title>
 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
@@ -38,9 +38,8 @@
                 background-color: #fefefe;
                 margin: 8% auto;
                 padding: 20px;
-                border: 2px solid #24252a;
+                border: 3px solid #24252a;
                 width: 40%;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
             }
 
             .popup-content label {
@@ -75,31 +74,30 @@
 
     </head>
 <%
-    // Retrieve the staff ID from the request parameter
-    String staffID = request.getParameter("staff_ID");
+    // Retrieve the cand ID from the request parameter
+    String candID = request.getParameter("cand_ID");
 
-    // Check if the staff ID is present
-    if (staffID != null && !staffID.isEmpty()) {
+    // Check if the cand ID is present
+    if (candID != null && !candID.isEmpty()) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM staff WHERE staff_ID = ?");
-            pst.setString(1, staffID);
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM candidate WHERE cand_ID = ?");
+            pst.setString(1, candID);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                String name = rs.getString("staff_Name");
-                String email = rs.getString("staff_Email");
-                String phone = rs.getString("staff_Phone");
-                String role = rs.getString("roles");
+                String name = rs.getString("cand_Name");
+                String email = rs.getString("cand_Email");
+                String phone = rs.getString("cand_Phone");
 %>
                 <div class="popup-content">
-                    <h2>Delete Staff</h2>
-                    <p><b>Are you sure you want to delete the following staff?</b></p>
+                    <h2>Remove Candidate</h2>
+                    <p><b>Are you sure you want to delete the following candidate?</b></p>
                     <table>
                         <tr>
                             <td>ID :</td>
-                            <td><%= staffID %></td>
+                            <td><%= candID %></td>
                         </tr>
                         <tr>
                             <td>Name :</td>
@@ -113,14 +111,11 @@
                             <td>Phone :</td>
                             <td><%= phone %></td>
                         </tr>
-                        <tr>
-                            <td>Role :</td>
-                            <td><%= role %></td>
-                        </tr>
+
                     </table>
 
-                    <form action="DeleteStaffServ" method="POST">
-                        <input type="hidden" name="staffID" value="<%= staffID %>">
+                    <form action="DeleteCandidateServ" method="POST">
+                        <input type="hidden" name="candID" value="<%= candID %>">
                         <input type="submit" name="action" value="Delete">
                         <input type="submit" name="action" value="Cancel">
                     </form>
@@ -149,3 +144,4 @@
         </script>
     </body>
 </html>
+

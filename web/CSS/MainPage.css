@@ -17,9 +17,10 @@ header {
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    padding: auto;
+    padding: 0 20px; /* Adjust padding to provide some space on the sides */
     height: 65px;
     background-color: rgb(190, 190, 190);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9); /* Add a subtle box shadow for depth */
 }
 
 .main {
@@ -28,7 +29,7 @@ header {
     margin-left: 20px;
 }
 
-h2{
+h2,h3{
     text-align: center;
 }
 
@@ -82,7 +83,6 @@ button {
 
 
 
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -110,6 +110,7 @@ button {
     color: #ffffff;
 }
 
+
 .dropdown-content a:hover {
     border-radius: 10px;
     color: #0088a9;
@@ -136,13 +137,6 @@ button {
 }
 
 
-footer {
-    background-color: rgb(190, 190, 190);
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 section{
     display: -webkit-box;
@@ -155,7 +149,7 @@ section{
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 100px;
+    padding-bottom: 100px;
 }
 
 @-webkit-keyframes fadein{
@@ -258,16 +252,39 @@ header nav li{
 }
 
 
-.hero h1{
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+    }
+    25% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+    }
+    75% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+    }
+}
+
+.hero h1 {
     font: bold 60px "Open Sans", sans-serif;
     margin-bottom: 40px;
-    color: white;
+    color: #171a1d;
+    animation: glow 5s infinite alternate;
 }
-.hero h3{
-    font: normal 28px "Open Sans", sans-serif;
+
+.hero h3 {
+    font: normal 38px "Open Sans", sans-serif;
     margin-bottom: 40px;
-    color: white;
+    color: #171a1d;
+    animation: glow 5s infinite alternate;
 }
+
+
 .hero a.btn{
     padding: 20px 46px;
 }
@@ -301,14 +318,6 @@ header nav li{
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-}
-
-hr{
-    width: 100%;
-    height: 2px;
-    background-color: #b53f3f;
-    border: 0;
-    margin-bottom: 50px;
 }
 
 
@@ -369,7 +378,7 @@ section h3.title{
 ---------------------*/
 
 .contact{
-    background-color: #f7f7f7;
+
 }
 
 .contact form{
@@ -413,3 +422,93 @@ section h3.title{
     }
 
 }
+
+.destinations {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.left-content img,
+.right-content img {
+    /*max-width: 100%;*/
+    height: auto;
+    border-radius: 8px;
+    padding : 10px;
+}
+
+.title {
+    color: #333;
+    margin-top: 10px;
+}
+
+hr {
+    width: 170%;
+    height: 2px;
+    background-color: #b53f3f;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+footer {
+    background-color: rgb(190, 190, 190);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px; /* Adjusted height for better visibility */
+    position: relative; /* To position icons */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+.footer-text {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.contact-icons {
+    display: flex;
+}
+
+.contact-icons a {
+    color: #333; /* Icon color */
+    font-size: 24px;
+    margin-left: 15px; /* Adjust the distance between icons */
+    text-decoration: none;
+}
+
+.contact-icons a:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+#myBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    background-color: wheat;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#myBtn:hover {
+    background-color: #2ecc71;
+    transform: scale(1.1);
+}
+
+
+
+

@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.servlet.RequestDispatcher;
 
 @WebServlet("/RegisterServ")
 public class RegisterServ extends HttpServlet {
@@ -39,8 +40,7 @@ public class RegisterServ extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             String myURL = "jdbc:mysql://localhost/hrsc";
 
-            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin");
-                 PreparedStatement myPS = myConnection.prepareStatement("INSERT INTO candidate(cand_IC, cand_Name, cand_Email, cand_Pass, cand_Phone, cand_Add) VALUES (?,?,?,?,?,?)")) {
+            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); PreparedStatement myPS = myConnection.prepareStatement("INSERT INTO candidate(cand_IC, cand_Name, cand_Email, cand_Pass, cand_Phone, cand_Add) VALUES (?,?,?,?,?,?)")) {
 
                 myPS.setString(1, candidate.getIC());
                 myPS.setString(2, candidate.getName());
@@ -54,11 +54,23 @@ public class RegisterServ extends HttpServlet {
                 if (result > 0) {
                     response.sendRedirect("Login.jsp"); // Redirect to login page
                 } else {
-                    response.getWriter().println("Registration failed. Please try again."); // Display error message
+                    request.setAttribute("errorMessage", "The IC number has been registered.");
                 }
 
             } catch (SQLException e) {
-                e.printStackTrace(); // Log the exception
+                if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
+                    // Duplicate entry error (SQLState 23000, MySQL error code 1062)
+                    request.setAttribute("errorMessage", "The IC number has been registered.");
+
+                    // Set the candidate object as an attribute to retain the entered values
+                    request.setAttribute("candidate", candidate);
+
+                    // Forward to register.jsp
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/Register.jsp");
+                    dispatcher.forward(request, response);
+                } else {
+                    e.printStackTrace(); // Log the exception
+                }
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
