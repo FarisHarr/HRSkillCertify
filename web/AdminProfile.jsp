@@ -79,7 +79,7 @@
                     <h3 name="name"> Name : <%= Name%></h3>
                     <h3 name="ic"> IC : <%= IC%></h3>
                     <h3 name="email"> Email : <%= Email%></h3>
-                    <h3 name="password"> Password : <%= Password%></h3>
+                    <!--<h3 name="password"> Password : <%= Password%></h3>-->
                     <h3 name="phone"> Phone : <%= Phone%></h3>
                 </div>
 
