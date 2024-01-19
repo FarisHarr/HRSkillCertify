@@ -83,8 +83,8 @@
             <div class="navbar">
                 <a href="AdminProfile.jsp">User Profile</a>
                 <a href="ManageStaff.jsp">Manage Manager</a>
-                <a href="#">Report</a>
-                <a href="#">View Feedback</a>
+                <a href="Report.jsp">Report</a>
+                <a href="ViewFeedback2.jsp">View Feedback</a>
             </div>
 
             <div class="info">

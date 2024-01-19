@@ -3,7 +3,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 18 Dec 2023, 10:30:35 pm
+    Created on : 19 Jan 2024, 10:04:33 pm
     Author     : FarisHarr
 */
 
@@ -215,6 +215,7 @@ button {
     background-color: #f0f0f0;
     border: 1px solid #000000;
 }
+
 .info img {
         max-width: 100%; 
         height: auto; 
@@ -228,4 +229,3 @@ footer {
     align-items: center;
     justify-content: center;
 }
-

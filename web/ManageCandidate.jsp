@@ -45,9 +45,9 @@
         <div class="container">
             <div class="navbar">
                 <a href="ManagerProfile.jsp">User Profile</a>
-                <a href="#">Manage Payment</a>
-                <a href="#">Manage Certificate</a>
-                <a href="#">View Feedback</a>
+                <a href="ManagePayment.jsp">Manage Payment</a>
+                <a href="ManageCertificate.jsp">Manage Certificate</a>
+                <a href="ViewFeedback.jsp">View Feedback</a>
                 <a href="ManageCandidate.jsp">Manage Candidate</a>
             </div>
 

@@ -12,7 +12,7 @@
             <form action="RegisterServ" class="form" method="post">
                 <h2>SIGN UP</h2>
                 <input type="text" name="IC" id="IC" class="box" placeholder="Enter Your IC Number" oninput="restrictToNumbers(this);" maxlength="12" required>
-                <input type="text" name="Name" id="Name" class="box" placeholder="Enter Your Name" required>
+                <input type="text" name="Name" id="Name" class="box" placeholder="Enter Your Full Name" required>
                 <input type="email" name="Email" id="Email" class="box" placeholder="Enter Your Email" required>
                 <input type="text" name="Password" id="Password" class="box" placeholder="Enter Password" required>
                 <!--                <input type="text" name="Phone" id="Phone" class="box" placeholder="Enter Phone Number" onkeypress="return validateNumber(event)" required>

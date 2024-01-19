@@ -3,11 +3,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : 18 Dec 2023, 10:30:35 pm
+    Created on : 19 Jan 2024, 10:04:45 pm
     Author     : FarisHarr
 */
 
-/* NavBar */
+
 body {
     background-color: aliceblue;
 }
@@ -74,15 +74,14 @@ button {
     color: #ffffff;
 }
 
-
 .dropdown-content {
     display: none;
     position: absolute;
     list-style: none;
-    background-color: #001b40;
+    background-color: #455d5f;
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px #0088a9;
+    box-shadow: 0 2px 5px #455d5f;
     width: 70%; /* Set the width as needed */
 }
 
@@ -96,8 +95,7 @@ button {
 
 
 .dropdown-content a {
-    display: flex;
-    align-items: center;
+    display: block;
     padding: 5px 0;
     text-decoration: none;
     color: #ffffff;
@@ -105,8 +103,8 @@ button {
 
 .dropdown-content a:hover {
     border-radius: 10px;
-    color: #0088a9;
-    background-color: #001b40;
+    color: black;
+    background-color: #455d5f;
 }
 
 
@@ -153,9 +151,9 @@ button {
 }
 
 .navbar {
-    background-color: #001b40;
+    background-color: #455d5f;
     overflow: hidden;
-    width: 150px;
+    width: 160px;
     /* Set a fixed width for the vertical bar */
     height: auto;
     transition: width 0.1s, opacity 0.1s;
@@ -170,9 +168,9 @@ button {
 .navbar a {
     display: block;
     text-align: center;
-    background-color: #001b40;
+    background-color: #455d5f;
     color: #ffffff;
-    padding: 14px 16px;
+    padding: 20px 16px;
     text-decoration: none;
     transition: padding 0.9s;
     /* Add transition for smooth animation */
@@ -185,8 +183,8 @@ button {
 
 .navbar a:hover {
     border: 1px solid #000000;
-    background-color: #94bfff;
-    color: black;
+    background-color: #001b40;
+    color: rgb(255, 255, 255);
 }
 
 .navbar-toggle {
@@ -202,7 +200,7 @@ button {
 }
 
 .navbar-toggle:hover {
-    background-color: #001b40;
+    background-color: #455d5f;
     color: #ffffff;
 }
 
@@ -215,6 +213,7 @@ button {
     background-color: #f0f0f0;
     border: 1px solid #000000;
 }
+
 .info img {
         max-width: 100%; 
         height: auto; 

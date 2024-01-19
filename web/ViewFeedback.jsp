@@ -1,6 +1,6 @@
 <%-- 
-    Document   : StaffDashboard
-    Created on : 3 Jan 2024, 10:25:46 pm
+    Document   : ViewFeedback
+    Created on : 19 Jan 2024, 10:30:23 pm
     Author     : FarisHarr
 --%>
 
@@ -9,10 +9,10 @@
 <html>
 
     <head>
-        <title>Staff Dashboard</title>
+        <title>View Feedback</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS/StaffDashboard.css">
+        <link rel="stylesheet" type="text/css" href="CSS/StaffSkeleton.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     </head>
@@ -53,8 +53,7 @@
             </div>
 
             <div class="info">
-                <h1>Manager Dashboard</h1>
-                <!--<img src="IMGDraft/HomePage.png">-->    
+                <img src="IMGDraft/ViewFeedback.png">    
             </div>
         </div>
 

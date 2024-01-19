@@ -1,6 +1,6 @@
 <%-- 
-    Document   : StaffDashboard
-    Created on : 3 Jan 2024, 10:25:46 pm
+    Document   : ViewFeedback2
+    Created on : 19 Jan 2024, 10:37:57 pm
     Author     : FarisHarr
 --%>
 
@@ -9,10 +9,10 @@
 <html>
 
     <head>
-        <title>Staff Dashboard</title>
+        <title>View Feedback</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS/StaffDashboard.css">
+        <link rel="stylesheet" type="text/css" href="CSS/StaffSkeleton.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     </head>
@@ -20,7 +20,7 @@
     <body>
         <header>
             <div class="main">
-                <a href="StaffDashboard.jsp">
+                <a href="AdminDashboard.jsp">
                     <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
                 </a>
 
@@ -33,10 +33,10 @@
             <nav>
                 <li class="dropdown">
                     <!-- <a class="nav-link">Account</a> -->
-                    <a class="nav-link">Manager</a>
+                    <a class="nav-link">Admin</a>
                     <ul class="dropdown-content">
                         <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
-                        <li><a href="ManagerProfile.jsp">User Profile</a></li>
+                        <li><a href="AdminProfile.jsp">User Profile</a></li>
                         <li><a href="MainPage.jsp">Sign Out</a></li>
                     </ul>
                 </li>
@@ -45,16 +45,15 @@
 
         <div class="container">
             <div class="navbar">
-                <a href="ManagerProfile.jsp">User Profile</a>
-                <a href="ManagePayment.jsp">Manage Payment</a>
-                <a href="ManageCertificate.jsp">Manage Certificate</a>
-                <a href="ViewFeedback.jsp">View Feedback</a>
-                <a href="ManageCandidate.jsp">Manage Candidate</a>
+                <a href="AdminProfile.jsp">User Profile</a>
+                <a href="ManageStaff.jsp">Manage Manager</a>
+                <a href="Report.jsp">Report</a>
+                <a href="ViewFeedback2.jsp">View Feedback</a>
             </div>
 
             <div class="info">
-                <h1>Manager Dashboard</h1>
-                <!--<img src="IMGDraft/HomePage.png">-->    
+                <img src="IMGDraft/ViewFeedback.png"> 
+
             </div>
         </div>
 

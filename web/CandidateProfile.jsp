@@ -65,9 +65,9 @@
             <div class="navbar">
                 <a href="HomePage.jsp">Home</a>
                 <a href="CandidateProfile.jsp">User Profile</a>
-                <a href="#">About Certificate</a>
-                <a href="#">Time Table</a>
-                <a href="#">Feedback</a>
+                <a href="AboutCertificate.jsp">About Certificate</a>
+                <a href="TimeTable.jsp">Time Table</a>
+                <a href="Feedback.jsp">Feedback</a>
             </div>
 
             <div class="container">

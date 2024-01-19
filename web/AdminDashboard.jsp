@@ -47,22 +47,14 @@
             <div class="navbar">
                 <a href="AdminProfile.jsp">User Profile</a>
                 <a href="ManageStaff.jsp">Manage Manager</a>
-                <a href="#">Report</a>
-                <a href="#">View Feedback</a>
+                <a href="Report.jsp">Report</a>
+                <a href="ViewFeedback2.jsp">View Feedback</a>
             </div>
 
             <div class="info">
                 <h1>This is a Container</h1>
 
-                <!-- Dashboard Section -->
-                <div class="dashboard">
-                    <h2>Certification Dashboard</h2>
-                    <!-- Add your certification information here -->
-                    <p>Certification Name: Certification</p>
-                    <p>Duration: 6 months</p>
-                    <p>Level: Advanced</p>
-                    <!-- Add more information as needed -->
-                </div>
+               
             </div>
         </div>
 

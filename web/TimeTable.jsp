@@ -1,6 +1,6 @@
 <%-- 
-    Document   : HompePage
-    Created on : 27 Dec 2023, 3:11:49 pm
+    Document   : TimeTable
+    Created on : 19 Jan 2024, 10:16:58 pm
     Author     : FarisHarr
 --%>
 
@@ -10,17 +10,17 @@
 <html>
 
     <head>
-        <title>Home Page</title>
+        <title>Time Table</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS/HomePage.css">
+        <link rel="stylesheet" type="text/css" href="CSS/CandidateSkeleton.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     </head>
 
     <body>
         <%
-            //                HttpSession loginsession = request.getSession();
+    //                HttpSession loginsession = request.getSession();
             String candidateID = (String) session.getAttribute("candidateID");
 
             if (candidateID != null) {
@@ -66,8 +66,8 @@
             </div>
 
             <div class="info">
-                <h1>Dashboard</h1>
-                <img src="IMGDraft/HomePage.png" alt="Dashboard Image">    
+                <h1>Time Table</h1>
+                <img src="IMGDraft/TimeTable.png">    
             </div>
         </div>
 
@@ -102,4 +102,3 @@
     </body>
 
 </html>
-

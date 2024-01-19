@@ -124,6 +124,11 @@
                 box-shadow: 0 0 0 0px #28a745;
             }
 
+            .form-text:hover {
+                color: #c2f000; /* You can change the color or add other styling */
+                cursor: pointer; /* Change the cursor on hover to indicate interactivity */
+            }
+
             .new {
                 display: flex;
                 justify-content: center;
@@ -156,9 +161,9 @@
             <form class="card" action="ForgotPassword" method="POST">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="emailpass">Enter your email address</label> <input
+                        <label for="emailpass">Enter your registered email address.</label> <input
                             class="form" type="text" name="email" id="email-for-pass" required="">
-                        <small class="form-text">Enter the registered email address . Then we'll email a OTP to this address.</small>
+                        <small class="form-text">The OTP code will be send to your email..</small>
                     </div>
                 </div>
                 <div class="card-footer">
