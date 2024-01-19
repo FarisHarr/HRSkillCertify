@@ -35,6 +35,12 @@
                 <p class="new"><a href="Login.jsp">Back</a></p>
                 <br>
             </form>
+            <div id="loading" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                 background: rgba(255, 255, 255, 0.8); padding: 15px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); text-align: center;">
+                <div style="margin-top: 10px;">
+                    <img src="IMG/loading.gif" alt="Loading Spinner" style="width: 50px; height: 50px;">
+                </div>
+            </div>
         </div>
 
         <script>
@@ -51,6 +57,17 @@
                 } else {
                     return false;
                 }
+            }
+            // Check if the 'redirect' attribute is set
+            if ('${requestScope.redirect}' === 'true') {
+                // Show loading message
+                var loadingElement = document.getElementById('loading');
+                loadingElement.style.display = 'block';
+
+                // Redirect after a delay
+                setTimeout(function () {
+                    window.location.href = 'Login.jsp';
+                }, 3000); // Adjust the delay time as needed
             }
         </script>
     </body>

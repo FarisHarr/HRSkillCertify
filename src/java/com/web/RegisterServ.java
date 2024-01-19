@@ -52,10 +52,15 @@ public class RegisterServ extends HttpServlet {
                 result = myPS.executeUpdate();
 
                 if (result > 0) {
-                    response.sendRedirect("Login.jsp"); // Redirect to login page
+                    // Registration successful, set the attribute for redirect
+                    request.setAttribute("redirect", true);
                 } else {
+                    // Registration failed
                     request.setAttribute("errorMessage", "The IC number has been registered.");
                 }
+                // Forward to register.jsp
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/Register.jsp");
+                dispatcher.forward(request, response);
 
             } catch (SQLException e) {
                 if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
