@@ -57,14 +57,15 @@
                 <p class="new"><a href="LoginStaff.jsp">Staff</a></p>
                 <br>
             </form>
+            <div id="loading" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                 background: rgba(255, 255, 255, 0.8); padding: 15px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); text-align: center;">
+                <div style="margin-top: 10px;">
+                    <img src="IMG/loading.gif" alt="Loading Spinner" style="width: 50px; height: 50px;">
+                </div>
+            </div>
         </div>
 
-          <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<!--        <script src="JS/jquery-3.3.1.slim.min.js"></script>
-        <script src="JS/popper.min.js"></script>
-        <script src="JS/bootstrap.min.js"></script>
-        <script src="JS/jquery-3.3.1.min.js"></script>      -->
+
         <script>
 
             function restrictToNumbers(inputElement) {
@@ -78,6 +79,17 @@
                 } else {
                     passwordInput.type = "password";
                 }
+            }
+
+            if ('${sessionScope.redirect}' === 'true') {
+                // Show loading message
+                var loadingElement = document.getElementById('loading');
+                loadingElement.style.display = 'block';
+
+                // Redirect after a delay
+                setTimeout(function () {
+                    window.location.href = 'HomePage.jsp';
+                }, 1000); // Adjust the delay time as needed
             }
         </script>
     </body>

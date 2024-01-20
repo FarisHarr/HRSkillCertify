@@ -52,7 +52,8 @@ public class LoginServ extends HttpServlet {
                                 // User found, set session and redirect to home page
                                 HttpSession loginsession = request.getSession();
                                 loginsession.setAttribute("candidateID", resultSet.getString("cand_ID"));
-                                response.sendRedirect("HomePage.jsp");
+                                loginsession.setAttribute("redirect", "true");
+                                response.sendRedirect("Login.jsp");
                             } else {
                                 // User not found, set error message attribute
                                 request.setAttribute("errorMessage", "Invalid IC or password. Please try again.");
@@ -65,11 +66,12 @@ public class LoginServ extends HttpServlet {
                 }
             } catch (ClassNotFoundException | SQLException e) {
                 // An error occurred, set error message attribute
-                request.setAttribute("errorMessage", "An error occurred. Maybe not connect to database.");
+                request.setAttribute("errorMessage", "An error occurred. Maybe not connect to the database.");
                 // Forward to login.jsp
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/Login.jsp");
                 dispatcher.forward(request, response);
             }
         }
+
     }
 }

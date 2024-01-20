@@ -33,7 +33,7 @@
                     <a class="nav-link">Account</a>
                     <ul class="dropdown-content">
                         <li><a href="CandidateProfile.jsp">User Info</a></li>
-                        <li><a href="MainPage.jsp">Sign Out</a></li>
+                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
             </nav>
@@ -127,6 +127,11 @@
                 var navbar = document.querySelector('.navbar');
                 navbar.classList.toggle('minimized');
             }
+            
+            function signOut() {
+            // Redirect to the logout servlet or your logout logic
+            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+        }
         </script>
     </body>
 

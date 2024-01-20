@@ -36,7 +36,7 @@
                     <a class="nav-link">Manager</a>
                     <ul class="dropdown-content">
                         <li><a href="ManagerProfile.jsp">User Profile</a></li>
-                        <li><a href="MainPage.jsp">Sign Out</a></li>
+                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
             </nav>
@@ -247,6 +247,11 @@
             function refresh() {
                 location.reload();
             }
+            
+            function signOut() {
+            // Redirect to the logout servlet or your logout logic
+            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+        }
 
         </script>
 

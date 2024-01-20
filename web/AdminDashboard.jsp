@@ -9,7 +9,7 @@
 <html>
 
     <head>
-        <title>Staff Dashboard</title>
+        <title>Admin Dashboard</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/StaffDashboard.css">
@@ -35,9 +35,8 @@
                     <!-- <a class="nav-link">Account</a> -->
                     <a class="nav-link">Admin</a>
                     <ul class="dropdown-content">
-                        <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="AdminProfile.jsp">User Profile</a></li>
-                        <li><a href="MainPage.jsp">Sign Out</a></li>
+                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
             </nav>
@@ -52,7 +51,7 @@
             </div>
 
             <div class="info">
-                <h1>This is a Container</h1>
+                <h1>Admin Dashboard</h1>
 
                
             </div>
@@ -63,6 +62,11 @@
                 var navbar = document.querySelector('.navbar');
                 navbar.classList.toggle('minimized');
             }
+            
+            function signOut() {
+            // Redirect to the logout servlet or your logout logic
+            window.location.href = 'LogOutServ'; 
+        }
         </script>
 
         <footer>

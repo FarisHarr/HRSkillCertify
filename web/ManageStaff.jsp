@@ -36,7 +36,7 @@
                     <a class="nav-link">Admin</a>
                     <ul class="dropdown-content">
                         <li><a href="AdminProfile.jsp">User Profile</a></li>
-                        <li><a href="MainPage.jsp">Sign Out</a></li>
+                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
             </nav>
@@ -285,6 +285,11 @@
                     return false;
                 }
             }
+            
+            function signOut() {
+            // Redirect to the logout servlet or your logout logic
+            window.location.href = 'LogOutServ'; 
+        }
 
         </script>
 

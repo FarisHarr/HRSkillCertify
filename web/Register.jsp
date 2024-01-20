@@ -67,7 +67,7 @@
                 // Redirect after a delay
                 setTimeout(function () {
                     window.location.href = 'Login.jsp';
-                }, 3000); // Adjust the delay time as needed
+                }, 2000); // Adjust the delay time as needed
             }
         </script>
     </body>

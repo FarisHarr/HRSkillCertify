@@ -500,7 +500,7 @@ footer {
     width : 40px;
     border: none;
     background-color: wheat;
-    color: black;
+    color: white;
     cursor: pointer;
     padding: 10px;
     border-radius: 5px;
@@ -508,8 +508,8 @@ footer {
 }
 
 #myBtn:hover {
-    background-color: #2ecc71;
-    color: white;
+    background-color: wheat;
+    color: black;
     transform: scale(1.1);
 }
 
