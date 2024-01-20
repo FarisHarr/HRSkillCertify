@@ -112,7 +112,7 @@
         <p class="footer-text">&copy; HR SkillCertify 2023</p>
         <div class="contact-icons">
             <a href="https://www.facebook.com/harris.hussain.58" target="_blank" title="Facebook"><i class="fab fa-facebook"></i> HR Skill Solutions</a>
-            <a href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://pppkt.onpay.my/order/form/pppktonlinetajaan" target="_blank" title="Info"><i class="fas fa-envelope"></i> Information</a>
             <a href="https://api.whatsapp.com/send?phone=60197293275&text=PPKT24" target="_blank" title="WhatsApp">
                 <i class="fab fa-whatsapp"></i> Contact Us </a>   
         </div>

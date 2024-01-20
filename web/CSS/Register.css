@@ -82,12 +82,14 @@ body {
     font-weight: bold;
     outline: none;
     border-radius: 10px;
+    transition: background-color 0.5s, transform 0.5s;
 }
 
 #submit:hover {
     cursor: pointer;
     background-color: #00ca54;
     /* border: 1px solid black; */
+    transform: scale(1.02);
 }
 
 .form a {

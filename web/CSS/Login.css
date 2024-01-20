@@ -89,29 +89,36 @@ h1 {
     font-weight: bold;
     outline: none;
     border-radius: 10px;
+    transition: background-color 0.5s, transform 0.5s;
+    
 }
 
 #submit:hover {
     cursor: pointer;
     background-color: #00ca54;
     /* border: 1px solid black; */
+    transform: scale(1.02);
 }
 
 .form a {
+    font-size: 15px;
     text-decoration: none;
     color: rgb(200, 200, 200);
     margin-top: 20px;
+    transition: background-color 0.5s, transform 0.5s;
 }
 
 p.new{
     color: rgb(200, 200, 200);
 }
+
 a.pass {
     font-size: 12px;
     margin-left: 40%;
     margin-top: -2%;
     text-decoration: none;
     color: rgb(255, 255, 255);
+    transition: background-color 0.5s, transform 0.5s;
 }
 
 p.new{
@@ -121,10 +128,11 @@ p.new{
 
 a.pass:hover {
     color: #ff2f2f;
+    transform: scale(1.05);
 }
 
 a:hover {
-    color: #00b7ff;
+    color: #c2f9ff;
 }
 
 footer {

@@ -67,7 +67,7 @@
                                     <!-- Password Input -->
                                     <div class="form-group row justify-content-center px-3">
                                         <div class="col-9 px-0">
-                                            <input type="password" name="Password"
+                                            <input type="text" name="Password"
                                                    placeholder="&#xf084; &nbsp; New Password"
                                                    class="form-control border-info placeicon" required>
                                         </div>

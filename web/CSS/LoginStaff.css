@@ -98,6 +98,8 @@ h1 {
     font-weight: bold;
     outline: none;
     border-radius: 10px;
+    transition: background-color 0.5s, transform 0.5s;
+                
 }
 
 #submit:hover {
@@ -105,6 +107,7 @@ h1 {
     color: rgb(255, 255, 255);
     background-color: #00b356;
     /* border: 1px solid black; */
+    transform: scale(1.02);
 }
 
 .form a {

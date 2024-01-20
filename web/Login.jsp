@@ -52,7 +52,7 @@
                 %>
 
                 <br>
-                <p class="new">New to HR SkillCertify? <a href="Register.jsp">Register Here</a></p>
+                <p class="new">New to HR SkillCertify? Register <a href="Register.jsp">HERE</a></p>
                 <br>
                 <p class="new"><a href="LoginStaff.jsp">Staff</a></p>
                 <br>

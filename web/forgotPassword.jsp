@@ -11,7 +11,7 @@
         <style>
             body {
                 background-position: center;
-                background-color: aliceblue;
+                background-color: #999999;
                 background-repeat: no-repeat;
                 background-size: cover;
                 color: #505050;
@@ -32,7 +32,7 @@
                 background-color: #fff;
                 padding: 20px;
                 border: 1px solid black;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
                 width: 80%;
                 max-width: 400px;
             }
@@ -93,11 +93,13 @@
                 outline: none;
                 border-radius: 10px;
                 padding : 5px;
+                transition: background-color 0.3s, transform 0.3s;
             }
 
             .btn-success:hover {
                 cursor: pointer;
                 background-color: #00ca54;
+                transform: scale(1.02);
             }
 
             .btn-danger{
