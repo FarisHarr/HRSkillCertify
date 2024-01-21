@@ -89,7 +89,7 @@
                 // Redirect after a delay
                 setTimeout(function () {
                     window.location.href = 'HomePage.jsp';
-                }, 1000); // Adjust the delay time as needed
+                }, 2000); // Adjust the delay time as needed
             }
         </script>
     </body>

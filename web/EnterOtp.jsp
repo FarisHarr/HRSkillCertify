@@ -16,6 +16,11 @@
             .form-gap {
                 padding-top: 70px;
             }
+            
+            .panel-body {
+                /*border: 1px solid black;*/
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+            }
         </style>
     </head>
 

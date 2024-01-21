@@ -39,7 +39,7 @@
 
             .logo {
                 position: absolute;
-                top: 90px;
+                top: 120px;
                 left : 530px;
                 height: 135px;
                 width: 150px;
@@ -157,14 +157,14 @@
             <div class="forgot">
                 <h2>Forgot Password</h2>
                 <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
-                <p>Change your password in three easy steps. This will help you
-                    to secure your password!</p>
+<!--                <p>Change your password in three easy steps. This will help you
+                    to secure your password!</p>-->
             </div>
             <form class="card" action="ForgotPassword" method="POST">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="emailpass">Enter your registered email address.</label> <input
-                            class="form" type="text" name="email" id="email-for-pass" required="">
+                        <label for="emailpass">Enter your registered email address.</label> 
+                        <input class="form" type="text" name="email" id="email-for-pass" required="">
                         <small class="form-text">The OTP code will be send to your email..</small>
                     </div>
                 </div>
@@ -179,8 +179,7 @@
                 </div>
             </c:if>
         </div>
-        <script type='text/javascript'
-        src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
+        <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
         <script type='text/javascript' src=''></script>
         <script type='text/javascript' src=''></script>
         <script type='text/Javascript'></script>
