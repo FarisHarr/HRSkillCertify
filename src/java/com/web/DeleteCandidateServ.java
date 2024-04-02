@@ -43,7 +43,7 @@ public class DeleteCandidateServ extends HttpServlet {
                         response.sendRedirect("ManageCandidate.jsp");
                     } else {
                         request.setAttribute("errorMessage", "Candidate not found or couldn't be deleted.");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/TololPage.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/TestPage.jsp");
                         dispatcher.forward(request, response);
                     }
                 }
