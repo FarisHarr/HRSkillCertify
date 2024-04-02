@@ -33,7 +33,7 @@
             <nav>
                 <li class="dropdown">
                     <!-- <a class="nav-link">Account</a> -->
-                    <a class="nav-link">Admin Test</a>
+                    <a class="nav-link">Admin</a>
                     <ul class="dropdown-content">
                         <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="AdminProfile.jsp">User Profile</a></li>
