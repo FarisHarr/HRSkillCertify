@@ -10,6 +10,76 @@
 
 </head>
 
+<style>
+div.table {
+    background-color: white;
+/*    margin-bottom: 10%;*/
+}
+
+#table img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.table {
+    display: grid;
+    place-items: center;
+    margin: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+
+th {
+    text-align: left;
+    color: white;
+    background-color: grey;
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+input[type=number] {
+    width: 70px;
+}
+
+#table th,
+#table td {
+    padding: 8px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+#table button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+#table img {
+    width: 20px;
+    height: 20px;
+}
+
+
+@media screen and (max-width: 600px) {
+
+    #table th:nth-child(n+6),
+    #table td:nth-child(n+6) {
+        display: none;
+    }
+}
+
+</style>
+
 <body>
     <header>
         <div class="main">
@@ -44,17 +114,26 @@
             <a href="ManageCandidate.html">Manage Candidate</a>
         </div>
 
-        <div class="info">
-            <h1>Manage Payment</h1>
 
-            <!-- Dashboard Section -->
-            <div class="dashboard">
-                <h2>Certification Dashboard</h2>
-                <!-- Add your certification information here -->
-                <p>Certification Name: Certification</p>
-                <p>Duration: 6 months</p>
-                <p>Level: Advanced</p>
-                <!-- Add more information as needed -->
+            <div class="info">
+                <button onclick="refreshSalesReport()">Refresh</button>
+                <h1>Manage Candidate</h1>
+                <!--Table-->
+                <div class="table">
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th>Staff IC</th>
+                                <th>Staff Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Role</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
