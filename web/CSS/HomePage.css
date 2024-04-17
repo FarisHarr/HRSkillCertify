@@ -150,6 +150,7 @@ button {
     width: 100%;
     margin: 0 auto;
     display: flex; /* Use flexbox to position children side by side */
+    /* height: 100vh; */
 }
 
 .navbar {
