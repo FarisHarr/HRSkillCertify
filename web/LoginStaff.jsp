@@ -38,7 +38,7 @@
                     <input type="radio" id="admin" name="user-type" value="administrator" required>
                     <label for="administrator">Administrator</label>
                     <input type="radio" id="manager" name="user-type" value="manager" required>
-                    <label for="manager">Manager</label>
+                    <label for="manager">Coordinator</label>
                 </div>
 
                 <input type="IC" name="IC" class="box" placeholder="Enter IC Number" oninput="restrictToNumbers(this);" maxlength="12" required>
