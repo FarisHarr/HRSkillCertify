@@ -17,6 +17,43 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     </head>
+    
+    <style>
+    .infoCert {
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+        width: 90%;
+        height: 100vh;
+        background-color: aliceblue;
+        display: flex;
+    }
+
+    .cert {
+        background-color: #f9f9f9;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 65px;
+        margin: 40px;
+        width: 20%;
+        border-radius: 8px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .cert button {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10vh;
+        /* Push the button to the bottom */
+        
+    } 
+</style>
 
     <body>
         <%
@@ -65,10 +102,28 @@
                 <a href="Feedback.jsp">Feedback</a>
             </div>
 
-            <div class="info">
-                <h1>About Certificate</h1>
-                <img src="IMGDraft/AboutCert.png">    
+            <div class="infoCert">
+            <div class="cert">
+                <h2>Sijil Kemahiran Malaysia (SKM)</h2>
+                <!-- Add content for container 1 -->
+                <a href="CertificateForm.jsp">
+                    <button>Register</button>
+                </a>                
             </div>
+
+            <div class="cert">
+                <h2>Diploma Kemahiran Malaysia (DKM)</h2>
+                <!-- Add content for container 2 -->
+                <button>Button 2</button>
+            </div>
+
+            <div class="cert">
+                <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM)</h2>
+                <!-- Add content for container 3 -->
+                <button>Button 3</button>
+            </div>
+
+        </div>
         </div>
 
         <script>

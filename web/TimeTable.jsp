@@ -18,9 +18,110 @@
 
     </head>
 
+    <style>
+        .info {
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            width: 80%;
+            height: 100vh;
+            background-color: aliceblue;
+            display: flex;
+        }
+
+        .cert {
+            background-color: rgb(199, 199, 199);
+            padding: 65px;
+            margin: 50px;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .cert button {
+            background-color: #fff;
+            color: #212121;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: auto;
+            /* Push the button to the bottom */
+
+        }
+
+
+        #table img {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .table {
+            display:block;
+            margin-top: 60px;
+            margin-left: 50px;
+            place-items: center;
+            /* margin: 20px; */
+        }
+
+        table {
+            border-collapse: collapse;
+            width:100%;
+
+        }
+
+
+        th {
+            text-align: left;
+            color: white;
+            background-color: grey;
+        }
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        input[type=number] {
+            width: 70px;
+        }
+
+        #table th,
+        #table td {
+            width: 150px;
+            padding: 30px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        #table button {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+        }
+
+        #table img {
+            width: 20px;
+            height: 20px;
+        }
+
+
+        @media screen and (max-width: 600px) {
+
+            #table th:nth-child(n+6),
+            #table td:nth-child(n+6) {
+                display: none;
+            }
+        }
+    </style>
+
     <body>
         <%
-    //                HttpSession loginsession = request.getSession();
+            //                HttpSession loginsession = request.getSession();
             String candidateID = (String) session.getAttribute("candidateID");
 
             if (candidateID != null) {
@@ -66,9 +167,44 @@
             </div>
 
             <div class="info">
-                <h1>Time Table</h1>
-                <img src="IMGDraft/TimeTable.png">    
-            </div>
+                <div class="cert">
+                    <h2>Container</h2>
+                    <!-- Add content for container 3 -->
+                    <button>Button 3</button>
+                </div>
+
+                <div class="table">
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th>Certificate Type</th>
+                                <th>Class</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <!-- Dummy data rows -->
+                            <tr>
+                                <td>Certificate  A</td>
+                                <td>Class X</td>
+                                <td>2024-04-15</td>
+                            </tr>
+                            <tr>
+                                <td>Certificate B</td>
+                                <td>Class Y</td>
+                                <td>2024-04-16</td>
+                            </tr>
+                            <tr>
+                                <td>Certificate C</td>
+                                <td>Class Z</td>
+                                <td>2024-04-17</td>
+                            </tr>
+                            <!-- End of dummy data rows --> 
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
         </div>
 
         <script>
@@ -76,11 +212,11 @@
                 var navbar = document.querySelector('.navbar');
                 navbar.classList.toggle('minimized');
             }
-            
+
             function signOut() {
-            // Redirect to the logout servlet or your logout logic
-            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-        }
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
         </script>
 
         <%
