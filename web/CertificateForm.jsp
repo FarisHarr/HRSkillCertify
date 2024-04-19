@@ -151,7 +151,7 @@
             <input type="email" id="email" name="email">
             <label for="feedback">Feedback:</label>
             <textarea id="feedback" name="feedback" ></textarea><br>
-            <a href="Payment.html">
+            <a href="Payment.jsp">
                 <button>Register</button>
             </a> 
         </form>

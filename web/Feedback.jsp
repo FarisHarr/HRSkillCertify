@@ -18,9 +18,104 @@
 
     </head>
 
+    <style>
+        .info {
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            width: 80%;
+            height: 100vh;
+            background-color: #f0f0f0;
+            border: 1px solid #000000;
+            display: flex;
+        }
+
+        .cert1 {
+            background-color: #a4a4a4;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 50px;
+            margin: 30px;
+            margin-left: 100px;
+            width: 500px;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .cert2 {
+            background-color: #a4a4a4;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 50px;
+            margin: 30px;
+            width: 300px;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        /* Basic form styling */
+        #feedbackForm {
+            margin-top: 20px;
+        }
+
+        /* Style for form labels */
+        #feedbackForm label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Style for form inputs */
+        #feedbackForm input[type="text"],
+        #feedbackForm input[type="email"],
+        #feedbackForm textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Style for submit button */
+        #feedbackForm button[type="submit"] {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #feedbackForm button[type="submit"]:hover {
+            background-color: #4CAF50;
+        }
+
+        #contactus button[type="submit"] {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #contactus button[type="submit"]:hover {
+            background-color: #4CAF50;
+        }
+
+
+
+    </style>
+
     <body>
         <%
-    //                HttpSession loginsession = request.getSession();
+            //                HttpSession loginsession = request.getSession();
             String candidateID = (String) session.getAttribute("candidateID");
 
             if (candidateID != null) {
@@ -65,9 +160,27 @@
                 <a href="Feedback.jsp">Feedback</a>
             </div>
 
-            <div class="info">
-                <h1>Feedback</h1>
-                <img src="IMGDraft/Feedback.png">    
+            <div class="cert1">
+                <h2>Feedback</h2>
+                <!-- Add content for container 1 -->
+                <form id="feedbackForm">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name"><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email"><br>
+                    <label for="feedback">Feedback:</label><br>
+                    <textarea id="feedback" name="feedback"></textarea><br>
+                    <button type="submit">Submit Feedback</button>
+                </form>
+            </div>
+
+            <div class="cert2">
+                <h2>Contact Us</h2>
+                <form id="contactus">
+                    <label for="contactus"></label><br>
+                    <textarea id="contactus" name="contactus" style="width: 100%; height: 300px;"></textarea><br>
+                    <button type="submit">Submit</button>
+                </form>
             </div>
         </div>
 
@@ -76,11 +189,11 @@
                 var navbar = document.querySelector('.navbar');
                 navbar.classList.toggle('minimized');
             }
-            
+
             function signOut() {
-            // Redirect to the logout servlet or your logout logic
-            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-        }
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
         </script>
 
         <%
