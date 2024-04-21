@@ -114,13 +114,17 @@
             <div class="cert">
                 <h2>Diploma Kemahiran Malaysia (DKM)</h2>
                 <!-- Add content for container 2 -->
-                <button>Button 2</button>
+                <<a href="CertificateForm.jsp">
+                    <button>Register</button>
+                </a>  
             </div>
 
             <div class="cert">
                 <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM)</h2>
                 <!-- Add content for container 3 -->
-                <button>Button 3</button>
+                <a href="CertificateForm.jsp">
+                    <button>Register</button>
+                </a>  
             </div>
 
         </div>

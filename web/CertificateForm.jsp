@@ -115,13 +115,20 @@
                     <a href="Feedback.html">Feedback</a>
                 </div> -->
 
-        <div class="cert">
-            <h2>Test Certificate</h2><br>
-            <!-- Form -->
-            <!-- <form action="CertificateForm.html" method="post"> -->
+    <div class="cert">
+        <h2>Certificate Registeration</h2><br>
+        <form action="Payment.jsp" method="post">
+            <label for="certificate">Certificate:</label>
+            <select id="certificate" name="certificate">
+                <option value="" disabled selected>Please Choose</option>
+                <option value="SKM">Sijil Kemahiran Malaysia (SKM)</option>
+                <option value="DKM">Diploma Kemahiran Malaysia (DKM)</option>
+                <option value="DLKM">Diploma Lanjutan Kemahiran Malaysia (DLKM)</option>
+            </select>
+
             <label for="scope">Scope of Business:</label>
             <select id="scope" name="scope">
-                <option value=""disabled selected>Please Choose</option>
+                <option value="" disabled selected>Please Choose</option>
                 <option value="Agriculture, forestry, and fishing">Agriculture, forestry, and fishing</option>
                 <option value="Mining and quarrying">Mining and quarrying</option>
                 <option value="Manufacturing">Manufacturing</option>
@@ -145,26 +152,43 @@
                 <option value="Activities of extraterritorial organizations and bodies">Activities of extraterritorial organizations and bodies</option>
             </select>
 
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
-            <label for="feedback">Feedback:</label>
-            <textarea id="feedback" name="feedback" ></textarea><br>
-            <a href="Payment.jsp">
-                <button>Register</button>
-            </a> 
+            <label for="work_experience">Work Experience:</label>
+            <input type="text" id="work_experience" name="work_experience" placeholder="Example: 5 Years">
+
+            <!-- Amount display -->
+            <div class="amount-display">
+                Amount : RM <span id="amount"></span>
+            </div>
+
+            <a href="Payment.jsp?amount=" id="payment-link">
+                <button type="button">Register</button>
+            </a>
+            
         </form>
     </div>
-</div>
 
-
-<script>
-    function toggleNavbar() {
-        var navbar = document.querySelector('.navbar');
-        navbar.classList.toggle('minimized');
-    }
-</script>
+    <script>
+        // Function to calculate and display amount based on selected certificate
+        document.getElementById('certificate').addEventListener('change', function() {
+            var certificate = this.value;
+            var amountField = document.getElementById('amount');
+            var amount = 0;
+            switch (certificate) {
+                case 'SKM':
+                    amount = 2250;
+                    break;
+                case 'DKM':
+                    amount = 2700;
+                    break;
+                case 'DLKM':
+                    amount = 3600;
+                    break;
+                default:
+                    amount = 0;
+            }
+            amountField.textContent = amount;
+        });
+    </script>
 
 <footer>
     <p>&copy; HR SkillCertify 2023</p>
