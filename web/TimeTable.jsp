@@ -31,7 +31,8 @@
 
         .cert {
             background-color: rgb(199, 199, 199);
-            padding: 65px;
+            width: 20%;
+            padding: 55px;
             margin: 50px;
             border-radius: 8px;
             text-align: center;
@@ -167,44 +168,69 @@
             </div>
 
             <div class="info">
-                <div class="cert">
-                    <h2>Container</h2>
-                    <!-- Add content for container 3 -->
-                    <button>Button 3</button>
-                </div>
+            <div class="cert">
+                <h2>Class</h2>
+                <!-- Add content for container 3 -->
+                <button>Attend</button>
+            </div>
 
-                <div class="table">
-                    <table id="table">
-                        <thead>
-                            <tr>
-                                <th>Certificate Type</th>
-                                <th>Class</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
+            <div class="table">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>Certificate Type</th>
+                            <th>Class</th>
+                            <th>Date</th>
+                            <th>Time Slot</th> <!-- Added Time Slot column -->
+                        </tr>
+                    </thead>
 
-                        <tbody>
-                            <!-- Dummy data rows -->
-                            <tr>
-                                <td>Certificate  A</td>
-                                <td>Class X</td>
-                                <td>2024-04-15</td>
-                            </tr>
-                            <tr>
-                                <td>Certificate B</td>
-                                <td>Class Y</td>
-                                <td>2024-04-16</td>
-                            </tr>
-                            <tr>
-                                <td>Certificate C</td>
-                                <td>Class Z</td>
-                                <td>2024-04-17</td>
-                            </tr>
-                            <!-- End of dummy data rows --> 
-                        </tbody>
-                    </table>
-                </div>
-            </div> 
+                    <tbody>
+                        <!-- Dummy data rows with dropdowns for time selection -->
+                        <tr>
+                            <td>Certificate  A</td>
+                            <td>Class X</td>
+                            <td>2024-04-15</td>
+                            <td>
+                                <select>
+                                    <option value="09:00 AM">09:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <!-- Add more options as needed -->
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Certificate B</td>
+                            <td>Class Y</td>
+                            <td>2024-04-16</td>
+                            <td>
+                                <select>
+                                    <option value="09:00 AM">09:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <!-- Add more options as needed -->
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Certificate C</td>
+                            <td>Class Z</td>
+                            <td>2024-04-17</td>
+                            <td>
+                                <select>
+                                    <option value="09:00 AM">09:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <!-- Add more options as needed -->
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- End of dummy data rows --> 
+                    </tbody>
+                </table>
+            </div>
+        </div>  
         </div>
 
         <script>

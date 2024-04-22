@@ -196,13 +196,12 @@ button {
 }
 
 .info {
-    margin: 0 auto;
+    margin: 5%;
     text-align: center;
     padding: 20px;
-    width: 50%;
+    width: 80%;
     height: 100vh;
-    background-color: #f0f0f0;
-    border: 1px solid #000000;
+    background-color: aliceblue;
 }
 
 footer {

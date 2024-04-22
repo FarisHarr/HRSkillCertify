@@ -10,52 +10,51 @@
 </head>
 
 <style>
+    .container {
+        width: 50%;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        justify-content: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
+    h1 {
+        text-align: center;
+    }
 
-.container {
-    width: 50%;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    justify-content: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    .form-group {
+        margin-bottom: 20px;
+    }
 
-h1 {
-    text-align: center;
-}
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
 
-.form-group {
-    margin-bottom: 20px;
-}
+    input[type="text"],
+    input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-}
+    button {
+        width: 100%;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
 
-input[type="text"], input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    width: 100%;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #45a049;
-}
+    button:hover {
+        background-color: #45a049;
+    }
 
 </style>
 
@@ -107,9 +106,21 @@ button:hover {
                 <input type="file" id="file" name="file" accept=".pdf,.doc,.docx" required>
             </div>
 
+            <!-- <button type="button" onclick="confirmPayment()">Pay Now</button> -->
+
             <a href="AboutCertificate.html">
                 <button type="button">Pay Now</button>
             </a>
+
+            <!-- JavaScript for confirmation popup -->
+            <script>
+                function confirmPayment() {
+                    if (confirm("Are you sure you want to proceed with the payment?")) {
+                        // If user confirms, submit the form
+                        document.querySelector('form').submit();
+                    }
+                }
+            </script>
         </form>
     </div>
 

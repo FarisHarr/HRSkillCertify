@@ -32,19 +32,22 @@
             background-color: #f9f9f9;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin: 50px auto; /* Auto margin horizontally to center the div */
+            margin: 50px auto;
+            /* Auto margin horizontally to center the div */
             width: 60%;
             height: 90%;
             border-radius: 8px;
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Center content vertically */
-            align-items: center; /* Center content horizontally */
+            justify-content: center;
+            /* Center content vertically */
+            align-items: center;
+            /* Center content horizontally */
         }
 
         .cert button {
-            width: 100%;
+            width: 30%;
             padding: 10px 20px;
             background-color: #007bff;
             color: white;
@@ -58,27 +61,31 @@
             background-color: #45a049;
         }
 
-
-
         .cert label {
-            display: block; /* Each label on its own line */
-            margin-top: 10px; /* Add spacing between labels and inputs */
+            display: block;
+            /* Each label on its own line */
+            margin-top: 10px;
+            /* Add spacing between labels and inputs */
         }
 
         .cert select,
         .cert input[type="text"],
-        .cert input[type="email"],
+        .cert input[type="number"],
         .cert textarea {
-            width: 45%;
+            width: 50%;
             padding: 10px;
-            margin : 10px;
+            margin: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
         }
 
-
+        /* Style for displaying amount */
+        .amount-display {
+            margin: 20px;
+            font-size: 18px;
+        }
     </style>
 
     <body>
@@ -115,85 +122,104 @@
                     <a href="Feedback.html">Feedback</a>
                 </div> -->
 
-    <div class="cert">
-        <h2>Certificate Registeration</h2><br>
-        <form action="Payment.jsp" method="post">
-            <label for="certificate">Certificate:</label>
-            <select id="certificate" name="certificate">
-                <option value="" disabled selected>Please Choose</option>
-                <option value="SKM">Sijil Kemahiran Malaysia (SKM)</option>
-                <option value="DKM">Diploma Kemahiran Malaysia (DKM)</option>
-                <option value="DLKM">Diploma Lanjutan Kemahiran Malaysia (DLKM)</option>
-            </select>
+        <div class="cert">
+            <h2>Certificate Registeration</h2><br>
+            <form action="Payment.jsp" method="post">
+                <label for="certificate">Certificate:</label>
+                <select id="certificate" name="certificate">
+                    <option value="" disabled selected>Please Choose</option>
+                    <option value="SKM">Sijil Kemahiran Malaysia (SKM)</option>
+                    <option value="DKM">Diploma Kemahiran Malaysia (DKM)</option>
+                    <option value="DLKM">Diploma Lanjutan Kemahiran Malaysia (DLKM)</option>
+                </select>
 
-            <label for="scope">Scope of Business:</label>
-            <select id="scope" name="scope">
-                <option value="" disabled selected>Please Choose</option>
-                <option value="Agriculture, forestry, and fishing">Agriculture, forestry, and fishing</option>
-                <option value="Mining and quarrying">Mining and quarrying</option>
-                <option value="Manufacturing">Manufacturing</option>
-                <option value="Electricity, gas, steam and air conditioning supply">Electricity, gas, steam and air conditioning supply</option>
-                <option value="Water supply; sewerage, waste management and remediation activities">Water supply; sewerage, waste management and remediation activities</option>
-                <option value="Construction">Construction</option>
-                <option value="Wholesale and retail trade; repair of motor vehicles and motorcycles">Wholesale and retail trade; repair of motor vehicles and motorcycles</option>
-                <option value="Transportation and storage">Transportation and storage</option>
-                <option value="Accommodation and food service activities">Accommodation and food service activities</option>
-                <option value="Information and communication">Information and communication</option>
-                <option value="Financial and insurance activities">Financial and insurance activities</option>
-                <option value="Real estate activities">Real estate activities</option>
-                <option value="Professional, scientific and technical activities">Professional, scientific and technical activities</option>
-                <option value="Administrative and support service activities">Administrative and support service activities</option>
-                <option value="Public administration and defence; compulsory social security">Public administration and defence; compulsory social security</option>
-                <option value="Education">Education</option>
-                <option value="Human health and social work activities">Human health and social work activities</option>
-                <option value="Arts entertainment and recreation">Arts entertainment and recreation</option>
-                <option value="Other service activities">Other service activities</option>
-                <option value="Activities of households as employers">Activities of households as employers</option>
-                <option value="Activities of extraterritorial organizations and bodies">Activities of extraterritorial organizations and bodies</option>
-            </select>
+                <label for="scope">Scope of Business:</label>
+                <select id="scope" name="scope">
+                    <option value="" disabled selected>Please Choose</option>
+                    <option value="Agriculture, forestry, and fishing">Agriculture, forestry, and fishing</option>
+                    <option value="Mining and quarrying">Mining and quarrying</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <option value="Electricity, gas, steam and air conditioning supply">Electricity, gas, steam and air conditioning supply</option>
+                    <option value="Water supply; sewerage, waste management and remediation activities">Water supply; sewerage, waste management and remediation activities</option>
+                    <option value="Construction">Construction</option>
+                    <option value="Wholesale and retail trade; repair of motor vehicles and motorcycles">Wholesale and retail trade; repair of motor vehicles and motorcycles</option>
+                    <option value="Transportation and storage">Transportation and storage</option>
+                    <option value="Accommodation and food service activities">Accommodation and food service activities</option>
+                    <option value="Information and communication">Information and communication</option>
+                    <option value="Financial and insurance activities">Financial and insurance activities</option>
+                    <option value="Real estate activities">Real estate activities</option>
+                    <option value="Professional, scientific and technical activities">Professional, scientific and technical activities</option>
+                    <option value="Administrative and support service activities">Administrative and support service activities</option>
+                    <option value="Public administration and defence; compulsory social security">Public administration and defence; compulsory social security</option>
+                    <option value="Education">Education</option>
+                    <option value="Human health and social work activities">Human health and social work activities</option>
+                    <option value="Arts entertainment and recreation">Arts entertainment and recreation</option>
+                    <option value="Other service activities">Other service activities</option>
+                    <option value="Activities of households as employers">Activities of households as employers</option>
+                    <option value="Activities of extraterritorial organizations and bodies">Activities of extraterritorial organizations and bodies</option>
+                </select>
 
-            <label for="work_experience">Work Experience:</label>
-            <input type="text" id="work_experience" name="work_experience" placeholder="Example: 5 Years">
+                <label for="work_experience">Work Experience:</label>
+                <input type="text" id="work_experience" name="work_experience" placeholder="Example:" oninput="restrictToNumbers(this);" required>
+                <span id="placeholder-addon"> Years</span>
 
-            <!-- Amount display -->
-            <div class="amount-display">
-                Amount : RM <span id="amount"></span>
-            </div>
+                <!-- Amount display -->
+                <div class="amount-display">
+                    Amount : RM <span id="amount"></span>
+                </div>
 
-            <a href="Payment.jsp?amount=" id="payment-link">
-                <button type="button">Register</button>
-            </a>
-            
-        </form>
-    </div>
+                <a href="Payment.jsp?amount=" id="payment-link">
+                    <button type="button">Register</button>
+                </a>
 
-    <script>
-        // Function to calculate and display amount based on selected certificate
-        document.getElementById('certificate').addEventListener('change', function() {
-            var certificate = this.value;
-            var amountField = document.getElementById('amount');
-            var amount = 0;
-            switch (certificate) {
-                case 'SKM':
-                    amount = 2250;
-                    break;
-                case 'DKM':
-                    amount = 2700;
-                    break;
-                case 'DLKM':
-                    amount = 3600;
-                    break;
-                default:
-                    amount = 0;
-            }
-            amountField.textContent = amount;
-        });
-    </script>
+            </form>
+        </div>
 
-<footer>
-    <p>&copy; HR SkillCertify 2023</p>
-</footer>
+        <script>
+            // Function to calculate and display amount based on selected certificate
+            document.getElementById('certificate').addEventListener('change', function () {
+                var certificate = this.value;
+                var amountField = document.getElementById('amount');
+                var amount = 0;
+                switch (certificate) {
+                    case 'SKM':
+                        amount = 2250;
+                        break;
+                    case 'DKM':
+                        amount = 2700;
+                        break;
+                    case 'DLKM':
+                        amount = 3600;
+                        break;
+                    default:
+                        amount = 0;
+                }
+                amountField.textContent = amount;
+            });
 
-</body>
+            // Get the input field and the placeholder-addon span
+            var workExperienceInput = document.getElementById('work_experience');
+            var placeholderAddon = document.getElementById('placeholder-addon');
+
+            // Add an event listener to the input field to update the placeholder text
+            workExperienceInput.addEventListener('input', function () {
+                // Get the user input value
+                var userInput = this.value;
+                // Check if the user input is a valid number
+                if (!isNaN(userInput) && userInput !== '') {
+                    // If it's a valid number, update the placeholder text
+                    placeholderAddon.textContent = ' Years';
+                } else {
+                    // If it's not a valid number or empty, reset the placeholder text
+                    placeholderAddon.textContent = '';
+                }
+            });
+        </script>
+
+        <footer>
+            <p>&copy; HR SkillCertify 2023</p>
+        </footer>
+
+    </body>
 
 </html>
