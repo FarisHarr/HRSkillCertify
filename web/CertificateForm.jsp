@@ -4,12 +4,13 @@
     Author     : FarisHarr
 --%>
 
+<%@ page import="java.sql.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
     <head>
-        <title>About Certificate</title>
+        <title>Certificate Registration</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/HomePage.css">
@@ -89,6 +90,22 @@
     </style>
 
     <body>
+        <%
+            String candidateID = (String) session.getAttribute("candidateID");
+            // Set the candidateID attribute to the session
+            session.setAttribute("candidateID", candidateID);
+
+            if (candidateID != null) {
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                    PreparedStatement ps = con.prepareStatement("SELECT * FROM candidate WHERE cand_ID = ? ");
+                    ps.setString(1, candidateID);
+                    ResultSet rs = ps.executeQuery();
+
+                    if (rs.next()) {
+                        String Name = rs.getString("cand_Name");
+        %>
         <header>
             <div class="main">
                 <a href="AboutCertificate.jsp">
@@ -103,11 +120,11 @@
             </div>
             <nav>
                 <li class="dropdown">
-                    <a class="nav-link">Candidate</a>
+                    <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
                         <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="CandidateProfile.jsp">User Profile</a></li>
-                        <li><a href="MainPage.jsp">Sign Out</a></li>
+                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
             </nav>
@@ -123,18 +140,20 @@
                 </div> -->
 
         <div class="cert">
-            <h2>Certificate Registeration</h2><br>
-            <form action="Payment.jsp" method="post">
+            <h2>Certificate Registration</h2><br>
+            <form action="RegisterCertServ" method="POST">
+                <!-- Add hidden input field for candidateID -->
+                <input type="hidden" id="candidateID" name="candidateID" value="<%= candidateID%>">
                 <label for="certificate">Certificate:</label>
-                <select id="certificate" name="certificate">
+                <select id="certificate" name="certificate" required>
                     <option value="" disabled selected>Please Choose</option>
                     <option value="SKM">Sijil Kemahiran Malaysia (SKM)</option>
                     <option value="DKM">Diploma Kemahiran Malaysia (DKM)</option>
                     <option value="DLKM">Diploma Lanjutan Kemahiran Malaysia (DLKM)</option>
                 </select>
 
-                <label for="scope">Scope of Business:</label>
-                <select id="scope" name="scope">
+                <label for="workType">Scope of Business:</label>
+                <select id="workType" name="workType" required>
                     <option value="" disabled selected>Please Choose</option>
                     <option value="Agriculture, forestry, and fishing">Agriculture, forestry, and fishing</option>
                     <option value="Mining and quarrying">Mining and quarrying</option>
@@ -159,8 +178,8 @@
                     <option value="Activities of extraterritorial organizations and bodies">Activities of extraterritorial organizations and bodies</option>
                 </select>
 
-                <label for="work_experience">Work Experience:</label>
-                <input type="text" id="work_experience" name="work_experience" placeholder="Example:" oninput="restrictToNumbers(this);" required>
+                <label for="experience">Work Experience:</label>
+                <input type="text" id="experience" name="experience" placeholder="Example:" oninput="restrictToNumbers(this);" required>
                 <span id="placeholder-addon"> Years</span>
 
                 <!-- Amount display -->
@@ -168,9 +187,7 @@
                     Amount : RM <span id="amount"></span>
                 </div>
 
-                <a href="Payment.jsp?amount=" id="payment-link">
-                    <button type="button">Register</button>
-                </a>
+                <button type="submit">Register</button>
 
             </form>
         </div>
@@ -214,7 +231,29 @@
                     placeholderAddon.textContent = '';
                 }
             });
+            
+            function signOut() {
+            // Redirect to the logout servlet or your logout logic
+            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+        }
         </script>
+
+        <%
+                    } else {
+                        out.println("Candidate not found.");
+                    }
+
+                    rs.close();
+                    ps.close();
+                    con.close();
+                } catch (Exception e) {
+                    out.println("Error: " + e);
+                }
+            } else {
+                // If the session doesn't exist or customerID is not set, redirect to the login page
+                response.sendRedirect("Login.jsp");
+            }
+        %>
 
         <footer>
             <p>&copy; HR SkillCertify 2023</p>

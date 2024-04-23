@@ -150,7 +150,7 @@
 
     <%
                 } else {
-                    out.println("Customer not found.");
+                    out.println("Candidate not found.");
                 }
 
                 rs.close();

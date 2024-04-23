@@ -69,7 +69,7 @@ button:hover {
 <body>
     <header>
         <div class="main">
-            <a href="CertificateForm.html">
+            <a href="CertificateForm.jsp">
                 <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
             </a>
         </div>
@@ -78,8 +78,8 @@ button:hover {
                 <li class="dropdown">
                     <a href="#" class="nav-link">Candidate</a>
                     <ul class="dropdown-content">
-                        <li><a href="CandidateProfile.html">User Profile</a></li>
-                        <li><a href="MainPage.html">Sign Out</a></li>
+                        <li><a href="CandidateProfile.jsp">User Profile</a></li>
+                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
             </ul>
@@ -120,6 +120,12 @@ button:hover {
         </form>
     </div>
 
+    <script>
+                function signOut() {
+            // Redirect to the logout servlet or your logout logic
+            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+        }
+        </script>
     <footer>
         <p>&copy; HR SkillCertify 2023</p>
     </footer>

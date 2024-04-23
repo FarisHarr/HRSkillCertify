@@ -114,7 +114,7 @@
             <div class="cert">
                 <h2>Diploma Kemahiran Malaysia (DKM)</h2>
                 <!-- Add content for container 2 -->
-                <<a href="CertificateForm.jsp">
+                <a href="CertificateForm.jsp">
                     <button>Register</button>
                 </a>  
             </div>
