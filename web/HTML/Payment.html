@@ -12,37 +12,41 @@
 <style>
     .container {
         width: 50%;
-        margin: 50px auto;
+        height: 90%;
+        margin: 30px auto;
         padding: 20px;
         background-color: #f9f9f9;
+        text-align: center;
         border-radius: 8px;
         justify-content: center;
+        display: flex;
+        flex-direction: column;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    h1 {
-        text-align: center;
+    .container select, input[type="text"],
+    input[type="file"] {
+        width: 50%;
+        padding: 10px;
+        margin: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
     }
 
+
     .form-group {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
     label {
         display: block;
-        margin-bottom: 8px;
-    }
-
-    input[type="text"],
-    input[type="file"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        margin-top: 10px;
     }
 
     button {
-        width: 100%;
+        width: 30%;
         padding: 10px 20px;
         background-color: #007bff;
         color: white;
@@ -54,6 +58,24 @@
 
     button:hover {
         background-color: #45a049;
+    }
+
+    .back-button {
+        width: 5%;
+        margin-top: 10px;
+        background-color: #45a049;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .back-button:hover {
+        background-color: #5f5f5f;
     }
 
 </style>
@@ -79,32 +101,35 @@
     </header>
 
     <div class="container">
-        <!-- <h1>Payment Details</h1> -->
+        <h2>Payment Details</h2> <br>
         <form action="/process_payment" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="card_number">Card Number:</label>
-                <input type="text" id="card_number" name="card_number" required>
+                <label for="certificate">Certificate:</label>
+                <select id="certificate" name="certificate" required>
+                    <option value="" disabled selected>Please Choose</option>
+                    <option value="SKM">Sijil Kemahiran Malaysia (SKM)</option>
+                    <option value="DKM">Diploma Kemahiran Malaysia (DKM)</option>
+                    <option value="DLKM">Diploma Lanjutan Kemahiran Malaysia (DLKM)</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="expiry_date">Expiry Date:</label>
-                <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" required>
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" readonly required>
             </div>
 
             <div class="form-group">
-                <label for="card_holder_name">Card Holder Name:</label>
-                <input type="text" id="card_holder_name" name="card_holder_name" required>
+                <!-- <label for="payment_date">Payment Date:</label> -->
+                <input type="hidden" id="payment_date" name="payment_date" required>
             </div>
 
             <div class="form-group">
-                <label for="amount">Amount:</label>
-                <input type="text" id="amount" name="amount" required>
-            </div>
-
-            <div class="form-group">
-                <label for="file">Upload File:</label>
+                <label for="file">Upload Receipt:</label>
                 <input type="file" id="file" name="file" accept=".pdf,.doc,.docx" required>
             </div>
+
+            <!-- Default status set to "Pending" -->
+            <input type="hidden" id="status" name="status" value="Pending">
 
             <!-- <button type="button" onclick="confirmPayment()">Pay Now</button> -->
 
@@ -112,17 +137,43 @@
                 <button type="button">Pay Now</button>
             </a>
 
-            <!-- JavaScript for confirmation popup -->
-            <script>
-                function confirmPayment() {
-                    if (confirm("Are you sure you want to proceed with the payment?")) {
-                        // If user confirms, submit the form
-                        document.querySelector('form').submit();
-                    }
-                }
-            </script>
         </form>
+        <a href="javascript:history.back()" class="back-button">Back</a>
     </div>
+
+
+    <!-- JavaScript for confirmation popup and calculating price based on selected certificate -->
+    <script>
+        document.getElementById('certificate').addEventListener('change', function () {
+            var certificate = this.value;
+            var priceField = document.getElementById('price');
+            var price = 0;
+            switch (certificate) {
+                case 'SKM':
+                    price = 2250;
+                    break;
+                case 'DKM':
+                    price = 2700;
+                    break;
+                case 'DLKM':
+                    price = 3600;
+                    break;
+                default:
+                    price = 0;
+            }
+            priceField.value = price;
+        });
+
+        function confirmPayment() {
+            if (confirm("Are you sure you want to proceed with the payment?")) {
+                // If user confirms, submit the form
+                document.querySelector('form').submit();
+            }
+        }
+
+        // Auto-fill payment date with current date
+        document.getElementById('payment_date').valueAsDate = new Date();
+    </script>
 
     <footer>
         <p>&copy; HR SkillCertify 2023</p>

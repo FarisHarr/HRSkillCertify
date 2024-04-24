@@ -30,21 +30,17 @@
         }
 
         .cert {
-            background-color: #f9f9f9;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 50px auto;
-            /* Auto margin horizontally to center the div */
-            width: 60%;
+            width: 50%;
             height: 90%;
-            border-radius: 8px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
             text-align: center;
+            border-radius: 8px;
+            justify-content: center;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            /* Center content vertically */
-            align-items: center;
-            /* Center content horizontally */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .cert button {
@@ -64,9 +60,7 @@
 
         .cert label {
             display: block;
-            /* Each label on its own line */
             margin-top: 10px;
-            /* Add spacing between labels and inputs */
         }
 
         .cert select,
@@ -86,6 +80,24 @@
         .amount-display {
             margin: 20px;
             font-size: 18px;
+        }
+
+        .back-button {
+            width: 5%;
+            margin-top: 10px;
+            background-color: #45a049;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background-color: #5f5f5f;
         }
     </style>
 
@@ -147,9 +159,9 @@
                 <label for="certificate">Certificate:</label>
                 <select id="certificate" name="certificate" required>
                     <option value="" disabled selected>Please Choose</option>
-                    <option value="SKM">Sijil Kemahiran Malaysia (SKM)</option>
-                    <option value="DKM">Diploma Kemahiran Malaysia (DKM)</option>
-                    <option value="DLKM">Diploma Lanjutan Kemahiran Malaysia (DLKM)</option>
+                    <option value="SKM (RM2250)">Sijil Kemahiran Malaysia (SKM)</option>
+                    <option value="DKM (RM2700)">Diploma Kemahiran Malaysia (DKM)</option>
+                    <option value="DLKM (RM3600)">Diploma Lanjutan Kemahiran Malaysia (DLKM)</option>
                 </select>
 
                 <label for="workType">Scope of Business:</label>
@@ -178,9 +190,9 @@
                     <option value="Activities of extraterritorial organizations and bodies">Activities of extraterritorial organizations and bodies</option>
                 </select>
 
-                <label for="experience">Work Experience:</label>
-                <input type="text" id="experience" name="experience" placeholder="Example:" oninput="restrictToNumbers(this);" required>
-                <span id="placeholder-addon"> Years</span>
+                <label for="work_experience">Work Experience:</label>
+                <input type="text" id="experience" name="experience" placeholder="Example: 2 Years" oninput="restrictToNumbers(this);" required>
+<!--                                <span id="placeholder-addon"> Years</span>-->
 
                 <!-- Amount display -->
                 <div class="amount-display">
@@ -190,6 +202,8 @@
                 <button type="submit">Register</button>
 
             </form>
+
+            <a href="javascript:history.back()" class="back-button">Back</a>
         </div>
 
         <script>
@@ -199,13 +213,13 @@
                 var amountField = document.getElementById('amount');
                 var amount = 0;
                 switch (certificate) {
-                    case 'SKM':
+                    case 'SKM (RM2250)':
                         amount = 2250;
                         break;
-                    case 'DKM':
+                    case 'DKM (RM2700)':
                         amount = 2700;
                         break;
-                    case 'DLKM':
+                    case 'DLKM (RM3600)':
                         amount = 3600;
                         break;
                     default:
@@ -231,11 +245,11 @@
                     placeholderAddon.textContent = '';
                 }
             });
-            
+
             function signOut() {
-            // Redirect to the logout servlet or your logout logic
-            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-        }
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
         </script>
 
         <%

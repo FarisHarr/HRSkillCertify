@@ -115,8 +115,9 @@
 
     <body>
         <%
-            //                HttpSession loginsession = request.getSession();
-            String candidateID = (String) session.getAttribute("candidateID");
+             String candidateID = (String) session.getAttribute("candidateID");
+            // Set the candidateID attribute to the session
+            session.setAttribute("candidateID", candidateID);
 
             if (candidateID != null) {
                 try {
@@ -128,6 +129,7 @@
 
                     if (rs.next()) {
                         String Name = rs.getString("cand_Name");
+                        String Email = rs.getString("cand_Email");
 
         %>
         <header>
@@ -163,13 +165,13 @@
             <div class="cert1">
                 <h2>Feedback</h2>
                 <!-- Add content for container 1 -->
-                <form id="feedbackForm">
+                <form id="feedbackForm" action="FeedbackServ" method="POST">
                     <label for="name">Name:</label><br>
-                    <input type="text" id="name" name="name"><br>
+                    <input type="text" id="name" name="name" value="<%= Name%>" readonly ><br>
                     <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email"><br>
-                    <label for="feedback">Feedback:</label><br>
-                    <textarea id="feedback" name="feedback"></textarea><br>
+                    <input type="email" id="email" name="email" value="<%= Email%>" readonly><br>
+                    <label for="message">Feedback:</label><br>
+                    <textarea id="message" name="message"></textarea><br>
                     <button type="submit">Submit Feedback</button>
                 </form>
             </div>

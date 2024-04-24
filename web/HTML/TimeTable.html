@@ -19,46 +19,26 @@
         height: 100vh;
         background-color: aliceblue;
         display: flex;
-    }
-
-    .cert {
-        width: 20%;
-        background-color: rgb(199, 199, 199);
-        padding: 55px;
-        margin: 50px;
-        border-radius: 8px;
-        text-align: center;
-        display: flex;
         flex-direction: column;
-
+        align-items: center;
     }
-
-    .cert button {
-        background-color: #fff;
-        color: #212121;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: auto;
-    } 
 
     .table {
-        display:block;
-        margin-top: 60px;
-        margin-left: 50px;
-        place-items: center;
+        width: 100%;
+        margin-top: 20px;
+        overflow-x: auto;
     }
 
     table {
         border-collapse: collapse;
-        width:100%;
+        width: 100%;
     }
 
     th {
-        text-align: left;
+        text-align: center;
         color: white;
         background-color: grey;
+        padding: 10px;
     }
 
     td,
@@ -67,30 +47,22 @@
         padding: 8px;
     }
 
-    #table th,
-    #table td {
-        width: 150px;
-        padding: 30px;
-        border: 1px solid black;
+    td {
         text-align: center;
+        vertical-align: middle;
     }
 
-    #table button {
-        border: none;
-        background-color: transparent;
-        padding: 0;
-    }
-
-    #table img {
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
+    input[type="date"],
+    input[type="time"] {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 80%;
     }
 
     @media screen and (max-width: 600px) {
-        #table th:nth-child(n+6),
-        #table td:nth-child(n+6) {
-            display: none;
+        .info {
+            width: 100%;
         }
     }
 </style>
@@ -104,16 +76,16 @@
                     <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
                 </ul>
             </nav>
-        </div >
+        </div>
         <nav>
-        <li class="dropdown">
-            <a class="nav-link">Candidate</a>
-            <ul class="dropdown-content">
-                <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
-                <li><a href="CandidateProfile.html">User Profile</a></li>
-                <li><a href="MainPage.html">Sign Out</a></li>
-            </ul>
-        </li>
+            <li class="dropdown">
+                <a class="nav-link">Candidate</a>
+                <ul class="dropdown-content">
+                    <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
+                    <li><a href="CandidateProfile.html">User Profile</a></li>
+                    <li><a href="MainPage.html">Sign Out</a></li>
+                </ul>
+            </li>
         </nav>
     </header>
 
@@ -127,69 +99,48 @@
         </div>
 
         <div class="info">
-            <div class="cert">
-                <h2>Class</h2>
-                <!-- Add content for container 3 -->
-                <button>Attend</button>
-            </div>
+            <h2>Choose Your Class for Attendance</h2>
 
             <div class="table">
-                <table id="table">
+                <table>
                     <thead>
                         <tr>
                             <th>Certificate Type</th>
                             <th>Class</th>
                             <th>Date</th>
-                            <th>Time Slot</th> <!-- Added Time Slot column -->
+                            <th>Time Slot</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <!-- Dummy data rows with dropdowns for time selection -->
+                        <!-- Dummy data rows with input fields for date and time selection -->
                         <tr>
-                            <td>Certificate  A</td>
+                            <td>Certificate A</td>
                             <td>Class X</td>
-                            <td>2024-04-15</td>
-                            <td>
-                                <select>
-                                    <option value="09:00 AM">09:00 AM</option>
-                                    <option value="10:00 AM">10:00 AM</option>
-                                    <option value="11:00 AM">11:00 AM</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                            </td>
+                            <td><input type="date"></td>
+                            <td><input type="time"></td>
+                            <td><button>Attend</button></td>
                         </tr>
                         <tr>
                             <td>Certificate B</td>
                             <td>Class Y</td>
-                            <td>2024-04-16</td>
-                            <td>
-                                <select>
-                                    <option value="09:00 AM">09:00 AM</option>
-                                    <option value="10:00 AM">10:00 AM</option>
-                                    <option value="11:00 AM">11:00 AM</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                            </td>
+                            <td><input type="date"></td>
+                            <td><input type="time"></td>
+                            <td><button>Attend</button></td>
                         </tr>
                         <tr>
                             <td>Certificate C</td>
                             <td>Class Z</td>
-                            <td>2024-04-17</td>
-                            <td>
-                                <select>
-                                    <option value="09:00 AM">09:00 AM</option>
-                                    <option value="10:00 AM">10:00 AM</option>
-                                    <option value="11:00 AM">11:00 AM</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                            </td>
+                            <td><input type="date"></td>
+                            <td><input type="time"></td>
+                            <td><button>Attend</button></td>
                         </tr>
-                        <!-- End of dummy data rows --> 
+                        <!-- End of dummy data rows -->
                     </tbody>
                 </table>
             </div>
-        </div>   
+        </div>
     </div>
 
     <script>
