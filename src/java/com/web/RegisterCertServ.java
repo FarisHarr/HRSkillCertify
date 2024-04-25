@@ -31,46 +31,69 @@ public class RegisterCertServ extends HttpServlet {
         certificate.setWorkType(request.getParameter("workType"));
         certificate.setExperience(request.getParameter("experience"));
 
+        String price = request.getParameter("price");
+        java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+
         try {
+            // Establish database connection
             Class.forName("com.mysql.jdbc.Driver");
             String myURL = "jdbc:mysql://localhost/hrsc";
-
-            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); PreparedStatement checkIfExists = myConnection.prepareStatement("SELECT COUNT(*) FROM certificate WHERE cand_ID = ?"); PreparedStatement insertStatement = myConnection.prepareStatement("INSERT INTO certificate(cand_ID, cert_Type, work_Type, experience) VALUES (?, ?, ?, ?)")) {
+            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin")) {
 
                 // Check if candidate ID already exists
-                checkIfExists.setString(1, certificate.getCandidateID());
-                ResultSet resultSet = checkIfExists.executeQuery();
-                resultSet.next();
-                int count = resultSet.getInt(1);
-                resultSet.close();
-                
+                int count;
+                try (PreparedStatement checkIfExists = myConnection.prepareStatement("SELECT COUNT(*) FROM certificate WHERE cand_ID = ?")) {
+                    checkIfExists.setString(1, certificate.getCandidateID());
+                    ResultSet resultSet = checkIfExists.executeQuery();
+                    resultSet.next();
+                    count = resultSet.getInt(1);
+                }
+
                 if (count > 0) {
-                    // Show popup message
-                    String alertMessage = "Yor are already registered for this certificate.";
+                    // Show popup message for certificate registration
+                    String alertMessage = "You are already registered for this certificate.";
                     response.setContentType("text/html");
                     response.getWriter().println("<script>alert('" + alertMessage + "'); window.location.href='AboutCertificate.jsp';</script>");
                     return; // Exit the method
                 }
 
-                // If candidate ID does not exist, proceed with insertion
-                insertStatement.setString(1, certificate.getCandidateID());
-                insertStatement.setString(2, certificate.getCertificate());
-                insertStatement.setString(3, certificate.getWorkType());
-                insertStatement.setString(4, certificate.getExperience());
+                // If candidate ID does not exist, proceed with certificate insertion
+                try (PreparedStatement insertCertStatement = myConnection.prepareStatement("INSERT INTO certificate(cand_ID, cert_Type, work_Type, experience) VALUES (?, ?, ?, ?)")) {
+                    insertCertStatement.setString(1, certificate.getCandidateID());
+                    insertCertStatement.setString(2, certificate.getCertificate());
+                    insertCertStatement.setString(3, certificate.getWorkType());
+                    insertCertStatement.setString(4, certificate.getExperience());
 
-                // Execute the SQL statement
-                int rowsInserted = insertStatement.executeUpdate();
+                    // Execute the certificate insertion SQL statement
+                    int certRowsInserted = insertCertStatement.executeUpdate();
 
-                // Provide feedback to the user
-                if (rowsInserted > 0) {
-                    // Redirect to payment.jsp
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("Payment.jsp");
-                    dispatcher.forward(request, response);
-                } else {
-                    String errorMessage = "Failed to register certificate. Please try again.";
-                    request.setAttribute("errorMessage", errorMessage);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("AboutCertificate.jsp");
-                    dispatcher.forward(request, response);
+                    if (certRowsInserted > 0) {
+                        // Proceed with payment insertion
+                        try (PreparedStatement insertPaymentStatement = myConnection.prepareStatement("INSERT INTO payment (cand_ID, price, date) VALUES (?, ?, ?)")) {
+                            insertPaymentStatement.setString(1, candidateID);
+                            insertPaymentStatement.setString(2, price);
+                            insertPaymentStatement.setDate(3, currentDate);
+
+                            // Execute the payment insertion SQL statement
+                            int paymentRowsInserted = insertPaymentStatement.executeUpdate();
+
+                            // Provide feedback to the user
+                            if (paymentRowsInserted > 0) {
+                                // Redirect to homepage upon successful payment
+                                response.sendRedirect("HomePage.jsp");
+                            } else {
+                                String errorMessage = "Failed to add payment details. Please try again.";
+                                request.setAttribute("errorMessage", errorMessage);
+                                RequestDispatcher dispatcher = request.getRequestDispatcher("CandidateProfile.jsp");
+                                dispatcher.forward(request, response);
+                            }
+                        }
+                    } else {
+                        String errorMessage = "Failed to register certificate. Please try again.";
+                        request.setAttribute("errorMessage", errorMessage);
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("AboutCertificate.jsp");
+                        dispatcher.forward(request, response);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -78,7 +101,3 @@ public class RegisterCertServ extends HttpServlet {
         }
     }
 }
-
-
-
-

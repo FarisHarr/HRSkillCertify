@@ -180,18 +180,29 @@
                     <option value="Activities of households as employers">Activities of households as employers</option>
                     <option value="Activities of extraterritorial organizations and bodies">Activities of extraterritorial organizations and bodies</option>
                 </select>
-                
+
 
                 <label for="work_experience">Work Experience:</label>
                 <input type="text" id="experience" name="experience" placeholder="Example: 2 Years" oninput="restrictToNumbers(this);" required>
-<!--                                <span id="placeholder-addon"> Years</span>-->
+                <!--                                <span id="placeholder-addon"> Years</span>-->
 
                 <!-- Amount display -->
                 <div class="amount-display">
-                    Amount : RM <span id="amount"></span>
+                    Amount : RM <span id="amount">0</span>
                 </div>
 
-                <button type="submit">Register</button>
+
+                <div class="form-group">
+                    <label for="price">Price you want to pay :</label>
+                    <input type="text" id="price" name="price" required>
+                </div>
+
+                <div class="form-group">
+                    <!-- <label for="payment_date">Payment Date:</label> -->
+                    <input type="hidden" id="date" name="date" value="<%= java.time.LocalDate.now()%>">
+                </div>
+
+                <button type="submit" onclick="showSuccessMessage()">Pay Now</button>
 
             </form>
 
@@ -217,11 +228,11 @@
                     default:
                         amount = 0;
                 }
-                amountField.textContent = amount;
+                amountField.textContent = amount; // Update the amount displayed
             });
 
             // Get the input field and the placeholder-addon span
-            var workExperienceInput = document.getElementById('work_experience');
+            var workExperienceInput = document.getElementById('experience');
             var placeholderAddon = document.getElementById('placeholder-addon');
 
             // Add an event listener to the input field to update the placeholder text
@@ -238,10 +249,16 @@
                 }
             });
 
+            function showSuccessMessage() {
+                // Show a popup message
+                alert("Register Successfully");
+            }
+
             function signOut() {
                 // Redirect to the logout servlet or your logout logic
                 window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
             }
+
         </script>
 
         <%
