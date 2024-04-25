@@ -33,7 +33,7 @@ public class PaymentServ extends HttpServlet {
 
 //        String payment = request.getParameter("payment_ID");
         String price = request.getParameter("price");
-//        String paymentDate = request.getParameter("payment_date");
+        String date = request.getParameter("date");
 //        String status = request.getParameter("status");
 
         Connection con = null;
@@ -42,12 +42,12 @@ public class PaymentServ extends HttpServlet {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-            String myURL = "INSERT INTO payment (cand_ID, price) VALUES (?, ?)";
+            String myURL = "INSERT INTO payment (cand_ID, price, date) VALUES (?, ?, ?)";
             PreparedStatement statement = con.prepareStatement(myURL);
 //            statement.setString(1, payment);
             statement.setString(1, cand_ID);
             statement.setString(2, price);
-//            statement.setString(4, paymentDate);
+            statement.setString(3, date);
 //            statement.setString(5, status);
             int row = statement.executeUpdate();
             if (row > 0) {

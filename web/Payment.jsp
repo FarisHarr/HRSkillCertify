@@ -20,7 +20,7 @@
     <style>
         .container {
             width: 50%;
-            height: 90%;
+            height: 100%;
             margin: 30px auto;
             padding: 20px;
             background-color: #f9f9f9;
@@ -141,7 +141,7 @@
 
                 // Output certificate information
                 // Replace the div below with your actual display logic for the certificate
-        %>
+%>
 
         <div class="container">
             <h2>Payment Details</h2> <br>
@@ -157,7 +157,7 @@
 
                         <div class="form-group">
                             <!-- <label for="payment_date">Payment Date:</label> -->
-                            <input type="hidden" id="payment_date" name="payment_date" required>
+                            <input type="hidden" id="date" name="date" required>
                         </div>
 
                         <!--                        <div class="form-group">
@@ -184,29 +184,37 @@
 
         <script>
 
-            // Auto-fill payment date with current date
-            document.getElementById('payment_date').valueAsDate = new Date();
-
-            
-
             function signOut() {
                 // Redirect to the logout servlet or your logout logic
                 window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
             }
-            
-            function showSuccessMessage() {
-            // Show a popup message
-            alert("Payment submitted successfully!");
-            // You can also use modal dialogs for a more interactive message
-            // Example: Display a modal dialog
-            // var modal = document.getElementById("successModal");
-            // modal.style.display = "block";
-        }
 
-        // Call the function when the page loads
-        window.onload = function() {
-            showSuccessMessage();
-        };
+            function showSuccessMessage() {
+                // Show a popup message
+                alert("Payment submitted successfully!");
+                // You can also use modal dialogs for a more interactive message
+                // Example: Display a modal dialog
+                // var modal = document.getElementById("successModal");
+                // modal.style.display = "block";
+            }
+
+//            // Call the function when the page loads
+//            window.onload = function () {
+//                showSuccessMessage();
+//            };
+
+            // Get today's date
+            var today = new Date();
+
+            // Format date as YYYY-MM-DD
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+            var formattedDate = year + '-' + month + '-' + day;
+
+            // Set the value of the hidden input field
+            document.getElementById('date').value = formattedDate;
+
         </script>
 
         <%

@@ -141,15 +141,6 @@
                 </li>
             </nav>
         </header>
-        <!-- 
-            <div class="container">
-                <div class="navbar">
-                    <a href="HomePage.html">Home</a>
-                    <a href="CandidateProfile.html">User Profile</a>
-                    <a href="AboutCertificate.html">About Certificate</a>
-                    <a href="TimeTable.html">Time Table</a>
-                    <a href="Feedback.html">Feedback</a>
-                </div> -->
 
         <div class="cert">
             <h2>Certificate Registration</h2><br>
@@ -189,6 +180,7 @@
                     <option value="Activities of households as employers">Activities of households as employers</option>
                     <option value="Activities of extraterritorial organizations and bodies">Activities of extraterritorial organizations and bodies</option>
                 </select>
+                
 
                 <label for="work_experience">Work Experience:</label>
                 <input type="text" id="experience" name="experience" placeholder="Example: 2 Years" oninput="restrictToNumbers(this);" required>

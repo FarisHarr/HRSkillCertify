@@ -4,6 +4,8 @@
  */
 package com.model;
 
+import java.util.Date;
+
 /**
  *
  * @author FarisHarr
@@ -11,7 +13,7 @@ package com.model;
 public class Payment {
     
     private String price;
-    private String paymentDate;
+    private Date date;
     private String reciept;
     private String status;
     private String cand_ID;
@@ -24,13 +26,14 @@ public class Payment {
         this.price = price;
     }
 
-    public String getPaymentDate() {
-        return paymentDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setPaymentDate(String paymentDate) {
-        this.paymentDate = paymentDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
+
 
     public String getReciept() {
         return reciept;
