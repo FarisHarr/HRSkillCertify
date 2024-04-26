@@ -150,8 +150,8 @@
                 
                 <!-- Add hidden input field for candidateID -->
                 <input type="hidden" id="candidateID" name="candidateID" value="<%= candidateID%>">
-                <label for="certificate">Certificate:</label>
-                <select id="certificate" name="certificate" required>
+                <label for="certType">Certificate:</label>
+                <select id="certType" name="certType" required>
                     <option value="" disabled selected>Please Choose</option>
                     <option value="SKM (RM2250)">Sijil Kemahiran Malaysia (SKM)</option>
                     <option value="DKM (RM2700)">Diploma Kemahiran Malaysia (DKM)</option>
@@ -223,7 +223,7 @@
 
         <script>
             // Function to calculate and display amount based on selected certificate
-            document.getElementById('certificate').addEventListener('change', function () {
+            document.getElementById('certType').addEventListener('change', function () {
                 var certificate = this.value;
                 var amountField = document.getElementById('amount');
                 var amount = 0;

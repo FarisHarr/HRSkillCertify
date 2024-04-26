@@ -12,21 +12,30 @@ import com.mysql.cj.jdbc.Blob;
  */
 public class RegisterCert {
     
-    private String certificate;
+    private String certType;
     private String workType;
     private String experience;
     private String cand_ID; // Candidate ID attribute
     private String status;
     private Blob receipt;
+
+    public String getCertType() {
+        return certType;
+    }
+
+    public void setCertType(String certType) {
+        this.certType = certType;
+    }
+
+    public Blob getReceipt() {
+        return receipt;
+    }
+
+    public void setReceipt(Blob receipt) {
+        this.receipt = receipt;
+    }
     
 
-    public String getCertificate() {
-        return certificate;
-    }
-
-    public void setCertificate(String certificate) {
-        this.certificate = certificate;
-    }
 
     public String getWorkType() {
         return workType;

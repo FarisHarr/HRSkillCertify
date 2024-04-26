@@ -17,6 +17,7 @@ public class Payment {
     private String reciept;
     private String status;
     private String cand_ID;
+    private String certType;
 
     public String getPrice() {
         return price;
@@ -58,6 +59,17 @@ public class Payment {
     public void setCand_ID(String cand_ID) {
         this.cand_ID = cand_ID;
     }
+
+    public String getCertType() {
+        return certType;
+    }
+
+    public void setCertType(String CertType) {
+        this.certType = certType;
+    }
+
+
+    
     
     
 }

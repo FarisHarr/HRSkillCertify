@@ -30,13 +30,14 @@ public class RegisterCertServ extends HttpServlet {
         RegisterCert certificate = new RegisterCert();
         certificate.setCandidateID(candidateID); // Set candidate ID
 
-        certificate.setCertificate(request.getParameter("certificate"));
+        certificate.setCertType(request.getParameter("certType"));
         certificate.setWorkType(request.getParameter("workType"));
         certificate.setExperience(request.getParameter("experience"));
 
         String price = request.getParameter("price");
         java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
         String status = request.getParameter("status");
+        String certType = request.getParameter("certType");
         
 
         // Handling file upload
@@ -77,7 +78,7 @@ public class RegisterCertServ extends HttpServlet {
                 // If candidate ID does not exist, proceed with certificate insertion
                 try (PreparedStatement insertCertStatement = myConnection.prepareStatement("INSERT INTO certificate(cand_ID, cert_Type, work_Type, experience) VALUES (?, ?, ?, ?)")) {
                     insertCertStatement.setString(1, certificate.getCandidateID());
-                    insertCertStatement.setString(2, certificate.getCertificate());
+                    insertCertStatement.setString(2, certificate.getCertType());
                     insertCertStatement.setString(3, certificate.getWorkType());
                     insertCertStatement.setString(4, certificate.getExperience());
 
@@ -86,11 +87,12 @@ public class RegisterCertServ extends HttpServlet {
 
                     if (certRowsInserted > 0) {
                         // Proceed with payment insertion
-                        try (PreparedStatement insertPaymentStatement = myConnection.prepareStatement("INSERT INTO payment (cand_ID, price, date, status) VALUES (?, ?, ?, ?)")) {
+                        try (PreparedStatement insertPaymentStatement = myConnection.prepareStatement("INSERT INTO payment (cand_ID, cert_Type, price, date, status) VALUES (?, ?, ?, ?, ?)")) {
                             insertPaymentStatement.setString(1, candidateID);
-                            insertPaymentStatement.setString(2, price);
-                            insertPaymentStatement.setDate(3, currentDate);
-                            insertPaymentStatement.setString(4, status);
+                            insertPaymentStatement.setString(2, certType);
+                            insertPaymentStatement.setString(3, price);
+                            insertPaymentStatement.setDate(4, currentDate);
+                            insertPaymentStatement.setString(5, status);
 
 //                            try (PreparedStatement insertPaymentStatement = myConnection.prepareStatement("INSERT INTO payment (cand_ID, price, date, status, receipt) VALUES (?, ?, ?, ?, ?)")) {
 //                                insertPaymentStatement.setString(1, candidateID);
