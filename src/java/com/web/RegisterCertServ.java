@@ -2,6 +2,8 @@ package com.web;
 
 import com.model.RegisterCert;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 @WebServlet("/RegisterCertServ")
 public class RegisterCertServ extends HttpServlet {
@@ -33,6 +36,19 @@ public class RegisterCertServ extends HttpServlet {
 
         String price = request.getParameter("price");
         java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+        String status = request.getParameter("status");
+        
+
+        // Handling file upload
+//    Part filePart = request.getPart("receipt"); // Retrieves <input type="file" name="receipt">
+//    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+//    String contentType = filePart.getContentType();
+
+    // Check if the uploaded file is an image
+//    if (contentType.startsWith("image/")) {
+//        // Proceed with storing the image
+//        InputStream fileContent = filePart.getInputStream();
+
 
         try {
             // Establish database connection
@@ -40,23 +56,24 @@ public class RegisterCertServ extends HttpServlet {
             String myURL = "jdbc:mysql://localhost/hrsc";
             try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin")) {
 
-                // Check if candidate ID already exists
-                int count;
-                try (PreparedStatement checkIfExists = myConnection.prepareStatement("SELECT COUNT(*) FROM certificate WHERE cand_ID = ?")) {
-                    checkIfExists.setString(1, certificate.getCandidateID());
-                    ResultSet resultSet = checkIfExists.executeQuery();
-                    resultSet.next();
-                    count = resultSet.getInt(1);
-                }
-
-                if (count > 0) {
-                    // Show popup message for certificate registration
-                    String alertMessage = "You are already registered for this certificate.";
-                    response.setContentType("text/html");
-                    response.getWriter().println("<script>alert('" + alertMessage + "'); window.location.href='AboutCertificate.jsp';</script>");
-                    return; // Exit the method
-                }
-
+////                 Check if candidate ID already exists
+//                int count;
+//                try (PreparedStatement checkIfExists = myConnection.prepareStatement("SELECT COUNT(*) FROM certificate WHERE cand_ID = ?")) {
+//                    checkIfExists.setString(1, certificate.getCandidateID());
+//                    ResultSet resultSet = checkIfExists.executeQuery();
+//                    resultSet.next();
+//                    count = resultSet.getInt(1);
+//                }
+//
+//                // check if candidate dah register certificate
+//                if (count > 0) {
+//                    // Show popup message for certificate registration
+//                    String alertMessage = "You are already registered for this certificate.";
+//                    response.setContentType("text/html");
+//                    response.getWriter().println("<script>alert('" + alertMessage + "'); window.location.href='AboutCertificate.jsp';</script>");
+//                    return; // Exit the method
+//                }
+                
                 // If candidate ID does not exist, proceed with certificate insertion
                 try (PreparedStatement insertCertStatement = myConnection.prepareStatement("INSERT INTO certificate(cand_ID, cert_Type, work_Type, experience) VALUES (?, ?, ?, ?)")) {
                     insertCertStatement.setString(1, certificate.getCandidateID());
@@ -69,10 +86,21 @@ public class RegisterCertServ extends HttpServlet {
 
                     if (certRowsInserted > 0) {
                         // Proceed with payment insertion
-                        try (PreparedStatement insertPaymentStatement = myConnection.prepareStatement("INSERT INTO payment (cand_ID, price, date) VALUES (?, ?, ?)")) {
+                        try (PreparedStatement insertPaymentStatement = myConnection.prepareStatement("INSERT INTO payment (cand_ID, price, date, status) VALUES (?, ?, ?, ?)")) {
                             insertPaymentStatement.setString(1, candidateID);
                             insertPaymentStatement.setString(2, price);
                             insertPaymentStatement.setDate(3, currentDate);
+                            insertPaymentStatement.setString(4, status);
+
+//                            try (PreparedStatement insertPaymentStatement = myConnection.prepareStatement("INSERT INTO payment (cand_ID, price, date, status, receipt) VALUES (?, ?, ?, ?, ?)")) {
+//                                insertPaymentStatement.setString(1, candidateID);
+//                                insertPaymentStatement.setString(2, price);
+//                                insertPaymentStatement.setDate(3, currentDate);
+//                                insertPaymentStatement.setString(4, status);
+////                                insertPaymentStatement.setBlob(5, receipt);
+//
+//// Set the file data into the statement
+//                            insertPaymentStatement.setBlob(5, fileContent);
 
                             // Execute the payment insertion SQL statement
                             int paymentRowsInserted = insertPaymentStatement.executeUpdate();
@@ -101,3 +129,4 @@ public class RegisterCertServ extends HttpServlet {
         }
     }
 }
+

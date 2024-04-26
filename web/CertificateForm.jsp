@@ -143,8 +143,11 @@
         </header>
 
         <div class="cert">
-            <h2>Certificate Registration</h2><br>
-            <form action="RegisterCertServ" method="POST">
+            <h2>Certificate Registration</h2><br> 
+            <!--<form action="RegisterCertServ" method="POST" enctype="multipart/form-data">-->
+
+                <form action="RegisterCertServ" method="POST" > 
+                
                 <!-- Add hidden input field for candidateID -->
                 <input type="hidden" id="candidateID" name="candidateID" value="<%= candidateID%>">
                 <label for="certificate">Certificate:</label>
@@ -182,7 +185,7 @@
                 </select>
 
 
-                <label for="work_experience">Work Experience:</label>
+                <label for="work_experience">Work Experience: </label>
                 <input type="text" id="experience" name="experience" placeholder="Example: 2 Years" oninput="restrictToNumbers(this);" required>
                 <!--                                <span id="placeholder-addon"> Years</span>-->
 
@@ -194,13 +197,22 @@
 
                 <div class="form-group">
                     <label for="price">Price you want to pay :</label>
-                    <input type="text" id="price" name="price" required>
+                    <input type="text" id="price" name="price" value="RM" required>
                 </div>
 
                 <div class="form-group">
                     <!-- <label for="payment_date">Payment Date:</label> -->
                     <input type="hidden" id="date" name="date" value="<%= java.time.LocalDate.now()%>">
                 </div>
+
+                <input type="hidden" id="status" name="status" value="Pending">
+
+                <!-- File upload input field for receipt -->
+                <div class="form-group">
+                    <label for="receipt">Upload PDF or Picture:</label>
+                    <input type="file" id="receipt" name="receipt" accept="image/*" >
+                </div>
+                <br>
 
                 <button type="submit" onclick="showSuccessMessage()">Pay Now</button>
 
@@ -252,6 +264,10 @@
             function showSuccessMessage() {
                 // Show a popup message
                 alert("Register Successfully");
+            }
+            
+            function restrictToNumbers(inputElement) {
+                inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
             }
 
             function signOut() {
