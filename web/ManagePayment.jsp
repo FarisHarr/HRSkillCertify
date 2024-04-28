@@ -350,7 +350,7 @@
 
         #table th,
         #table td {
-            padding: 8px;
+            padding: 5px;
             border: 1px solid black;
             text-align: center;
         }
@@ -425,7 +425,7 @@
             background-color: rgb(190, 190, 190); /* Set background color */
             color: black; /* Set text color */
             text-align: center; /* Center-align text */
-            padding: 20px; /* Add padding */
+            padding: 10px; /* Add padding */
             position: fixed; /* Fixed positioning at the bottom */
             left: 0;
             bottom: 0;

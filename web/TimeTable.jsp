@@ -122,20 +122,30 @@
 
     <body>
         <%
-            //                HttpSession loginsession = request.getSession();
             String candidateID = (String) session.getAttribute("candidateID");
 
             if (candidateID != null) {
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-                    PreparedStatement ps = con.prepareStatement("SELECT * FROM candidate WHERE cand_ID = ? ");
+
+                    // Fetch the status from the payment table
+                    PreparedStatement ps = con.prepareStatement("SELECT status FROM payment WHERE cand_ID = ?");
                     ps.setString(1, candidateID);
                     ResultSet rs = ps.executeQuery();
 
+                    String status = "";
+                    if (rs.next()) {
+                        status = rs.getString("status");
+                    }
+
+                    // Fetch the candidate name from the candidate table
+                    ps = con.prepareStatement("SELECT cand_Name FROM candidate WHERE cand_ID = ?");
+                    ps.setString(1, candidateID);
+                    rs = ps.executeQuery();
+
                     if (rs.next()) {
                         String Name = rs.getString("cand_Name");
-
         %>
         <header>
             <div class="main">
@@ -150,7 +160,6 @@
                 <li class="dropdown">
                     <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
-                        <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="CandidateProfile.jsp">Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
@@ -168,69 +177,70 @@
             </div>
 
             <div class="info">
-            <div class="cert">
-                <h2>Class</h2>
-                <!-- Add content for container 3 -->
-                <button>Attend</button>
-            </div>
+                <div class="cert">
+                    <h2>Class</h2>
+                    <br>
+                    <p>Your payment status: <%= status%></p>
+                    <button>Attend</button>
+                </div>
 
-            <div class="table">
-                <table id="table">
-                    <thead>
-                        <tr>
-                            <th>Certificate Type</th>
-                            <th>Class</th>
-                            <th>Date</th>
-                            <th>Time Slot</th> <!-- Added Time Slot column -->
-                        </tr>
-                    </thead>
+                <div class="table">
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th>Certificate Type</th>
+                                <th>Class</th>
+                                <th>Date</th>
+                                <th>Time Slot</th> <!-- Added Time Slot column -->
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        <!-- Dummy data rows with dropdowns for time selection -->
-                        <tr>
-                            <td>Certificate  A</td>
-                            <td>Class X</td>
-                            <td>2024-04-15</td>
-                            <td>
-                                <select>
-                                    <option value="09:00 AM">09:00 AM</option>
-                                    <option value="10:00 AM">10:00 AM</option>
-                                    <option value="11:00 AM">11:00 AM</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Certificate B</td>
-                            <td>Class Y</td>
-                            <td>2024-04-16</td>
-                            <td>
-                                <select>
-                                    <option value="09:00 AM">09:00 AM</option>
-                                    <option value="10:00 AM">10:00 AM</option>
-                                    <option value="11:00 AM">11:00 AM</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Certificate C</td>
-                            <td>Class Z</td>
-                            <td>2024-04-17</td>
-                            <td>
-                                <select>
-                                    <option value="09:00 AM">09:00 AM</option>
-                                    <option value="10:00 AM">10:00 AM</option>
-                                    <option value="11:00 AM">11:00 AM</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                            </td>
-                        </tr>
-                        <!-- End of dummy data rows --> 
-                    </tbody>
-                </table>
-            </div>
-        </div>  
+                        <tbody>
+                            <!-- Dummy data rows with dropdowns for time selection -->
+                            <tr>
+                                <td>Certificate  A</td>
+                                <td>Class X</td>
+                                <td>2024-04-15</td>
+                                <td>
+                                    <select>
+                                        <option value="09:00 AM">09:00 AM</option>
+                                        <option value="10:00 AM">10:00 AM</option>
+                                        <option value="11:00 AM">11:00 AM</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Certificate B</td>
+                                <td>Class Y</td>
+                                <td>2024-04-16</td>
+                                <td>
+                                    <select>
+                                        <option value="09:00 AM">09:00 AM</option>
+                                        <option value="10:00 AM">10:00 AM</option>
+                                        <option value="11:00 AM">11:00 AM</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Certificate C</td>
+                                <td>Class Z</td>
+                                <td>2024-04-17</td>
+                                <td>
+                                    <select>
+                                        <option value="09:00 AM">09:00 AM</option>
+                                        <option value="10:00 AM">10:00 AM</option>
+                                        <option value="11:00 AM">11:00 AM</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </td>
+                            </tr>
+                            <!-- End of dummy data rows --> 
+                        </tbody>
+                    </table>
+                </div>
+            </div>  
         </div>
 
         <script>
@@ -247,7 +257,7 @@
 
         <%
                     } else {
-                        out.println("Customer not found.");
+                        out.println("Candidate not found.");
                     }
 
                     rs.close();
@@ -257,7 +267,6 @@
                     out.println("Error: " + e);
                 }
             } else {
-                // If the session doesn't exist or customerID is not set, redirect to the login page
                 response.sendRedirect("Login.jsp");
             }
         %>

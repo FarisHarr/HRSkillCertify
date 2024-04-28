@@ -107,7 +107,7 @@
             </div>
 
             <div class="infoCert">
-                <h3><%= Name%></h3>
+                <h3>Welcome <%= Name%></h3>
                 <div class="cert">
                     <h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2>
                     <h4> This certificate will improve your diplomas </h4>
