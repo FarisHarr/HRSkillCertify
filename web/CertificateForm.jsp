@@ -214,7 +214,7 @@
                 </div>
                 <br>
 
-                <button type="submit" onclick="showSuccessMessage()">Pay Now</button>
+                <button type="submit" >Pay Now</button>
 
             </form>
 
@@ -261,10 +261,10 @@
                 }
             });
 
-            function showSuccessMessage() {
-                // Show a popup message
-                alert("Register Successfully");
-            }
+//            function showSuccessMessage() {
+//                // Show a popup message
+//                alert("Register Successfully");
+//            }
             
             function restrictToNumbers(inputElement) {
                 inputElement.value = inputElement.value.replace(/[^0-9]/g, '');

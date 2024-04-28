@@ -38,19 +38,15 @@ public class RegisterCertServ extends HttpServlet {
         java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
         String status = request.getParameter("status");
         String certType = request.getParameter("certType");
-        
 
         // Handling file upload
 //    Part filePart = request.getPart("receipt"); // Retrieves <input type="file" name="receipt">
 //    String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 //    String contentType = filePart.getContentType();
-
-    // Check if the uploaded file is an image
+        // Check if the uploaded file is an image
 //    if (contentType.startsWith("image/")) {
 //        // Proceed with storing the image
 //        InputStream fileContent = filePart.getInputStream();
-
-
         try {
             // Establish database connection
             Class.forName("com.mysql.jdbc.Driver");
@@ -74,7 +70,6 @@ public class RegisterCertServ extends HttpServlet {
 //                    response.getWriter().println("<script>alert('" + alertMessage + "'); window.location.href='AboutCertificate.jsp';</script>");
 //                    return; // Exit the method
 //                }
-                
                 // If candidate ID does not exist, proceed with certificate insertion
                 try (PreparedStatement insertCertStatement = myConnection.prepareStatement("INSERT INTO certificate(cand_ID, cert_Type, work_Type, experience) VALUES (?, ?, ?, ?)")) {
                     insertCertStatement.setString(1, certificate.getCandidateID());
@@ -103,14 +98,20 @@ public class RegisterCertServ extends HttpServlet {
 //
 //// Set the file data into the statement
 //                            insertPaymentStatement.setBlob(5, fileContent);
-
                             // Execute the payment insertion SQL statement
                             int paymentRowsInserted = insertPaymentStatement.executeUpdate();
 
                             // Provide feedback to the user
                             if (paymentRowsInserted > 0) {
                                 // Redirect to homepage upon successful payment
-                                response.sendRedirect("HomePage.jsp");
+                                // Create JavaScript alert message
+                                String alertMessage = "Register Successfully";
+                                // Set content type to HTML
+                                response.setContentType("text/html");
+                                // Write JavaScript to response
+                                String script = "<script>alert('" + alertMessage + "'); window.location.href='HomePage.jsp';</script>";
+                                response.getWriter().println(script);
+//                                response.sendRedirect("HomePage.jsp");
                             } else {
                                 String errorMessage = "Failed to add payment details. Please try again.";
                                 request.setAttribute("errorMessage", errorMessage);
@@ -131,4 +132,3 @@ public class RegisterCertServ extends HttpServlet {
         }
     }
 }
-
