@@ -431,7 +431,7 @@
             bottom: 0;
             width: 100%; /* Full width */
         }
-    </style>
+    <!--</style>
 
     <body>
         <header>

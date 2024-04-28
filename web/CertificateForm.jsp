@@ -146,8 +146,8 @@
             <h2>Certificate Registration</h2><br> 
             <!--<form action="RegisterCertServ" method="POST" enctype="multipart/form-data">-->
 
-                <form action="RegisterCertServ" method="POST" > 
-                
+            <form action="RegisterCertServ" method="POST" > 
+
                 <!-- Add hidden input field for candidateID -->
                 <input type="hidden" id="candidateID" name="candidateID" value="<%= candidateID%>">
                 <label for="certType">Certificate:</label>
@@ -179,9 +179,9 @@
                     <option value="Education">Education</option>
                     <option value="Human health and social work activities">Human health and social work activities</option>
                     <option value="Arts entertainment and recreation">Arts entertainment and recreation</option>
-                    <option value="Other service activities">Other service activities</option>
                     <option value="Activities of households as employers">Activities of households as employers</option>
                     <option value="Activities of extraterritorial organizations and bodies">Activities of extraterritorial organizations and bodies</option>
+                    <option value="Other service activities">Other service activities</option>
                 </select>
 
 
@@ -193,7 +193,6 @@
                 <div class="amount-display">
                     Amount : RM <span id="amount">0</span>
                 </div>
-
 
                 <div class="form-group">
                     <label for="price">Price you want to pay :</label>
@@ -209,7 +208,7 @@
 
                 <!-- File upload input field for receipt -->
                 <div class="form-group">
-                    <label for="receipt">Upload PDF or Picture:</label>
+                    <label for="receipt">Upload PDF or Picture:</label><br>
                     <input type="file" id="receipt" name="receipt" accept="image/*" >
                 </div>
                 <br>
@@ -265,7 +264,7 @@
 //                // Show a popup message
 //                alert("Register Successfully");
 //            }
-            
+
             function restrictToNumbers(inputElement) {
                 inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
             }

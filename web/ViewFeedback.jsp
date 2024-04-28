@@ -12,11 +12,11 @@
         <title>View Feedback</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS/StaffSkeleton.css">
+        <link rel="stylesheet" type="text/css" href="CSS/ManageCandidate.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     </head>
-
+    
     <body>
         <header>
             <div class="main">
@@ -53,8 +53,21 @@
             </div>
 
             <div class="info">
-                <img src="IMGDraft/ViewFeedback.png">    
+            <button onclick="refreshSalesReport()">Refresh</button>
+            <h1>View Feedback</h1>
+            <!--Table-->
+            <div class="table">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>Feedback ID</th>
+                            <th>Name</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
+        </div>
         </div>
 
         <script>

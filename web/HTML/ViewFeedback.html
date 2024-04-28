@@ -5,7 +5,7 @@
     <title>View Feedback</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/web/CSS/StaffDashboard.css">
+    <link rel="stylesheet" type="text/css" href="/web/CSS/ManageCandidate.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
@@ -45,16 +45,19 @@
         </div>
 
         <div class="info">
+            <button onclick="refreshSalesReport()">Refresh</button>
             <h1>View Feedback</h1>
-
-            <!-- Dashboard Section -->
-            <div class="dashboard">
-                <h2>Certification Dashboard</h2>
-                <!-- Add your certification information here -->
-                <p>Certification Name: Certification</p>
-                <p>Duration: 6 months</p>
-                <p>Level: Advanced</p>
-                <!-- Add more information as needed -->
+            <!--Table-->
+            <div class="table">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>Feedback ID</th>
+                            <th>Name</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </div>

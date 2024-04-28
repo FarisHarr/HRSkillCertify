@@ -38,11 +38,11 @@
             flex-direction: column;
             width: 30%;
             height: 50vh;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.1s ease-in-out;
         }
 
         .cert:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .cert h2 {
