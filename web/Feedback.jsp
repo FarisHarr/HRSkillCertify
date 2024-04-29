@@ -147,7 +147,7 @@
                     <ul class="dropdown-content">
                         <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="CandidateProfile.jsp">Profile</a></li>
-                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out Test</a></li>
+                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
             </nav>

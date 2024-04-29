@@ -16,6 +16,52 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     </head>
+    
+        <style>
+        .infoCert {
+            margin: 0 auto;
+            text-align: center;
+            padding: 10px;
+            width: 90%;
+            background-color: aliceblue;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cert {
+            background-color: #a4a4a4;
+            padding: 50px;
+            margin: 40px;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            height: 50vh;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .cert:hover {
+            transform: scale(1.05);
+        }
+
+        .cert h2 {
+            margin-bottom: 10px;
+        }
+
+        .cert button {
+            background-color: #fff;
+            color: #212121;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            width: 30%;
+            cursor: pointer;
+            margin-top: 10vh;
+            /* Push the button to the bottom */
+        }
+    </style>
 
     <body>
         <header>
@@ -52,8 +98,30 @@
                 <a href="ManageCandidate.jsp">Manage Candidate</a>
             </div>
 
-            <div class="info">
-                <img src="IMGDraft/ManageCert.png">    
+            <div class="infoCert">
+                <div class="cert">
+                    <h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2>
+                    <a href="AboutCertificate.jsp">
+                        <button>Check</button>
+                    </a>                
+                </div>
+
+                <div class="cert">
+                    <h2>Diploma Kemahiran Malaysia (DKM)/ Tahap 4</h2>
+                    <!-- Add content for container 2 -->
+                    <a href="AboutCertificate.jsp">
+                        <button>Check</button>
+                    </a>
+                </div>
+
+                <div class="cert">
+                    <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM) / Tahap 5</h2>
+                    <!-- Add content for container 3 -->
+                    <a href="AboutCertificate.jsp">
+                        <button>Check</button>
+                    </a>
+                </div>
+
             </div>
         </div>
 

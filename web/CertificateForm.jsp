@@ -99,6 +99,60 @@
         .back-button:hover {
             background-color: #5f5f5f;
         }
+
+        .receipt {
+            margin: 20px;
+            /*            text-decoration: underline;*/
+            /*cursor: pointer;*/
+            position: relative; /* Set position relative for absolute positioning */
+        }
+
+        .receipt:hover::after {
+            content: "Image or PDF only";
+            position: absolute;
+            /*background-color:  #ff3333;*/
+            color: #ff3333;
+            padding: 3px;
+            border-radius: 4px;
+            top: calc(100% + 5px); /* Position below the element */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            z-index: 999;
+        }
+
+        input[type="file"] {
+            cursor: pointer;
+            border: 1px solid #ccc; /* Add a 1px solid border with color #ccc */
+        }
+
+
+
+        .amount-display {
+            margin: 20px;
+            font-size: 18px;
+            text-decoration: underline;
+            cursor: pointer;
+            position: relative; /* Set position relative for absolute positioning */
+            font-family: "Courier New", Courier, monospace; /* Use a monospaced font */
+            font-weight: bold;
+        }
+
+
+        .amount-display:hover::after {
+            content: "QR is here";
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
+            border-radius: 4px;
+            top: calc(100% + 5px); /* Position below the element */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            z-index: 999;
+        }
+
+
+
     </style>
 
     <body>
@@ -144,21 +198,21 @@
 
         <div class="cert">
             <h2>Certificate Registration</h2><br> 
-            <!--<form action="RegisterCertServ" method="POST" enctype="multipart/form-data">-->
+            <form action="RegisterCertServ" method="POST" enctype="multipart/form-data">
 
-            <form action="RegisterCertServ" method="POST" > 
+            <!--<form action="RegisterCertServ" method="POST" >--> 
 
                 <!-- Add hidden input field for candidateID -->
                 <input type="hidden" id="candidateID" name="candidateID" value="<%= candidateID%>">
                 <label for="certType">Certificate:</label>
                 <select id="certType" name="certType" required>
                     <option value="" disabled selected>Please Choose</option>
-                    <option value="SKM (RM2250)">Sijil Kemahiran Malaysia (SKM)</option>
-                    <option value="DKM (RM2700)">Diploma Kemahiran Malaysia (DKM)</option>
-                    <option value="DLKM (RM3600)">Diploma Lanjutan Kemahiran Malaysia (DLKM)</option>
+                    <option value="SKM">Sijil Kemahiran Malaysia (SKM)</option>
+                    <option value="DKM">Diploma Kemahiran Malaysia (DKM)</option>
+                    <option value="DLKM">Diploma Lanjutan Kemahiran Malaysia (DLKM)</option>
                 </select>
 
-                <label for="workType">Scope of Business:</label>
+                <label for="workType">Scope of Business :</label>
                 <select id="workType" name="workType" required>
                     <option value="" disabled selected>Please Choose</option>
                     <option value="Agriculture, forestry, and fishing">Agriculture, forestry, and fishing</option>
@@ -185,12 +239,12 @@
                 </select>
 
 
-                <label for="work_experience">Work Experience: </label>
+                <label for="work_experience">Work Experience : (Years)</label>
                 <input type="text" id="experience" name="experience" placeholder="Example: 2 Years" oninput="restrictToNumbers(this);" required>
                 <!--                                <span id="placeholder-addon"> Years</span>-->
 
                 <!-- Amount display -->
-                <div class="amount-display">
+                <div class="amount-display" onclick="openQRPopup()">
                     Amount : RM <span id="amount">0</span>
                 </div>
 
@@ -207,8 +261,8 @@
                 <input type="hidden" id="status" name="status" value="Pending">
 
                 <!-- File upload input field for receipt -->
-                <div class="form-group">
-                    <label for="receipt">Upload PDF or Picture:</label><br>
+                <div class="receipt">
+                    <label for="receipt">Upload Receipt :</label><br>
                     <input type="file" id="receipt" name="receipt" accept="image/*" >
                 </div>
                 <br>
@@ -221,19 +275,31 @@
         </div>
 
         <script>
+            // Function to open the QR.jsp page in a new small popup window
+            function openQRPopup() {
+                // Define the URL of the QR.jsp page
+                var qrURL = 'QR.jsp';
+                // Define the size and position of the popup window
+                var windowFeatures = 'width=500,height=500,top=250,left=100';
+                // Open a new small popup window with the QR.jsp page
+                window.open(qrURL, '_blank', windowFeatures);
+            }
+
+
+
             // Function to calculate and display amount based on selected certificate
             document.getElementById('certType').addEventListener('change', function () {
                 var certificate = this.value;
                 var amountField = document.getElementById('amount');
                 var amount = 0;
                 switch (certificate) {
-                    case 'SKM (RM2250)':
+                    case 'SKM':
                         amount = 2250;
                         break;
-                    case 'DKM (RM2700)':
+                    case 'DKM':
                         amount = 2700;
                         break;
-                    case 'DLKM (RM3600)':
+                    case 'DLKM':
                         amount = 3600;
                         break;
                     default:
@@ -260,11 +326,6 @@
                 }
             });
 
-//            function showSuccessMessage() {
-//                // Show a popup message
-//                alert("Register Successfully");
-//            }
-
             function restrictToNumbers(inputElement) {
                 inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
             }
@@ -273,8 +334,9 @@
                 // Redirect to the logout servlet or your logout logic
                 window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
             }
-
+            
         </script>
+
 
         <%
                     } else {
