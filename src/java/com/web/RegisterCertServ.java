@@ -67,14 +67,28 @@ public class RegisterCertServ extends HttpServlet {
                         int paymentRowsInserted = insertPaymentStatement.executeUpdate();
                         // Provide feedback to the user
                         if (paymentRowsInserted > 0) {
-                            // Redirect to homepage upon successful payment
-                            // Create JavaScript alert message
-                            String alertMessage = "Register Successfully";
-                            // Set content type to HTML
-                            response.setContentType("text/html");
-                            // Write JavaScript to response
-                            String script = "<script>alert('" + alertMessage + "'); window.location.href='HomePage.jsp';</script>";
-                            response.getWriter().println(script);
+                            // Proceed with certificate insertion
+                            try (PreparedStatement insertCertStatement = myConnection.prepareStatement("INSERT INTO certificate(cand_ID, cert_Type, work_Type, experience) VALUES (?, ?, ?, ?)")) {
+                                insertCertStatement.setString(1, certificate.getCandidateID());
+                                insertCertStatement.setString(2, certificate.getCertType());
+                                insertCertStatement.setString(3, certificate.getWorkType());
+                                insertCertStatement.setString(4, certificate.getExperience());
+                                // Execute the certificate insertion SQL statement
+                                int certRowsInserted = insertCertStatement.executeUpdate();
+                                // Provide feedback to the user
+                                if (certRowsInserted > 0) {
+                                    // Redirect to homepage upon successful registration
+                                    String alertMessage = "Register Successfully";
+                                    response.setContentType("text/html");
+                                    String script = "<script>alert('" + alertMessage + "'); window.location.href='HomePage.jsp';</script>";
+                                    response.getWriter().println(script);
+                                } else {
+                                    String errorMessage = "Failed to add certificate details. Please try again.";
+                                    request.setAttribute("errorMessage", errorMessage);
+                                    RequestDispatcher dispatcher = request.getRequestDispatcher("CandidateProfile.jsp");
+                                    dispatcher.forward(request, response);
+                                }
+                            }
                         } else {
                             String errorMessage = "Failed to add payment details. Please try again.";
                             request.setAttribute("errorMessage", errorMessage);
