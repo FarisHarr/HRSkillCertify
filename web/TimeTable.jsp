@@ -130,13 +130,15 @@
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
 
                     // Fetch the status from the payment table
-                    PreparedStatement ps = con.prepareStatement("SELECT status FROM payment WHERE cand_ID = ?");
+                    PreparedStatement ps = con.prepareStatement("SELECT * FROM payment WHERE cand_ID = ?");
                     ps.setString(1, candidateID);
                     ResultSet rs = ps.executeQuery();
 
                     String status = "";
+                    String certificateType = ""; // Add this variable to store cert_Type
                     if (rs.next()) {
                         status = rs.getString("status");
+                        certificateType = rs.getString("cert_Type"); // Store cert_Type in a variable
                     }
 
                     // Fetch the candidate name from the candidate table
@@ -147,6 +149,7 @@
                     if (rs.next()) {
                         String Name = rs.getString("cand_Name");
         %>
+
         <header>
             <div class="main">
                 <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
@@ -180,8 +183,21 @@
                 <div class="cert">
                     <h2>Class</h2>
                     <br>
-                    <p>Your payment status: <%= status%></p>
-                    <button>Attend</button>
+                    <h3><%= certificateType%></h3> 
+                    <br>
+                    <p>Your payment status : <%= status%> </p> 
+                    <br> 
+                    <%-- Add conditional check for the Attend button --%>
+                    <% if (status.equals("Pending") || status.equals("Rejected")) { %>
+                    <form action="Payment.jsp">
+                        <button type="submit">Attend</button>
+                    </form>
+                    <% } else { %>
+                    <form action="Attendance.jsp">
+                        <button type="submit">Attend</button>
+                    </form>
+                    <% } %>
+
                 </div>
 
                 <div class="table">

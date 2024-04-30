@@ -105,7 +105,7 @@
 
         <header>
             <div class="main">
-                <a href="CertificateForm.jsp">
+                <a href="AboutCertificate.jsp">
                     <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
                 </a>
             </div>
@@ -122,6 +122,7 @@
             </nav>
         </header>
 
+
         <%
             } else {
                 out.println("Candidate not found.");
@@ -131,91 +132,39 @@
             ps.close();
 
             // Fetch certificate information
-            PreparedStatement psCert = con.prepareStatement("SELECT * FROM certificate WHERE cert_Type = ?");
-            String certificate = request.getParameter("certificate");
-            psCert.setString(1, certificate); // Set certType to the specific type of certificate you want to fetch
+            PreparedStatement psCert = con.prepareStatement("SELECT * FROM payment WHERE cand_ID = ?");
+            psCert.setString(1, candidateID); // Retrieve certificate information based on candidateID
             ResultSet rsCert = psCert.executeQuery();
 
             if (rsCert.next()) {
+                String Payment = rsCert.getString("payment_ID");
                 String Certificate = rsCert.getString("cert_Type");
+                String price = rsCert.getString("price"); // Retrieve price from the certificate table
 
                 // Output certificate information
                 // Replace the div below with your actual display logic for the certificate
-%>
+        %>
 
         <div class="container">
             <h2>Payment Details</h2> <br>
-            <form action="PaymentServ" method="POST">
+            <form action="PaymentServ" method="POST"> <!-- Changed action to UpdatePaymentServ -->
                 <div class="form-group">
+                    <label for="paymentID"><%= Payment%></label> <!-- Assuming Payment is the payment ID -->
                     <label for="certificate"><%= Certificate%></label>
                     <div id="certificate">
-
                         <div class="form-group">
-                            <label for="price">Price you want to pay :</label>
-                            <input type="text" id="price" name="price" required>
+                            <label for="newPrice">New Price:</label> <!-- Changed input name to newPrice -->
+                            <input type="text" id="newPrice" name="newPrice" value="<%= price%>" required>
+                            <!-- Set the value of newPrice input field -->
                         </div>
-
-                        <div class="form-group">
-                            <!-- <label for="payment_date">Payment Date:</label> -->
-                            <input type="hidden" id="date" name="date" required>
-                        </div>
-
-                        <!--                        <div class="form-group">
-                                                    <label for="file">Upload Receipt :</label>
-                                                    <input type="file" id="file" name="file" accept=".pdf,.doc,.docx,.png,.jpeg" >
-                                                </div>-->
-
-                        <!-- Default status set to "Pending" -->
-                        <!--<input type="hidden" id="status" name="status" value="Pending">-->
-
-                        <button type="submit" onclick="showSuccessMessage()">Pay Now</button>
-
-                        <!--<button type="submit" onclick="confirmPayment()">Pay Now</button>--> 
-
-                        <!--            <a href="AboutCertificate.html">
-                                            <button type="button">Pay Now</button>
-                                        </a>-->
-
-                        </form>
-                        <a href="javascript:history.back()" class="back-button">Back</a>
+                        <input type="hidden" name="paymentID" value="<%= Payment%>"> <!-- Hidden field for paymentID -->
+                        <button type="submit">Update Price</button> <!-- Changed button text to Update Price -->
                     </div>
                 </div>
+            </form>
+            <a href="javascript:history.back()" class="back-button">Back</a>
         </div>
 
-        <script>
-
-            function signOut() {
-                // Redirect to the logout servlet or your logout logic
-                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-            }
-
-            function showSuccessMessage() {
-                // Show a popup message
-                alert("Payment submitted successfully!");
-                // You can also use modal dialogs for a more interactive message
-                // Example: Display a modal dialog
-                // var modal = document.getElementById("successModal");
-                // modal.style.display = "block";
-            }
-
-//            // Call the function when the page loads
-//            window.onload = function () {
-//                showSuccessMessage();
-//            };
-
-            // Get today's date
-            var today = new Date();
-
-            // Format date as YYYY-MM-DD
-            var year = today.getFullYear();
-            var month = ('0' + (today.getMonth() + 1)).slice(-2);
-            var day = ('0' + today.getDate()).slice(-2);
-            var formattedDate = year + '-' + month + '-' + day;
-
-            // Set the value of the hidden input field
-            document.getElementById('date').value = formattedDate;
-
-        </script>
 
         <%
                     } else {
@@ -234,6 +183,37 @@
                 response.sendRedirect("Login.jsp");
             }
         %>
+
+
+        <script>
+
+            function signOut() {
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
+
+            function showSuccessMessage() {
+                // Show a popup message
+                alert("Payment submitted successfully!");
+                // You can also use modal dialogs for a more interactive message
+                // Example: Display a modal dialog
+                // var modal = document.getElementById("successModal");
+                // modal.style.display = "block";
+            }
+
+            // Get today's date
+            var today = new Date();
+
+            // Format date as YYYY-MM-DD
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+            var formattedDate = year + '-' + month + '-' + day;
+
+            // Set the value of the hidden input field
+            document.getElementById('date').value = formattedDate;
+
+        </script>
 
         <footer>
             <p>&copy; HR SkillCertify 2023</p>

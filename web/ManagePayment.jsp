@@ -142,9 +142,6 @@
                 </div>
             </div>
 
-
-
-
             <script>
 
                 function updateStatus(form, paymentID) {
