@@ -55,12 +55,14 @@ public class FeedbackServ extends HttpServlet {
                 // Provide feedback to the user
                 if (rowsInserted > 0) {
                     // Create JavaScript alert message
-                    String alertMessage = "Feedback submitted successfully.";
+//                    String alertMessage = "Feedback submitted successfully.";
                     // Set content type to HTML
                     response.setContentType("text/html");
                     // Write JavaScript to response
-                    String script = "<script>alert('" + alertMessage + "'); window.location.href='Feedback.jsp';</script>";
-                    response.getWriter().println(script);
+//                    String script = "<script>alert('" + alertMessage + "'); window.location.href='Feedback.jsp';</script>";
+//                    response.getWriter().println(script);
+                    
+                    response.sendRedirect("Feedback.jsp");
                 } else {
                     // Redirect to feedback page
                     response.sendRedirect("Feedback.jsp");

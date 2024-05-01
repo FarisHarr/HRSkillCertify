@@ -51,7 +51,10 @@
             cursor: pointer;
             margin-top: 10vh;
             /* Push the button to the bottom */
+        }
 
+        .cert button:hover {
+            background-color: #45a049;
         }
     </style>
 

@@ -53,7 +53,7 @@
 
             <div class="info">
                 <button onclick="refresh()">Refresh</button>
-                <h1>View Feedback</h1>
+                <h2>View Feedback</h2>
                 <!--Table-->
                 <div class="table">
                     <table id="table">

@@ -42,16 +42,19 @@
         }
 
         .cert button {
-            background-color: #fff;
-            color: #212121;
+            background-color: #007bff;
+            color: #ffffff;
             border: none;
             padding: 8px 16px;
             border-radius: 4px;
             cursor: pointer;
-            margin-top: auto;
-            /* Push the button to the bottom */
-
+            margin-top: 10vh;
         }
+
+        .cert button:hover {
+            background-color: #45a049;
+        }
+
 
 
         #table img {
