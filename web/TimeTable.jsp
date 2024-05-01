@@ -181,7 +181,7 @@
 
             <div class="info">
                 <div class="cert">
-                    <h2>Class</h2>
+                    <h2>Certificate</h2>
                     <br>
                     <h3><%= certificateType%></h3> 
                     <br>
@@ -193,7 +193,7 @@
                         <button type="submit">Attend</button>
                     </form>
                     <% } else { %>
-                    <form action="Attendance.jsp">
+                    <form action="Class.jsp">
                         <button type="submit">Attend</button>
                     </form>
                     <% } %>

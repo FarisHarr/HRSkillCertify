@@ -48,9 +48,12 @@ img {
 </style>
     
 <body>
-    <h1>QR PAY</h1>
+<!--    <h1>QR PAY</h1>-->
+<br><br>
     <div class="image-container">
-        <img src="IMG/loading.gif" alt="Image">
+        <img src="IMG/QR.PNG" alt="Image">
+        
+        <h4>CIMB Bank : 7632797184</h4>
     </div>
 </body>
 

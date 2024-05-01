@@ -31,8 +31,8 @@
         }
 
         .cert1 {
-            background-color: #a4a4a4;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-color: rgb(199, 199, 199);;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 50px;
             margin: 30px;
             margin-left: 100px;
@@ -45,8 +45,8 @@
         }
 
         .cert2 {
-            background-color: #a4a4a4;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            background-color: rgb(199, 199, 199);;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 50px;
             margin: 30px;
             width: 300px;

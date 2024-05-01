@@ -17,47 +17,47 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     </head>
-    
+
     <style>
-    .infoCert {
-        margin: 0 auto;
-        text-align: center;
-        padding: 20px;
-        width: 90%;
-        height: 100vh;
-        background-color: aliceblue;
-        display: flex;
-    }
+        .infoCert {
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            width: 90%;
+            height: 100vh;
+            background-color: aliceblue;
+            display: flex;
+        }
 
-    .cert {
-        background-color: #f9f9f9;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        padding: 65px;
-        margin: 40px;
-        width: 20%;
-        border-radius: 8px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
+        .cert {
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 65px;
+            margin: 40px;
+            width: 20%;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
 
-    }
+        }
 
-    .cert button {
-        background-color: #007bff;
-        color: #ffffff;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 10vh;
-        /* Push the button to the bottom */
-        
-    } 
-</style>
+        .cert button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10vh;
+            /* Push the button to the bottom */
+
+        }
+    </style>
 
     <body>
         <%
-    //                HttpSession loginsession = request.getSession();
+            //                HttpSession loginsession = request.getSession();
             String candidateID = (String) session.getAttribute("candidateID");
 
             if (candidateID != null) {
@@ -103,31 +103,31 @@
             </div>
 
             <div class="infoCert">
-            <div class="cert">
-                <h2>Sijil Kemahiran Malaysia (SKM)</h2>
-                <!-- Add content for container 1 -->
-                <a href="CertificateForm.jsp">
-                    <button>Register</button>
-                </a>                
-            </div>
+                <div class="cert">
+                    <h2>Sijil Kemahiran Malaysia (SKM)</h2>
+                    <!-- Add content for container 1 -->
+                    <a href="CertificateForm.jsp">
+                        <button>Register</button>
+                    </a>                
+                </div>
 
-            <div class="cert">
-                <h2>Diploma Kemahiran Malaysia (DKM)</h2>
-                <!-- Add content for container 2 -->
-                <a href="CertificateForm.jsp">
-                    <button>Register</button>
-                </a>  
-            </div>
+                <div class="cert">
+                    <h2>Diploma Kemahiran Malaysia (DKM)</h2>
+                    <!-- Add content for container 2 -->
+                    <a href="CertificateForm.jsp">
+                        <button>Register</button>
+                    </a>  
+                </div>
 
-            <div class="cert">
-                <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM)</h2>
-                <!-- Add content for container 3 -->
-                <a href="CertificateForm.jsp">
-                    <button>Register</button>
-                </a>  
-            </div>
+                <div class="cert">
+                    <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM)</h2>
+                    <!-- Add content for container 3 -->
+                    <a href="CertificateForm.jsp">
+                        <button>Register</button>
+                    </a>  
+                </div>
 
-        </div>
+            </div>
         </div>
 
         <script>
@@ -135,11 +135,11 @@
                 var navbar = document.querySelector('.navbar');
                 navbar.classList.toggle('minimized');
             }
-            
+
             function signOut() {
-            // Redirect to the logout servlet or your logout logic
-            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-        }
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
         </script>
 
         <%

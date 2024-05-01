@@ -108,11 +108,11 @@
         }
 
         .receipt:hover::after {
-            content: "Image or PDF only";
+            content: "Image Only";
             position: absolute;
-            /*background-color:  #ff3333;*/
+            background-color:  #cccccc;
             color: #ff3333;
-            padding: 3px;
+            padding: 5px;
             border-radius: 4px;
             top: calc(100% + 5px); /* Position below the element */
             left: 50%; /* Center horizontally */
@@ -263,7 +263,7 @@
                 <!-- File upload input field for receipt -->
                 <div class="receipt">
                     <label for="receipt">Upload Receipt :</label><br>
-                    <input type="file" id="receipt" name="receipt" accept="image/*" >
+                    <input type="file" id="receipt" name="receipt" accept="image/*" required>
                 </div>
                 <br>
 

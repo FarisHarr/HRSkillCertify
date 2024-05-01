@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Payment
-    Created on : 19 Apr 2024, 11:19:13 pm
+    Document   : Class
+    Created on : 1 May 2024, 3:29:18 pm
     Author     : FarisHarr
 --%>
 
@@ -105,7 +105,7 @@
 
         <header>
             <div class="main">
-                <a href="AboutCertificate.jsp">
+                <a href="TimeTable.jsp">
                     <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
                 </a>
             </div>
@@ -124,58 +124,12 @@
 
 
         <%
-
-            // Fetch certificate information
-            PreparedStatement psCert = con.prepareStatement("SELECT * FROM payment WHERE cand_ID = ?");
-            psCert.setString(1, candidateID); // Retrieve certificate information based on candidateID
-            ResultSet rsCert = psCert.executeQuery();
-
-            if (rsCert.next()) {
-                String Payment = rsCert.getString("payment_ID");
-                String Certificate = rsCert.getString("cert_Type");
-                String price = rsCert.getString("price"); // Retrieve price from the certificate table
-
-                // Output certificate information
-                // Replace the div below with your actual display logic for the certificate
-        %>
-
-        <div class="container">
-            <h2>Payment Details</h2> <br>
-            <form action="PaymentServ" method="POST" > <!-- Changed action to UpdatePaymentServ -->
-                <div class="form-group">
-                    <label for="name"><%= Name%></label> <!-- Assuming Payment is the payment ID -->
-                    <label for="certificate"><%= Certificate%></label>
-                    <div id="certificate">
-                        <div class="form-group">
-                            <label for="newPrice">New Payment:</label> <!-- Changed input name to newPrice -->
-                            <input type="text" id="newPrice" name="newPrice" value="<%= price%>" required>
-                        </div>
-                        <input type="hidden" name="paymentID" value="<%= Payment%>"> <!-- Hidden field for paymentID -->
-
-                        <div class="receipt">
-                            <label for="receipt">Upload Receipt :</label>
-                            <input type="file" id="receipt" name="receipt" accept="image/*" >
-                        </div>
-                        <br>
-                        <button type="submit">Update Payment</button> <!-- Changed button text to Update Price -->
-                    </div>
-                </div>
-            </form>
-            <a href="javascript:history.back()" class="back-button">Back</a>
-        </div>
-
-
-        <%
-
-                        } else {
-                            out.println("Candidate not found.");
-                        }
-
-                        rs.close();
-                        ps.close();
                     } else {
-                        out.println("Certificate not found.");
+                        out.println("Candidate not found.");
                     }
+
+                    rs.close();
+                    ps.close();
 
                     con.close();
                 } catch (Exception e) {
@@ -188,6 +142,12 @@
 
         %>
 
+        <div class="container">
+            <h2>Time Table</h2> <br>
+
+            
+            <a href="javascript:history.back()" class="back-button">Back</a>
+        </div>
 
         <script>
 
