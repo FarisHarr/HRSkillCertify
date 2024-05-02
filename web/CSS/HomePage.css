@@ -223,6 +223,7 @@ button {
 
 footer {
     background-color: rgb(190, 190, 190);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     height: 70px;
     display: flex;
     align-items: center;
