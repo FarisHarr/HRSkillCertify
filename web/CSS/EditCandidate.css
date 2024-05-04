@@ -15,7 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 body {
-    background-color: #d9d9d9;
+    background-color: aliceblue;
 }
 
 header {
@@ -186,7 +186,7 @@ button {
 }
 
 .co {
-    background-color: whitesmoke;
+    background-color: aliceblue;
     width: 100%;
     /* margin: 0 auto; */
     display: flex;

@@ -55,7 +55,7 @@
             </div>
 
             <div class="info">
-                <button onclick="refresh()">Refresh</button>
+                <!--<button onclick="refresh()">Refresh</button>-->
                 <h2>Manage Payment</h2>
                 <div class="table">
                     <table id="table">

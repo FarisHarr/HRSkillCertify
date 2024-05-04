@@ -101,7 +101,7 @@
             <div class="infoCert">
                 <div class="cert">
                     <h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2>
-                    <a href="AboutCertificate.jsp">
+                    <a href="#">
                         <button>Check</button>
                     </a>                
                 </div>
@@ -109,7 +109,7 @@
                 <div class="cert">
                     <h2>Diploma Kemahiran Malaysia (DKM)/ Tahap 4</h2>
                     <!-- Add content for container 2 -->
-                    <a href="AboutCertificate.jsp">
+                    <a href="#">
                         <button>Check</button>
                     </a>
                 </div>
@@ -117,7 +117,7 @@
                 <div class="cert">
                     <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM) / Tahap 5</h2>
                     <!-- Add content for container 3 -->
-                    <a href="AboutCertificate.jsp">
+                    <a href="#">
                         <button>Check</button>
                     </a>
                 </div>

@@ -20,15 +20,13 @@ import javax.servlet.http.HttpSession;
  *
  * @author FarisHarr
  */
-
-
 @WebServlet("/FeedbackServ")
 public class FeedbackServ extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession(); // Get the session
         String candidateID = (String) session.getAttribute("candidateID"); // Retrieve candidate ID from session
 
@@ -54,15 +52,12 @@ public class FeedbackServ extends HttpServlet {
 
                 // Provide feedback to the user
                 if (rowsInserted > 0) {
-                    // Create JavaScript alert message
-//                    String alertMessage = "Feedback submitted successfully.";
+
                     // Set content type to HTML
                     response.setContentType("text/html");
-                    // Write JavaScript to response
-//                    String script = "<script>alert('" + alertMessage + "'); window.location.href='Feedback.jsp';</script>";
-//                    response.getWriter().println(script);
+
+                    response.getWriter().println("<script>alert('Feedback submitted successfully!'); window.location='Feedback.jsp';</script>");
                     
-                    response.sendRedirect("Feedback.jsp");
                 } else {
                     // Redirect to feedback page
                     response.sendRedirect("Feedback.jsp");
@@ -73,6 +68,3 @@ public class FeedbackServ extends HttpServlet {
         }
     }
 }
-
-
-

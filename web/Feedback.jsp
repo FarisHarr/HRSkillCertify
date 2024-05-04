@@ -191,9 +191,9 @@
                     <input type="text" id="name" name="name" value="<%= Name%>" readonly ><br>
                     <label for="email">Email:</label><br>
                     <input type="email" id="email" name="email" value="<%= Email%>" readonly><br>
-                    <label for="message">Feedback:</label><br>
-                    <textarea id="message" name="message"></textarea><br>
-                    <button type="submit" onclick="showSuccessMessage()">Submit Feedback</button>
+                    <label for="message" >Feedback:</label><br>
+                    <textarea id="message" name="message" required></textarea><br>
+                    <button type="submit">Submit Feedback</button>
                 </form>
             </div>
 
@@ -222,10 +222,10 @@
                 // Redirect to the logout servlet or your logout logic
                 window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
             }
-            function showSuccessMessage() {
-                // Show a popup message
-                alert("Feedback submitted successfully");
-            }
+//            function showSuccessMessage() {
+//                // Show a popup message
+//                alert("Feedback submitted successfully");
+//            }
 
         </script>
 
