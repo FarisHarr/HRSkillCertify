@@ -33,10 +33,8 @@
             </div>
             <nav>
                 <li class="dropdown">
-                    <!-- <a class="nav-link">Account</a> -->
                     <a class="nav-link">Admin</a>
                     <ul class="dropdown-content">
-                        <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="AdminProfile.jsp">User Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
@@ -55,13 +53,12 @@
             <div class="info">
                 <button onclick="refresh()">Refresh</button>
                 <h2>View Feedback</h2>
-                <!--Table-->
+
                 <div class="table">
                     <table id="table">
                         <thead>
                             <tr>
                                 <th>Feedback ID</th>
-                                <!--<th>Candidate ID</th>-->
                                 <th>Name</th>
                                 <th>Message</th>
                             </tr>

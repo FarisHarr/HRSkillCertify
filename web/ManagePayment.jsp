@@ -34,10 +34,8 @@
             </div>
             <nav>
                 <li class="dropdown">
-                    <!-- <a class="nav-link">Account</a> -->
                     <a class="nav-link">Manager</a>
                     <ul class="dropdown-content">
-                        <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="ManagerProfile.jsp">User Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
@@ -55,7 +53,6 @@
             </div>
 
             <div class="info">
-                <!--<button onclick="refresh()">Refresh</button>-->
                 <h2>Manage Payment</h2>
                 <div class="table">
                     <table id="table">

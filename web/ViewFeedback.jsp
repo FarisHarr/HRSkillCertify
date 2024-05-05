@@ -54,13 +54,11 @@
             <div class="info">
                 <button onclick="refresh()">Refresh</button>
                 <h2>View Feedback</h2>
-                <!--Table-->
                 <div class="table">
                     <table id="table">
                         <thead>
                             <tr>
                                 <th>Feedback ID</th>
-                                <!--<th>Candidate ID</th>-->
                                 <th>Name</th>
                                 <th>Message</th>
                             </tr>

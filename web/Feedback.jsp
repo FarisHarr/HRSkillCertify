@@ -166,7 +166,6 @@
                 <li class="dropdown">
                     <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
-                        <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="CandidateProfile.jsp">Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
@@ -185,7 +184,6 @@
 
             <div class="cert1">
                 <h2>Feedback</h2>
-                <!-- Add content for container 1 -->
                 <form id="feedbackForm" action="FeedbackServ" method="POST">
                     <label for="name">Name:</label><br>
                     <input type="text" id="name" name="name" value="<%= Name%>" readonly ><br>
@@ -207,7 +205,6 @@
                         <a href="https://api.whatsapp.com/send?phone=60197293275&text=PPKT24" target="_blank" title="WhatsApp">
                             <i class="fab fa-whatsapp"></i> <br> Contact Us </a>   
                     </div>
-                    <!--<button type="submit">Submit</button>-->
                 </form>
             </div>
         </div>
@@ -222,10 +219,6 @@
                 // Redirect to the logout servlet or your logout logic
                 window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
             }
-//            function showSuccessMessage() {
-//                // Show a popup message
-//                alert("Feedback submitted successfully");
-//            }
 
         </script>
 

@@ -88,7 +88,6 @@
     </style>
 
     <body>
-        <%-- Java code for retrieving candidate information --%>
         <%
             String candidateID = (String) session.getAttribute("candidateID");
             if (candidateID != null) {
@@ -159,10 +158,6 @@
             function showSuccessMessage() {
                 // Show a popup message
                 alert("Payment submitted successfully!");
-                // You can also use modal dialogs for a more interactive message
-                // Example: Display a modal dialog
-                // var modal = document.getElementById("successModal");
-                // modal.style.display = "block";
             }
 
             // Get today's date
