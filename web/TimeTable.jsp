@@ -210,12 +210,11 @@
                                 <th>Certificate Type</th>
                                 <th>Class</th>
                                 <th>Date</th>
-                                <th>Time Slot</th> <!-- Added Time Slot column -->
+                                <th>Time Slot</th> 
                             </tr>
                         </thead>
 
                         <tbody>
-                            <!-- Dummy data rows with dropdowns for time selection -->
                             <tr>
                                 <td>Certificate  A</td>
                                 <td>Class X</td>
@@ -225,7 +224,6 @@
                                         <option value="09:00 AM">09:00 AM</option>
                                         <option value="10:00 AM">10:00 AM</option>
                                         <option value="11:00 AM">11:00 AM</option>
-                                        <!-- Add more options as needed -->
                                     </select>
                                 </td>
                             </tr>
@@ -238,7 +236,6 @@
                                         <option value="09:00 AM">09:00 AM</option>
                                         <option value="10:00 AM">10:00 AM</option>
                                         <option value="11:00 AM">11:00 AM</option>
-                                        <!-- Add more options as needed -->
                                     </select>
                                 </td>
                             </tr>
@@ -251,11 +248,9 @@
                                         <option value="09:00 AM">09:00 AM</option>
                                         <option value="10:00 AM">10:00 AM</option>
                                         <option value="11:00 AM">11:00 AM</option>
-                                        <!-- Add more options as needed -->
                                     </select>
                                 </td>
                             </tr>
-                            <!-- End of dummy data rows --> 
                         </tbody>
                     </table>
                 </div>

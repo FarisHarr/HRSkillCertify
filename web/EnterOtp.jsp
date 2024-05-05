@@ -16,7 +16,7 @@
             .form-gap {
                 padding-top: 70px;
             }
-            
+
             .panel-body {
                 /*border: 1px solid black;*/
                 box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
@@ -36,6 +36,7 @@
                                     <i class="fa fa-lock fa-4x"></i>
                                 </h3>
                                 <h2 class="text-center">Enter OTP</h2>
+                                
                                 <%
                                     if (request.getAttribute("message") != null) {
                                         out.print("<p class='text-danger ml-1'>" + request.getAttribute("message") + "</p>");
@@ -77,7 +78,6 @@
             function restrictToNumbers(inputElement) {
                 inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
             }
-
         </script>
     </body>
 </html>
