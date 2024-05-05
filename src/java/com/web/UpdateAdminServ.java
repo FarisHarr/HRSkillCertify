@@ -41,7 +41,8 @@ public class UpdateAdminServ extends HttpServlet {
             request.setAttribute("message", "Staff not found or couldn't be updated.");
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminProfile.jsp");
-        dispatcher.forward(request, response);
+        response.getWriter().println("<script>alert('Profile updated successfully.'); window.location='AdminProfile.jsp';</script>");
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminProfile.jsp");
+//        dispatcher.forward(request, response);
     }
 }

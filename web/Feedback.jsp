@@ -48,7 +48,6 @@
 
         .cert2 {
             background-color: rgb(199, 199, 199);
-            ;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 50px;
             margin: 30px;
@@ -112,15 +111,19 @@
             background-color: #4CAF50;
         }
 
+        form{
+            margin-top: auto;
+        }
+
         .contact-icons {
             display: flex;
         }
 
-        
         .contact-icons a {
             color: #333; /* Icon color */
             font-size: 20px;
-            margin-left: 5px; /* Adjust the distance between icons */
+            margin: 10px;
+            /*margin-left: 5px;  Adjust the distance between icons */
             text-decoration: none;
             transition: background-color 0.1s, transform 0.1s;
         }
@@ -130,6 +133,12 @@
             transform: scale(1.05);
         }
 
+        .review {
+            width : auto;
+            height: 50vh;
+            background-color: whitesmoke;
+            /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+        }
 
 
     </style>
@@ -196,7 +205,10 @@
             </div>
 
             <div class="cert2">
-                <h2>Contact Us</h2>
+                <h2>Contact Us</h2><br>
+                <div class="review">
+                    
+                </div>
                 <form id="contactus">
                     <label for="contactus"></label><br>
                     <div class="contact-icons">

@@ -17,6 +17,12 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <style>
+        
+        h3{
+            position: absolute;
+            margin: 15px;
+        }
+        
         .infoCert {
             margin: 0 auto;
             text-align: center;
@@ -31,7 +37,7 @@
         .cert {
             background-color: #a4a4a4;
             padding: 50px;
-            margin: 40px;
+            margin: 60px;
             border-radius: 8px;
             text-align: center;
             display: flex;

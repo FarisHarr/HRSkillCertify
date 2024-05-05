@@ -43,7 +43,7 @@ public class UpdateCandidateServ extends HttpServlet {
             request.setAttribute("message", "Candidate not found or couldn't be updated.");
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/CandidateProfile.jsp");
-        dispatcher.forward(request, response);
+        response.getWriter().println("<script>alert('Candidate updated successfully.'); window.location='CandidateProfile.jsp';</script>");
+//        dispatcher.forward(request, response);
     }
 }
