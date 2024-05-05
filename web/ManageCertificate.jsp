@@ -16,8 +16,8 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     </head>
-    
-        <style>
+
+    <style>
         .infoCert {
             margin: 0 auto;
             text-align: center;
@@ -78,10 +78,8 @@
             </div>
             <nav>
                 <li class="dropdown">
-                    <!-- <a class="nav-link">Account</a> -->
                     <a class="nav-link">Manager</a>
                     <ul class="dropdown-content">
-                        <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="ManagerProfile.jsp">User Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
@@ -130,11 +128,11 @@
                 var navbar = document.querySelector('.navbar');
                 navbar.classList.toggle('minimized');
             }
-            
+
             function signOut() {
-            // Redirect to the logout servlet or your logout logic
-            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-        }
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
         </script>
 
         <footer>
