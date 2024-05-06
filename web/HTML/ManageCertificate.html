@@ -11,49 +11,85 @@
 </head>
 
 <style>
-    .infoCert {
+    .info {
         margin: 0 auto;
         text-align: center;
-        padding: 10px;
-        width: 95%;
+        padding: 20px;
+        width: 80%;
+        height: 100vh;
         background-color: aliceblue;
-        border: 1px solid #000000;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .cert {
-        background-color: #a4a4a4;
-        padding: 50px;
-        margin: 40px;
-        border-radius: 8px;
-        text-align: center;
         display: flex;
         flex-direction: column;
-        width: 30%;
-        height: 50vh;
-        transition: transform 0.1s ease-in-out;
+        align-items: center;
     }
 
-    .cert:hover {
-        transform: scale(1.05);
+    .certificate-options {
+        display: flex;
+        align-items: center;
     }
 
-    .cert h2 {
-        margin-bottom: 10px;
+
+    select {
+        height: 25px;
+        width: 140px;
+        /* Adjust the width as needed */
+        margin-left: 10px;
+        /* Other styles */
+
+
     }
 
-    .cert button {
-        background-color: #fff;
-        color: #212121;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 4px;
-        width: 30%;
+
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        overflow-x: auto;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th {
+        text-align: center;
+        color: white;
+        background-color: grey;
+        padding: 10px;
+    }
+
+    td,
+    th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    td {
+        background-color: whitesmoke;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    input[type="date"],
+    input[type="time"] {
+        padding: 8px;
+        border-radius: 5px;
+        background-color: #e3e3e3;
+        border: 1px solid #ccc;
+        width: 80%;
+    }
+
+    button {
+        padding: 5px 20px;
+        background-color: #4CAF50;
         cursor: pointer;
-        margin-top: 10vh;
-        /* Push the button to the bottom */
+        border-radius: 5px;
+    }
+
+    @media screen and (max-width: 600px) {
+        .info {
+            width: 100%;
+        }
     }
 </style>
 
@@ -70,15 +106,15 @@
             </nav>
         </div>
         <nav>
-        <li class="dropdown">
-            <!-- <a class="nav-link">Account</a> -->
-            <a class="nav-link">Manager</a>
-            <ul class="dropdown-content">
-                <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
-                <li><a href="StaffProfile.html">User Profile</a></li>
-                <li><a href="MainPage.html">Sign Out</a></li>
-            </ul>
-        </li>
+            <li class="dropdown">
+                <!-- <a class="nav-link">Account</a> -->
+                <a class="nav-link">Manager</a>
+                <ul class="dropdown-content">
+                    <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
+                    <li><a href="StaffProfile.html">User Profile</a></li>
+                    <li><a href="MainPage.html">Sign Out</a></li>
+                </ul>
+            </li>
         </nav>
     </header>
 
@@ -91,33 +127,58 @@
             <a href="ManageCandidate.html">Manage Candidate</a>
         </div>
 
-        <div class="infoCert">
-            <div class="cert">
-                <h2>Sijil Kemahiran Malaysia (SKM) </h2>
-                <h4> This certificate will improve your diplomas </h4>
-                <a href="ManageCertificate.html">
-                    <button>Check</button>
-                </a>                
+        <div class="info">
+            <div class="certificate-options">
+                <p>Choose the certificate : </p>
+                <select name="certificate">
+                    <option value="" disabled selected>Please choose</option>
+                    <option value="SKM">SKM - Sijil Kemahiran Malaysia</option>
+                    <option value="DKM">DKM - Diploma Kemahiran Malaysia</option>
+                    <option value="DLKM">DLKM - Diploma Lanjutan Kemahiran Malaysia</option>
+                </select>
             </div>
 
-            <div class="cert">
-                <h2>Diploma Kemahiran Malaysia (DKM)</h2>
-                <h4> This certificate will improve your diplomas </h4>
-                <!-- Add content for container 2 -->
-                <a href="ManageCertificate.html">
-                    <button>Check</button>
-                </a>
-            </div>
+            <h2>Choose Your Class for Attendance</h2>
 
-            <div class="cert">
-                <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM)</h2>
-                <h4> This certificate will improve your diplomas </h4>
-                <!-- Add content for container 3 -->
-                <a href="ManageCertificate.html">
-                    <button>Check</button>
-                </a>
-            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Certificate Type</th>
+                            <th>Class</th>
+                            <th>Date</th>
+                            <th>Time Slot</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        <!-- Dummy data rows with input fields for date and time selection -->
+                        <tr>
+                            <td>Certificate A</td>
+                            <td>Class X</td>
+                            <td><input type="date"></td>
+                            <td><input type="time"></td>
+                            <td><button>Attend</button></td>
+                        </tr>
+                        <tr>
+                            <td>Certificate B</td>
+                            <td>Class Y</td>
+                            <td><input type="date"></td>
+                            <td><input type="time"></td>
+                            <td><button>Attend</button></td>
+                        </tr>
+                        <tr>
+                            <td>Certificate C</td>
+                            <td>Class Z</td>
+                            <td><input type="date"></td>
+                            <td><input type="time"></td>
+                            <td><button>Attend</button></td>
+                        </tr>
+                        <!-- End of dummy data rows -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

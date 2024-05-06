@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Time Table</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/web/CSS/HomePage.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+
+<style>
+.container1 {
+    width: 50%;
+    height: 50vh;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    border-radius: 8px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Added */
+}
+
+.back-button {
+    width: 5%;
+    height: 20px;
+    margin-top: 10px;
+    background-color: #45a049;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+
+
+
+    .back-button:hover {
+        background-color: #5f5f5f;
+    }
+</style>
+
+<body>
+    <header>
+        <div class="main">
+            <img class="logo" src="/web/IMG/HRSCLogo.png" alt="logo">
+            <nav>
+                <ul class="nav_links">
+                    <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
+                </ul>
+            </nav>
+        </div>
+        <nav>
+            <li class="dropdown">
+                <a class="nav-link">Candidate</a>
+                <ul class="dropdown-content">
+                    <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
+                    <li><a href="CandidateProfile.html">User Profile</a></li>
+                    <li><a href="MainPage.html">Sign Out</a></li>
+                </ul>
+            </li>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="navbar">
+            <a href="HomePage.html">Home</a>
+            <a href="CandidateProfile.html">User Profile</a>
+            <a href="AboutCertificate.html">About Certificate</a>
+            <a href="TimeTable.html">Time Table</a>
+            <a href="Feedback.html">Feedback</a>
+        </div>
+
+        <div class="container1">
+            <h2>Time Table</h2> <br>
+
+
+            <a href="javascript:history.back()" class="back-button">Back</a>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleNavbar() {
+            var navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('minimized');
+        }
+
+        function signOut() {
+            // Redirect to the logout servlet or your logout logic
+            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+        }
+    </script>
+
+    <footer>
+        <p>&copy; HR SkillCertify 2023</p>
+    </footer>
+
+</body>
+
+</html>
