@@ -194,7 +194,7 @@
 
                 function showSuccessMessage() {
                     // Show a popup message
-                    alert("Update Success");
+                    alert("Update Successfull");
                 }
 
             </script>
