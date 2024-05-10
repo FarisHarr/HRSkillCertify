@@ -59,12 +59,6 @@
                     <h2>Register Class</h2>
                     <br><br>
                     <form action="RegisterClassServ" method="POST">
-                        <!-- <label for="class_ID">Class ID :</label>
-                        <input type="text" id="class_ID" name="class_ID" placeholder="Enter Class ID" required>
-                        <br><br>
-                        <label for="cand_ID">Candidate ID :</label>
-                        <input type="text" id="cand_ID" name="cand_ID" placeholder="Enter Candidate ID" required>
-                        <br><br> -->
                         <label for="cert_Type">Certificate Type :</label>
                         <select id="cert_Type" name="cert_Type" required>
                             <option value="SKM">SKM - Sijil Kemahiran Malaysia</option>
@@ -72,20 +66,17 @@
                             <option value="DLKM">DLKM - Diploma Lanjutan Kemahiran Malaysia</option>
                         </select>
                         <br><br>
-                        <label for="Date">Date :</label>
-                        <input type="date" id="Date" name="Date" required>
+                        <label for="date">Date :</label>
+                        <input type="date" id="date" name="date" required>
                         <br><br>
                         <label for="start_time">Start Time :</label>
                         <input type="time" id="start_time" name="start_time" required>
                         <br><br>
                         <label for="end_Time">End Time :</label>
                         <input type="time" id="end_Time" name="end_Time" required>
+
                         <br><br>
-                        <!-- <label for="attendance">Attendance :</label>
-                        <select id="attendance" name="attendance" required>
-                            <option value="attend">Attend</option>
-                            <option value="absent">Absent</option>
-                        </select> -->
+
                         <br><br>
                         <div class="submit-button">
                             <input class="submit" type="submit" value="Save">

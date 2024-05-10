@@ -10,7 +10,7 @@
 <html>
 
     <head>
-        <title>Payment Page</title>
+        <title>Class Page</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/Class.css">
@@ -51,98 +51,118 @@
             </nav>
         </header>
 
-<!--        <div class="container">
-            <div class="navbar">
-                <a href="HomePage.jsp">Home</a>
-                <a href="CandidateProfile.jsp">User Profile</a>
-                <a href="AboutCertificate.jsp">About Certificate</a>
-                <a href="TimeTable.jsp">Time Table</a>
-                <a href="Feedback.jsp">Feedback</a>
-            </div>-->
+        <!--        <div class="container">
+                    <div class="navbar">
+                        <a href="HomePage.jsp">Home</a>
+                        <a href="CandidateProfile.jsp">User Profile</a>
+                        <a href="AboutCertificate.jsp">About Certificate</a>
+                        <a href="TimeTable.jsp">Time Table</a>
+                        <a href="Feedback.jsp">Feedback</a>
+                    </div>-->
 
 
-            <%
-                        } else {
-                            out.println("Candidate not found.");
-                        }
-
-                        rs.close();
-                        ps.close();
-
-                        con.close();
-                    } catch (Exception e) {
-                        out.println("Error: " + e);
+        <%
+                    } else {
+                        out.println("Candidate not found.");
                     }
-                } else {
-                    // If the session doesn't exist or candidateID is not set, redirect to the login page
-                    response.sendRedirect("Login.jsp");
+
+                    rs.close();
+                    ps.close();
+
+                    con.close();
+                } catch (Exception e) {
+                    out.println("Error: " + e);
                 }
+            } else {
+                // If the session doesn't exist or candidateID is not set, redirect to the login page
+                response.sendRedirect("Login.jsp");
+            }
 
-            %>
+        %>
 
-            <div class="container1">
-                <h2>Time Table</h2> <br>
-                <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Class ID</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Attendance</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Assuming you have class data available in your JSP -->
-                            <tr>
+                    <br><h2>Time Table</h2>
+        <div class="container1">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Class ID</th>
+                            <th>Date</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <!--<th>Attendance</th>-->
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("SELECT class_ID, date, start_Time, end_Time from class");
 
-                                <td>
-                                    
-                                    
-                                    <select name="attendance">
-                                        <option value="attend">Attend</option>
-                                        <option value="absent">Absent</option>
-                                    </select>
-                                </td>
-                                <td><button>Submit</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                                while (rs.next()) {
+                                    String classID = rs.getString("class_ID");
+                                    String date = rs.getString("date");
+                                    String startTime = rs.getString("start_Time");
+                                    String endTime = rs.getString("end_Time");
+//                                    String attendance = rs.getString("attendance");
 
-                <a href="javascript:history.back()" class="back-button">Back</a>
+                                    out.println("<tr>");
+                                    out.println("<td>" + classID + "</td>");
+                                    out.println("<td>" + date + "</td>");
+                                    out.println("<td>" + startTime + "</td>");
+                                    out.println("<td>" + endTime + "</td>");
+//                                    out.println("<td>" + attendance + "</td>");
+                                    out.println("<td><button>Edit</button></td>");
+                                    out.println("</tr>");
+                                }
+                            } catch (Exception e) {
+                                out.println("Error: " + e.getMessage());
+                            }
+                        %>
+
+<!--                    <select name="attendance">
+                        <option value="attend">Attend</option>
+                        <option value="absent">Absent</option>
+                    </select>-->
+                    
+                    </tbody>
+                </table>
             </div>
 
-            <script>
+            <a href="javascript:history.back()" class="back-button">Back</a>
+        </div>
 
-                function signOut() {
-                    // Redirect to the logout servlet or your logout logic
-                    window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-                }
+        <script>
 
-                function showSuccessMessage() {
-                    // Show a popup message
-                    alert("Payment submitted successfully!");
-                }
+            function signOut() {
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
 
-                // Get today's date
-                var today = new Date();
+            function showSuccessMessage() {
+                // Show a popup message
+                alert("Payment submitted successfully!");
+            }
 
-                // Format date as YYYY-MM-DD
-                var year = today.getFullYear();
-                var month = ('0' + (today.getMonth() + 1)).slice(-2);
-                var day = ('0' + today.getDate()).slice(-2);
-                var formattedDate = year + '-' + month + '-' + day;
+            // Get today's date
+            var today = new Date();
 
-                // Set the value of the hidden input field
-                document.getElementById('date').value = formattedDate;
+            // Format date as YYYY-MM-DD
+            var year = today.getFullYear();
+            var month = ('0' + (today.getMonth() + 1)).slice(-2);
+            var day = ('0' + today.getDate()).slice(-2);
+            var formattedDate = year + '-' + month + '-' + day;
 
-            </script>
+            // Set the value of the hidden input field
+            document.getElementById('date').value = formattedDate;
 
-            <footer>
-                <p>&copy; HR SkillCertify 2023</p>
-            </footer>
+        </script>
+
+        <footer>
+            <p>&copy; HR SkillCertify 2023</p>
+        </footer>
 
     </body>
 

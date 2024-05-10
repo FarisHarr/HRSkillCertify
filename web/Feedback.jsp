@@ -58,6 +58,13 @@
             flex-direction: column;
 
         }
+        
+        .container {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    display: flex; /* Use flexbox to position children side by side */
+}
 
         /* Basic form styling */
         #feedbackForm {
@@ -141,6 +148,8 @@
         }
 
 
+
+
     </style>
 
     <body>
@@ -207,7 +216,7 @@
             <div class="cert2">
                 <h2>Contact Us</h2><br>
                 <div class="review">
-                    
+
                 </div>
                 <form id="contactus">
                     <label for="contactus"></label><br>

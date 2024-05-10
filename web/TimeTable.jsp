@@ -13,115 +13,10 @@
         <title>Time Table</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS/CandidateSkeleton.css">
+        <link rel="stylesheet" type="text/css" href="CSS/TimeTable.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     </head>
-
-    <style>
-        .info {
-            margin: 0 auto;
-            text-align: center;
-            padding: 20px;
-            width: 80%;
-            height: 100vh;
-            background-color: aliceblue;
-            display: flex;
-        }
-
-        .cert {
-            background-color: rgb(199, 199, 199);
-            width: 20%;
-            padding: 55px;
-            margin: 50px;
-            border-radius: 8px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-
-        }
-
-        .cert button {
-            background-color: #007bff;
-            color: #ffffff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10vh;
-        }
-
-        .cert button:hover {
-            background-color: #45a049;
-        }
-
-
-
-        #table img {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        .table {
-            display:block;
-            margin-top: 60px;
-            margin-left: 50px;
-            place-items: center;
-            /* margin: 20px; */
-        }
-
-        table {
-            border-collapse: collapse;
-            width:100%;
-
-        }
-
-
-        th {
-            text-align: left;
-            color: white;
-            background-color: grey;
-        }
-
-        td,
-        th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        input[type=number] {
-            width: 70px;
-        }
-
-        #table th,
-        #table td {
-            width: 150px;
-            padding: 30px;
-            border: 1px solid black;
-            text-align: center;
-        }
-
-        #table button {
-            border: none;
-            background-color: transparent;
-            padding: 0;
-        }
-
-        #table img {
-            width: 20px;
-            height: 20px;
-        }
-
-
-        @media screen and (max-width: 600px) {
-
-            #table th:nth-child(n+6),
-            #table td:nth-child(n+6) {
-                display: none;
-            }
-        }
-    </style>
 
     <body>
         <%
@@ -182,89 +77,109 @@
                 <a href="Feedback.jsp">Feedback</a>
             </div>
 
-            <div class="info">
-                <div class="cert">
-                    <h2>Certificate</h2>
-                    <br>
-                    <h3><%= certificateType%></h3> 
-                    <br>
-                    <p>Your payment status : <%= status%> </p> 
-                    <br> 
-                    <%-- Add conditional check for the Attend button --%>
-                    <% if (status.equals("Pending") || status.equals("Rejected")) { %>
-                    <form action="Payment.jsp">
-                        <button type="submit">Attend</button>
-                    </form>
-                    <% } else { %>
-                    <form action="Class.jsp">
-                        <button type="submit">Attend</button>
-                    </form>
-                    <% } %>
+            <div class="cert">
+                <h2>Certificate</h2>
+                <br>
+                <h3><%= certificateType%></h3> 
+                <br>
+                <p>Your payment status : <%= status%> </p> 
+                <br> 
+                <%-- Add conditional check for the Attend button --%>
+                <% if (status.equals("Pending") || status.equals("Rejected")) { %>
+                <form action="Payment.jsp">
+                    <button type="submit">Attend</button>
+                </form>
+                <% } else { %>
+                <form action="Class.jsp">
+                    <button type="submit">Attend</button>
+                </form>
+                <% } %>
 
-                </div>
-
-                <div class="table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Class ID</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Attendance</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Assuming you have class data available in your JSP -->
-                        <tr>
-
-                            <td>
-                                
-                                
-                                <select name="attendance">
-                                    <option value="attend">Attend</option>
-                                    <option value="absent">Absent</option>
-                                </select>
-                            </td>
-                            <td><button>Submit</button></td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
+
+            <div class="container1">
+                <h2>Time Table</h2>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Class ID</th>
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <!--<th>Attendance</th>-->
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+
+                                        } else {
+                                            out.println("Candidate not found.");
+                                        }
+
+                                        rs.close();
+                                        ps.close();
+                                        con.close();
+                                    } catch (Exception e) {
+                                        out.println("Error: " + e);
+                                    }
+                                } else {
+                                    response.sendRedirect("Login.jsp");
+                                }
+
+                                try {
+                                    Class.forName("com.mysql.jdbc.Driver");
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                                    Statement st = con.createStatement();
+                                    ResultSet rs = st.executeQuery("SELECT class_ID, date, start_Time, end_Time from class");
+
+                                    while (rs.next()) {
+                                        String classID = rs.getString("class_ID");
+                                        String date = rs.getString("date");
+                                        String startTime = rs.getString("start_Time");
+                                        String endTime = rs.getString("end_Time");
+                                        //                                    String attendance = rs.getString("attendance");
+
+                                        out.println("<tr>");
+                                        out.println("<td>" + classID + "</td>");
+                                        out.println("<td>" + date + "</td>");
+                                        out.println("<td>" + startTime + "</td>");
+                                        out.println("<td>" + endTime + "</td>");
+                                        //                                    out.println("<td>" + attendance + "</td>");
+                                        out.println("<td><button>Edit</button></td>");
+                                        out.println("</tr>");
+                                    }
+                                } catch (Exception e) {
+                                    out.println("Error: " + e.getMessage());
+                                }
+                            %>
+
+                            <!--                    <select name="attendance">
+                                                    <option value="attend">Attend</option>
+                                                    <option value="absent">Absent</option>
+                                                </select>-->
+
+                        </tbody>
+                    </table>
+                </div>
             </div>  
-        </div>
 
-        <script>
-            function toggleNavbar() {
-                var navbar = document.querySelector('.navbar');
-                navbar.classList.toggle('minimized');
-            }
-
-            function signOut() {
-                // Redirect to the logout servlet or your logout logic
-                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-            }
-        </script>
-
-        <%
-                    } else {
-                        out.println("Candidate not found.");
-                    }
-
-                    rs.close();
-                    ps.close();
-                    con.close();
-                } catch (Exception e) {
-                    out.println("Error: " + e);
+            <script>
+                function toggleNavbar() {
+                    var navbar = document.querySelector('.navbar');
+                    navbar.classList.toggle('minimized');
                 }
-            } else {
-                response.sendRedirect("Login.jsp");
-            }
-        %>
 
-        <footer>
-            <p>&copy; HR SkillCertify 2023</p>
-        </footer>
+                function signOut() {
+                    // Redirect to the logout servlet or your logout logic
+                    window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+                }
+            </script>
+
+            <footer>
+                <p>&copy; HR SkillCertify 2023</p>
+            </footer>
 
     </body>
 

@@ -223,7 +223,7 @@ button {
     text-align: center;
     padding: 20px;
     width: 90%;
-    height: 100vh;
+    height: auto;
     background-color: #f0f0f0;
 }
 
@@ -485,12 +485,9 @@ input[type=number] {
 
 
 footer {
-    background-color: rgb(190, 190, 190); /* Set background color */
-    color: black; /* Set text color */
-    text-align: center; /* Center-align text */
-    padding: 10px; /* Add padding */
-    position: fixed; /* Fixed positioning at the bottom */
-    left: 0;
-    bottom: 0;
-    width: 100%; /* Full width */
+    background-color: rgb(190, 190, 190);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

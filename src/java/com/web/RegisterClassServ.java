@@ -4,6 +4,7 @@
  */
 package com.web;
 
+import com.mysql.cj.xdevapi.Statement;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,54 +15,48 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author FarisHarr
  */
-@WebServlet("/FeedbackServ")
-public class FeedbackServ extends HttpServlet {
+@WebServlet(name = "RegisterClassServ", urlPatterns = {"/RegisterClassServ"})
+public class RegisterClassServ extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session = request.getSession(); // Get the session
-        String candidateID = (String) session.getAttribute("candidateID"); // Retrieve candidate ID from session
-
         // Get form parameters
-        String feedback = request.getParameter("feedback_ID");
-        String message = request.getParameter("message");
+        String certType = request.getParameter("cert_Type");
+        String date = request.getParameter("date");
+        String startTime = request.getParameter("start_time");
+        String endTime = request.getParameter("end_Time");
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String myURL = "jdbc:mysql://localhost/hrsc";
 
-            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); 
-                    PreparedStatement ps = myConnection.prepareStatement("INSERT INTO feedback(feedback_ID, cand_ID, message) VALUES (?, ?, ?)")) {
+            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); PreparedStatement ps = myConnection.prepareStatement("INSERT INTO class(cert_Type, date, start_Time, end_Time) VALUES (?, ?, ?, ?)")) {
 
-                ps.setString(1, feedback);
-                ps.setString(2, candidateID);
-                ps.setString(3, message);
+                ps.setString(1, certType);
+                ps.setString(2, date);
+                ps.setString(3, startTime);
+                ps.setString(4, endTime);
 
                 // Execute the SQL statement
                 int rowsInserted = ps.executeUpdate();
 
-                // Close resources
-                ps.close();
-
                 // Provide feedback to the user
                 if (rowsInserted > 0) {
-
                     // Set content type to HTML
                     response.setContentType("text/html");
 
-                    response.getWriter().println("<script>alert('Feedback submitted successfully!'); window.location='Feedback.jsp';</script>");
-                    
+                    response.getWriter().println("<script>alert('Attendance registered successfully!'); window.location='ManageCertificate.jsp';</script>");
+
                 } else {
-                    // Redirect to feedback page
-                    response.sendRedirect("Feedback.jsp");
+                    // Redirect to attendance page
+                    response.sendRedirect("ManageCertificate.jsp");
                 }
             }
         } catch (Exception e) {

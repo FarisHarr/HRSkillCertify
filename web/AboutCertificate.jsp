@@ -23,8 +23,8 @@
             margin: 0 auto;
             text-align: center;
             padding: 20px;
-            width: 90%;
-            height: 100vh;
+            width: 85%;
+            height: auto;
             background-color: aliceblue;
             display: flex;
         }
@@ -50,14 +50,15 @@
             border-radius: 4px;
             cursor: pointer;
             position: absolute;
-            bottom: 5%; 
-            left: 50%; 
+            bottom: 15%; 
             transform: translateX(-50%); 
         }
 
         .cert button:hover {
             background-color: #45a049;
         }
+        
+        
     </style>
 
     <body>
