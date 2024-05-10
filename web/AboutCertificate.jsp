@@ -49,8 +49,10 @@
             padding: 8px 16px;
             border-radius: 4px;
             cursor: pointer;
-            margin-top: 10vh;
-            /* Push the button to the bottom */
+            position: absolute;
+            bottom: 5%; 
+            left: 50%; 
+            transform: translateX(-50%); 
         }
 
         .cert button:hover {
