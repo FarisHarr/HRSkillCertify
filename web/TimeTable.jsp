@@ -204,56 +204,33 @@
                 </div>
 
                 <div class="table">
-                    <table id="table">
-                        <thead>
-                            <tr>
-                                <th>Certificate Type</th>
-                                <th>Class</th>
-                                <th>Date</th>
-                                <th>Time Slot</th> 
-                            </tr>
-                        </thead>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Class ID</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Attendance</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Assuming you have class data available in your JSP -->
+                        <tr>
 
-                        <tbody>
-                            <tr>
-                                <td>Certificate  A</td>
-                                <td>Class X</td>
-                                <td>2024-04-15</td>
-                                <td>
-                                    <select>
-                                        <option value="09:00 AM">09:00 AM</option>
-                                        <option value="10:00 AM">10:00 AM</option>
-                                        <option value="11:00 AM">11:00 AM</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Certificate B</td>
-                                <td>Class Y</td>
-                                <td>2024-04-16</td>
-                                <td>
-                                    <select>
-                                        <option value="09:00 AM">09:00 AM</option>
-                                        <option value="10:00 AM">10:00 AM</option>
-                                        <option value="11:00 AM">11:00 AM</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Certificate C</td>
-                                <td>Class Z</td>
-                                <td>2024-04-17</td>
-                                <td>
-                                    <select>
-                                        <option value="09:00 AM">09:00 AM</option>
-                                        <option value="10:00 AM">10:00 AM</option>
-                                        <option value="11:00 AM">11:00 AM</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            <td>
+                                
+                                
+                                <select name="attendance">
+                                    <option value="attend">Attend</option>
+                                    <option value="absent">Absent</option>
+                                </select>
+                            </td>
+                            <td><button>Submit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             </div>  
         </div>
 

@@ -13,79 +13,9 @@
         <title>Payment Page</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS/HomePage.css">
+        <link rel="stylesheet" type="text/css" href="CSS/Class.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
-
-    <style>
-        .container {
-            width: 50%;
-            height: 100%;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            text-align: center;
-            border-radius: 8px;
-            justify-content: center;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .container select,
-        input[type="text"],
-        input[type="file"] {
-            width: 50%;
-            padding: 10px;
-            margin: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-
-        button {
-            width: 30%;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .back-button {
-            width: 5%;
-            margin-top: 10px;
-            background-color: #45a049;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .back-button:hover {
-            background-color: #5f5f5f;
-        }
-    </style>
 
     <body>
         <%
@@ -121,62 +51,98 @@
             </nav>
         </header>
 
+<!--        <div class="container">
+            <div class="navbar">
+                <a href="HomePage.jsp">Home</a>
+                <a href="CandidateProfile.jsp">User Profile</a>
+                <a href="AboutCertificate.jsp">About Certificate</a>
+                <a href="TimeTable.jsp">Time Table</a>
+                <a href="Feedback.jsp">Feedback</a>
+            </div>-->
 
-        <%
-                    } else {
-                        out.println("Candidate not found.");
+
+            <%
+                        } else {
+                            out.println("Candidate not found.");
+                        }
+
+                        rs.close();
+                        ps.close();
+
+                        con.close();
+                    } catch (Exception e) {
+                        out.println("Error: " + e);
                     }
-
-                    rs.close();
-                    ps.close();
-
-                    con.close();
-                } catch (Exception e) {
-                    out.println("Error: " + e);
+                } else {
+                    // If the session doesn't exist or candidateID is not set, redirect to the login page
+                    response.sendRedirect("Login.jsp");
                 }
-            } else {
-                // If the session doesn't exist or candidateID is not set, redirect to the login page
-                response.sendRedirect("Login.jsp");
-            }
 
-        %>
+            %>
 
-        <div class="container">
-            <h2>Time Table</h2> <br>
+            <div class="container1">
+                <h2>Time Table</h2> <br>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Class ID</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Attendance</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Assuming you have class data available in your JSP -->
+                            <tr>
 
-            
-            <a href="javascript:history.back()" class="back-button">Back</a>
-        </div>
+                                <td>
+                                    
+                                    
+                                    <select name="attendance">
+                                        <option value="attend">Attend</option>
+                                        <option value="absent">Absent</option>
+                                    </select>
+                                </td>
+                                <td><button>Submit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-        <script>
+                <a href="javascript:history.back()" class="back-button">Back</a>
+            </div>
 
-            function signOut() {
-                // Redirect to the logout servlet or your logout logic
-                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-            }
+            <script>
 
-            function showSuccessMessage() {
-                // Show a popup message
-                alert("Payment submitted successfully!");
-            }
+                function signOut() {
+                    // Redirect to the logout servlet or your logout logic
+                    window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+                }
 
-            // Get today's date
-            var today = new Date();
+                function showSuccessMessage() {
+                    // Show a popup message
+                    alert("Payment submitted successfully!");
+                }
 
-            // Format date as YYYY-MM-DD
-            var year = today.getFullYear();
-            var month = ('0' + (today.getMonth() + 1)).slice(-2);
-            var day = ('0' + today.getDate()).slice(-2);
-            var formattedDate = year + '-' + month + '-' + day;
+                // Get today's date
+                var today = new Date();
 
-            // Set the value of the hidden input field
-            document.getElementById('date').value = formattedDate;
+                // Format date as YYYY-MM-DD
+                var year = today.getFullYear();
+                var month = ('0' + (today.getMonth() + 1)).slice(-2);
+                var day = ('0' + today.getDate()).slice(-2);
+                var formattedDate = year + '-' + month + '-' + day;
 
-        </script>
+                // Set the value of the hidden input field
+                document.getElementById('date').value = formattedDate;
 
-        <footer>
-            <p>&copy; HR SkillCertify 2023</p>
-        </footer>
+            </script>
+
+            <footer>
+                <p>&copy; HR SkillCertify 2023</p>
+            </footer>
 
     </body>
 

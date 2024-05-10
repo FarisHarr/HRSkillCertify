@@ -12,106 +12,12 @@
         <title>Manage Certificate</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS/StaffSkeleton.css">
+        <link rel="stylesheet" type="text/css" href="CSS/ManageCertificate.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">-->
 
     </head>
 
-    <style>
-        .info {
-            margin: 0 auto;
-            text-align: center;
-            padding: 20px;
-            width: 80%;
-            height: 100vh;
-            background-color: aliceblue;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .certificate-options {
-            display: flex;
-            align-items: center;
-        }
-
-
-        select {
-            height: 25px;
-            width: 140px;
-            /* Adjust the width as needed */
-            margin-left: 10px;
-            /* Other styles */
-
-
-        }
-
-
-        .table {
-            width: 100%;
-            margin-top: 20px;
-            overflow-x: auto;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th {
-            text-align: center;
-            color: white;
-            background-color: grey;
-            padding: 10px;
-        }
-
-        td,
-        th {
-            border: 1px solid black;
-            padding: 8px;
-        }
-
-        td {
-            background-color: whitesmoke;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        input[type="date"],
-        input[type="time"] {
-            padding: 8px;
-            border-radius: 5px;
-            background-color: #e3e3e3;
-            border: 1px solid #ccc;
-            width: 80%;
-        }
-
-        button {
-            padding: 5px 20px;
-            background-color: #4CAF50;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        @media screen and (max-width: 600px) {
-            .info {
-                width: 100%;
-            }
-        }
-
-        footer {
-            background-color: rgb(190, 190, 190); /* Set background color */
-            color: black; /* Set text color */
-            text-align: center; /* Center-align text */
-            padding: 10px; /* Add padding */
-            position: fixed; /* Fixed positioning at the bottom */
-            left: 0;
-            bottom: 0;
-            width: 100%; /* Full width */
-            height: 20px;
-        }
-    </style>
 
     <body>
         <header>
@@ -146,7 +52,53 @@
                 <a href="ManageCandidate.jsp">Manage Candidate</a>
             </div>
 
+            <!--Popup Register-->
+            <div class="popup" id="popup">
+                <div class="popup-content">
+                    <span class="close" onclick="hidePopup()">&times;</span>
+                    <h2>Register Class</h2>
+                    <br><br>
+                    <form action="RegisterClassServ" method="POST">
+                        <!-- <label for="class_ID">Class ID :</label>
+                        <input type="text" id="class_ID" name="class_ID" placeholder="Enter Class ID" required>
+                        <br><br>
+                        <label for="cand_ID">Candidate ID :</label>
+                        <input type="text" id="cand_ID" name="cand_ID" placeholder="Enter Candidate ID" required>
+                        <br><br> -->
+                        <label for="cert_Type">Certificate Type :</label>
+                        <select id="cert_Type" name="cert_Type" required>
+                            <option value="SKM">SKM - Sijil Kemahiran Malaysia</option>
+                            <option value="DKM">DKM - Diploma Kemahiran Malaysia</option>
+                            <option value="DLKM">DLKM - Diploma Lanjutan Kemahiran Malaysia</option>
+                        </select>
+                        <br><br>
+                        <label for="Date">Date :</label>
+                        <input type="date" id="Date" name="Date" required>
+                        <br><br>
+                        <label for="start_time">Start Time :</label>
+                        <input type="time" id="start_time" name="start_time" required>
+                        <br><br>
+                        <label for="end_Time">End Time :</label>
+                        <input type="time" id="end_Time" name="end_Time" required>
+                        <br><br>
+                        <!-- <label for="attendance">Attendance :</label>
+                        <select id="attendance" name="attendance" required>
+                            <option value="attend">Attend</option>
+                            <option value="absent">Absent</option>
+                        </select> -->
+                        <br><br>
+                        <div class="submit-button">
+                            <input class="submit" type="submit" value="Save">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+
             <div class="info">
+                <button class="register-product-button" onclick="showPopup()">Create Class</button>
+                <h2>Manage Certificate</h2> <br>
                 <div class="certificate-options">
                     <p>Choose the certificate : </p>
                     <select name="certificate">
@@ -157,64 +109,51 @@
                     </select>
                 </div>
 
-                <h2>Choose Your Class for Attendance</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Attendance ID</th>
+                            <th>Class ID</th>
+                            <th>Candidate ID</th>
+                            <th>Certificate Type</th>
+                            <th>Attendance</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Assuming you have attendance data available in your JSP -->
+                        <tr>
 
-                <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Certificate Type</th>
-                                <th>Class</th>
-                                <th>Date</th>
-                                <th>Time Slot</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <!-- Dummy data rows with input fields for date and time selection -->
-                            <tr>
-                                <td>Certificate A</td>
-                                <td>Class X</td>
-                                <td><input type="date"></td>
-                                <td><input type="time"></td>
-                                <td><button>Attend</button></td>
-                            </tr>
-                            <tr>
-                                <td>Certificate B</td>
-                                <td>Class Y</td>
-                                <td><input type="date"></td>
-                                <td><input type="time"></td>
-                                <td><button>Attend</button></td>
-                            </tr>
-                            <tr>
-                                <td>Certificate C</td>
-                                <td>Class Z</td>
-                                <td><input type="date"></td>
-                                <td><input type="time"></td>
-                                <td><button>Attend</button></td>
-                            </tr>
-                            <!-- End of dummy data rows -->
-                        </tbody>
-                    </table>
-                </div>
+                            <td><button>Create</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </div>
 
-            <script>
-                function toggleNavbar() {
-                    var navbar = document.querySelector('.navbar');
-                    navbar.classList.toggle('minimized');
-                }
+        <script>
+            function toggleNavbar() {
+                var navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('minimized');
+            }
 
-                function signOut() {
-                    // Redirect to the logout servlet or your logout logic
-                    window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-                }
-            </script>
+            function signOut() {
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
 
-            <footer>
-                <p>&copy; HR SkillCertify 2023</p>
-            </footer>
+            function showPopup() {
+                document.getElementById("popup").style.display = "block";
+            }
+
+            function hidePopup() {
+                document.getElementById("popup").style.display = "none";
+            }
+        </script>
+
+        <footer>
+            <p>&copy; HR SkillCertify 2023</p>
+        </footer>
 
     </body>
 

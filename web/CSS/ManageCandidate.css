@@ -222,8 +222,8 @@ button {
     margin: 0 auto;
     text-align: center;
     padding: 20px;
-    width: 100%;
-    height: auto;
+    width: 90%;
+    height: 100vh;
     background-color: #f0f0f0;
 }
 
@@ -232,7 +232,7 @@ button {
     margin-bottom: 10px;
 }
 
-.info button{
+/*.info button{
     display: block;
     float : right;
     width: 120px;
@@ -243,7 +243,7 @@ button {
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
-}
+}*/
 
 /*popup register*/
 .popup {
@@ -454,10 +454,43 @@ input[type=number] {
 }
 
 
+
+/* Search section */
+.search-section {
+    margin-bottom: 20px;
+    text-align: right; /* Align the search section to the right */
+}
+
+/* Search input */
+.search-section input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 250px; /* Adjust width as needed */
+}
+
+/* Search button */
+.search-section button {
+    width: 80px;
+    padding: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+
 footer {
-    background-color: rgb(190, 190, 190);
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: rgb(190, 190, 190); /* Set background color */
+    color: black; /* Set text color */
+    text-align: center; /* Center-align text */
+    padding: 10px; /* Add padding */
+    position: fixed; /* Fixed positioning at the bottom */
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Full width */
 }
