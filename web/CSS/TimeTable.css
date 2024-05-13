@@ -215,6 +215,16 @@ button {
     background-color: #f0f0f0;
 }
 
+/*.infoCert {
+    margin: 0 ;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    display: flex;
+}*/
+
 .info img {
     max-width: 100%;
     height: auto;
