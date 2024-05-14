@@ -89,7 +89,8 @@
 
             <div class="info">
                 <button class="register-product-button" onclick="showPopup()">Create Class</button>
-                <h2>Manage Certificate</h2> <br>
+                <h2>Manage Attendance</h2> <br>
+                <button class="register-product-button1" onclick="location.href='DeleteClass.jsp'">Manage Class</button>
                 <div class="certificate-options">
                     <p>Choose the certificate : </p>
                     <select name="certificate">
