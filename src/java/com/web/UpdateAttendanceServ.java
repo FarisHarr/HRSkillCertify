@@ -15,24 +15,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author FarisHarr
- */
-@WebServlet("/UpdatePaymentServ")
-public class UpdatePaymentServ extends HttpServlet {
+@WebServlet("/UpdateAttendanceServ")
+public class UpdateAttendanceServ extends HttpServlet {
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String paymentID = request.getParameter("paymentID");
-        String newStatus = request.getParameter("newStatus");
+        // Get the form parameters
+        int attendanceID = Integer.parseInt(request.getParameter("attendanceID"));
+        String attendanceStatus = request.getParameter("attendanceStatus");
 
-        // Update status in the database
+        // Update attendance status in the database
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-            PreparedStatement ps = con.prepareStatement("UPDATE payment SET status = ? WHERE payment_ID = ?");
-            ps.setString(1, newStatus);
-            ps.setString(2, paymentID);
+            PreparedStatement ps = con.prepareStatement("UPDATE attendance SET attendance = ? WHERE attendance_ID = ?");
+            ps.setString(1, attendanceStatus);
+            ps.setInt(2, attendanceID);
             int rowsAffected = ps.executeUpdate();
             con.close();
 
@@ -40,27 +38,13 @@ public class UpdatePaymentServ extends HttpServlet {
                 // Redirect to homepage upon successful registration
                 String alertMessage = "Update Successfull";
                 response.setContentType("text/html");
-                String script = "<script>alert('" + alertMessage + "'); window.location.href='ManagePayment.jsp';</script>";
+                String script = "<script>alert('" + alertMessage + "'); window.location.href='ManageCertificate.jsp';</script>";
                 response.getWriter().println(script);
             } else {
-                response.sendRedirect("ManagePayment.jsp"); // Redirect to an error page
+                response.sendRedirect("ManageCertificate.jsp"); // Redirect to an error page
             }
         } catch (Exception e) {
-            response.sendRedirect("ManagePayment.jsp"); // Redirect to an error page
-        }
-
-    }
-
-    public String getBackgroundColor(String status) {
-        switch (status) {
-            case "Pending":
-                return "#ffd700"; // Gold color for pending option
-            case "Approved":
-                return "#32cd32"; // Lime green color for approved option
-            case "Rejected":
-                return "#ff6347"; // Tomato red color for rejected option
-            default:
-                return "#ffffff"; // Default background color (white)
+            response.sendRedirect("StaffDashboard.jsp"); // Redirect to an error page
         }
     }
 }

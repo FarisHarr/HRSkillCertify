@@ -192,10 +192,10 @@
                     window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
                 }
 
-                function showSuccessMessage() {
-                    // Show a popup message
-                    alert("Update Successfull");
-                }
+//                function showSuccessMessage() {
+//                    // Show a popup message
+//                    alert("Update Successfull");
+//                }
 
             </script>
 

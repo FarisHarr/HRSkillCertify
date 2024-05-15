@@ -4,6 +4,7 @@
     Author     : FarisHarr
 --%>
 
+<%@ page import="java.sql.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -90,40 +91,84 @@
             <div class="info">
                 <button class="register-product-button" onclick="showPopup()">Create Class</button>
                 <h2>Manage Attendance</h2> <br>
-                <button class="register-product-button1" onclick="location.href='DeleteClass.jsp'">Manage Class</button>
-                <div class="certificate-options">
-                    <p>Choose the certificate : </p>
-                    <select name="certificate">
-                        <option value="" disabled selected>Please choose</option>
-                        <option value="SKM">SKM - Sijil Kemahiran Malaysia</option>
-                        <option value="DKM">DKM - Diploma Kemahiran Malaysia</option>
-                        <option value="DLKM">DLKM - Diploma Lanjutan Kemahiran Malaysia</option>
-                    </select>
-                </div>
+                <button class="register-product-button1" onclick="location.href = 'DeleteClass.jsp'">Manage Class</button>
+                
+<!--<div class="search-section">
+    <form action="ManageCertificate.jsp" method="GET">
+        <input type="text" name="searchClassID" placeholder="Search by Class ID">
+        <button type="submit">Search</button>
+    </form>
+</div>-->
 
-                <table>
+
+
+                <table id="attendanceTable">
                     <thead>
                         <tr>
                             <th>Attendance ID</th>
                             <th>Class ID</th>
                             <th>Candidate ID</th>
-                            <th>Certificate Type</th>
                             <th>Attendance</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Assuming you have attendance data available in your JSP -->
-                        <tr>
 
-                            <td><button>Create</button></td>
+                        <!-- Assuming you have attendance data available in your JSP -->
+                        <%
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("SELECT a.attendance_ID, a.class_ID, c.cand_Name, a.attendance FROM attendance a JOIN candidate c ON a.cand_ID = c.cand_ID");
+
+                                while (rs.next()) {
+                                    int attendanceID = rs.getInt("attendance_ID");
+                                    String classID = rs.getString("class_ID");
+                                    String candidateName = rs.getString("cand_Name");
+                                    String attendanceStatus = rs.getString("attendance");
+                        %>
+                        <tr>
+                            <td><%= attendanceID%></td>
+                            <td><%= classID%></td>
+                            <td><%= candidateName%></td>
+                            <td>
+                                <form onsubmit="updateStatus(this, '<%= attendanceID%>'); return false;">
+
+                                    <select name="attendanceStatus">
+                                        <option value="--" <%= attendanceStatus.equals("--") ? "selected" : ""%>>--</option>
+                                        <option value="Absent" <%= attendanceStatus.equals("Absent") ? "selected" : ""%>>Absent</option>
+                                        <option value="Present" <%= attendanceStatus.equals("Present") ? "selected" : ""%>>Present</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+
+                                    <input type="hidden" name="attendanceID" value="<%= attendanceID%>">
+                                    <input type="submit" value="Update" onclick="showSuccessMessage()">
+                                </form>
+                            </td>
                         </tr>
+                        <%
+                                }
+                                rs.close();
+                                st.close();
+                                con.close();
+                            } catch (Exception e) {
+                                out.println("Error: " + e.getMessage());
+                            }
+                        %>
                     </tbody>
                 </table>
+
             </div>
         </div>
 
         <script>
+
+            function updateStatus(form, attendanceID) {
+                form.action = "UpdateAttendanceServ";
+                form.method = "POST";
+                form.submit();
+            }
+
             function toggleNavbar() {
                 var navbar = document.querySelector('.navbar');
                 navbar.classList.toggle('minimized');
@@ -141,6 +186,33 @@
             function hidePopup() {
                 document.getElementById("popup").style.display = "none";
             }
+
+            function filterAttendance() {
+                var selectBox = document.getElementById("certificateSelect");
+                var selectedOption = selectBox.options[selectBox.selectedIndex].value;
+                var table = document.getElementById("attendanceTable");
+                var rows = table.getElementsByTagName("tr");
+
+                for (var i = 0; i < rows.length; i++) {
+                    var row = rows[i];
+                    var cell = row.getElementsByTagName("td")[3]; // Assuming the attendance status is in the fourth column
+
+                    if (cell) {
+                        var status = cell.textContent || cell.innerText;
+
+                        if (selectedOption === '-' || status === selectedOption) {
+                            row.style.display = "";
+                        } else {
+                            row.style.display = "none";
+                        }
+                    }
+                }
+            }
+
+//                function showSuccessMessage() {
+//                    // Show a popup message
+//                    alert("Update Successfull");
+//                }
         </script>
 
         <footer>

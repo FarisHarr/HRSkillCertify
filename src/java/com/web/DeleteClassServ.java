@@ -40,7 +40,7 @@ public class DeleteClassServ extends HttpServlet {
                     int rowsDeleted = pst.executeUpdate();
                     
                     if (rowsDeleted > 0) {
-                        response.getWriter().println("<script>alert('Class has been removed'); window.location='DeleteClass.jsp';</script>");
+                        response.getWriter().println("<script>alert('Class has been removed'); window.location='ManageCertificate.jsp';</script>");
                     } else {
                         request.setAttribute("errorMessage", "Class not found or couldn't be deleted.");
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/TestPage.jsp");

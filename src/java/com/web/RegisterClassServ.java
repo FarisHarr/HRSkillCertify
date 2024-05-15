@@ -52,7 +52,7 @@ public class RegisterClassServ extends HttpServlet {
                     // Set content type to HTML
                     response.setContentType("text/html");
 
-                    response.getWriter().println("<script>alert('Attendance registered successfully!'); window.location='ManageCertificate.jsp';</script>");
+                    response.getWriter().println("<script>alert('Class registered successfully!'); window.location='ManageCertificate.jsp';</script>");
 
                 } else {
                     // Redirect to attendance page

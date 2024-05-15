@@ -78,94 +78,91 @@
             </div>
 
             <!--<div class="infoCert">-->
-                <div class="cert">
-                    <h2>Certificate</h2>
-                    <br>
-                    <h3><%= certificateType%></h3> 
-                    <br>
-                    <p>Your payment status : <%= status%> </p> 
-                    <br> 
-                    <%-- Add conditional check for the Attend button --%>
-                    <% if (status.equals("Pending") || status.equals("Rejected")) { %>
-                    <form action="Payment.jsp">
-                        <button type="submit">Attend</button>
-                    </form>
-                    <% } else { %>
-                    <form action="Class.jsp">
-                        <button type="submit">Attend</button>
-                    </form>
-                    <% } %>
+            <div class="cert">
+                <h2>Certificate</h2>
+                <br>
+                <h3><%= certificateType%></h3> 
+                <br>
+                <p>Your payment status : <%= status%> </p> 
+                <br> 
+                <%-- Add conditional check for the Attend button --%>
+                <% if (status.equals("Pending") || status.equals("Rejected")) { %>
+                <form action="Payment.jsp">
+                    <button type="submit">Attend</button>
+                </form>
+                <% } else { %>
+                <form action="Class.jsp">
+                    <button type="submit">Attend</button>
+                </form>
+                <% } %>
 
-                </div>
+            </div>
 
-                <div class="container1">
-                    <h2>Time Table</h2>
-                    <div class="table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Class ID</th>
-                                    <th>Date</th>
-                                    <th>Start Time</th>
-                                    <th>End Time</th>
-                                    <!--<th>Attendance</th>-->
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <%
-
-                                            } else {
-                                                out.println("Candidate not found.");
-                                            }
-
-                                            rs.close();
-                                            ps.close();
-                                            con.close();
-                                        } catch (Exception e) {
-                                            out.println("Error: " + e);
+            <div class="container1">
+                <h2>Attendance Table</h2>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Class ID</th>
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Attendance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                        } else {
+                                            out.println("Candidate not found.");
                                         }
-                                    } else {
-                                        response.sendRedirect("Login.jsp");
-                                    }
 
-                                    try {
-                                        Class.forName("com.mysql.jdbc.Driver");
-                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-                                        Statement st = con.createStatement();
-                                        ResultSet rs = st.executeQuery("SELECT class_ID, date, start_Time, end_Time from class");
-
-                                        while (rs.next()) {
-                                            String classID = rs.getString("class_ID");
-                                            String date = rs.getString("date");
-                                            String startTime = rs.getString("start_Time");
-                                            String endTime = rs.getString("end_Time");
-                                            //                                    String attendance = rs.getString("attendance");
-
-                                            out.println("<tr>");
-                                            out.println("<td>" + classID + "</td>");
-                                            out.println("<td>" + date + "</td>");
-                                            out.println("<td>" + startTime + "</td>");
-                                            out.println("<td>" + endTime + "</td>");
-                                            //                                    out.println("<td>" + attendance + "</td>");
-                                            out.println("<td><button>Edit</button></td>");
-                                            out.println("</tr>");
-                                        }
+                                        rs.close();
+                                        ps.close();
+                                        con.close();
                                     } catch (Exception e) {
-                                        out.println("Error: " + e.getMessage());
+                                        out.println("Error: " + e);
                                     }
-                                %>
+                                } else {
+                                    response.sendRedirect("Login.jsp");
+                                }
 
-                                <!--                    <select name="attendance">
-                                                        <option value="attend">Attend</option>
-                                                        <option value="absent">Absent</option>
-                                                    </select>-->
+                                // Java code to fetch and display attendance data from the database
+                                try {
+                                    Class.forName("com.mysql.jdbc.Driver");
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                                    PreparedStatement ps = con.prepareStatement("SELECT a.class_ID, c.date, c.start_Time, c.end_Time, a.attendance FROM attendance a JOIN class c ON a.class_ID = c.class_ID WHERE a.cand_ID = ?");
+                                    ps.setString(1, candidateID);
+                                    ResultSet rs = ps.executeQuery();
 
-                            </tbody>
-                        </table>
-                    </div>
+                                    while (rs.next()) {
+                                        String classID = rs.getString("class_ID");
+                                        String date = rs.getString("date");
+                                        String startTime = rs.getString("start_Time");
+                                        String endTime = rs.getString("end_Time");
+                                        String attendance = rs.getString("attendance");
+
+                                        out.println("<tr>");
+                                        out.println("<td>" + classID + "</td>");
+                                        out.println("<td>" + date + "</td>");
+                                        out.println("<td>" + startTime + "</td>");
+                                        out.println("<td>" + endTime + "</td>");
+                                        out.println("<td>" + attendance + "</td>");
+                                        out.println("</tr>");
+                                    }
+                                    rs.close();
+                                    ps.close();
+                                    con.close();
+                                } catch (Exception e) {
+                                    out.println("Error: " + e.getMessage());
+                                }
+                            %>
+                        </tbody>
+                    </table>
                 </div>
-            <!--</div>-->             
+            </div>
+
+
 
             <script>
                 function toggleNavbar() {
