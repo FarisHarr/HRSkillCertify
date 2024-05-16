@@ -9,7 +9,7 @@
 <html>
 
     <head>
-        <title>Admin Dashboard</title>
+        <title>Admin Dashboard </title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/StaffDashboard.css">
@@ -51,7 +51,7 @@
             </div>
 
             <div class="info">
-                <h1>Admin Dashboard</h1>
+                <h1>Admin Dashboard ni buat report</h1>
 
                
             </div>
