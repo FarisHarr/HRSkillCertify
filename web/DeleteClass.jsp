@@ -14,7 +14,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/Class.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">-->
     </head>
     <body>
         <header>
@@ -33,7 +32,7 @@
                 </li>
             </nav>
         </header>
-        
+
         <br><h2>Time Table</h2>
         <div class="container1">
             <div class="table">
@@ -53,7 +52,7 @@
                                 Class.forName("com.mysql.jdbc.Driver");
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
                                 Statement st = con.createStatement();
-                                ResultSet rs = st.executeQuery("SELECT class_ID, date, start_Time, end_Time FROM class");
+                                ResultSet rs = st.executeQuery("SELECT class_ID, date, start_Time, end_Time FROM class WHERE is_archived = FALSE");
 
                                 while (rs.next()) {
                                     String classID = rs.getString("class_ID");
@@ -70,7 +69,7 @@
                                     out.println("<form action='DeleteClassServ' method='post' onsubmit='return confirmDelete();' style='display:inline;'>");
                                     out.println("<input type='hidden' name='classID' value='" + classID + "' />");
                                     out.println("<input type='hidden' name='action' value='Delete' />");
-                                    out.println("<button type='submit' class='register-product-button1'>Delete</button>");
+                                    out.println("<button type='submit' class='register-product-button1'>Archive</button>");
                                     out.println("</form>");
                                     out.println("</td>");
                                     out.println("</tr>");
@@ -92,20 +91,8 @@
             }
 
             function confirmDelete() {
-                return confirm("Are you sure you want to delete this class?");
+                return confirm("Are you sure you want to archive this class?");
             }
-
-            function showSuccessMessage() {
-                alert("Payment submitted successfully!");
-            }
-
-            var today = new Date();
-            var year = today.getFullYear();
-            var month = ('0' + (today.getMonth() + 1)).slice(-2);
-            var day = ('0' + today.getDate()).slice(-2);
-            var formattedDate = year + '-' + month + '-' + day;
-
-            document.getElementById('date').value = formattedDate;
         </script>
 
         <footer>
@@ -113,5 +100,6 @@
         </footer>
     </body>
 </html>
+
 
 

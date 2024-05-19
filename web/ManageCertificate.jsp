@@ -107,7 +107,7 @@
                         <tr>
                             <th>Attendance ID</th>
                             <th>Class ID</th>
-                            <th>Candidate ID</th>
+                            <th>Candidate Name</th>
                             <th>Attendance</th>
                         </tr>
                     </thead>

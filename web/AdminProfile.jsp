@@ -56,7 +56,7 @@
             <nav>
                 <li class="dropdown">
                     <!-- <a class="nav-link">Account</a> -->
-                    <a class="nav-link">Admin</a>
+                    <a class="nav-link">Administrator</a>
                     <ul class="dropdown-content">
                         <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="AdminProfile.jsp">User Profile</a></li>
@@ -69,8 +69,8 @@
         <div class="co">
             <div class="navbar">
                 <a href="AdminProfile.jsp">User Profile</a>
+                <a href="AdminDashboard.jsp">Dashboard</a>
                 <a href="ManageStaff.jsp">Manage Manager</a>
-                <a href="Report.jsp">Report</a>
                 <a href="ViewFeedback2.jsp">View Feedback</a>
             </div>
             <div class="container" id="myNavbar">

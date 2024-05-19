@@ -1,6 +1,6 @@
-<%-- 
+<%--
     Document   : Class
-    Created on : 1 May 2024, 3:29:18 pm
+    Created on : 1 May 2024, 3:29:18 pm
     Author     : FarisHarr
 --%>
 
@@ -73,7 +73,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Class ID</th>
+                            <th>Class Name</th>
                             <th>Date</th>
                             <th>Start Time</th>
                             <th>End Time</th>
@@ -85,25 +85,24 @@
                             try {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-                                Statement st = con.createStatement();
-                                ResultSet rs = st.executeQuery("SELECT class_ID, date, start_Time, end_Time FROM class");
+                                PreparedStatement ps = con.prepareStatement("SELECT class_ID, cert_Type, date, start_Time, end_Time FROM class WHERE is_archived = FALSE");
+                                ResultSet rs = ps.executeQuery();
 
                                 while (rs.next()) {
-                                    String classID = rs.getString("class_ID");
+                                    String certType = rs.getString("cert_Type");
                                     String date = rs.getString("date");
                                     String startTime = rs.getString("start_Time");
                                     String endTime = rs.getString("end_Time");
                         %>
                         <tr>
-                            <td><%= classID%></td>
+                            <td><%= certType%></td>
                             <td><%= date%></td>
                             <td><%= startTime%></td>
                             <td><%= endTime%></td>
                             <td>
                                 <form action="AttendanceServ" method="post" style="display:inline;">
-                                    <input type="hidden" name="class_ID" value="<%= classID%>">
+                                    <input type="hidden" name="class_ID" value="<%= certType%>">
                                     <input type="hidden" name="cand_ID" value="<%= candidateID%>">
-<!--                                    <input type="hidden" name="cert_Type" value="XYZ">  Sample certificate type -->
                                     <input type="hidden" name="attendance" value="--">
                                     <button type="submit">Join</button>
                                 </form>

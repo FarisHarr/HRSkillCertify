@@ -33,7 +33,7 @@
             </div>
             <nav>
                 <li class="dropdown">
-                    <a class="nav-link">Admin</a>
+                    <a class="nav-link">Administrator</a>
                     <ul class="dropdown-content">
                         <li><a href="AdminProfile.jsp">User Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
@@ -82,8 +82,8 @@
         <div class="container">
             <div class="navbar">
                 <a href="AdminProfile.jsp">User Profile</a>
+                <a href="AdminDashboard.jsp">Dashboard</a>
                 <a href="ManageStaff.jsp">Manage Manager</a>
-                <a href="Report.jsp">Report</a>
                 <a href="ViewFeedback2.jsp">View Feedback</a>
             </div>
 

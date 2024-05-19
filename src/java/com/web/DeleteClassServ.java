@@ -17,12 +17,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author FarisHarr
- */
 @WebServlet("/DeleteClassServ")
 public class DeleteClassServ extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -35,14 +32,14 @@ public class DeleteClassServ extends HttpServlet {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin")) {
-                    PreparedStatement pst = con.prepareStatement("DELETE FROM class WHERE class_ID = ?");
+                    PreparedStatement pst = con.prepareStatement("UPDATE class SET is_archived = TRUE WHERE class_ID = ?");
                     pst.setString(1, classID);
-                    int rowsDeleted = pst.executeUpdate();
-                    
-                    if (rowsDeleted > 0) {
-                        response.getWriter().println("<script>alert('Class has been removed'); window.location='ManageCertificate.jsp';</script>");
+                    int rowsUpdated = pst.executeUpdate();
+
+                    if (rowsUpdated > 0) {
+                        response.getWriter().println("<script>alert('Class has been archived'); window.location='ManageCertificate.jsp';</script>");
                     } else {
-                        request.setAttribute("errorMessage", "Class not found or couldn't be deleted.");
+                        request.setAttribute("errorMessage", "Class not found or couldn't be archived.");
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/TestPage.jsp");
                         dispatcher.forward(request, response);
                     }
@@ -53,9 +50,7 @@ public class DeleteClassServ extends HttpServlet {
                 dispatcher.forward(request, response);
             }
         } else if (action != null && action.equals("Cancel")) {
-            // Redirect back to the previous page
             response.sendRedirect("DeleteClass.jsp");
         }
     }
 }
-
