@@ -37,7 +37,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 50px;
             margin: 30px;
-            margin-left: 100px;
+            margin-left: 70px;
             width: 500px;
             border-radius: 8px;
             text-align: center;
@@ -49,22 +49,22 @@
         .cert2 {
             background-color: rgb(199, 199, 199);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 50px;
+            padding: 30px;
             margin: 30px;
-            width: 300px;
+            width: 400px;
             border-radius: 8px;
             text-align: center;
             display: flex;
             flex-direction: column;
 
         }
-        
+
         .container {
-    width: 100%;
-    height: 100vh;
-    margin: 0 auto;
-    display: flex; /* Use flexbox to position children side by side */
-}
+            width: 100%;
+            height: 100vh;
+            margin: 0 auto;
+            display: flex; /* Use flexbox to position children side by side */
+        }
 
         /* Basic form styling */
         #feedbackForm {
@@ -87,7 +87,9 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+            resize: none;
         }
+        
 
         /* Style for submit button */
         #feedbackForm button[type="submit"] {
@@ -141,10 +143,17 @@
         }
 
         .review {
-            width : auto;
-            height: 50vh;
+            width: 100%;
+            height: 60vh;
             background-color: whitesmoke;
             /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+            position: relative; /* Ensure relative positioning for the iframe */
+        }
+
+        .review iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
         }
 
 
@@ -216,7 +225,8 @@
             <div class="cert2">
                 <h2>Contact Us</h2><br>
                 <div class="review">
-
+                    <!-- Embedded Google Map -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7958.560217539045!2d100.52152113677145!3d5.503182003707448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b002bb55aa7ff%3A0x3b7aefb6a76b91b3!2s1336%2C%20Jalan%20Serai%20Wangi%2013%2F6%2C%2009010%20Padang%20Serai%2C%20Kedah%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1684642959811!5m2!1sen!2smy" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <form id="contactus">
                     <label for="contactus"></label><br>
@@ -224,7 +234,7 @@
                         <a href="https://www.facebook.com/harris.hussain.58" target="_blank" title="Facebook"><i class="fab fa-facebook"></i><br> HR Skill Solutions</a>
                         <a href="https://pppkt.onpay.my/order/form/pppktonlinetajaan" target="_blank" title="Info"><i class="fas fa-envelope"></i><br> Information</a>
                         <a href="https://api.whatsapp.com/send?phone=60197293275&text=PPKT24" target="_blank" title="WhatsApp">
-                            <i class="fab fa-whatsapp"></i> <br> Contact Us </a>   
+                            <i class="fab fa-whatsapp"></i> <br> WhatsApp </a>   
                     </div>
                 </form>
             </div>
