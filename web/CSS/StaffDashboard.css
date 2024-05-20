@@ -200,7 +200,7 @@ button {
     text-align: center;
     padding: 20px;
     width: 70%;
-    height: 100vh;
+    height: auto;
     background-color: aliceblue;
 }
 

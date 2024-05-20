@@ -322,8 +322,8 @@ table {
 
 th {
     text-align: left;
-    color: white;
-    background-color: grey;
+    color: black;
+    background-color: #99ccff;
 }
 
 td,

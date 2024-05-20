@@ -15,10 +15,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/ManageCertificate.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     </head>
-
 
     <body>
         <header>
@@ -89,16 +88,13 @@
 
 
             <div class="info">
-                <button class="register-product-button" onclick="showPopup()">Create Class</button>
-                <h2>Manage Attendance</h2> <br>
                 <button class="register-product-button1" onclick="location.href = 'DeleteClass.jsp'">Manage Class</button>
-                
-<!--<div class="search-section">
-    <form action="ManageCertificate.jsp" method="GET">
-        <input type="text" name="searchClassID" placeholder="Search by Class ID">
-        <button type="submit">Search</button>
-    </form>
-</div>-->
+                <button class="register-product-button" onclick="showPopup()">
+                    <i class="fas fa-plus"></i>
+                </button>
+
+
+                <h2>Manage Attendance</h2> <br>
 
 
 
@@ -119,7 +115,11 @@
                                 Class.forName("com.mysql.jdbc.Driver");
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
                                 Statement st = con.createStatement();
-                                ResultSet rs = st.executeQuery("SELECT a.attendance_ID, a.class_ID, c.cand_Name, a.attendance FROM attendance a JOIN candidate c ON a.cand_ID = c.cand_ID");
+                                ResultSet rs = st.executeQuery("SELECT a.attendance_ID, a.class_ID, c.cand_Name, a.attendance "
+                                        + "FROM attendance a "
+                                        + "JOIN candidate c ON a.cand_ID = c.cand_ID "
+                                        + "JOIN class cl ON a.class_ID = cl.class_ID "
+                                        + "WHERE cl.is_archived = FALSE");
 
                                 while (rs.next()) {
                                     int attendanceID = rs.getInt("attendance_ID");
@@ -176,7 +176,7 @@
 
             function signOut() {
                 // Redirect to the logout servlet or your logout logic
-                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+                window.location.href = 'LogOutServ'; // Replace 'LogOutServ' with your actual logout servlet
             }
 
             function showPopup() {
@@ -209,10 +209,6 @@
                 }
             }
 
-//                function showSuccessMessage() {
-//                    // Show a popup message
-//                    alert("Update Successfull");
-//                }
         </script>
 
         <footer>

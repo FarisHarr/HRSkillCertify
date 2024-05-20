@@ -14,6 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/StaffDashboard.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     </head>
 
@@ -53,22 +54,89 @@
             </div>
 
             <div class="info">
-                <h1>Manager Dashboard</h1>
-                <!--<img src="IMGDraft/HomePage.png">-->    
-            </div>
+
+            <h2>Attendance Overview</h2>
+            <canvas id="attendanceChart" width="400" height="200"></canvas>
+            
+            <h2>Feedback Summary</h2>
+            <canvas id="feedbackChart" width="100" height="100"></canvas>
+        </div>
         </div>
 
         <script>
-            function toggleNavbar() {
-                var navbar = document.querySelector('.navbar');
-                navbar.classList.toggle('minimized');
-            }
-            
-            function signOut() {
-            // Redirect to the logout servlet or your logout logic
-            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+        function toggleNavbar() {
+            var navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('minimized');
         }
-        </script>
+
+        function signOut() {
+            // Redirect to the logout servlet or your logout logic
+            window.location.href = 'LogOutServ';
+        }
+
+        // Dummy data for the charts
+        const attendanceData = {
+            labels: ['Class A', 'Class B', 'Class C', 'Class D'],
+            datasets: [{
+                label: 'Attendance Percentage',
+                data: [85, 90, 75, 80],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 2
+            }]
+        };
+
+        const feedbackData = {
+            labels: ['Positive', 'Neutral', 'Negative'],
+            datasets: [{
+                label: 'Feedback Count',
+                data: [65, 20, 15],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        window.onload = function() {
+            var ctxAttendance = document.getElementById('attendanceChart').getContext('2d');
+            var attendanceChart = new Chart(ctxAttendance, {
+                type: 'bar',
+                data: attendanceData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+
+//            var ctxFeedback = document.getElementById('feedbackChart').getContext('2d');
+//            var feedbackChart = new Chart(ctxFeedback, {
+//                type: 'pie',
+//                data: feedbackData
+//            });
+        };
+    </script>
 
         <footer>
             <p>&copy; HR SkillCertify 2023</p>

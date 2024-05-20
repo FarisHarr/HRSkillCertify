@@ -89,6 +89,7 @@
                                 ResultSet rs = ps.executeQuery();
 
                                 while (rs.next()) {
+                                    String classID = rs.getString("class_ID");
                                     String certType = rs.getString("cert_Type");
                                     String date = rs.getString("date");
                                     String startTime = rs.getString("start_Time");
@@ -101,7 +102,7 @@
                             <td><%= endTime%></td>
                             <td>
                                 <form action="AttendanceServ" method="post" style="display:inline;">
-                                    <input type="hidden" name="class_ID" value="<%= certType%>">
+                                    <input type="hidden" name="class_ID" value="<%= classID%>">
                                     <input type="hidden" name="cand_ID" value="<%= candidateID%>">
                                     <input type="hidden" name="attendance" value="--">
                                     <button type="submit">Join</button>
