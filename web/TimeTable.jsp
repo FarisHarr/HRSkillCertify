@@ -88,7 +88,7 @@
                 <%-- Add conditional check for the Attend button --%>
                 <% if (status.equals("Pending") || status.equals("Rejected")) { %>
                 <form action="Payment.jsp">
-                    <button type="submit">Attend</button>
+                    <button type="submit">Update Payment</button>
                 </form>
                 <% } else { %>
                 <form action="Class.jsp">
@@ -131,19 +131,19 @@
                                 try {
                                     Class.forName("com.mysql.jdbc.Driver");
                                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-                                    PreparedStatement ps = con.prepareStatement("SELECT a.class_ID, c.cert_Type, c.date, c.start_Time, c.end_Time, a.attendance FROM attendance a JOIN class c ON a.class_ID = c.class_ID WHERE a.cand_ID = ?");
+                                    PreparedStatement ps = con.prepareStatement("SELECT a.class_ID, c.class_Name, c.date, c.start_Time, c.end_Time, a.attendance FROM attendance a JOIN class c ON a.class_ID = c.class_ID WHERE a.cand_ID = ?");
                                     ps.setString(1, candidateID);
                                     ResultSet rs = ps.executeQuery();
 
                                     while (rs.next()) {
-                                        String certType = rs.getString("cert_Type");
+                                        String className = rs.getString("class_Name");
                                         String date = rs.getString("date");
                                         String startTime = rs.getString("start_Time");
                                         String endTime = rs.getString("end_Time");
                                         String attendance = rs.getString("attendance");
 
                                         out.println("<tr>");
-                                        out.println("<td>" + certType + "</td>");
+                                        out.println("<td>" + className + "</td>");
                                         out.println("<td>" + date + "</td>");
                                         out.println("<td>" + startTime + "</td>");
                                         out.println("<td>" + endTime + "</td>");

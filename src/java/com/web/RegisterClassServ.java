@@ -28,7 +28,7 @@ public class RegisterClassServ extends HttpServlet {
             throws ServletException, IOException {
 
         // Get form parameters
-        String certType = request.getParameter("cert_Type");
+        String className = request.getParameter("class_Name");
         String date = request.getParameter("date");
         String startTime = request.getParameter("start_time");
         String endTime = request.getParameter("end_Time");
@@ -37,9 +37,9 @@ public class RegisterClassServ extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             String myURL = "jdbc:mysql://localhost/hrsc";
 
-            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); PreparedStatement ps = myConnection.prepareStatement("INSERT INTO class(cert_Type, date, start_Time, end_Time) VALUES (?, ?, ?, ?)")) {
+            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); PreparedStatement ps = myConnection.prepareStatement("INSERT INTO class(class_Name, date, start_Time, end_Time) VALUES (?, ?, ?, ?)")) {
 
-                ps.setString(1, certType);
+                ps.setString(1, className);
                 ps.setString(2, date);
                 ps.setString(3, startTime);
                 ps.setString(4, endTime);

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+
 @WebServlet("/RegisterCertServ")
 @MultipartConfig
 public class RegisterCertServ extends HttpServlet {
@@ -45,6 +46,7 @@ public class RegisterCertServ extends HttpServlet {
         Part filePart = request.getPart("receipt"); // Retrieves <input type="file" name="receipt">
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
         String contentType = filePart.getContentType();
+        
         // Check if the uploaded file is an image
         if (contentType.startsWith("image/")) {
             // Proceed with storing the image
@@ -54,6 +56,18 @@ public class RegisterCertServ extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
                 String myURL = "jdbc:mysql://localhost/hrsc";
                 try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin")) {
+                    
+                    // Check if cand_ID already exists in certificate table
+                    try (PreparedStatement checkStmt = myConnection.prepareStatement("SELECT cand_ID FROM certificate WHERE cand_ID = ?")) {
+                        checkStmt.setString(1, candidateID);
+                        ResultSet rs = checkStmt.executeQuery();
+                        if (rs.next()) {
+                            // Candidate already registered for a certificate
+                            response.getWriter().println("<script>alert('You have already registered for this certificate!'); window.location='TimeTable.jsp';</script>");
+                            return;
+                        }
+                    }
+
                     // Prepare statement to insert file data into database
                     try (PreparedStatement insertPaymentStatement = myConnection.prepareStatement("INSERT INTO payment (cand_ID, cert_Type, price, date, status, receipt) VALUES (?, ?, ?, ?, ?, ?)")) {
                         insertPaymentStatement.setString(1, candidateID);
@@ -108,3 +122,5 @@ public class RegisterCertServ extends HttpServlet {
         }
     }
 }
+
+

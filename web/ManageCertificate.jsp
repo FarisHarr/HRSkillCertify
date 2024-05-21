@@ -16,7 +16,6 @@
         <link rel="stylesheet" type="text/css" href="CSS/ManageCertificate.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     </head>
 
     <body>
@@ -59,11 +58,12 @@
                     <h2>Register Class</h2>
                     <br><br>
                     <form action="RegisterClassServ" method="POST">
-                        <label for="cert_Type">Certificate Type :</label>
-                        <select id="cert_Type" name="cert_Type" required>
+                        <label for="class_Name">Class Name :</label>
+                        <select id="class_Name" name="class_Name" required>
                             <option value="SKM">SKM - Sijil Kemahiran Malaysia</option>
                             <option value="DKM">DKM - Diploma Kemahiran Malaysia</option>
                             <option value="DLKM">DLKM - Diploma Lanjutan Kemahiran Malaysia</option>
+                            <option value="Taklimat Sijil">Taklimat Sijil</option>
                         </select>
                         <br><br>
                         <label for="date">Date :</label>
@@ -93,54 +93,47 @@
                     <i class="fas fa-plus"></i>
                 </button>
 
-
                 <h2>Manage Attendance</h2> <br>
-
-
 
                 <table id="attendanceTable">
                     <thead>
                         <tr>
                             <th>Attendance ID</th>
-                            <th>Class ID</th>
+                            <th>Class Name</th>
                             <th>Candidate Name</th>
                             <th>Attendance</th>
                         </tr>
                     </thead>
                     <tbody>
-
-                        <!-- Assuming you have attendance data available in your JSP -->
                         <%
                             try {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
                                 Statement st = con.createStatement();
-                                ResultSet rs = st.executeQuery("SELECT a.attendance_ID, a.class_ID, c.cand_Name, a.attendance "
+                                ResultSet rs = st.executeQuery("SELECT a.attendance_ID, cl.class_Name, c.cand_Name, a.attendance "
                                         + "FROM attendance a "
                                         + "JOIN candidate c ON a.cand_ID = c.cand_ID "
                                         + "JOIN class cl ON a.class_ID = cl.class_ID "
-                                        + "WHERE cl.is_archived = FALSE");
+                                        + "WHERE cl.is_archived = FALSE "
+                                        + "ORDER BY CASE a.attendance WHEN '--' THEN 1 ELSE 2 END");
 
                                 while (rs.next()) {
                                     int attendanceID = rs.getInt("attendance_ID");
-                                    String classID = rs.getString("class_ID");
+                                    String className = rs.getString("class_Name");
                                     String candidateName = rs.getString("cand_Name");
                                     String attendanceStatus = rs.getString("attendance");
                         %>
                         <tr>
                             <td><%= attendanceID%></td>
-                            <td><%= classID%></td>
+                            <td><%= className%></td>
                             <td><%= candidateName%></td>
                             <td>
                                 <form onsubmit="updateStatus(this, '<%= attendanceID%>'); return false;">
-
                                     <select name="attendanceStatus">
                                         <option value="--" <%= attendanceStatus.equals("--") ? "selected" : ""%>>--</option>
                                         <option value="Absent" <%= attendanceStatus.equals("Absent") ? "selected" : ""%>>Absent</option>
                                         <option value="Present" <%= attendanceStatus.equals("Present") ? "selected" : ""%>>Present</option>
-                                        <!-- Add more options as needed -->
                                     </select>
-
                                     <input type="hidden" name="attendanceID" value="<%= attendanceID%>">
                                     <input type="submit" value="Update" onclick="showSuccessMessage()">
                                 </form>
@@ -157,12 +150,10 @@
                         %>
                     </tbody>
                 </table>
-
             </div>
         </div>
 
         <script>
-
             function updateStatus(form, attendanceID) {
                 form.action = "UpdateAttendanceServ";
                 form.method = "POST";
@@ -208,13 +199,12 @@
                     }
                 }
             }
-
         </script>
 
         <footer>
             <p>&copy; HR SkillCertify 2023</p>
         </footer>
-
     </body>
 
 </html>
+

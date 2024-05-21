@@ -157,7 +157,7 @@
                             <input type="file" id="receipt" name="receipt" accept="image/*" >
                         </div>
                         <br>
-                        <button type="submit">Update Payment</button> <!-- Changed button text to Update Price -->
+                        <button type="submit">Pay</button> <!-- Changed button text to Update Price -->
                     </div>
                 </div>
             </form>

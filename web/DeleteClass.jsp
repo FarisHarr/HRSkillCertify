@@ -39,7 +39,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Class ID</th>
+                            <th>Class Name</th>
                             <th>Date</th>
                             <th>Start Time</th>
                             <th>End Time</th>
@@ -52,16 +52,18 @@
                                 Class.forName("com.mysql.jdbc.Driver");
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
                                 Statement st = con.createStatement();
-                                ResultSet rs = st.executeQuery("SELECT class_ID, date, start_Time, end_Time FROM class WHERE is_archived = FALSE");
+                                ResultSet rs = st.executeQuery("SELECT class_ID, class_Name, date, start_Time, end_Time FROM class WHERE is_archived = FALSE");
 
                                 while (rs.next()) {
                                     String classID = rs.getString("class_ID");
+                                    String className = rs.getString("class_Name");
                                     String date = rs.getString("date");
                                     String startTime = rs.getString("start_Time");
                                     String endTime = rs.getString("end_Time");
 
                                     out.println("<tr>");
-                                    out.println("<td>" + classID + "</td>");
+//                                    out.println("<td>" + classID + "</td>");
+                                    out.println("<td>" + className + "</td>");
                                     out.println("<td>" + date + "</td>");
                                     out.println("<td>" + startTime + "</td>");
                                     out.println("<td>" + endTime + "</td>");

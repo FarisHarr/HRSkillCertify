@@ -85,18 +85,18 @@
                             try {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-                                PreparedStatement ps = con.prepareStatement("SELECT class_ID, cert_Type, date, start_Time, end_Time FROM class WHERE is_archived = FALSE");
+                                PreparedStatement ps = con.prepareStatement("SELECT class_ID, class_Name, date, start_Time, end_Time FROM class WHERE is_archived = FALSE");
                                 ResultSet rs = ps.executeQuery();
 
                                 while (rs.next()) {
                                     String classID = rs.getString("class_ID");
-                                    String certType = rs.getString("cert_Type");
+                                    String certName = rs.getString("class_Name");
                                     String date = rs.getString("date");
                                     String startTime = rs.getString("start_Time");
                                     String endTime = rs.getString("end_Time");
                         %>
                         <tr>
-                            <td><%= certType%></td>
+                            <td><%= certName%></td>
                             <td><%= date%></td>
                             <td><%= startTime%></td>
                             <td><%= endTime%></td>
