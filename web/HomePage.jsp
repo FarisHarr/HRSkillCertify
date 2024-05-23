@@ -17,54 +17,49 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <style>
-        
-        h3{
-            position: absolute;
-            margin: 15px;
-        }
-        
+
         .infoCert {
-            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .infoCert h3 {
             text-align: center;
-            padding: 10px;
-            width: 90%;
-            background-color: aliceblue;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         .cert {
-            background-color: #a4a4a4;
-            padding: 50px;
-            margin: 60px;
-            border-radius: 8px;
+            background: #e6f2ff;
+            border: 1px solid #cce0ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            width: 30%;
-            height: 50vh;
-            transition: transform 0.1s ease-in-out;
-        }
-
-        .cert:hover {
-            transform: scale(1.05);
         }
 
         .cert h2 {
-            margin-bottom: 10px;
+            color: #004080;
+        }
+
+        .cert h4 {
+            color: #333;
         }
 
         .cert button {
-            background-color: #fff;
-            color: #212121;
+            background-color: #004080;
+            color: white;
+            padding: 10px 20px;
             border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            width: 30%;
+            border-radius: 5px;
             cursor: pointer;
-            margin-top: 10vh;
-            /* Push the button to the bottom */
+            transition: background-color 0.3s;
+        }
+
+        .cert button:hover {
+            background-color: #0059b3;
         }
     </style>
 

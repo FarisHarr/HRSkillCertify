@@ -217,15 +217,15 @@ button {
 }
 
 .info img {
-        max-width: 100%; 
-        height: auto; 
-        margin-top: 10px; 
-    }
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
 
-        footer {
-            background-color: rgb(190, 190, 190);
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+footer {
+    background-color: rgb(190, 190, 190);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
