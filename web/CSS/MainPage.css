@@ -342,11 +342,6 @@ header nav li{
 }
 
 
-/*
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-Section Configurations
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-*/
 section h3.title{
     text-transform: capitalize;
     font: bold 32px "Open Sans", sans-serif;
@@ -373,13 +368,8 @@ section h3.title{
     flex-basis: 70%;
 }
 
-/*---------------------
-        Contact Section
----------------------*/
 
-.contact{
 
-}
 
 .contact form{
     display: -webkit-box;
@@ -489,7 +479,7 @@ footer {
 
 .contact-icons a:hover {
     color: #007bff; /* Change color on hover */
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 #myBtn {

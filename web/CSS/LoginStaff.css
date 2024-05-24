@@ -67,13 +67,13 @@ h1 {
 .form h2 {
     font-size: 2.5rem;
     margin-top: 30px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .form h5 {
     font-size: 1rem;
     margin-bottom: 30px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -93,13 +93,13 @@ h1 {
     margin-bottom: 25px;
     background-color: #455d5f;
     border: 1px solid black;
-    text-shadow: 3px 3px 4px rgba(0, 0, 0, 1); 
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 1);
     color: rgb(255, 255, 255);
     font-weight: bold;
     outline: none;
     border-radius: 10px;
     transition: background-color 0.5s, transform 0.5s;
-                
+
 }
 
 #submit:hover {
@@ -132,7 +132,8 @@ h1 {
 
 
 footer {
-    background-color: #455d5f;
+    /*    background-color: #455d5f;*/
+    background-color: #a5a5a5;
     height: 50px;
     display: flex;
     align-items: center;
