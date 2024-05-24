@@ -28,7 +28,7 @@
                     </ul>
                 </nav>-->
             </div>
-            <nav>
+<!--            <nav>
                 <li class="dropdown">
                     <a class="nav-link">Manager</a>
                     <ul class="dropdown-content">
@@ -36,7 +36,7 @@
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
-            </nav>
+            </nav>-->
         </header>
 
         <!--        <div class="co">

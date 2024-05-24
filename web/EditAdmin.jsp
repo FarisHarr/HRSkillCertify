@@ -23,7 +23,7 @@
             <div class="main">
                 <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
             </div>
-            <nav>
+<!--            <nav>
                 <li class="dropdown">
                     <a class="nav-link">Admin</a>
                     <ul class="dropdown-content">
@@ -31,7 +31,7 @@
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
-            </nav>
+            </nav>-->
         </header>
 
 

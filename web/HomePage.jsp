@@ -45,8 +45,12 @@
         }
 
         .cert h4 {
+            text-align: left;
             color: #333;
+            font-family: "CustomFont", Arial, sans-serif;
         }
+
+
 
         .cert button {
             background-color: #004080;
@@ -110,24 +114,34 @@
             <div class="infoCert">
                 <h3>Welcome <%= Name%></h3>
                 <div class="cert">
-                    <h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2>
-                    <h4> This certificate will improve your diplomas </h4>
+                    <h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2><br>
+                    <h4>- Skilled in performing a variety of routine and predictable work activities. </h4>
+                    <h4>- Proficient in various tasks within a predictable scope. </h4>
+                    <h4>- Limited autonomy and responsibility.</h4>
+                    <br>
                     <a href="AboutCertificate.jsp">
                         <button>Explore</button>
                     </a>                
                 </div>
 
                 <div class="cert">
-                    <h2>Diploma Kemahiran Malaysia (DKM)/ Tahap 4</h2>
-                    <!-- Add content for container 2 -->
+                    <h2>Diploma Kemahiran Malaysia (DKM)/ Tahap 4</h2><br>
+                    <h4>- Skilled in performing technical and professional work activities with a wide scope and context. </h4>
+                    <h4>- Higher level of responsibility and autonomy compared to SKM. </h4>
+                    <h4>- May oversee the work of others and manage resources.</h4>
+                    <br>
                     <a href="AboutCertificate.jsp">
                         <button>Explore</button>
                     </a>
                 </div>
 
                 <div class="cert">
-                    <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM) / Tahap 5</h2>
-                    <!-- Add content for container 3 -->
+                    <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM) / Tahap 5</h2><br>
+                    <h4>- Deeply skilled in applying basic principles and complex techniques across a broad and often unexpected scope of work. </h4>
+                    <h4>- Highest level of responsibility and autonomy among the three qualifications. </h4>
+                    <h4>- Engages in tasks such as analysis, diagnosis, design, planning, evaluation, and operation. </h4>
+                    <h4>- Responsible for managing the work of others, allocating resources, and engaging in advanced tasks.</h4>
+                    <br>
                     <a href="AboutCertificate.jsp">
                         <button>Explore</button>
                     </a>

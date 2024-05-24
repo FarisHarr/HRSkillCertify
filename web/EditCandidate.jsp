@@ -28,7 +28,7 @@
                     </ul>
                 </nav>
             </div>
-            <nav>
+<!--            <nav>
                 <li class="dropdown">
                     <a class="nav-link">Account</a>
                     <ul class="dropdown-content">
@@ -36,17 +36,17 @@
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
-            </nav>
+            </nav>-->
         </header>
 
         <div class="co">
-            <div class="navbar" id="myNavbar">
+<!--            <div class="navbar" id="myNavbar">
                 <a href="HomePage.jsp">Home</a>
                 <a href="CandidateProfile.jsp">User Profile</a>
                 <a href="AboutCertificate.jsp">About Certificate</a>
                 <a href="TimeTable.jsp">Time Table</a>
                 <a href="Feedback.jsp">Feedback</a>
-            </div>
+            </div>-->
 
             <%
 //                HttpSession loginsession = request.getSession();
