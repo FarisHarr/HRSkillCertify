@@ -241,20 +241,21 @@ button {
 
 
 .profile-update-button {
-    padding: 5px 30px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    background-color: #00000090;
-    border: 1px solid black;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    outline: none;
-    border-radius: 10px;
+    display: block;
+    width: fit-content; /* Adjust width to fit the content */
+    padding: 10px 30px; /* Adjust padding for better appearance */
+    margin: 20px auto 0; /* Center horizontally, 20px top margin */
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .profile-update-button:hover {
-    cursor: pointer;
-    background-color: #00ca54;
+    background-color: #45a049;
+    transform: scale(1.01);
 }
 
 footer {

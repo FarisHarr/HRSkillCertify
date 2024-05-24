@@ -200,7 +200,7 @@
             <h2>Certificate Registration</h2><br> 
             <form action="RegisterCertServ" method="POST" enctype="multipart/form-data">
 
-            <!--<form action="RegisterCertServ" method="POST" >--> 
+                <!--<form action="RegisterCertServ" method="POST" >--> 
 
                 <!-- Add hidden input field for candidateID -->
                 <input type="hidden" id="candidateID" name="candidateID" value="<%= candidateID%>">
@@ -219,9 +219,9 @@
                     <option value="Mining and quarrying">Mining and quarrying</option>
                     <option value="Manufacturing">Manufacturing</option>
                     <option value="Electricity, gas, steam and air conditioning supply">Electricity, gas, steam and air conditioning supply</option>
-                    <option value="Water supply; sewerage, waste management and remediation activities">Water supply; sewerage, waste management and remediation activities</option>
+                    <option value="Water supply; sewerage, waste management and remediation activities">Water supply, waste management and remediation</option>
                     <option value="Construction">Construction</option>
-                    <option value="Wholesale and retail trade; repair of motor vehicles and motorcycles">Wholesale and retail trade; repair of motor vehicles and motorcycles</option>
+                    <option value="Wholesale and retail trade; repair of motor vehicles and motorcycles">Repair of motor vehicles and motorcycles</option>
                     <option value="Transportation and storage">Transportation and storage</option>
                     <option value="Accommodation and food service activities">Accommodation and food service activities</option>
                     <option value="Information and communication">Information and communication</option>
@@ -229,7 +229,7 @@
                     <option value="Real estate activities">Real estate activities</option>
                     <option value="Professional, scientific and technical activities">Professional, scientific and technical activities</option>
                     <option value="Administrative and support service activities">Administrative and support service activities</option>
-                    <option value="Public administration and defence; compulsory social security">Public administration and defence; compulsory social security</option>
+                    <option value="Public administration and defence; compulsory social security">Public administration and defence</option>
                     <option value="Education">Education</option>
                     <option value="Human health and social work activities">Human health and social work activities</option>
                     <option value="Arts entertainment and recreation">Arts entertainment and recreation</option>
@@ -239,9 +239,10 @@
                 </select>
 
 
-                <label for="work_experience">Work Experience : (Years)</label>
-                <input type="text" id="experience" name="experience" placeholder="Example: 2 Years" oninput="restrictToNumbers(this);" required>
-                <!--                                <span id="placeholder-addon"> Years</span>-->
+                <label for="work_experience">Work Experience: (Years)</label>
+                <input type="text" id="experience" name="experience" placeholder="Example: 2 Years" required>
+
+                <!--<span id="placeholder-addon"> Years</span>-->
 
                 <!-- Amount display -->
                 <div class="amount-display" onclick="openQRPopup()">
@@ -284,6 +285,19 @@
                 // Open a new small popup window with the QR.jsp page
                 window.open(qrURL, '_blank', windowFeatures);
             }
+
+            // Get the input element
+            var experienceInput = document.getElementById('experience');
+
+// Add event listener for when the input field loses focus
+            experienceInput.addEventListener('blur', function () {
+                // If the input field is not empty and does not already end with "Years"
+                if (experienceInput.value.trim() !== '' && !experienceInput.value.trim().endsWith('Years')) {
+                    // Append " Years" to the input field value
+                    experienceInput.value += ' Years';
+                }
+            });
+
 
 
 
@@ -334,7 +348,7 @@
                 // Redirect to the logout servlet or your logout logic
                 window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
             }
-            
+
         </script>
 
 
