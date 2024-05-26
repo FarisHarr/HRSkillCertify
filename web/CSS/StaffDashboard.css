@@ -204,6 +204,24 @@ button {
     background-color: aliceblue;
 }
 
+.button {
+    display: block;
+    width: fit-content; /* Adjust width to fit the content */
+    padding: 10px 30px; /* Adjust padding for better appearance */
+    margin: 20px auto 0; /* Center horizontally, 20px top margin */
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #45a049;
+    transform: scale(1.01);
+}
+
 footer {
     background-color: rgb(190, 190, 190);
     height: 70px;
