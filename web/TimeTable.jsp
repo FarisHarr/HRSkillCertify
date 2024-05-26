@@ -79,9 +79,9 @@
 
             <!--<div class="infoCert">-->
             <div class="cert">
-                <h2>Certificate</h2>
+                <h2>Certificate Type</h2>
                 <br>
-                <h3><%= certificateType%></h3> 
+                <h3><i><%= certificateType%></i></h3> 
                 <br>
                 <p>Your payment status : <%= status%> </p> 
                 <br> 
