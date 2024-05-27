@@ -25,7 +25,7 @@
             padding: 20px;
             width: 85%;
             height: auto;
-            background-color: aliceblue;
+            background-color: #DDE6ED;
             display: flex;
         }
 
@@ -43,22 +43,22 @@
         }
 
         .cert button {
-            background-color: #007bff;
-            color: #ffffff;
+            background-color: #004080;
+            color: white;
             border: none;
             padding: 8px 16px;
             border-radius: 4px;
             cursor: pointer;
             position: absolute;
-            bottom: 15%; 
-            transform: translateX(-50%); 
+            bottom: 15%;
+            transform: translateX(-50%);
         }
 
         .cert button:hover {
             background-color: #45a049;
         }
-        
-        
+
+
     </style>
 
     <body>

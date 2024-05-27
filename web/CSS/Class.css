@@ -1,5 +1,5 @@
 body {
-    background-color: #F3FBF1;
+    background-color: #DDE6ED;
 }
 h2{
     text-align: center;
@@ -11,7 +11,7 @@ header {
     box-sizing: border-box;
     padding: auto;
     height: 65px;
-    background-color: #D1E4D1;
+    background-color: #9DB2BF;
 }
 
 .main {
@@ -214,7 +214,7 @@ button {
 }
 
 footer {
-    background-color: #D1E4D1; /* Set background color */
+    background-color: #9DB2BF; /* Set background color */
     color: black; /* Set text color */
     text-align: center; /* Center-align text */
     padding: 10px; /* Add padding */
@@ -288,18 +288,22 @@ table {
 
 
 th {
+    border: 1px solid #000000;
+    padding: 8px;
     text-align: center;
-    color: black;
-    background-color: #cccccc;
+    background-color:#cccccc;
 }
 
 td {
+    border: 1px solid #000000;
+    padding: 15px;
+    text-align: center;
     background-color: #ffffff;
 }
 
 td,
 th {
-    border: 1px solid #ddd;
+    border: 1px solid black;
     padding: 8px;
 }
 
@@ -337,9 +341,14 @@ input[type=number] {
 button {
     font-weight: 300;
     font-size: 16px;
-    background-color: grey;
+    background-color: #004080;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
+    padding: 5px 15px;
+}
+
+button:hover {
+    background-color: #45a049;
 }

@@ -25,7 +25,7 @@ header {
     box-sizing: border-box;
     padding: auto;
     height: 65px;
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
 }
 
 .main {
@@ -168,7 +168,7 @@ button {
 
 .navbar a:hover {
     border: 1px solid #000000;
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
     color: black;
 }
 
@@ -177,7 +177,7 @@ button {
     height: 40px;
     border: none;
     border-radius: 30px;
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
     color: #000000;
     cursor: pointer;
     font-size: 16px;
@@ -221,10 +221,10 @@ button {
 .title {
     padding: 30px;
     width: 50%;
-    border: 1px solid black;
-    border-radius: 20px;
     background-color: whitesmoke;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .container h1 {
@@ -259,7 +259,7 @@ button {
 }
 
 footer {
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
     height: 50px;
     display: flex;
     align-items: center;

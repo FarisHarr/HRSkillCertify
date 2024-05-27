@@ -46,7 +46,7 @@
         .cert button {
             width: 30%;
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #004080;
             color: white;
             border: none;
             border-radius: 4px;
@@ -71,7 +71,7 @@
             padding: 10px;
             margin: 10px;
             margin-bottom: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #526D82;
             border-radius: 4px;
             box-sizing: border-box;
         }

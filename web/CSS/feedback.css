@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 body {
-    background-color: #F3FBF1
+    background-color: #F3FBF1;
 }
 
 header {
@@ -18,7 +18,7 @@ header {
     box-sizing: border-box;
     padding: auto;
     height: 65px;
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
 }
 
 .main {
@@ -197,7 +197,7 @@ button {
 
 .navbar a:hover {
     border: 1px solid #000000;
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
     color: black;
 }
 
@@ -206,7 +206,7 @@ button {
     height: 40px;
     border: none;
     border-radius: 30px;
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
     color: #000000;
     cursor: pointer;
     font-size: 16px;
@@ -415,7 +415,7 @@ input[type="submit"]:hover {
 
 
 footer {
-    background-color: #D1E4D1; /* Set background color */
+    background-color: #bbd0bb; /* Set background color */
     color: black; /* Set text color */
     text-align: center; /* Center-align text */
     padding: 10px; /* Add padding */

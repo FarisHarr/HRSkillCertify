@@ -133,7 +133,7 @@ h1 {
 
 footer {
     /*    background-color: #455d5f;*/
-    background-color: #D1E4D1;
+    background-color: rgb(190, 190, 190);
     height: 50px;
     display: flex;
     align-items: center;

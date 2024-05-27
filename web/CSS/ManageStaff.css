@@ -18,7 +18,7 @@ header {
     box-sizing: border-box;
     padding: auto;
     height: 65px;
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
 }
 
 .main {
@@ -199,7 +199,7 @@ button {
 
 .navbar a:hover {
     border: 1px solid #000000;
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
     color: black;
 }
 
@@ -208,7 +208,7 @@ button {
     height: 40px;
     border: none;
     border-radius: 30px;
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
     color: #000000;
     cursor: pointer;
     font-size: 16px;
@@ -460,7 +460,7 @@ input[type=number] {
 
 
 footer {
-    background-color: #D1E4D1;
+    background-color: #bbd0bb;
     height: 70px;
     display: flex;
     align-items: center;

@@ -66,7 +66,7 @@
                 response.sendRedirect("Login.jsp");
             }
         %>
-
+        <br>
         <h2>Time Table</h2>
         <div class="container1">
             <div class="table">

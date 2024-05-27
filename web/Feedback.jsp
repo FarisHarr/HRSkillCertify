@@ -128,7 +128,7 @@
         }
 
         .contact-icons a {
-            color: #333; /* Icon color */
+            color: #666666; /* Icon color */
             font-size: 20px;
             margin: 10px;
             /*margin-left: 5px;  Adjust the distance between icons */
@@ -137,7 +137,7 @@
         }
 
         .contact-icons a:hover {
-            color: #007bff; /* Change color on hover */
+            color:#004080;
             transform: scale(1.05);
         }
 
@@ -152,6 +152,8 @@
         .review iframe {
             width: 100%;
             height: 100%;
+            border: 2px solid #ccc;
+            /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);*/
             border-radius: 4px;
         }
 
