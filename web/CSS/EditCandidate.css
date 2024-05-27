@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 body {
-    background-color: aliceblue;
+    background-color: #DDE6ED;
     /*font-family: Arial, sans-serif;*/
 }
 
@@ -24,7 +24,7 @@ header {
     align-items: center;
     padding: 0 20px;
     height: 65px;
-    background-color: rgb(190, 190, 190);
+    background-color: #9DB2BF;
 }
 
 .main {
@@ -280,7 +280,7 @@ header {
 }
 
 footer {
-    background-color: rgb(190, 190, 190);
+    background-color: #9DB2BF;
     height: 50px;
     display: flex;
     align-items: center;

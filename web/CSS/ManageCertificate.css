@@ -1,6 +1,6 @@
 
 body {
-    background-color: aliceblue;
+    background-color: #F3FBF1;
 }
 
 header {
@@ -10,7 +10,7 @@ header {
     box-sizing: border-box;
     padding: auto;
     height: 65px;
-    background-color: rgb(190, 190, 190);
+    background-color: #D1E4D1;
 }
 
 .main {
@@ -220,8 +220,8 @@ button {
 
 .navbar a:hover {
     border: 1px solid #000000;
-    background-color: #001b40;
-    color: rgb(255, 255, 255);
+    background-color: #D1E4D1;
+    color: black;
 }
 
 .navbar-toggle {
@@ -229,7 +229,7 @@ button {
     height: 40px;
     border: none;
     border-radius: 30px;
-    background-color: rgb(190, 190, 190);
+    background-color: #D1E4D1;
     color: #000000;
     cursor: pointer;
     font-size: 16px;
@@ -247,7 +247,7 @@ button {
     padding: 20px;
     width: 90%;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #F3FBF1;
 }
 
 .info h2 {
@@ -376,7 +376,7 @@ th {
     border: 1px solid #000000;
     padding: 8px;
     text-align: center;
-    background-color: #99ccff;
+    background-color: #cccccc;
 }
 
 td {
@@ -475,7 +475,7 @@ input[type=number] {
 
 
 footer {
-    background-color: rgb(190, 190, 190);
+    background-color: #D1E4D1;
     height: 70px;
     display: flex;
     align-items: center;

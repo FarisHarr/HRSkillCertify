@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/web/CSS/ManageCertificate.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -44,109 +44,139 @@
             <a href="ManageCandidate.html">Manage Candidate</a>
         </div>
 
-        <!--Popup Register-->
-        <div class="popup" id="popup">
-            <div class="popup-content">
-                <span class="close" onclick="hidePopup()">&times;</span>
-                <h2>Register Class</h2>
-                <br><br>
-                <form action="RegisterClassServ" method="POST">
-                    <!-- <label for="class_ID">Class ID :</label>
-                    <input type="text" id="class_ID" name="class_ID" placeholder="Enter Class ID" required>
-                    <br><br>
-                    <label for="cand_ID">Candidate ID :</label>
-                    <input type="text" id="cand_ID" name="cand_ID" placeholder="Enter Candidate ID" required>
-                    <br><br> -->
-                    <label for="cert_Type">Certificate Type :</label>
-                    <select id="cert_Type" name="cert_Type" required>
-                        <option value="SKM">SKM - Sijil Kemahiran Malaysia</option>
-                        <option value="DKM">DKM - Diploma Kemahiran Malaysia</option>
-                        <option value="DLKM">DLKM - Diploma Lanjutan Kemahiran Malaysia</option>
-                    </select>
-                    <br><br>
-                    <label for="Date">Date :</label>
-                    <input type="date" id="Date" name="Date" required>
-                    <br><br>
-                    <label for="start_time">Start Time :</label>
-                    <input type="time" id="start_time" name="start_time" required>
-                    <br><br>
-                    <label for="end_Time">End Time :</label>
-                    <input type="time" id="end_Time" name="end_Time" required>
-                    <br><br>
-                    <!-- <label for="attendance">Attendance :</label>
-                    <select id="attendance" name="attendance" required>
-                        <option value="attend">Attend</option>
-                        <option value="absent">Absent</option>
-                    </select> -->
-                    <br><br>
-                    <div class="submit-button">
-                        <input class="submit" type="submit" value="Save">
-                    </div>
-                </form>
-                
-            </div>
-        </div>
-
-
-        <div class="info">
-            <button class="register-product-button" onclick="showPopup()">Create Class</button>
-            <h2>Manage Certificate</h2> <br>
-            <div class="certificate-options">
-                <p>Choose the certificate : </p>
-                <select name="certificate">
-                    <option value="" disabled selected>Please choose</option>
+       <!--Popup Register-->
+       <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" onclick="hidePopup()">&times;</span>
+            <h2>Register Class</h2>
+            <br><br>
+            <form action="" method="">
+                <label for="class_Name">Class Name :</label>
+                <select id="class_Name" name="class_Name" required>
                     <option value="SKM">SKM - Sijil Kemahiran Malaysia</option>
                     <option value="DKM">DKM - Diploma Kemahiran Malaysia</option>
                     <option value="DLKM">DLKM - Diploma Lanjutan Kemahiran Malaysia</option>
+                    <option value="Taklimat Sijil">Taklimat Sijil</option>
                 </select>
-            </div>
+                <br><br>
+                <label for="date">Date :</label>
+                <input type="date" id="date" name="date" required>
+                <br><br>
+                <label for="start_time">Start Time :</label>
+                <input type="time" id="start_time" name="start_time" required>
+                <br><br>
+                <label for="end_Time">End Time :</label>
+                <input type="time" id="end_Time" name="end_Time" required>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Attendance ID</th>
-                        <th>Class ID</th>
-                        <th>Candidate ID</th>
-                        <th>Certificate Type</th>
-                        <th>Attendance</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Assuming you have attendance data available in your JSP -->
-                    <tr>
-                        <td><%= attendance_ID %></td>
-                        <td><%= class_ID %></td>
-                        <td><%= cand_ID %></td> <!--  buat sebagai candidate name -->
-                        <td><%= cert_Type %></td>
-                        <td><%= attendance %></td>
-                        <td><button>Create</button></td>
-                    </tr>
-                </tbody>
-            </table>
+                <br><br>
+
+                <br><br>
+                <div class="submit-button">
+                    <input class="submit" type="submit" value="Save">
+                </div>
+            </form>
+
         </div>
     </div>
 
-    <script>
-        
-        function toggleNavbar() {
-            var navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('minimized');
+
+    <div class="info">
+        <button class="register-product-button1" onclick="location.href = 'DeleteClass.jsp'">Manage Class</button>
+        <button class="register-product-button" onclick="showPopup()">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <h2>Manage Attendance</h2> <br>
+
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>Attendance ID</th>
+                    <th>Class Name</th>
+                    <th>Candidate Name</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td><%= attendanceID%></td>
+                    <td><%= className%></td>
+                    <td><%= candidateName%></td>
+                    <td>
+                        <form onsubmit="updateStatus(this, '<%= attendanceID%>'); return false;">
+                            <select name="attendanceStatus">
+                                <option value="--" <%= attendanceStatus.equals("--") ? "selected" : ""%>--</option>
+                                <option value="Absent" <%= attendanceStatus.equals("Absent") ? "selected" : ""%>Absent</option>
+                                <option value="Present" <%= attendanceStatus.equals("Present") ? "selected" : ""%>Present</option>
+                            </select>
+                            <input type="hidden" name="attendanceID" value="<%= attendanceID%>">
+                            <input type="submit" value="Update" onclick="showSuccessMessage()">
+                        </form>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function updateStatus(form, attendanceID) {
+        form.action = "";
+        form.method = "";
+        form.submit();
+    }
+
+    function toggleNavbar() {
+        var navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('minimized');
+    }
+
+    function signOut() {
+        // Redirect to the logout servlet or your logout logic
+        window.location.href = 'LogOutServ'; // Replace 'LogOutServ' with your actual logout servlet
+    }
+
+    function showPopup() {
+        document.getElementById("popup").style.display = "block";
+    }
+
+    function hidePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+
+    function filterAttendance() {
+        var selectBox = document.getElementById("certificateSelect");
+        var selectedOption = selectBox.options[selectBox.selectedIndex].value;
+        var table = document.getElementById("attendanceTable");
+        var rows = table.getElementsByTagName("tr");
+
+        for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            var cell = row.getElementsByTagName("td")[3]; // Assuming the attendance status is in the fourth column
+
+            if (cell) {
+                var status = cell.textContent || cell.innerText;
+
+                if (selectedOption === '-' || status === selectedOption) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
         }
+    }
 
-        function showPopup() {
-            document.getElementById("popup").style.display = "block";
-        }
+    function showSuccessMessage() {
+                // Show a popup message
+                alert("Update Successful");
+            }
+</script>
 
-        function hidePopup() {
-            document.getElementById("popup").style.display = "none";
-        }
-    </script>
-
-    <footer>
-        <p>&copy; HR SkillCertify 2023</p>
-    </footer>
-
+<footer>
+    <p>&copy; HR SkillCertify 2023</p>
+</footer>
 </body>
 
 </html>

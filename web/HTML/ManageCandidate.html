@@ -43,24 +43,165 @@
         </div>
 
         <div class="info">
-            <button onclick="refreshSalesReport()">Refresh</button>
-            <h1>Manage Candidate</h1>
-            <!--Table-->
-            <div class="table">
+            <div class="info">
+                <!--<button onclick="refresh()">Refresh</button>-->
+                <h2>Manage Candidate</h2>
+
+                <!-- Search Section -->
+                <div class="search-section">
+                    <form action="ManageCandidate.html" method="GET">
+                        <input type="text" name="searchName" placeholder="Search by Name">
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+
+                <!-- Table -->
                 <table id="table">
                     <thead>
                         <tr>
-                            <th>Staff IC</th>
-                            <th>Staff Name</th>
+                            <th>Candidate IC</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Phone Number</th>
-                            <th>Role</th>
-                            <th>Edit</th>
+                            <th>Address</th>
+                            <!-- <th>Status</th> -->
                             <th>Delete</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr>
+                            <td>IC001</td>
+                            <td>John Doe</td>
+                            <td>johndoe@example.com</td>
+                            <td>123-456-7890</td>
+                            <td>123 Main St, Anytown, USA</td>
+                            <td><img src="/web/IMG/deleteicon.png" ></td>
+                        </tr>
+                        <tr>
+                            <td>IC002</td>
+                            <td>Jane Smith</td>
+                            <td>janesmith@example.com</td>
+                            <td>234-567-8901</td>
+                            <td>456 Elm St, Othertown, USA</td>
+                            <td><img src="/web/IMG/deleteicon.png" ></td>
+                        </tr>
+                        <tr>
+                            <td>IC003</td>
+                            <td>Mike Johnson</td>
+                            <td>mikejohnson@example.com</td>
+                            <td>345-678-9012</td>
+                            <td>789 Oak St, Anothertown, USA</td>
+                            <td><img src="/web/IMG/deleteicon.png" ></td>
+                        </tr>
+                        <tr>
+                            <td>IC004</td>
+                            <td>Emily Davis</td>
+                            <td>emilydavis@example.com</td>
+                            <td>456-789-0123</td>
+                            <td>101 Pine St, Yetanothertown, USA</td>
+                            <td><img src="/web/IMG/deleteicon.png" ></td>
+                        </tr>
+                        <tr>
+                            <td>IC005</td>
+                            <td>Chris Brown</td>
+                            <td>chrisbrown@example.com</td>
+                            <td>567-890-1234</td>
+                            <td>202 Birch St, Lasttown, USA</td>
+                            <td><img src="/web/IMG/deleteicon.png" ></td>
+                        </tr>
+                        <tr>
+                            <td>IC006</td>
+                            <td>Patricia Wilson</td>
+                            <td>patriciawilson@example.com</td>
+                            <td>678-901-2345</td>
+                            <td>303 Maple St, Fintown, USA</td>
+                            <td><img src="/web/IMG/deleteicon.png" ></td>
+                        </tr>
+                        <tr>
+                            <td>IC007</td>
+                            <td>Robert Moore</td>
+                            <td>robertmoore@example.com</td>
+                            <td>789-012-3456</td>
+                            <td>404 Cedar St, Goodtown, USA</td>
+                            <td><img src="/web/IMG/deleteicon.png" ></td>
+                        </tr>
+                        <tr>
+                            <td>IC008</td>
+                            <td>Linda Taylor</td>
+                            <td>lindataylor@example.com</td>
+                            <td>890-123-4567</td>
+                            <td>505 Fir St, Nexttown, USA</td>
+                            <td><img src="/web/IMG/deleteicon.png" ></td>
+                        </tr>
+                        <tr>
+                            <td>IC009</td>
+                            <td>James Anderson</td>
+                            <td>jamesanderson@example.com</td>
+                            <td>901-234-5678</td>
+                            <td>606 Spruce St, Anothertown, USA</td>
+                            <td><img src="/web/IMG/deleteicon.png" ></td>
+                        </tr>
+                        <tr>
+                            <td>IC010</td>
+                            <td>Barbara Thomas</td>
+                            <td>barbarathomas@example.com</td>
+                            <td>012-345-6789</td>
+                            <td>707 Redwood St, Bigtown, USA</td>
+                            <td><img src="/web/IMG/deleteicon.png" ></td>
+                        </tr>
+                    </tbody>
                 </table>
+                
             </div>
+        </div>
+    </div>
+
+    <div class="popupdelete" id="popupdelete">
+        <div class="popup-delete">
+
+
+            <h2>Delete Candidate</h2>
+            <p><b>Are you sure you want to delete the following candidate?</b></p>
+            <table>
+                <tr>
+                    <td>ID :</td>
+                    <td>
+                        <%= ID%>
+                    </td>
+                </tr>
+                <tr>
+                    <td>IC :</td>
+                    <td>
+                        <%= IC%>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name :</td>
+                    <td>
+                        <%= Name%>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email :</td>
+                    <td>
+                        <%= Email%>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone :</td>
+                    <td>
+                        <%= Phone%>
+                    </td>
+                </tr>
+
+            </table>
+
+            <form class="deleteform" action="DeleteCandidateServ?candidateID=<%= ID%>" method="POST">
+                <input type="hidden" name="candidateID" value="<%= ID%>">
+                <input type="submit" name="action" value="Delete">
+                <input type="submit" name="action" value="Cancel"> 
+            </form>
+
         </div>
     </div>
 
@@ -70,9 +211,46 @@
             navbar.classList.toggle('minimized');
         }
 
-        function refreshSalesReport() {
-                location.reload();
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function showDeletePopup() {
+            document.getElementById("popupdelete").style.display = "block";
+        }
+
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        function restrictToNumbers(inputElement) {
+            inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
+        }
+
+        function hideDeletePopup() {
+            document.getElementById("popupdelete").style.display = "none";
+        }
+        function validateNumber(event) {
+            // Get the key code of the pressed key
+            var keyCode = event.which ? event.which : event.keyCode;
+
+            // Allow only numbers (0-9) and special keys like backspace, delete, etc.
+            if (keyCode >= 48 && keyCode <= 57 || keyCode === 8 || keyCode === 46 || keyCode === 37 || keyCode === 390) {
+                return true;
+            } else {
+                return false;
             }
+        }
+        // Refresh sales report by reloading the page
+        function refresh() {
+            location.reload();
+        }
+
+        function signOut() {
+            // Redirect to the logout servlet or your logout logic
+            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+        }
+
     </script>
 
     <footer>

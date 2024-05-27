@@ -55,7 +55,7 @@
             </div>
             <nav>
                 <li class="dropdown">
-                    <a class="nav-link">Manager</a>
+                    <a class="nav-link">Coordinator</a>
                     <ul class="dropdown-content">
                         <li><a href="ManagerProfile.jsp">Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Admin Dashboard</title>
+    <title>Manage Manager</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/web/CSS/ManageStaff.css">
@@ -44,9 +44,9 @@
     <div class="container">
         <div class="navbar">
             <a href="AdminProfile.html">User Profile</a>
+            <a href="AdminDashboard.html">Dashboard</a>
             <a href="ManageManager.html">Manage Manager</a>
             <a href="ViewFeedbackAdmin.html">View Feedback</a>
-            <a href="Report.html">Report</a>
         </div>
 
         <!--Popup Register-->
@@ -57,21 +57,19 @@
                 <br><br>
                 <form action="RegisterStaffServ" method="POST">
                     <label for="IC">IC Number :</label>
-                    <input type="text" id="IC" name="IC" placeholder="Enter Your IC Number"
-                        oninput="restrictToNumbers(this);" maxlength="12" required>
+                    <input type="text" id="IC" name="IC" placeholder="Enter Your IC Number" oninput="restrictToNumbers(this);" maxlength="12" required>
                     <br><br>
                     <label for="Name">Name :</label>
                     <input type="text" id="Name" name="Name" placeholder="Enter Your Name" required>
                     <br><br>
                     <label for="Email">Email :</label>
-                    <input type="email" id="Email" name="Email" placeholder="Enter Email" required>
+                    <input type="text" id="Email" name="Email" placeholder="Enter Email" required>
                     <br><br>
                     <label for="Password">Password :</label>
                     <input type="text" id="Password" name="Password" placeholder="Enter Password" required>
                     <br><br>
                     <label for="Phone">Phone Number :</label>
-                    <input type="text" name="Phone" size="20" oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                        placeholder="Enter Phone Number" maxlength="12" required><br>
+                    <input type="text" name="Phone" size="20" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Enter Phone Number" maxlength="12" required><br>
                     <br>
                     <label for="Role">Roles :</label>
                     <select id="Role" name="Role">
@@ -86,129 +84,213 @@
             </div>
         </div>
 
+            <div class="info">
+                <button class="register-product-button" onclick="showPopup()">Register Staff</button>
+                <h2>Manage Staff</h2>
+                <!--Table-->
+                <div class="table">
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th>Staff IC</th>
+                                <th>Staff Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Role</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>IC001</td>
+                                <td>John Doe</td>
+                                <td>john.doe@example.com</td>
+                                <td>123-456-7890</td>
+                                <td>Manager</td>
+                                <td><img src="/web/IMG/deleteicon.png" ></td>
+                            </tr>
+                            <tr>
+                                <td>IC002</td>
+                                <td>Jane Smith</td>
+                                <td>jane.smith@example.com</td>
+                                <td>234-567-8901</td>
+                                <td>Assistant</td>
+                                <td><img src="/web/IMG/deleteicon.png" ></td>
+                            </tr>
+                            <tr>
+                                <td>IC003</td>
+                                <td>Mike Johnson</td>
+                                <td>mike.johnson@example.com</td>
+                                <td>345-678-9012</td>
+                                <td>HR</td>
+                                <td><img src="/web/IMG/deleteicon.png" ></td>
+                            </tr>
+                            <tr>
+                                <td>IC004</td>
+                                <td>Emily Davis</td>
+                                <td>emily.davis@example.com</td>
+                                <td>456-789-0123</td>
+                                <td>IT Specialist</td>
+                                <td><img src="/web/IMG/deleteicon.png" ></td>
+                            </tr>
+                            <tr>
+                                <td>IC005</td>
+                                <td>Chris Brown</td>
+                                <td>chris.brown@example.com</td>
+                                <td>567-890-1234</td>
+                                <td>Accountant</td>
+                                <td><img src="/web/IMG/deleteicon.png" ></td>
+                            </tr>
+                            <tr>
+                                <td>IC006</td>
+                                <td>Patricia Wilson</td>
+                                <td>patricia.wilson@example.com</td>
+                                <td>678-901-2345</td>
+                                <td>Sales</td>
+                                <td><img src="/web/IMG/deleteicon.png" ></td>
+                            </tr>
+                            <tr>
+                                <td>IC007</td>
+                                <td>Robert Moore</td>
+                                <td>robert.moore@example.com</td>
+                                <td>789-012-3456</td>
+                                <td>Marketing</td>
+                                <td><img src="/web/IMG/deleteicon.png" ></td>
+                            </tr>
+                            <tr>
+                                <td>IC008</td>
+                                <td>Linda Taylor</td>
+                                <td>linda.taylor@example.com</td>
+                                <td>890-123-4567</td>
+                                <td>Consultant</td>
+                                <td><img src="/web/IMG/deleteicon.png" ></td>
+                            </tr>
+                            <tr>
+                                <td>IC009</td>
+                                <td>James Anderson</td>
+                                <td>james.anderson@example.com</td>
+                                <td>901-234-5678</td>
+                                <td>Engineer</td>
+                                <td><img src="/web/IMG/deleteicon.png" ></td>
+                            </tr>
+                            <tr>
+                                <td>IC010</td>
+                                <td>Barbara Thomas</td>
+                                <td>barbara.thomas@example.com</td>
+                                <td>012-345-6789</td>
+                                <td>Designer</td>
+                                <td><img src="/web/IMG/deleteicon.png" ></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
 
         <div class="popupdelete" id="popupdelete">
             <div class="popup-delete">
-                <!-- <span class="close" onclick="hideDeletePopup()">&times;</span> -->
+
+
                 <h2>Delete Staff</h2>
                 <p><b>Are you sure you want to delete the following staff?</b></p>
                 <table>
                     <tr>
                         <td>ID :</td>
                         <td>
-                            <%= staffID %>
+                            <%= ID%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>IC :</td>
+                        <td>
+                            <%= IC%>
                         </td>
                     </tr>
                     <tr>
                         <td>Name :</td>
                         <td>
-                            <%= name %>
+                            <%= Name%>
                         </td>
                     </tr>
                     <tr>
                         <td>Email :</td>
                         <td>
-                            <%= email %>
+                            <%= Email%>
                         </td>
                     </tr>
                     <tr>
                         <td>Phone :</td>
                         <td>
-                            <%= phone %>
+                            <%= Phone%>
                         </td>
                     </tr>
                     <tr>
                         <td>Role :</td>
                         <td>
-                            <%= role %>
+                            <%= Role%>
                         </td>
                     </tr>
                 </table>
 
-                <form class="deleteform" action="DeleteStaffServ" method="POST">
-                    <!-- <input type="hidden" name="staffID" value="<%= staffID %>">
+                <form class="deleteform" action="DeleteStaffServ?staffID=<%= ID%>" method="POST">
+                    <input type="hidden" name="staffID" value="<%= ID%>">
                     <input type="submit" name="action" value="Delete">
-                    <input type="submit" name="action" value="Cancel"> -->
-                    <a href="ManageManager.html">Delete</a>
-                    <a href="ManageManager.html">Cancel</a>
-
+                    <input type="submit" name="action" value="Cancel"> 
                 </form>
+
             </div>
         </div>
 
 
-
-        <div class="info">
-            <button class="register-product-button" onclick="showPopup()">Register Staff</button>
-            <h2>Manage Staff</h2>
-            <!--Table-->
-            <div class="table">
-                <table id="table">
-                    <thead>
-                        <tr>
-                            <th>Staff IC</th>
-                            <th>Staff Name</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
-                            <th>Role</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-
-
-                    <td>
-                        <button class="Delete" onclick="showDeletePopup()">Delete</button>
-                    </td>
-
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleNavbar() {
-            var navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('minimized');
-        }
-
-        function showPopup() {
-            document.getElementById("popup").style.display = "block";
-        }
-
-        function hidePopup() {
-            document.getElementById("popup").style.display = "none";
-        }
-
-        function showDeletePopup() {
-            // Display the delete staff popup
-            document.getElementById("popupdelete").style.display = "block";
-        }
-
-        function hideDeletePopup() {
-            document.getElementById("popupdelete").style.display = "none";
-        }
-
-
-        function restrictToNumbers(inputElement) {
-            inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
-        }
-        function validateNumber(event) {
-            // Get the key code of the pressed key
-            var keyCode = event.which ? event.which : event.keyCode;
-
-            // Allow only numbers (0-9) and special keys like backspace, delete, etc.
-            if (keyCode >= 48 && keyCode <= 57 || keyCode === 8 || keyCode === 46 || keyCode === 37 || keyCode === 390) {
-                return true;
-            } else {
-                return false;
+        <script>
+            function toggleNavbar() {
+                var navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('minimized');
             }
+
+            function showPopup() {
+                document.getElementById("popup").style.display = "block";
+            }
+
+            function showDeletePopup() {
+                // Display the delete staff popup
+                document.getElementById("popupdelete").style.display = "block";
+            }
+
+            function hidePopup() {
+                document.getElementById("popup").style.display = "none";
+            }
+
+            function restrictToNumbers(inputElement) {
+                inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
+            }
+
+            function hideDeletePopup() {
+                document.getElementById("popupdelete").style.display = "none";
+            }
+            function validateNumber(event) {
+                // Get the key code of the pressed key
+                var keyCode = event.which ? event.which : event.keyCode;
+
+                // Allow only numbers (0-9) and special keys like backspace, delete, etc.
+                if (keyCode >= 48 && keyCode <= 57 || keyCode === 8 || keyCode === 46 || keyCode === 37 || keyCode === 390) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            
+            function signOut() {
+            // Redirect to the logout servlet or your logout logic
+            window.location.href = 'LogOutServ'; 
         }
 
-    </script>
+        </script>
 
-    <footer>
-        <p>&copy; HR SkillCertify 2023</p>
-    </footer>
-</body>
+        <footer>
+            <p>&copy; HR SkillCertify 2023</p>
+        </footer>
+    </body>
 
 </html>

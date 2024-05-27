@@ -5,80 +5,10 @@
     <title>Manage Payment</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/web/CSS/StaffDashboard.css">
+    <link rel="stylesheet" type="text/css" href="/web/CSS/feedback.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
-
-<style>
-div.table {
-    background-color: white;
-/*    margin-bottom: 10%;*/
-}
-
-#table img {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-.table {
-    display: grid;
-    place-items: center;
-    margin: 20px;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-
-}
-
-
-th {
-    text-align: left;
-    color: white;
-    background-color: grey;
-}
-
-td,
-th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-input[type=number] {
-    width: 70px;
-}
-
-#table th,
-#table td {
-    padding: 8px;
-    border: 1px solid black;
-    text-align: center;
-}
-
-#table button {
-    border: none;
-    background-color: transparent;
-    padding: 0;
-}
-
-#table img {
-    width: 20px;
-    height: 20px;
-}
-
-
-@media screen and (max-width: 600px) {
-
-    #table th:nth-child(n+6),
-    #table td:nth-child(n+6) {
-        display: none;
-    }
-}
-
-</style>
 
 <body>
     <header>
@@ -93,15 +23,15 @@ input[type=number] {
             </nav>
         </div>
         <nav>
-        <li class="dropdown">
-            <!-- <a class="nav-link">Account</a> -->
-            <a class="nav-link">Manager</a>
-            <ul class="dropdown-content">
-                <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
-                <li><a href="StaffProfile.html">User Profile</a></li>
-                <li><a href="MainPage.html">Sign Out</a></li>
-            </ul>
-        </li>
+            <li class="dropdown">
+                <!-- <a class="nav-link">Account</a> -->
+                <a class="nav-link">Manager</a>
+                <ul class="dropdown-content">
+                    <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
+                    <li><a href="StaffProfile.html">User Profile</a></li>
+                    <li><a href="MainPage.html">Sign Out</a></li>
+                </ul>
+            </li>
         </nav>
     </header>
 
@@ -115,104 +45,265 @@ input[type=number] {
         </div>
 
 
-            <div class="info">
-                <!-- <button onclick="refreshSalesReport()">Refresh</button> -->
-                <h1>Manage Payment</h1>
-                <!--Table-->
-                <div class="table">
-                    <table id="table">
-                        
-                        <thead>
-                            <tr>
-                                <th>Payment ID</th>
-                                <th>Candidate Name</th>
-                                <th>Certificate</th>
-                                <th>Price</th>
-                                <th>Receipt</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        
-                        <tbody>
-                            <!-- Sample row with selectable status -->
-                            <tr>
-                                <td>1</td>
-                                <td>020422070227</td>
-                                <td>Sijil Kemahiran Malaysia (SKM)</td>
-                                <td>2250</td>
-                                <td>12.5.2025</td>
-                                <td>Receipt001</td>
-                                <td>
-                                    <select>
-                                        <option value="Pending">Pending</option>
-                                        <option value="Approved">Approved</option>
-                                        <option value="Rejected">Rejected</option>
+        <div class="info">
+            <h2>Manage Payment</h2>
+            <div class="table">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Candidate Name</th>
+                            <th>Certificate Type</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                            <th>Receipt</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PAY001</td>
+                            <td>John Doe</td>
+                            <td>Type A</td>
+                            <td>$100</td>
+                            <td>2024-01-15</td>
+                            <td style="width: 100px; text-align: center;">
+                                <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
+                                    <input type="hidden" name="image" value="dummyBase64String">
+                                    <img src="data:image/jpeg;base64,dummyBase64String" class="image-button"
+                                        style="width: 75px; height: 75px;">
+                                </form>
+                            </td>
+                            <td>
+                                <form onsubmit="updateStatus(this, 'PAY001'); return false;">
+                                    <select name='newStatus'>
+                                        <option class="pending" value='Pending' selected>Pending</option>
+                                        <option class="approved" value='Approved'>Approved</option>
+                                        <option class="rejected" value='Rejected'>Rejected</option>
                                     </select>
-                                </td>
-                            </tr>
-                            <!-- Add more rows with selectable status -->
-                        </tbody>
-
-                        <tbody>
-                            <!-- Sample row with selectable status -->
-                            <tr>
-                                <td>1</td>
-                                <td>020422070227</td>
-                                <td>Sijil Kemahiran Malaysia (SKM)</td>
-                                <td>2250</td>
-                                <td>12.5.2025</td>
-                                <td>Receipt001</td>
-                                <td>
-                                    <select>
-                                        <option value="Pending">Pending</option>
-                                        <option value="Approved">Approved</option>
-                                        <option value="Rejected">Rejected</option>
+                                    <input type="hidden" name="paymentID" value="PAY001">
+                                    <input type="submit" value="Update" onclick="showSuccessMessage()">
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PAY002</td>
+                            <td>Jane Smith</td>
+                            <td>Type B</td>
+                            <td>$150</td>
+                            <td>2024-01-20</td>
+                            <td style="width: 100px; text-align: center;">
+                                <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
+                                    <input type="hidden" name="image" value="dummyBase64String">
+                                    <img src="data:image/jpeg;base64,dummyBase64String" class="image-button"
+                                        style="width: 75px; height: 75px;">
+                                </form>
+                            </td>
+                            <td>
+                                <form onsubmit="updateStatus(this, 'PAY002'); return false;">
+                                    <select name='newStatus'>
+                                        <option class="pending" value='Pending'>Pending</option>
+                                        <option class="approved" value='Approved'>Approved</option>
+                                        <option class="rejected" value='Rejected'>Rejected</option>
                                     </select>
-                                </td>
-                            </tr>
-                            <!-- Add more rows with selectable status -->
-                        </tbody>
-
-                        <tbody>
-                            <!-- Sample row with selectable status -->
-                            <tr>
-                                <td>1</td>
-                                <td>020422070227</td>
-                                <td>Sijil Kemahiran Malaysia (SKM)</td>
-                                <td>2250</td>
-                                <td>12.5.2025</td>
-                                <td>Receipt001</td>
-                                <td>
-                                    <select>
-                                        <option value="Pending">Pending</option>
-                                        <option value="Approved">Approved</option>
-                                        <option value="Rejected">Rejected</option>
+                                    <input type="hidden" name="paymentID" value="PAY002">
+                                    <input type="submit" value="Update" onclick="showSuccessMessage()">
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PAY003</td>
+                            <td>Mike Johnson</td>
+                            <td>Type C</td>
+                            <td>$200</td>
+                            <td>2024-01-25</td>
+                            <td style="width: 100px; text-align: center;">
+                                <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
+                                    <input type="hidden" name="image" value="dummyBase64String">
+                                    <img src="data:image/jpeg;base64,dummyBase64String" class="image-button"
+                                        style="width: 75px; height: 75px;">
+                                </form>
+                            </td>
+                            <td>
+                                <form onsubmit="updateStatus(this, 'PAY003'); return false;">
+                                    <select name='newStatus'>
+                                        <option class="pending" value='Pending'>Pending</option>
+                                        <option class="approved" value='Approved'>Approved</option>
+                                        <option class="rejected" value='Rejected'>Rejected</option>
                                     </select>
-                                </td>
-                            </tr>
-                            <!-- Add more rows with selectable status -->
-                        </tbody>
+                                    <input type="hidden" name="paymentID" value="PAY003">
+                                    <input type="submit" value="Update" onclick="showSuccessMessage()">
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PAY004</td>
+                            <td>Emily Davis</td>
+                            <td>Type D</td>
+                            <td>$250</td>
+                            <td>2024-02-01</td>
+                            <td style="width: 100px; text-align: center;">
+                                <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
+                                    <input type="hidden" name="image" value="dummyBase64String">
+                                    <img src="data:image/jpeg;base64,dummyBase64String" class="image-button"
+                                        style="width: 75px; height: 75px;">
+                                </form>
+                            </td>
+                            <td>
+                                <form onsubmit="updateStatus(this, 'PAY004'); return false;">
+                                    <select name='newStatus'>
+                                        <option class="pending" value='Pending'>Pending</option>
+                                        <option class="approved" value='Approved'>Approved</option>
+                                        <option class="rejected" value='Rejected'>Rejected</option>
+                                    </select>
+                                    <input type="hidden" name="paymentID" value="PAY004">
+                                    <input type="submit" value="Update" onclick="showSuccessMessage()">
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PAY005</td>
+                            <td>Chris Brown</td>
+                            <td>Type E</td>
+                            <td>$300</td>
+                            <td>2024-02-10</td>
+                            <td style="width: 100px; text-align: center;">
+                                <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
+                                    <input type="hidden" name="image" value="dummyBase64String">
+                                    <img src="data:image/jpeg;base64,dummyBase64String" class="image-button"
+                                        style="width: 75px; height: 75px;">
+                                </form>
+                            </td>
+                            <td>
+                                <form onsubmit="updateStatus(this, 'PAY005'); return false;">
+                                    <select name='newStatus'>
+                                        <option class="pending" value='Pending'>Pending</option>
+                                        <option class="approved" value='Approved'>Approved</option>
+                                        <option class="rejected" value='Rejected'>Rejected</option>
+                                    </select>
+                                    <input type="hidden" name="paymentID" value="PAY005">
+                                    <input type="submit" value="Update" onclick="showSuccessMessage()">
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PAY006</td>
+                            <td>Patricia Wilson</td>
+                            <td>Type A</td>
+                            <td>$100</td>
+                            <td>2024-02-15</td>
+                            <td style="width: 100px; text-align: center;">
+                                <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
+                                    <input type="hidden" name="image" value="dummyBase64String">
+                                    <img src="data:image/jpeg;base64,dummyBase64String" class="image-button"
+                                        style="width: 75px; height: 75px;">
+                                </form>
+                            </td>
+                            <td>
+                                <form onsubmit="updateStatus(this, 'PAY006'); return false;">
+                                    <select name='newStatus'>
+                                        <option class="pending" value='Pending'>Pending</option>
+                                        <option class="approved" value='Approved'>Approved</option>
+                                        <option class="rejected" value='Rejected'>Rejected</option>
+                                    </select>
+                                    <input type="hidden" name="paymentID" value="PAY006">
+                                    <input type="submit" value="Update" onclick="showSuccessMessage()">
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PAY007</td>
+                            <td>Robert Moore</td>
+                            <td>Type B</td>
+                            <td>$150</td>
+                            <td>2024-02-20</td>
+                            <td style="width: 100px; text-align: center;">
+                                <form action="" method="post" target="_blank" style="margin: 0;">
+                                    <input type="hidden" name="image" value="dummyBase64String">
 
-                        
-                        
-                    </table>
-                </div>
+                                    <img src="data:image/jpeg;base64,dummyBase64String" class="image-button"
+                                        style="width: 75px; height: 75px;">
+                                </form>
+                            </td>
+                            <td>
+                                <form onsubmit="updateStatus(this, 'PAY007'); return false;">
+                                    <select name='newStatus'>
+                                        <option class="pending" value='Pending'>Pending</option>
+                                        <option class="approved" value='Approved'>Approved</option>
+                                        <option class="rejected" value='Rejected'>Rejected</option>
+                                    </select>
+                                    <input type="hidden" name="paymentID" value="PAY007">
+                                    <input type="submit" value="Update" onclick="showSuccessMessage()">
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
         </div>
-    </div>
 
-    <script>
-        function toggleNavbar() {
-            var navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('minimized');
-        }
-    </script>
+        <script>
+            // function updateStatus(form, paymentID) {
+            //     form.action = "UpdatePaymentServ";
+            //     form.method = "POST";
+            //     form.submit();
+            // }
 
-    <footer>
-        <p>&copy; HR SkillCertify 2023</p>
-    </footer>
+            function toggleNavbar() {
+                var navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('minimized');
+            }
 
+            function showPopup() {
+                document.getElementById("popup").style.display = "block";
+            }
+
+            function showDeletePopup() {
+                document.getElementById("popupdelete").style.display = "block";
+            }
+
+            function hidePopup() {
+                document.getElementById("popup").style.display = "none";
+            }
+
+            function restrictToNumbers(inputElement) {
+                inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
+            }
+
+            function hideDeletePopup() {
+                document.getElementById("popupdelete").style.display = "none";
+            }
+            function validateNumber(event) {
+                // Get the key code of the pressed key
+                var keyCode = event.which ? event.which : event.keyCode;
+
+                // Allow only numbers (0-9) and special keys like backspace, delete, etc.
+                if (keyCode >= 48 && keyCode <= 57 || keyCode === 8 || keyCode === 46 || keyCode === 37 || keyCode === 390) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            // Refresh sales report by reloading the page
+            function refresh() {
+                location.reload();
+            }
+
+            function signOut() {
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
+
+            function showSuccessMessage() {
+                // Show a popup message
+                alert("Update Successful");
+            }
+        </script>
+
+        <footer>
+            <p>&copy; HR SkillCertify 2023</p>
+        </footer>
 </body>
 
 </html>

@@ -1,125 +1,133 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>About Certificate</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/web/CSS/HomePage.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
+    <head>
+        <title>About Certificate</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/web/CSS/CandidateSkeleton.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<style>
-    .infoCert {
-        margin: 0 auto;
-        text-align: center;
-        padding: 20px;
-        width: 95%;
-        height: 100vh;
-        background-color: aliceblue;
-        display: flex;
-    }
+    </head>
 
-    .cert {
-        position: relative;
-        background-color: #f9f9f9;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        padding: 65px;
-        margin: 40px;
-        width: 20%;
-        border-radius: 8px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    .cert button {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    position: absolute;
-    bottom: 5%; 
-    left: 50%; 
-    transform: translateX(-50%); 
-}
-
-</style>
-
-<body>
-    <header>
-        <div class="main">
-            <img class="logo" src="/web/IMG/HRSCLogo.png" alt="logo">
-            <nav>
-                <ul class="nav_links">
-                    <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
-                </ul>
-            </nav>
-        </div>
-        <nav>
-            <li class="dropdown">
-                <a class="nav-link">Candidate</a>
-                <ul class="dropdown-content">
-                    <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
-                    <li><a href="CandidateProfile.html">User Profile</a></li>
-                    <li><a href="MainPage.html">Sign Out</a></li>
-                </ul>
-            </li>
-        </nav>
-    </header>
-
-    <div class="container">
-        <div class="navbar">
-            <a href="HomePage.html">Home</a>
-            <a href="CandidateProfile.html">User Profile</a>
-            <a href="AboutCertificate.html">About Certificate</a>
-            <a href="TimeTable.html">Time Table</a>
-            <a href="Feedback.html">Feedback</a>
-        </div>
-
-        <div class="infoCert">
-            <div class="cert">
-                <h2>Sijil Kemahiran Malaysia (SKM)</h2>
-                <!-- Add content for container 1 -->
-                <a href="CertificateForm.html">
-                    <button>Register</button>
-                </a>                
-            </div>
-
-            <div class="cert">
-                <h2>Diploma Kemahiran Malaysia (DKM)</h2>
-                <!-- Add content for container 2 -->
-                <a href="CertificateForm.html">
-                    <button>Register</button>
-                </a>   
-            </div>
-
-            <div class="cert">
-                <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM)</h2>
-                <!-- Add content for container 3 -->
-                <a href="CertificateForm.html">
-                    <button>Register</button>
-                </a>   
-            </div>
-
-        </div>
-
-    </div>
-
-    <script>
-        function toggleNavbar() {
-            var navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('minimized');
+    <style>
+        .infoCert {
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            width: 85%;
+            height: auto;
+            background-color: #DDE6ED;
+            display: flex;
         }
-    </script>
 
-    <footer>
-        <p>&copy; HR SkillCertify 2023</p>
-    </footer>
+        .cert {
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 65px;
+            margin: 40px;
+            width: 20%;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
 
-</body>
+        }
+
+        .cert button {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 15%; 
+            transform: translateX(-50%); 
+        }
+
+        .cert button:hover {
+            background-color: #45a049;
+        }
+        
+        
+    </style>
+
+    <body>
+        <header>
+            <div class="main">
+                <img class="logo" src="/web/IMG/HRSCLogo.png" alt="logo">
+                <nav>
+                    <ul class="nav_links">
+                        <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
+                    </ul>
+                </nav>
+            </div>
+            <nav>
+                <li class="dropdown">
+                    <a class="nav-link">Candidate</a>
+                    <ul class="dropdown-content">
+                        <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
+                        <li><a href="CandidateProfile.html">Profile</a></li>
+                        <li><a href="MainPage.html" onclick="signOut()">Sign Out</a></li>
+                    </ul>
+                </li>
+            </nav>
+        </header>
+
+        <div class="container">
+            <div class="navbar">
+                <a href="HomePage.html">Home</a>
+                <a href="CandidateProfile.html">User Profile</a>
+                <a href="AboutCertificate.html">About Certificate</a>
+                <a href="TimeTable.html">Time Table</a>
+                <a href="Feedback.html">Feedback</a>
+            </div>
+
+            <div class="infoCert">
+                <div class="cert">
+                    <h2>Sijil Kemahiran Malaysia (SKM)</h2>
+                    <!-- Add content for container 1 -->
+                    <a href="CertificateForm.html">
+                        <button>Register</button>
+                    </a>                
+                </div>
+
+                <div class="cert">
+                    <h2>Diploma Kemahiran Malaysia (DKM)</h2>
+                    <!-- Add content for container 2 -->
+                    <a href="CertificateForm.html">
+                        <button>Register</button>
+                    </a>  
+                </div>
+
+                <div class="cert">
+                    <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM)</h2>
+                    <!-- Add content for container 3 -->
+                    <a href="CertificateForm.html">
+                        <button>Register</button>
+                    </a>  
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            function toggleNavbar() {
+                var navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('minimized');
+            }
+
+            function signOut() {
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
+        </script>
+
+        <footer>
+            <p>&copy; HR SkillCertify 2023</p>
+        </footer>
+
+    </body>
 
 </html>

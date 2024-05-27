@@ -1,5 +1,5 @@
 body {
-    background-color: aliceblue;
+    background-color: #F3FBF1;
 }
 h2{
     text-align: center;
@@ -11,7 +11,7 @@ header {
     box-sizing: border-box;
     padding: auto;
     height: 65px;
-    background-color: rgb(190, 190, 190);
+    background-color: #D1E4D1;
 }
 
 .main {
@@ -214,7 +214,7 @@ button {
 }
 
 footer {
-    background-color: rgb(190, 190, 190); /* Set background color */
+    background-color: #D1E4D1; /* Set background color */
     color: black; /* Set text color */
     text-align: center; /* Center-align text */
     padding: 10px; /* Add padding */
@@ -231,12 +231,12 @@ footer {
     padding: 20px;
     padding-bottom: 50px;
     background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     border-radius: 8px;
     /*justify-content: center;*/
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative;
     /* Added */
 }
@@ -288,17 +288,19 @@ table {
 
 
 th {
-    border: 1px solid #000000;
-    padding: 8px;
     text-align: center;
-    background-color: #99ccff;
+    color: black;
+    background-color: #cccccc;
 }
 
 td {
-    border: 1px solid #000000;
-    padding: 8px;
-    text-align: center;
     background-color: #ffffff;
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 8px;
 }
 
 input[type=number] {

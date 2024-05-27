@@ -32,9 +32,8 @@
         }
 
         .cert1 {
-            background-color: rgb(199, 199, 199);
-            ;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             padding: 50px;
             margin: 30px;
             margin-left: 70px;
@@ -47,8 +46,8 @@
         }
 
         .cert2 {
-            background-color: rgb(199, 199, 199);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             padding: 30px;
             margin: 30px;
             width: 400px;
@@ -84,17 +83,17 @@
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #526D82;
             border-radius: 4px;
             box-sizing: border-box;
             resize: none;
         }
-        
+
 
         /* Style for submit button */
         #feedbackForm button[type="submit"] {
-            background-color: #ffffff;
-            color: rgb(0, 0, 0);
+            background-color: #004080;
+            color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
@@ -155,8 +154,6 @@
             height: 100%;
             border-radius: 4px;
         }
-
-
 
 
     </style>

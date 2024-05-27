@@ -5,7 +5,7 @@
     <title>View Feedback</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/web/CSS/ManageCandidate.css">
+    <link rel="stylesheet" type="text/css" href="/web/CSS/feedback.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
@@ -45,9 +45,8 @@
         </div>
 
         <div class="info">
-            <button onclick="refreshSalesReport()">Refresh</button>
-            <h1>View Feedback</h1>
-            <!--Table-->
+            <button onclick="refresh()">Refresh</button>
+            <h2>View Feedback</h2>
             <div class="table">
                 <table id="table">
                     <thead>
@@ -57,21 +56,84 @@
                             <th>Message</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>Great service!</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane Smith</td>
+                            <td>Very satisfied with the product.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Mike Johnson</td>
+                            <td>Will recommend to friends.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Emily Davis</td>
+                            <td>Excellent support team.</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Chris Brown</td>
+                            <td>Quick delivery, thanks!</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Patricia Wilson</td>
+                            <td>Affordable and reliable.</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Robert Moore</td>
+                            <td>Exceeded my expectations.</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Linda Taylor</td>
+                            <td>A pleasure to deal with.</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>James Anderson</td>
+                            <td>High quality products.</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Barbara Thomas</td>
+                            <td>Will buy again.</td>
+                        </tr>
+                    </tbody>
                 </table>
+                
             </div>
+
         </div>
-    </div>
 
-    <script>
-        function toggleNavbar() {
-            var navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('minimized');
-        }
-    </script>
+        <script>
+            function toggleNavbar() {
+                var navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('minimized');
+            }
 
-    <footer>
-        <p>&copy; HR SkillCertify 2023</p>
-    </footer>
+            function signOut() {
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
+
+            // Refresh sales report by reloading the page
+            function refresh() {
+                location.reload();
+            }
+        </script>
+
+        <footer>
+            <p>&copy; HR SkillCertify 2023</p>
+        </footer>
 
 </body>
 

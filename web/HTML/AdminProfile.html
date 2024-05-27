@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/web/CSS/ManagerProfile.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+
+<body>
+    <header>
+        <div class="main">
+            <a href="/web/HTML/AdminDashboard.html">
+                <img class="logo" src="/web/IMG/HRSCLogo.png" alt="logo">
+            </a>
+            <nav>
+                <ul class="nav_links">
+                    <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
+                </ul>
+            </nav>
+        </div>
+        <nav>
+        <li class="dropdown">
+            <!-- <a class="nav-link">Account</a> -->
+            <a class="nav-link">Admin</a>
+            <ul class="dropdown-content">
+                <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
+                <li><a href="/web/HTML/AdminProfile.html">User Profile</a></li>
+                <li><a href="/web/HTML/MainPage.html">Sign Out</a></li>
+            </ul>
+        </li>
+        </nav>
+    </header>
+
+    <div class="co">
+        <div class="navbar">
+            <a href="AdminProfile.html">User Profile</a>
+            <a href="AdminDashboard.html">Dashboard</a>
+            <a href="ManageManager.html">Manage Manager</a>
+            <a href="ViewFeedbackAdmin.html">View Feedback</a>
+        </div>
+
+        <div class="container" id="myNavbar">
+            <div class="title">
+                <h1>User Profile</h1>
+                <h3 name="name"> Name : <%= Name%></h3>
+                <h3 name="ic"> IC : <%= IC%></h3>
+                <h3 name="email"> Email : <%= Email%></h3>
+                <!--<h3 name="password"> Password : <%= Password%></h3>-->
+                <h3 name="phone"> Phone : <%= Phone%></h3>
+            </div>
+
+            <a href="AdminProfile.html">
+                <button class="profile-update-button">EDIT</button>
+            </a> 
+        </div>
+    </div>
+
+    <footer>
+        <p>© HR SkillCertify 2023</p>
+    </footer>
+
+    <script>
+        function toggleNavbar() {
+            var navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('minimized');
+        }
+        
+        function signOut() {
+        // Redirect to the logout servlet or your logout logic
+        window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+    }
+    </script>
+
+</body>
+
+</html>
