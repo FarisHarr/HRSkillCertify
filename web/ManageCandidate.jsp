@@ -52,83 +52,81 @@
             </div>
 
             <div class="info">
-                <div class="info">
-                    <!--<button onclick="refresh()">Refresh</button>-->
-                    <h2>Manage Candidate</h2>
+                <!--<button onclick="refresh()">Refresh</button>-->
+                <h2>Manage Candidate</h2>
 
-                    <!-- Search Section -->
-                    <div class="search-section">
-                        <form action="ManageCandidate.jsp" method="GET">
-                            <input type="text" name="searchName" placeholder="Search by Name">
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>
-
-                    <!-- Table -->
-                    <table id="table">
-                        <thead>
-                            <tr>
-                                <th>Candidate IC</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone Number</th>
-                                <th>Address</th>
-                                <!--                    <th>Status</th>-->
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%
-                                // Get search parameter from URL
-                                String searchName = request.getParameter("searchName");
-                                String query = "SELECT * FROM candidate";
-
-                                if (searchName != null && !searchName.isEmpty()) {
-                                    // Add search condition to the SQL query
-                                    query = "SELECT * FROM candidate WHERE cand_Name LIKE '%" + searchName + "%'";
-                                }
-
-                                try {
-                                    // Database connection and query execution
-                                    Class.forName("com.mysql.jdbc.Driver");
-                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-                                    Statement st = con.createStatement();
-                                    ResultSet rs = st.executeQuery(query);
-
-                                    while (rs.next()) {
-                                        // Retrieve candidate details from the result set
-                                        String ID = rs.getString("cand_ID");
-                                        String IC = rs.getString("cand_IC");
-                                        String Name = rs.getString("cand_Name");
-                                        String Email = rs.getString("cand_Email");
-                                        String Phone = rs.getString("cand_Phone");
-                                        String Address = rs.getString("cand_Add");
-
-                                        // Output candidate details in table rows
-                                        out.println("<tr>");
-                                        out.println("<td>" + IC + "</td>");
-                                        out.println("<td>" + Name + "</td>");
-                                        out.println("<td>" + Email + "</td>");
-                                        out.println("<td>" + Phone + "</td>");
-                                        out.println("<td>" + Address + "</td>");
-            //                            out.println("<td>");
-            //                            out.println("<a href=\"#?cand_ID=" + ID + "\">"
-            //                                    + "<img src=\"IMG/editicon.png\" alt=\"edit\"></a>");
-            //                            out.println("</td>");
-                                        out.println("<td>");
-                                        out.println("<a href=\"DeleteCandidate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
-                                        out.println("</td>");
-                                        out.println("</tr>");
-                                    }
-
-                                    con.close();
-                                } catch (Exception e) {
-                                    out.println("Error: " + e);
-                                }
-                            %>
-                        </tbody>
-                    </table>
+                <!-- Search Section -->
+                <div class="search-section">
+                    <form action="ManageCandidate.jsp" method="GET">
+                        <input type="text" name="searchName" placeholder="Search by Name">
+                        <button type="submit">Search</button>
+                    </form>
                 </div>
+
+                <!-- Table -->
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>Candidate IC</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <!--                    <th>Status</th>-->
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            // Get search parameter from URL
+                            String searchName = request.getParameter("searchName");
+                            String query = "SELECT * FROM candidate";
+
+                            if (searchName != null && !searchName.isEmpty()) {
+                                // Add search condition to the SQL query
+                                query = "SELECT * FROM candidate WHERE cand_Name LIKE '%" + searchName + "%'";
+                            }
+
+                            try {
+                                // Database connection and query execution
+                                Class.forName("com.mysql.jdbc.Driver");
+                                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery(query);
+
+                                while (rs.next()) {
+                                    // Retrieve candidate details from the result set
+                                    String ID = rs.getString("cand_ID");
+                                    String IC = rs.getString("cand_IC");
+                                    String Name = rs.getString("cand_Name");
+                                    String Email = rs.getString("cand_Email");
+                                    String Phone = rs.getString("cand_Phone");
+                                    String Address = rs.getString("cand_Add");
+
+                                    // Output candidate details in table rows
+                                    out.println("<tr>");
+                                    out.println("<td>" + IC + "</td>");
+                                    out.println("<td>" + Name + "</td>");
+                                    out.println("<td>" + Email + "</td>");
+                                    out.println("<td>" + Phone + "</td>");
+                                    out.println("<td>" + Address + "</td>");
+                                    //                            out.println("<td>");
+                                    //                            out.println("<a href=\"#?cand_ID=" + ID + "\">"
+                                    //                                    + "<img src=\"IMG/editicon.png\" alt=\"edit\"></a>");
+                                    //                            out.println("</td>");
+                                    out.println("<td>");
+                                    out.println("<a href=\"DeleteCandidate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
+                                    out.println("</td>");
+                                    out.println("</tr>");
+                                }
+
+                                con.close();
+                            } catch (Exception e) {
+                                out.println("Error: " + e);
+                            }
+                        %>
+                    </tbody>
+                </table>
             </div>
         </div>
 

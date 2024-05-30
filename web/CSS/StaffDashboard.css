@@ -144,7 +144,7 @@ button {
 .navbar {
     background-color: #455d5f;
     overflow: hidden;
-    width: 160px;
+    width: 165px;
     /* Set a fixed width for the vertical bar */
     height: auto;
     transition: width 0.1s, opacity 0.1s;
@@ -224,7 +224,7 @@ button {
 
 footer {
     background-color: #bbd0bb;
-    height: 70px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;

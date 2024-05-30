@@ -106,29 +106,30 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
 
-            <script>
-                function toggleNavbar() {
-                    var navbar = document.querySelector('.navbar');
-                    navbar.classList.toggle('minimized');
-                }
+        </div>
 
-                function signOut() {
-                    // Redirect to the logout servlet or your logout logic
-                    window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-                }
+        <script>
+            function toggleNavbar() {
+                var navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('minimized');
+            }
 
-                // Refresh sales report by reloading the page
-                function refresh() {
-                    location.reload();
-                }
-            </script>
+            function signOut() {
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
 
-            <footer>
-                <p>&copy; HR SkillCertify 2023</p>
-            </footer>
+            // Refresh sales report by reloading the page
+            function refresh() {
+                location.reload();
+            }
+        </script>
+
+        <footer>
+            <p>&copy; HR SkillCertify 2023</p>
+        </footer>
 
     </body>
 

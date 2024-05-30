@@ -34,10 +34,11 @@
         .cert1 {
             background-color: #f9f9f9;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            padding: 50px;
-            margin: 30px;
-            margin-left: 70px;
-            width: 500px;
+            padding: 40px;
+/*            margin: 30px;
+            margin-left: 40px;*/
+            margin: auto;
+            width: 40%;
             border-radius: 8px;
             text-align: center;
             display: flex;
@@ -48,8 +49,10 @@
         .cert2 {
             background-color: #f9f9f9;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            padding: 30px;
-            margin: 30px;
+            padding: 20px;
+            padding-right: 40px;
+            padding-left: 40px;
+            margin: auto;
             width: 400px;
             border-radius: 8px;
             text-align: center;
@@ -73,7 +76,8 @@
         /* Style for form labels */
         #feedbackForm label {
             display: block;
-            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-top: 25px;
         }
 
         /* Style for form inputs */
@@ -87,6 +91,10 @@
             border-radius: 4px;
             box-sizing: border-box;
             resize: none;
+        }
+        
+        #feedbackForm textarea {
+            height: 80px;
         }
 
 
@@ -211,11 +219,11 @@
             <div class="cert1">
                 <h2>Feedback</h2>
                 <form id="feedbackForm" action="FeedbackServ" method="POST">
-                    <label for="name">Name:</label><br>
+                    <label for="name">Name:</label>
                     <input type="text" id="name" name="name" value="<%= Name%>" readonly ><br>
-                    <label for="email">Email:</label><br>
+                    <label for="email">Email:</label>
                     <input type="email" id="email" name="email" value="<%= Email%>" readonly><br>
-                    <label for="message" >Feedback:</label><br>
+                    <label for="message" >Feedback:</label>
                     <textarea id="message" name="message" required></textarea><br>
                     <button type="submit">Submit Feedback</button>
                 </form>

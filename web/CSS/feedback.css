@@ -222,7 +222,7 @@ button {
     margin: auto;
     text-align: center;
     padding: 20px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
     width: 90%;
     height: auto;
     background-color: #F3FBF1;
@@ -414,13 +414,21 @@ input[type="submit"]:hover {
 }
 
 
-footer {
-    background-color: #bbd0bb; /* Set background color */
-    color: black; /* Set text color */
-    text-align: center; /* Center-align text */
-    padding: 10px; /* Add padding */
-    position: fixed; /* Fixed positioning at the bottom */
+/*footer {
+    background-color: #bbd0bb;  Set background color 
+    color: black;  Set text color 
+    text-align: center;  Center-align text 
+    padding: 10px;  Add padding 
+    position: fixed;  Fixed positioning at the bottom 
     left: 0;
     bottom: 0;
-    width: 100%; /* Full width */
+    width: 100%;  Full width 
+}*/
+
+footer {
+    background-color: #bbd0bb;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

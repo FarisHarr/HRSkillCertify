@@ -167,7 +167,7 @@ button {
 .navbar {
     background-color: #455d5f;
     overflow: hidden;
-    width: 190px;
+    width: 180px;
     /* Set a fixed width for the vertical bar */
     height: auto;
     transition: width 0.1s, opacity 0.1s;
@@ -219,17 +219,20 @@ button {
 }
 
 .info {
-    margin: 0 auto;
+    margin: auto;
     text-align: center;
     padding: 20px;
+    padding-bottom: 30px;
     width: 90%;
     height: auto;
     background-color: #F3FBF1;
 }
 
-.info h2{
-    text-align: center;
-    margin-bottom: 10px;
+.info h2 {
+    display: inline-block;
+    margin-left: 230px;
+    margin-bottom: 20px;
+    vertical-align: middle;
 }
 
 /*.info button{
@@ -301,7 +304,8 @@ input.submit {
 
 .submit-button{
     display: flex;
-    float: left;     justify-content: center;
+    float: left;
+    justify-content: center;
 }
 
 input.submit :hover {
@@ -328,7 +332,7 @@ select {
 
 div.table {
     background-color: white;
-/*    margin-bottom: 10%;*/
+    /*    margin-bottom: 10%;*/
 }
 
 #table img {
@@ -413,8 +417,8 @@ input[type=number] {
 }
 
 .popup, .popupdelete {
-            display: none;
-        }
+    display: none;
+}
 
 .popupdelete {
     position: fixed;
@@ -425,7 +429,7 @@ input[type=number] {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-    
+
 }
 
 .popup-delete {
@@ -460,13 +464,18 @@ input[type=number] {
 
 
 
-/* Search section */
 .search-section {
-    margin-bottom: 20px;
-    text-align: right; /* Align the search section to the right */
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    float: right; /* Align to the right */
 }
 
-/* Search input */
+.search-section form {
+    display: inline-block;
+    text-align: right;
+}
+
 .search-section input[type="text"] {
     padding: 8px;
     border: 1px solid #ccc;
@@ -475,7 +484,6 @@ input[type=number] {
     width: 250px; /* Adjust width as needed */
 }
 
-/* Search button */
 .search-section button {
     width: 80px;
     padding: 8px;
@@ -491,7 +499,7 @@ input[type=number] {
 
 footer {
     background-color: #bbd0bb;
-    height: 70px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;

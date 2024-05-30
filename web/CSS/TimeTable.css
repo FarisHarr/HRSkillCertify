@@ -148,7 +148,7 @@ button {
 .container {
     width: 100%;
     height: auto;
-    margin: 0 auto;
+    margin: auto;
     display: flex; /* Use flexbox to position children side by side */
 }
 
@@ -237,7 +237,9 @@ button {
     width: 20%;
     height: 70vh;
     padding: 20px;
-    margin: 20px;
+    margin: 30px;
+    margin-left: 60px;
+    /*margin: auto;*/
     border-radius: 8px;
     text-align: center;
     display: flex;
@@ -246,10 +248,12 @@ button {
 }
 
 .container1 {
-    width: 60%;
+    width: 50%;
     height: 70vh;
     padding: 20px;
-    margin: 20px;
+/*    margin: 30px;
+    margin-right: 60px;*/
+    margin: auto;
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -357,13 +361,21 @@ button {
     cursor: pointer;
 }
 
-footer {
-    background-color: #9DB2BF; /* Set background color */
-    color: black; /* Set text color */
-    text-align: center; /* Center-align text */
-    padding: 10px; /* Add padding */
-    position: fixed; /* Fixed positioning at the bottom */
+/*footer {
+    background-color: #9DB2BF;  Set background color 
+    color: black;  Set text color 
+    text-align: center;  Center-align text 
+    padding: 10px;  Add padding 
+    position: fixed;  Fixed positioning at the bottom 
     left: 0;
     bottom: 0;
-    width: 100%; /* Full width */
+    width: 100%;  Full width 
+}*/
+
+footer {
+    background-color: #9DB2BF;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

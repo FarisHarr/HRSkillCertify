@@ -169,7 +169,7 @@ button {
 .navbar {
     background-color: #455d5f;
     overflow: hidden;
-    width: 190px;
+    width: 200px;
     /* Set a fixed width for the vertical bar */
     height: auto;
     transition: width 0.1s, opacity 0.1s;
