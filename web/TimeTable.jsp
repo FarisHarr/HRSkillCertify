@@ -90,11 +90,16 @@
                 <form action="Payment.jsp">
                     <button type="submit">Update Payment</button>
                 </form>
-                <% } else { %>
+                <% } else if (status.equals("Approved")) { %>
                 <form action="Class.jsp">
                     <button type="submit">Attend</button>
                 </form>
+                <% } else { %>
+                <form action="CertificateForm.jsp">
+                    <button type="submit">Register</button>
+                </form>
                 <% } %>
+
 
             </div>
 
@@ -165,21 +170,21 @@
 
 
 
-            <script>
-                function toggleNavbar() {
-                    var navbar = document.querySelector('.navbar');
-                    navbar.classList.toggle('minimized');
-                }
+        <script>
+            function toggleNavbar() {
+                var navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('minimized');
+            }
 
-                function signOut() {
-                    // Redirect to the logout servlet or your logout logic
-                    window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-                }
-            </script>
+            function signOut() {
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
+        </script>
 
-            <footer>
-                <p>&copy; HR SkillCertify 2023</p>
-            </footer>
+        <footer>
+            <p>&copy; HR SkillCertify 2023</p>
+        </footer>
 
     </body>
 

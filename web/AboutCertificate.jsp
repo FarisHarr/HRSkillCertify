@@ -19,38 +19,55 @@
     </head>
 
     <style>
+
         .infoCert {
             margin: 0 auto;
             text-align: center;
             padding: 20px;
             width: 85%;
-            height: auto;
             background-color: #DDE6ED;
             display: flex;
+            justify-content: space-around; /* Distributes space between the .cert elements */
+            flex-wrap: wrap; /* Allows wrapping if there are too many .cert elements */
         }
 
-        .cert {
-            background-color: #f9f9f9;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            padding: 65px;
-            margin: 40px;
-            width: 20%;
-            border-radius: 8px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
+.cert {
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px;
+    max-width: 300px; /* Adjust the maximum width as needed */
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
 
+
+
+
+        .cert h2 {
+            margin-bottom: 10px;
+            font-size: 1.5em; /* Adjust font size as needed */
+        }
+
+        .cert h4 {
+            margin: 10px 0;
+            font-size: 1.1em; /* Adjust font size as needed */
         }
 
         .cert button {
             background-color: #004080;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 4px;
             cursor: pointer;
             position: absolute;
-            bottom: 15%;
+            bottom: 20px;
+            left: 50%;
             transform: translateX(-50%);
         }
 
@@ -58,7 +75,9 @@
             background-color: #45a049;
         }
 
-
+        .cert a {
+            text-decoration: none;
+        }
     </style>
 
     <body>
@@ -110,24 +129,34 @@
 
             <div class="infoCert">
                 <div class="cert">
-                    <h2>Sijil Kemahiran Malaysia (SKM)</h2>
-                    <!-- Add content for container 1 -->
+                    <h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2><br>
+                    <h4>- Skilled in performing a variety of routine and predictable work activities. </h4>
+                    <h4>- Proficient in various tasks within a predictable scope. </h4>
+                    <h4>- Limited autonomy and responsibility.</h4>
+                    <br>
                     <a href="CertificateForm.jsp">
                         <button>Register</button>
                     </a>                
                 </div>
 
                 <div class="cert">
-                    <h2>Diploma Kemahiran Malaysia (DKM)</h2>
-                    <!-- Add content for container 2 -->
+                    <h2>Diploma Kemahiran Malaysia (DKM)/ Tahap 4</h2><br>
+                    <h4>- Skilled in performing technical and professional work activities with a wide scope and context. </h4>
+                    <h4>- Higher level of responsibility and autonomy compared to SKM. </h4>
+                    <h4>- May oversee the work of others and manage resources.</h4>
+                    <br>
                     <a href="CertificateForm.jsp">
                         <button>Register</button>
                     </a>  
                 </div>
 
                 <div class="cert">
-                    <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM)</h2>
-                    <!-- Add content for container 3 -->
+                    <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM) / Tahap 5</h2><br>
+                    <h4>- Deeply skilled in applying basic principles and complex techniques across a broad and often unexpected scope of work. </h4>
+                    <h4>- Highest level of responsibility and autonomy among the three qualifications. </h4>
+                    <h4>- Engages in tasks such as analysis, diagnosis, design, planning, evaluation, and operation. </h4>
+                    <h4>- Responsible for managing the work of others, allocating resources, and engaging in advanced tasks.</h4>
+                    <br>
                     <a href="CertificateForm.jsp">
                         <button>Register</button>
                     </a>  

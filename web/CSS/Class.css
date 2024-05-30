@@ -60,6 +60,7 @@ button {
     margin-right: 30px;
     text-decoration: none;
     color: #001b40;
+    font-weight: bold;
 }
 
 .nav-link:hover {
@@ -215,19 +216,17 @@ button {
 
 footer {
     background-color: #9DB2BF; /* Set background color */
-    color: black; /* Set text color */
-    text-align: center; /* Center-align text */
-    padding: 10px; /* Add padding */
-    position: fixed; /* Fixed positioning at the bottom */
-    left: 0;
-    bottom: 0;
-    width: 100%; /* Full width */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .container1 {
     width: 60%;
     height: auto;
     margin: 30px auto;
+    margin-bottom: 65px;
     padding: 20px;
     padding-bottom: 50px;
     background-color: #f9f9f9;

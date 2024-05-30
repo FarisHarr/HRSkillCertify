@@ -12,7 +12,7 @@
         <title>Delete Class</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="CSS/Class.css">
+        <link rel="stylesheet" type="text/css" href="CSS/DeleteClass.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body>

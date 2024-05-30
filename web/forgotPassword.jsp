@@ -29,13 +29,15 @@
             }
 
             .container {
-                background-color: #fff;
-                padding: 20px;
-                border: 1px solid black;
-                box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
-                width: 80%;
+                padding: 30px;
+                width: 50%;
+                background-color: whitesmoke;
+                border: 1px solid #ccc;
+                border-radius: 30px;
+                box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
                 max-width: 400px;
             }
+
 
             .logo {
                 position: absolute;
@@ -80,27 +82,30 @@
             }
 
             .card-footer {
-                background-color: #fff;
+                background-color: whitesmoke;
                 text-align: center;
                 padding : 20px;
                 margin-top: 10px;
             }
 
             .btn-success{
-                background-color: #00000090;
-                border: 1px solid black;
-                color: rgb(255, 255, 255);
-                outline: none;
-                border-radius: 10px;
-                padding : 5px;
-                transition: background-color 0.3s, transform 0.3s;
+                display: block;
+                width: fit-content; /* Adjust width to fit the content */
+                padding: 10px 30px; /* Adjust padding for better appearance */
+                margin: 10px auto 0; /* Center horizontally, 20px top margin */
+                border: none;
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.3s ease;
             }
 
             .btn-success:hover {
-                cursor: pointer;
-                background-color: #00ca54;
-                transform: scale(1.02);
+                background-color: #45a049;
+                transform: scale(1.01);
             }
+
 
             .btn-danger{
                 font-size: 18px;
@@ -157,8 +162,8 @@
             <div class="forgot">
                 <h2>Forgot Password</h2>
                 <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
-<!--                <p>Change your password in three easy steps. This will help you
-                    to secure your password!</p>-->
+                <!--                <p>Change your password in three easy steps. This will help you
+                                    to secure your password!</p>-->
             </div>
             <form class="card" action="ForgotPassword" method="POST">
                 <div class="card-body">
