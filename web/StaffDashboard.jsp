@@ -59,8 +59,8 @@
                 <a href="ManagerProfile.jsp">User Profile</a>
                 <a href="ManagePayment.jsp">Manage Payment</a>
                 <a href="ManageCertificate.jsp">Manage Certificate</a>
-                <a href="ViewFeedback.jsp">View Feedback</a>
                 <a href="ManageCandidate.jsp">Manage Candidate</a>
+                <a href="ViewFeedback.jsp">View Feedback</a>
             </div>
             <div class="info">
                 <h2>Certificate Overview</h2>
@@ -87,7 +87,7 @@
                 response.sendRedirect("Login.jsp");
             }
         %>
-        
+
         <script>
             function toggleNavbar() {
                 var navbar = document.querySelector('.navbar');

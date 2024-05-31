@@ -69,6 +69,7 @@ button {
     margin-right: 30px;
     text-decoration: none;
     color: #27374D;
+    font-weight: bold;
 }
 
 .nav-link:hover {

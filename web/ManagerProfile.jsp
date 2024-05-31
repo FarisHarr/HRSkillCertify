@@ -18,7 +18,7 @@
     </head>
 
     <body>
-        
+
 
         <%
             //           HttpSession loginsession = request.getSession();
@@ -40,7 +40,7 @@
                         String Password = rs.getString("staff_Pass");
                         String Phone = rs.getString("staff_Phone");
 //                        String Role = rs.getString("roles");
-%>
+        %>
 
         <header>
             <div class="main">
@@ -69,8 +69,8 @@
                 <a href="ManagerProfile.jsp">User Profile</a>
                 <a href="ManagePayment.jsp">Manage Payment</a>
                 <a href="ManageCertificate.jsp">Manage Certificate</a>
-                <a href="ViewFeedback.jsp">View Feedback</a>
                 <a href="ManageCandidate.jsp">Manage Candidate</a>
+                <a href="ViewFeedback.jsp">View Feedback</a>
             </div>
 
             <div class="container">
@@ -86,7 +86,7 @@
                 <a href="EditStaff.jsp?id=<%= ID%>">
                     <button class="profile-update-button">EDIT</button>
                 </a> 
-                    
+
             </div>
         </div>
 
@@ -117,11 +117,11 @@
                 var navbar = document.querySelector('.navbar');
                 navbar.classList.toggle('minimized');
             }
-            
+
             function signOut() {
-            // Redirect to the logout servlet or your logout logic
-            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-        }
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
         </script>
 
     </body>
