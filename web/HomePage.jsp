@@ -78,28 +78,6 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to the image */
         }
 
-        /*scroll button*/
-        #myBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 30px;
-            z-index: 99;
-            width : 40px;
-            border: none;
-            background-color: #27374D;
-            color: white;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.5s, transform 0.5s;
-        }
-
-        #myBtn:hover {
-            background-color: #27374D;
-            color: #9DB2BF;
-            transform: scale(1.1);
-        }
-
     </style>
 
     <body>

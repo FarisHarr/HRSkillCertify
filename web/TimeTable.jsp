@@ -15,6 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/TimeTable.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     </head>
 
@@ -168,7 +169,7 @@
             </div>
         </div>
 
-
+        <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
 
         <script>
             function toggleNavbar() {
@@ -179,6 +180,34 @@
             function signOut() {
                 // Redirect to the logout servlet or your logout logic
                 window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
+
+            //scroll function
+            var mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () {
+                scrollFunction();
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.visibility = "visible";
+                    mybutton.style.opacity = "1";
+                } else {
+                    mybutton.style.visibility = "hidden";
+                    mybutton.style.opacity = "0";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 1;
+                document.documentElement.scrollTop = 1;
+            }
+            function topFunction() {
+                window.scrollTo({
+                    top: 1,
+                    behavior: "smooth"
+                });
             }
         </script>
 

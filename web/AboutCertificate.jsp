@@ -97,7 +97,9 @@
             cursor: pointer;
             padding: 10px;
             border-radius: 5px;
-            transition: background-color 0.5s, transform 0.5s;
+            visibility: hidden; /* Initially hidden */
+            opacity: 0; /* Initially invisible */
+            transition: visibility 0s, opacity 0.5s, background-color 0.5s, transform 0.5s;
         }
 
         #myBtn:hover {

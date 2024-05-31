@@ -9,18 +9,19 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Admin Dashboard</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="CSS/StaffDashboard.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
+    <head>
+        <title>Admin Dashboard</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="CSS/StaffDashboard.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
 
-<body>
-    
-    <%
+    <body>
+
+        <%
             //           HttpSession loginsession = request.getSession();
             String staffID = (String) session.getAttribute("staffID");
 
@@ -36,48 +37,50 @@
                         String Name = rs.getString("staff_Name");
 
         %>
-        
-    <header>
-        <div class="main">
-            <a href="AdminDashboard.jsp">
-                <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
-            </a>
 
+        <header>
+            <div class="main">
+                <a href="AdminDashboard.jsp">
+                    <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
+                </a>
+
+                <nav>
+                    <ul class="nav_links">
+                        <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
+                    </ul>
+                </nav>
+            </div>
             <nav>
-                <ul class="nav_links">
-                    <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
-                </ul>
+                <li class="dropdown">
+                    <!-- <a class="nav-link">Account</a> -->
+                    <a class="nav-link"><%= Name%></a>
+                    <ul class="dropdown-content">
+                        <li><a href="AdminProfile.jsp">User Profile</a></li>
+                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
+                    </ul>
+                </li>
             </nav>
-        </div>
-        <nav>
-            <li class="dropdown">
-                <!-- <a class="nav-link">Account</a> -->
-                <a class="nav-link"><%= Name%></a>
-                <ul class="dropdown-content">
-                    <li><a href="AdminProfile.jsp">User Profile</a></li>
-                    <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
-                </ul>
-            </li>
-        </nav>
-    </header>
+        </header>
 
-    <div class="container">
-        <div class="navbar">
-            <a href="AdminProfile.jsp">User Profile</a>
-            <a href="AdminDashboard.jsp">Dashboard</a>
-            <a href="ManageStaff.jsp">Manage Manager</a>
-            <a href="ViewFeedback2.jsp">View Feedback</a>
-        </div>
+        <div class="container">
+            <div class="navbar">
+                <a href="AdminProfile.jsp">User Profile</a>
+                <a href="AdminDashboard.jsp">Dashboard</a>
+                <a href="ManageStaff.jsp">Manage Manager</a>
+                <a href="ViewFeedback2.jsp">View Feedback</a>
+            </div>
 
-        <div class="info">
+            <div class="info">
                 <h2>Certificate Overview</h2>
                 <canvas id="paymentChart" width="400" height="200"></canvas>
                 <button class="button" onclick="printPage()">Print Page</button>
 
             </div>
         </div>
-        
-         <%
+
+        <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
+
+        <%
                     } else {
                         out.println("Admin not found.");
                     }
@@ -93,7 +96,7 @@
                 response.sendRedirect("Login.jsp");
             }
         %>
-        
+
         <script>
             function toggleNavbar() {
                 var navbar = document.querySelector('.navbar');
@@ -147,6 +150,34 @@
                         });
             };
 
+            //scroll function
+            var mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () {
+                scrollFunction();
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.visibility = "visible";
+                    mybutton.style.opacity = "1";
+                } else {
+                    mybutton.style.visibility = "hidden";
+                    mybutton.style.opacity = "0";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 1;
+                document.documentElement.scrollTop = 1;
+            }
+            function topFunction() {
+                window.scrollTo({
+                    top: 1,
+                    behavior: "smooth"
+                });
+            }
+
             function printPage() {
                 // Retrieve the canvas element containing the graph
                 var canvas = document.getElementById('paymentChart');
@@ -179,7 +210,7 @@
                 printWindow.document.close();
             }
         </script>
-        
+
         <footer>
             <p>&copy; HR SkillCertify 2023</p>
         </footer>

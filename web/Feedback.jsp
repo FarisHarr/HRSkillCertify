@@ -35,8 +35,8 @@
             background-color: #f9f9f9;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             padding: 40px;
-/*            margin: 30px;
-            margin-left: 40px;*/
+            /*            margin: 30px;
+                        margin-left: 40px;*/
             margin: auto;
             width: 40%;
             border-radius: 8px;
@@ -92,7 +92,7 @@
             box-sizing: border-box;
             resize: none;
         }
-        
+
         #feedbackForm textarea {
             height: 80px;
         }
@@ -247,18 +247,9 @@
             </div>
         </div>
 
-        <script>
-            function toggleNavbar() {
-                var navbar = document.querySelector('.navbar');
-                navbar.classList.toggle('minimized');
-            }
+        <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
 
-            function signOut() {
-                // Redirect to the logout servlet or your logout logic
-                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-            }
 
-        </script>
 
         <%
                     } else {
@@ -276,6 +267,47 @@
                 response.sendRedirect("Login.jsp");
             }
         %>
+
+        <script>
+            function toggleNavbar() {
+                var navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('minimized');
+            }
+
+            function signOut() {
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+            }
+
+            //scroll function
+            var mybutton = document.getElementById("myBtn");
+
+            window.onscroll = function () {
+                scrollFunction();
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.visibility = "visible";
+                    mybutton.style.opacity = "1";
+                } else {
+                    mybutton.style.visibility = "hidden";
+                    mybutton.style.opacity = "0";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 1;
+                document.documentElement.scrollTop = 1;
+            }
+            function topFunction() {
+                window.scrollTo({
+                    top: 1,
+                    behavior: "smooth"
+                });
+            }
+
+        </script>
 
         <footer>
             <p>&copy; HR SkillCertify 2023</p>
