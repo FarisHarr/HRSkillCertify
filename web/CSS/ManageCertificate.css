@@ -254,7 +254,8 @@ button {
 
 .info h2 {
     text-align: center;
-    margin-bottom: 10px;
+    margin-left: 70px;
+    /*margin-bottom: 10px;*/
 }
 
 
@@ -290,8 +291,8 @@ button {
 
 .popup-content label {
     display: inline-block;
-    width: 200px;
-    margin-left: 70px;
+    width: 180px;
+    margin-left: 90px;
 }
 
 
@@ -501,6 +502,17 @@ select {
     /* Other styles */
     border-radius: 5px;
 
+}
+
+select#class_Name {
+    /* background-color: #e0e0e0; */
+    padding: 0px;
+    height: 30px;
+    width: 200px;
+    /* Adjust the width as needed */
+    /* margin-left: 10px; */
+    /* Other styles */
+    border-radius: 5px;
 }
 
 

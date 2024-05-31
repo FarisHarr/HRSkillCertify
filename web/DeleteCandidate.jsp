@@ -42,6 +42,7 @@
                 border-radius: 10px;
                 width: 40%;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+                font-size: 22px;
             }
 
             .popup-content label {

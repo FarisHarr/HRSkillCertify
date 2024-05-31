@@ -56,7 +56,7 @@
             <nav>
                 <li class="dropdown">
                     <!-- <a class="nav-link">Account</a> -->
-                    <a class="nav-link">Administrator</a>
+                    <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
                         <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="AdminProfile.jsp">User Profile</a></li>

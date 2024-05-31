@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 
@@ -18,6 +19,24 @@
 </head>
 
 <body>
+    
+    <%
+            //           HttpSession loginsession = request.getSession();
+            String staffID = (String) session.getAttribute("staffID");
+
+            if (staffID != null) {
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                    PreparedStatement ps = con.prepareStatement("SELECT * FROM staff WHERE staff_ID = ? ");
+                    ps.setString(1, staffID);
+                    ResultSet rs = ps.executeQuery();
+
+                    if (rs.next()) {
+                        String Name = rs.getString("staff_Name");
+
+        %>
+        
     <header>
         <div class="main">
             <a href="AdminDashboard.jsp">
@@ -33,7 +52,7 @@
         <nav>
             <li class="dropdown">
                 <!-- <a class="nav-link">Account</a> -->
-                <a class="nav-link">Administrator</a>
+                <a class="nav-link"><%= Name%></a>
                 <ul class="dropdown-content">
                     <li><a href="AdminProfile.jsp">User Profile</a></li>
                     <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
@@ -57,6 +76,24 @@
 
             </div>
         </div>
+        
+         <%
+                    } else {
+                        out.println("Admin not found.");
+                    }
+
+                    rs.close();
+                    ps.close();
+                    con.close();
+                } catch (Exception e) {
+                    out.println("Error: " + e);
+                }
+            } else {
+                // If the session doesn't exist or customerID is not set, redirect to the login page
+                response.sendRedirect("Login.jsp");
+            }
+        %>
+        
         <script>
             function toggleNavbar() {
                 var navbar = document.querySelector('.navbar');
@@ -142,6 +179,7 @@
                 printWindow.document.close();
             }
         </script>
+        
         <footer>
             <p>&copy; HR SkillCertify 2023</p>
         </footer>

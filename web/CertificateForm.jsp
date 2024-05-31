@@ -108,7 +108,7 @@
         }
 
         .receipt:hover::after {
-            content: "Image Only";
+            content: "Image below 1MB Only";
             position: absolute;
             background-color:  #cccccc;
             color: #ff3333;

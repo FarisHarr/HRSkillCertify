@@ -85,6 +85,57 @@
         .back-button:hover {
             background-color: #5f5f5f;
         }
+
+        .receipt {
+            margin: 20px;
+            /*            text-decoration: underline;*/
+            /*cursor: pointer;*/
+            position: relative; /* Set position relative for absolute positioning */
+        }
+
+        .receipt:hover::after {
+            content: "Image below 1MB Only";
+            position: absolute;
+            background-color:  #cccccc;
+            color: #ff3333;
+            padding: 5px;
+            border-radius: 4px;
+            top: calc(100% + 5px); /* Position below the element */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            z-index: 999;
+        }
+
+        input[type="file"] {
+            cursor: pointer;
+            border: 1px solid #ccc; /* Add a 1px solid border with color #ccc */
+        }
+
+
+
+        .amount-display {
+            margin: 20px;
+            font-size: 18px;
+            text-decoration: underline;
+            cursor: pointer;
+            position: relative; /* Set position relative for absolute positioning */
+            font-family: "Courier New", Courier, monospace; /* Use a monospaced font */
+            font-weight: bold;
+        }
+
+
+        .amount-display:hover::after {
+            content: "QR is here";
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
+            border-radius: 4px;
+            top: calc(100% + 5px); /* Position below the element */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            z-index: 999;
+        }
     </style>
 
     <body>
@@ -141,10 +192,11 @@
 
         <div class="container">
             <h2>Payment Details</h2> <br>
-            <form action="PaymentServ" method="POST" > <!-- Changed action to UpdatePaymentServ -->
+            <form action="PaymentServ" method="POST"  enctype="multipart/form-data"> <!-- Changed action to UpdatePaymentServ -->
                 <div class="form-group">
-                    <label for="name"><%= Name%></label> <!-- Assuming Payment is the payment ID -->
-                    <label for="certificate"><%= Certificate%></label>
+                    <label for="name" style="font-weight: bold;"><%= Name%></label> <!-- Assuming Payment is the payment ID -->
+                    <label for="certificate" style="font-weight: bold;"><%= Certificate%></label><br>
+
                     <div id="certificate">
                         <div class="form-group">
                             <label for="newPrice">New Payment:</label> <!-- Changed input name to newPrice -->
@@ -154,9 +206,9 @@
 
                         <div class="receipt">
                             <label for="receipt">Upload Receipt :</label>
-                            <input type="file" id="receipt" name="receipt" accept="image/*" >
+                            <input type="file" id="receipt" name="receipt" accept="image/*" required>
                         </div>
-                        <br>
+                        <br><br>
                         <button type="submit">Pay</button> <!-- Changed button text to Update Price -->
                     </div>
                 </div>
@@ -205,6 +257,16 @@
                 // modal.style.display = "block";
             }
 
+            // Function to open the QR.jsp page in a new small popup window
+            function openQRPopup() {
+                // Define the URL of the QR.jsp page
+                var qrURL = 'QR.jsp';
+                // Define the size and position of the popup window
+                var windowFeatures = 'width=500,height=500,top=250,left=100';
+                // Open a new small popup window with the QR.jsp page
+                window.open(qrURL, '_blank', windowFeatures);
+            }
+
             // Get today's date
             var today = new Date();
 
@@ -216,6 +278,7 @@
 
             // Set the value of the hidden input field
             document.getElementById('date').value = formattedDate;
+
 
         </script>
 

@@ -13,11 +13,11 @@
         <meta charset="UTF-8">
         <title>Delete Staff</title>
 
-        <style>
+<style>
             @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
             body {
-                background-color:aliceblue;
+                background-color: #F3FBF1;
             }
 
             h2,p{
@@ -31,16 +31,18 @@
                 box-sizing: border-box;
                 padding: auto;
                 height: 65px;
-                background-color: #24252a;
+                background-color: #bbd0bb;
             }
 
             .popup-content {
                 background-color: #fefefe;
                 margin: 8% auto;
                 padding: 20px;
-                border: 2px solid #24252a;
+                border: 1px solid #24252a;
+                border-radius: 10px;
                 width: 40%;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+                font-size: 22px;
             }
 
             .popup-content label {
@@ -58,19 +60,23 @@
                 justify-content: center;
             }
 
-            input{
+            input {
                 display: flex;
                 justify-content: center;
-                width: 80px;
-                height: 25px;
-                padding: 5px;
+                padding: 5px 15px;
                 border-radius: 5px;
                 border: 1px solid #24252a;
                 background-color: #4CAF50;
                 cursor: pointer;
                 margin: 20px;
-
             }
+
+            input:hover {
+                background-color: #45a049;
+                color: white;
+                transform: scale(1.01);
+            }
+
         </style>
 
     </head>

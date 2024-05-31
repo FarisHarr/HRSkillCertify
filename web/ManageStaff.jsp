@@ -19,6 +19,23 @@
     </head>
 
     <body>
+
+        <%
+            //           HttpSession loginsession = request.getSession();
+            String staffID = (String) session.getAttribute("staffID");
+
+            if (staffID != null) {
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                    PreparedStatement ps = con.prepareStatement("SELECT * FROM staff WHERE staff_ID = ? ");
+                    ps.setString(1, staffID);
+                    ResultSet rs = ps.executeQuery();
+
+                    if (rs.next()) {
+                        String Name = rs.getString("staff_Name");
+%>
+
         <header>
             <div class="main">
                 <a href="AdminDashboard.jsp">
@@ -33,7 +50,7 @@
             </div>
             <nav>
                 <li class="dropdown">
-                    <a class="nav-link">Administrator</a>
+                    <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
                         <li><a href="AdminProfile.jsp">User Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
@@ -105,12 +122,27 @@
                         </thead>
                         <tbody>
                             <%
+                                        } else {
+                                            out.println("Admin not found.");
+                                        }
+
+                                        rs.close();
+                                        ps.close();
+                                        con.close();
+                                    } catch (Exception e) {
+                                        out.println("Error: " + e);
+                                    }
+                                } else {
+                                    // If the session doesn't exist or customerID is not set, redirect to the login page
+                                    response.sendRedirect("Login.jsp");
+                                }
+
 //                                String staffID = (String) session.getAttribute("staffID");
-                                String staffID = request.getParameter("staffID");
+                                String StaffID = request.getParameter("staffID");
                                 String query = "SELECT * FROM staff";
 
-                                if (staffID != null && !staffID.isEmpty()) {
-                                    query = "SELECT * FROM staff WHERE staff_ID = " + staffID;
+                                if (StaffID != null && !StaffID.isEmpty()) {
+                                    query = "SELECT * FROM staff WHERE staff_ID = " + StaffID;
                                 }
 
                                 try {
@@ -161,12 +193,12 @@
         <div class="popupdelete" id="popupdelete">
             <div class="popup-delete">
                 <%
-                     String staff_ID = (String) session.getAttribute("staffID");
+                    String staff_ID = (String) session.getAttribute("staffID");
                     // Retrieve the staff ID from the request parameter
 //                    String staff_ID = request.getParameter("staff_ID");
 
                     // Check if the staff ID is present
-                    if (staff_ID != null ) {
+                    if (staff_ID != null) {
                         try {
                             Class.forName("com.mysql.jdbc.Driver");
                             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
@@ -285,11 +317,11 @@
                     return false;
                 }
             }
-            
+
             function signOut() {
-            // Redirect to the logout servlet or your logout logic
-            window.location.href = 'LogOutServ'; 
-        }
+                // Redirect to the logout servlet or your logout logic
+                window.location.href = 'LogOutServ';
+            }
 
         </script>
 
