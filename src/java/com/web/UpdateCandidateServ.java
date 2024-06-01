@@ -33,9 +33,10 @@ public class UpdateCandidateServ extends HttpServlet {
         String Password = request.getParameter("password");
         String Phone = request.getParameter("phone");
         String Address = request.getParameter("address");
+        String Certificate = request.getParameter("certificate"); // Add certificate parameter
 
         CandidateDAO candidateDao = new CandidateDAO();
-        boolean isUpdated = candidateDao.updateCandidate(ID, IC, Name, Email, Password, Phone, Address);
+        boolean isUpdated = candidateDao.updateCandidate(ID, IC, Name, Email, Password, Phone, Address, Certificate); // Pass certificate to updateCandidate method
 
         if (isUpdated) {
             request.setAttribute("message", "Candidate updated successfully.");

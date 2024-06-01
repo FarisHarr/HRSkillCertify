@@ -17,6 +17,7 @@ public class Register {
     private String Password;
     private String Phone;
     private String Address;
+    private String Certificate;
 
     public String getID() {
         return ID;
@@ -74,4 +75,13 @@ public class Register {
         this.Address = Address;
     }
 
+    public String getCertificate() {
+        return Certificate;
+    }
+
+    public void setCertificate(String Certificate) {
+        this.Certificate = Certificate;
+    }
+
+    
 }

@@ -1,0 +1,271 @@
+<%-- 
+    Document   : Certificate
+    Created on : 1 Jun 2024, 9:26:59 pm
+    Author     : FarisHarr
+--%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.sql.*" %>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Upload Certificate Candidate</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="CSS/Certificate.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+            .upload-section {
+                background-color: #f9f9f9;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 20px;
+                margin-top: 20px;
+                text-align: center;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .upload-section h4 {
+                font-size: 1.2em;
+                margin-bottom: 15px;
+                color: #333;
+            }
+
+            .upload-section input[type="file"] {
+                display: block;
+                margin: 5px auto 10px auto;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #fff;
+                width: 80%;
+                position: relative; /* Ensure the tooltip is positioned relative to the input */
+            }
+
+            .upload-section input[type="file"]:hover::after {
+                content: "Image below 1MB Only";
+                position: absolute;
+                background-color:  #cccccc;
+                color: #ff3333;
+                padding: 5px;
+                border-radius: 4px;
+                top: calc(100% + 5px); /* Position below the element */
+                left: 50%; /* Center horizontally */
+                transform: translateX(-50%); /* Center horizontally */
+                z-index: 999;
+            }
+
+            .upload-section button[type="submit"],
+            .upload-section button[type="button"] {
+                padding: 10px 20px;
+                margin: 5px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            .upload-section button[type="button"] {
+                background-color: #f44336;
+            }
+
+            .upload-section button[type="submit"]:hover,
+            .upload-section button[type="button"]:hover {
+                opacity: 0.8;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <%
+            //           HttpSession loginsession = request.getSession();
+            String staffID = (String) session.getAttribute("staffID");
+
+            if (staffID != null) {
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                    PreparedStatement ps = con.prepareStatement("SELECT * FROM staff WHERE staff_ID = ? ");
+                    ps.setString(1, staffID);
+                    ResultSet rs = ps.executeQuery();
+
+                    if (rs.next()) {
+                        String Name = rs.getString("staff_Name");
+
+        %>
+
+        <header>
+            <div class="main">
+                <a href="StaffDashboard.jsp">
+                    <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
+                </a>
+                <nav>
+                    <ul class="nav_links">
+                        <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
+
+                    </ul>
+                </nav>
+            </div>
+            <nav>
+                <li class="dropdown">
+                    <a class="nav-link"><%= Name%></a>
+                    <ul class="dropdown-content">
+                        <li><a href="ManagerProfile.jsp">User Profile</a></li>
+                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
+                    </ul>
+                </li>
+            </nav>
+        </header>
+
+        <%
+                    } else {
+                        out.println("Coordinator not found.");
+                    }
+
+                    rs.close();
+                    ps.close();
+                    con.close();
+                } catch (Exception e) {
+                    out.println("Error: " + e);
+                }
+            } else {
+                // If the session doesn't exist or staffID is not set, redirect to the login page
+                response.sendRedirect("Login.jsp");
+            }
+
+            // Retrieve the cand ID from the request parameter
+            String candID = request.getParameter("cand_ID");
+
+            // Check if the cand ID is present
+            if (candID != null && !candID.isEmpty()) {
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                    PreparedStatement pst = con.prepareStatement("SELECT * FROM candidate WHERE cand_ID = ?");
+                    pst.setString(1, candID);
+                    ResultSet rs = pst.executeQuery();
+
+                    if (rs.next()) {
+                        String IC = rs.getString("cand_IC");
+                        String name = rs.getString("cand_Name");
+                        String email = rs.getString("cand_Email");
+                        String phone = rs.getString("cand_Phone");
+
+                        PreparedStatement certPs = con.prepareStatement("SELECT * FROM certificate WHERE cand_ID = ?");
+                        certPs.setString(1, candID);
+                        ResultSet certRs = certPs.executeQuery();
+                        while (certRs.next()) {
+                            String certID = certRs.getString("cert_ID");
+                            String certType = certRs.getString("cert_Type");
+                            String workType = certRs.getString("work_Type");
+                            String experience = certRs.getString("experience");
+        %>
+
+        <div class="container">
+            <div class="navbar">
+                <a href="ManagerProfile.jsp">User Profile</a>
+                <a href="ManagePayment.jsp">Manage Payment</a>
+                <a href="ManageCertificate.jsp">Manage Certificate</a>
+                <a href="ManageCandidate.jsp">Manage Candidate</a>
+                <a href="ViewFeedback.jsp">View Feedback</a>
+            </div>
+
+            <div class="popup-content">
+                <h2>Upload Certificate</h2><br>
+                <table>
+                    <tr>
+                        <td>Certificate ID :</td>
+                        <td><%= certID%></td>
+                    </tr>
+                    <tr>
+                        <td>Name :</td>
+                        <td><b><%= name%><b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>IC Number:</td>
+                                        <td><%= IC%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email :</td>
+                                        <td><%= email%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone Number:</td>
+                                        <td><%= phone%></td>
+                                    </tr>
+                                    <!--<h3>Certificates</h3>-->
+                                    <tr>
+                                        <td>Certificate Type :</td>
+                                        <td><%= certType%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Work Type :</td>
+                                        <td><%= workType%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Experience :</td>
+                                        <td><%= experience%></td>
+                                    </tr>
+                                    </table>
+
+                                    <div class="upload-section">
+                                        <h4>Upload Candidate Documents</h4>
+                                        <form action="SubmitCertificateServ" method="POST" enctype="multipart/form-data">
+                                            <input type="hidden" name="candID" value="<%= candID%>">
+                                            <input type="file" name="certificate" accept="image/*">
+                                            <button type="submit" name="action" value="Upload">Upload</button>
+                                            <button type="button" onclick="window.location.href = 'ManageCandidate.jsp'">Cancel</button>
+                                        </form>
+                                    </div>
+
+                                    </div>
+                                    </div>
+                                    <%
+                                                    }
+                                                    certRs.close();
+                                                    certPs.close();
+                                                } else {
+                                                    out.println("Candidate not found.");
+                                                }
+
+                                                rs.close();
+                                                pst.close();
+                                                con.close();
+                                            } catch (Exception e) {
+                                                out.println("Error: " + e);
+                                            }
+                                        } else {
+                                            out.println("Invalid candidate ID.");
+                                        }
+                                    %>
+
+                                    <script>
+                                        function goBack() {
+                                            // Redirect back to the previous page
+                                            history.go(-1);
+                                        }
+
+                                        function toggleNavbar() {
+                                            var navbar = document.querySelector('.navbar');
+                                            navbar.classList.toggle('minimized');
+                                        }
+
+                                        function signOut() {
+                                            // Redirect to the logout servlet or your logout logic
+                                            window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+                                        }
+                                    </script>
+
+                                    <footer>
+                                        <p>&copy; HR SkillCertify 2023</p>
+                                    </footer>
+                                    </body>
+                                    </html>

@@ -40,7 +40,8 @@ public class DeleteCandidateServ extends HttpServlet {
                     int rowsDeleted = pst.executeUpdate();
                     
                     if (rowsDeleted > 0) {
-                        response.sendRedirect("ManageCandidate.jsp");
+//                        response.sendRedirect("ManageCandidate.jsp");
+                        response.getWriter().println("<script>alert('Deleted successfully!'); window.location='ManageCandidate.jsp';</script>");
                     } else {
                         request.setAttribute("errorMessage", "Candidate not found or couldn't be deleted.");
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/TestPage.jsp");

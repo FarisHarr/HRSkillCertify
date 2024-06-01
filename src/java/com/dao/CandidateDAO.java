@@ -15,7 +15,7 @@ public class CandidateDAO {
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "admin";
 
-    public boolean updateCandidate(String id, String ic, String name, String email, String password, String phone, String address) {
+    public boolean updateCandidate(String id, String ic, String name, String email, String password, String phone, String address, String certificate) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             try (Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
@@ -27,6 +27,7 @@ public class CandidateDAO {
                     st.setString(4, password);
                     st.setString(5, phone);
                     st.setString(6, address);
+//                    st.setString(7, certificate);
                     st.setString(7, id);
 
                     int rowsUpdated = st.executeUpdate();
@@ -39,4 +40,24 @@ public class CandidateDAO {
         }
         return false;
     }
+
+//    public boolean updateCertificate(String candID, String certificate) {
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//            try (Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+//                String updateQuery = "UPDATE candidate SET cand_Certificate = ? WHERE cand_ID = ?";
+//                try (PreparedStatement st = con.prepareStatement(updateQuery)) {
+//                    st.setString(1, certificate);
+//                    st.setString(2, candID);
+//
+//                    int rowsUpdated = st.executeUpdate();
+//
+//                    return rowsUpdated > 0;
+//                }
+//            }
+//        } catch (ClassNotFoundException | SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 }

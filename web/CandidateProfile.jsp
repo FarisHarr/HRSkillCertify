@@ -6,6 +6,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*" %>
+<%@page import="java.util.Base64"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +41,15 @@
 //                            String Password = rs.getString("cand_Pass");
                         String Phone = rs.getString("cand_Phone");
                         String Address = rs.getString("cand_Add");
+                        byte[] Certificate = rs.getBytes("cand_Certificate");
+                        String receiptBase64 = "";
+
+                        if (Certificate != null) {
+                            receiptBase64 = Base64.getEncoder().encodeToString(Certificate);
+                        } else {
+                            // Handle null receipt value, if needed
+                            // For example, you can set a default image or display a message
+                        }
         %>
 
         <header>
@@ -72,19 +82,43 @@
             </div>
 
             <div class="container">
+                <br>
                 <div class="title">
                     <h1>User Profile</h1>
                     <h3 name="name"> Name : <%= Name%></h3>
-                    <h3 name="ic"> IC : <%= IC%></h3>
+                    <h3 name="ic"> IC Number: <%= IC%></h3>
                     <h3 name="email"> Email : <%= Email%></h3>
                     <!--<h3 name="password"> Password : < Password%></h3>-->
                     <h3 name="phone"> Phone : <%= Phone%></h3>
-                    <h3 name="address"> Address : <%= Address%></h3>
+                    <h3 name="address"> Address Number: <%= Address%></h3>
+
+                    <h3 style="width: auto; text-align: center;">
+                        <%
+                            if (receiptBase64 != null && !receiptBase64.isEmpty()) {
+                        %>
+                        <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
+                            <input type="hidden" name="image" value="<%= receiptBase64%>">
+                            <button type="submit" style="height: 50%; border: 1px solid black; background: none;">
+                                <img src="data:image/jpeg;base64,<%= receiptBase64%>" class="image-button" style="width: 400px; height: 250px;">
+                            </button>
+                        </form>
+                        <%
+                        } else {
+                        %>
+                        <!-- Placeholder image -->
+                        <img src="IMG/BG.jpg" class="image-button" style="width: 400px; height: 250px;; margin: auto;">
+                        <%
+                            }
+                        %>
+                    </h3>
+
+
                 </div>
 
                 <a href="EditCandidate.jsp?id=<%= ID%>">
                     <button class="profile-update-button">EDIT</button>
                 </a> 
+                <br>
             </div>
         </div>
 

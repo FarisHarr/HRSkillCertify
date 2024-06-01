@@ -67,8 +67,8 @@
             }
         %>
         <br>
-        <h2>Time Table</h2>
         <div class="container1">
+                    <h2>Time Table</h2>
             <div class="table">
                 <table>
                     <thead>
