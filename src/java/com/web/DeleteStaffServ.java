@@ -40,10 +40,10 @@ public class DeleteStaffServ extends HttpServlet {
                     int rowsDeleted = pst.executeUpdate();
                     
                     if (rowsDeleted > 0) {
-                        response.sendRedirect("ManageStaff.jsp");
+                        response.getWriter().println("<script>alert('Deleted successfully!'); window.location='ManageStaff.jsp';</script>");
                     } else {
                         request.setAttribute("errorMessage", "Staff not found or couldn't be deleted.");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/TololPage.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/HomePage.jsp");
                         dispatcher.forward(request, response);
                     }
                 }

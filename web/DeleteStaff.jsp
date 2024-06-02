@@ -13,7 +13,7 @@
         <meta charset="UTF-8">
         <title>Delete Staff</title>
 
-<style>
+        <style>
             @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
             body {
@@ -61,14 +61,17 @@
             }
 
             input {
-                display: flex;
-                justify-content: center;
-                padding: 5px 15px;
-                border-radius: 5px;
-                border: 1px solid #24252a;
-                background-color: #4CAF50;
-                cursor: pointer;
+                display: block;
+                float: right;
+                width: 120px;
+                height: 35px;
+                padding: 5px;
                 margin: 20px;
+                border-radius: 5px;
+                border: none;
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
             }
 
             input:hover {
@@ -80,78 +83,78 @@
         </style>
 
     </head>
-<%
-    // Retrieve the staff ID from the request parameter
-    String staffID = request.getParameter("staff_ID");
+    <%
+        // Retrieve the staff ID from the request parameter
+        String staffID = request.getParameter("staff_ID");
 
-    // Check if the staff ID is present
-    if (staffID != null && !staffID.isEmpty()) {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM staff WHERE staff_ID = ?");
-            pst.setString(1, staffID);
-            ResultSet rs = pst.executeQuery();
+        // Check if the staff ID is present
+        if (staffID != null && !staffID.isEmpty()) {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                PreparedStatement pst = con.prepareStatement("SELECT * FROM staff WHERE staff_ID = ?");
+                pst.setString(1, staffID);
+                ResultSet rs = pst.executeQuery();
 
-            if (rs.next()) {
-                String name = rs.getString("staff_Name");
-                String email = rs.getString("staff_Email");
-                String phone = rs.getString("staff_Phone");
-                String role = rs.getString("roles");
-%>
-                <div class="popup-content">
-                    <h2>Delete Staff</h2>
-                    <p><b>Are you sure you want to delete the following staff?</b></p>
-                    <table>
-                        <tr>
-                            <td>ID :</td>
-                            <td><%= staffID %></td>
-                        </tr>
-                        <tr>
-                            <td>Name :</td>
-                            <td><%= name %></td>
-                        </tr>
-                        <tr>
-                            <td>Email :</td>
-                            <td><%= email %></td>
-                        </tr>
-                        <tr>
-                            <td>Phone :</td>
-                            <td><%= phone %></td>
-                        </tr>
-                        <tr>
-                            <td>Role :</td>
-                            <td><%= role %></td>
-                        </tr>
-                    </table>
+                if (rs.next()) {
+                    String name = rs.getString("staff_Name");
+                    String email = rs.getString("staff_Email");
+                    String phone = rs.getString("staff_Phone");
+                    String role = rs.getString("roles");
+    %>
+    <div class="popup-content">
+        <h2>Delete Staff</h2>
+        <p><b>Are you sure you want to delete the following staff?</b></p>
+        <table>
+            <tr>
+                <td>ID :</td>
+                <td><%= staffID%></td>
+            </tr>
+            <tr>
+                <td>Name :</td>
+                <td><%= name%></td>
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td><%= email%></td>
+            </tr>
+            <tr>
+                <td>Phone :</td>
+                <td><%= phone%></td>
+            </tr>
+            <tr>
+                <td>Role :</td>
+                <td><%= role%></td>
+            </tr>
+        </table>
 
-                    <form action="DeleteStaffServ" method="POST">
-                        <input type="hidden" name="staffID" value="<%= staffID %>">
-                        <input type="submit" name="action" value="Delete">
-                        <input type="submit" name="action" value="Cancel">
-                    </form>
-                </div>
-<%
-            } else {
-                out.println("Staff not found.");
+        <form action="DeleteStaffServ" method="POST">
+            <input type="hidden" name="staffID" value="<%= staffID%>">
+            <input type="submit" name="action" value="Delete">
+            <input type="submit" name="action" value="Cancel">
+        </form>
+    </div>
+    <%
+                } else {
+                    out.println("Staff not found.");
+                }
+
+                con.close();
+            } catch (Exception e) {
+                out.println("Error: " + e);
             }
-
-            con.close();
-        } catch (Exception e) {
-            out.println("Error: " + e);
+        } else {
+            out.println("Invalid staff ID.");
         }
-    } else {
-        out.println("Invalid staff ID.");
-    }
-%>
+    %>
 
-        
 
-        <script>
-            function goBack() {
-                // Redirect back to the previous page
-                history.go(-1);
-            }
-        </script>
-    </body>
+
+    <script>
+        function goBack() {
+            // Redirect back to the previous page
+            history.go(-1);
+        }
+    </script>
+</body>
 </html>

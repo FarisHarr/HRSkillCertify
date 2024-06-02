@@ -56,9 +56,9 @@ public class RegisterStaffServ extends HttpServlet {
             }
 
             if (result > 0) {
-                response.sendRedirect("ManageStaff.jsp"); // Redirect to the desired page
+                response.getWriter().println("<script>alert('Staff registered successfully!'); window.location='ManageStaff.jsp';</script>");
             } else {
-                response.getWriter().println("Registration failed. Please try again."); // Display error message
+                response.getWriter().println("<script>alert('Registration failed. Please try again.'); window.location='ManageStaff.jsp';</script>");
             }
         } catch (ClassNotFoundException | SQLException e) {
             response.getWriter().println("Error: " + e.getMessage()); // Display error message

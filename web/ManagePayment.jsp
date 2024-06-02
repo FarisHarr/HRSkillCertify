@@ -137,7 +137,7 @@
                         <td style="width: 100px; text-align: center;">
                             <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
                                 <input type="hidden" name="image" value="<%= receiptBase64%>">
-                                <button type="submit" style="height: 10%; border: none; background: none;">
+                                <button type="submit" style="height: 10%; border: none; background: none; cursor: pointer">
                                     <img src="data:image/jpeg;base64,<%= receiptBase64%>" class="image-button" style="width: 75px; height: 75px;">
                                 </button>
                             </form>

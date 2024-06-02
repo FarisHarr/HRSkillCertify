@@ -76,7 +76,7 @@
                     <table id="table">
                         <thead>
                             <tr>
-                                <th>Feedback ID</th>
+                                <!--<th>Feedback ID</th>-->
                                 <th>Name</th>
                                 <th>Message</th>
                             </tr>
@@ -123,7 +123,7 @@
 
                                         // Output feedback details in table rows
                                         out.println("<tr>");
-                                        out.println("<td>" + feedbackID + "</td>");
+//                                        out.println("<td>" + feedbackID + "</td>");
 //                                        out.println("<td>" + candidateID + "</td>");
                                         out.println("<td>" + candidateName + "</td>");
                                         out.println("<td>" + message + "</td>");

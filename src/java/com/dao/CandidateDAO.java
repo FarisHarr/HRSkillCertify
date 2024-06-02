@@ -62,6 +62,36 @@ public class CandidateDAO {
         }
         return certificate;
     }
+    
+    public boolean hasCertificateType(String candID, String certType) {
+    try {
+        Class.forName("com.mysql.jdbc.Driver");
+        try (Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            String query = "SELECT cand_Certificate FROM candidate WHERE cand_ID = ?";
+            try (PreparedStatement statement = con.prepareStatement(query)) {
+                statement.setString(1, candID);
+                ResultSet rs = statement.executeQuery();
+                if (rs.next()) {
+                    String certificate = rs.getString("cand_Certificate");
+                    // Check if the candidate's certificate is null in the candidate table
+                    if (certificate == null || certificate.isEmpty()) {
+                        // Check if the candidate ID does not have an entry in the certificate table
+                        String certificateQuery = "SELECT * FROM certificate WHERE cand_ID = ?";
+                        try (PreparedStatement certStatement = con.prepareStatement(certificateQuery)) {
+                            certStatement.setString(1, candID);
+                            ResultSet certRS = certStatement.executeQuery();
+                            return !certRS.next(); // Return true if no entry found in the certificate table
+                        }
+                    }
+                }
+            }
+        }
+    } catch (ClassNotFoundException | SQLException e) {
+        e.printStackTrace();
+    }
+    return false;
+}
+
 
     // Update certificate only
     public boolean updateCertificate(String candID, String certificate) {

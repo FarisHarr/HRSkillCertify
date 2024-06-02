@@ -142,12 +142,16 @@
                                     out.println("<td>" + Address + "</td>");
 
                                     // Debugging information
-                                    out.println("<!-- Certificate Value: " + certificate + " -->");
-
+//                                    out.println("<!-- Certificate Value: " + certificate + " -->");
                                     if (certificate != null && !certificate.isEmpty() && !certificate.equalsIgnoreCase("no certificate")) {
                                         // Certificate exists and is not "no certificate"
                                         out.println("<td>");
-                                        out.println("<a href=\"Certificate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/check.png\" alt=\"certificate\" title=\"View Certificate\"></a>");
+                                        out.println("<a href=\"EditCertificate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/check.png\" alt=\"certificate\" title=\"View Certificate\"></a>");
+                                        out.println("</td>");
+                                    } else if (candidateDao.hasCertificateType(ID, "desired_cert_type")) {
+                                        // Candidate has a certificate of the specified type
+                                        out.println("<td>");
+                                        out.println("<img src=\"IMG/cross.png\" alt=\"certificate\" title=\"Not Enroll Certificate\"></a>");
                                         out.println("</td>");
                                     } else {
                                         // Certificate is null or empty

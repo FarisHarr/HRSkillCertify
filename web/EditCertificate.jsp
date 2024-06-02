@@ -1,9 +1,10 @@
 <%-- 
-    Document   : Certificate
-    Created on : 1 Jun 2024, 9:26:59 pm
+    Document   : EditCertificate
+    Created on : 2 Jun 2024, 7:10:33 pm
     Author     : FarisHarr
 --%>
 
+<%@page import="java.util.Base64"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*" %>
 
@@ -92,6 +93,15 @@
                         String name = rs.getString("cand_Name");
                         String email = rs.getString("cand_Email");
 //                        String phone = rs.getString("cand_Phone");
+                        byte[] Certificate = rs.getBytes("cand_Certificate");
+                        String receiptBase64 = "";
+
+                        if (Certificate != null) {
+                            receiptBase64 = Base64.getEncoder().encodeToString(Certificate);
+                        } else {
+                            // Handle null receipt value, if needed
+                            // For example, you can set a default image or display a message
+                        }
 
                         PreparedStatement certPs = con.prepareStatement("SELECT * FROM certificate WHERE cand_ID = ?");
                         certPs.setString(1, candID);
@@ -113,7 +123,7 @@
             </div>
 
             <div class="popup-content">
-                <h2>Upload Certificate</h2><br>
+                <h2><%= certType%> Certificate</h2><br>
                 <table>
                     <tr>
                         <td>Certificate ID :</td>
@@ -140,10 +150,31 @@
                         <td><%= workType%></td>
                     </tr>
                 </table>
+                    <br>
+
+                <h3 style="width: auto; text-align: center;">
+                    <%
+                        if (receiptBase64 != null && !receiptBase64.isEmpty()) {
+                    %>
+                    <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
+                        <input type="hidden" name="image" value="<%= receiptBase64%>">
+                        <button type="submit" style="height: 50%; border: 1px solid black; background: none; cursor: pointer">
+                            <img src="data:image/jpeg;base64,<%= receiptBase64%>" class="image-button" style="width: 430px; height: 325px;">
+                        </button>
+                    </form>
+                    <%
+                    } else {
+                    %>
+                    <!-- Placeholder image -->
+                    <img src="IMG/BG.jpg" class="image-button" style="width: 400px; height: 250px;; margin: auto;">
+                    <%
+                        }
+                    %>
+                </h3>
 
 
                 <div class="upload-section">
-                    <h4>Upload Candidate Certificate</h4>
+                    <h4>Re-Upload Candidate Certificate</h4>
                     <form action="SubmitCertificateServ" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="candID" value="<%= candID%>">
                         <input type="file" name="certificate" accept="image/*">
@@ -154,8 +185,8 @@
 
             </div>
         </div>
-
         <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
+        
             <%
                             }
                             certRs.close();
