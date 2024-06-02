@@ -86,11 +86,11 @@
                 <div class="title">
                     <h1>User Profile</h1>
                     <h3 name="name"> Name : <%= Name%></h3>
-                    <h3 name="ic"> IC Number: <%= IC%></h3>
+                    <h3 name="ic"> IC Number : <%= IC%></h3>
                     <h3 name="email"> Email : <%= Email%></h3>
                     <!--<h3 name="password"> Password : < Password%></h3>-->
-                    <h3 name="phone"> Phone : <%= Phone%></h3>
-                    <h3 name="address"> Address Number: <%= Address%></h3>
+                    <h3 name="phone"> Phone Number : <%= Phone%></h3>
+                    <h3 name="address"> Address : <%= Address%></h3>
 
                     <h3 style="width: auto; text-align: center;">
                         <%
@@ -99,7 +99,7 @@
                         <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
                             <input type="hidden" name="image" value="<%= receiptBase64%>">
                             <button type="submit" style="height: 50%; border: 1px solid black; background: none;">
-                                <img src="data:image/jpeg;base64,<%= receiptBase64%>" class="image-button" style="width: 400px; height: 250px;">
+                                <img src="data:image/jpeg;base64,<%= receiptBase64%>" class="image-button" style="width: 430px; height: 325px;">
                             </button>
                         </form>
                         <%

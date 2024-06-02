@@ -39,12 +39,14 @@ public class UpdateCandidateServ extends HttpServlet {
         boolean isUpdated = candidateDao.updateCandidate(ID, IC, Name, Email, Password, Phone, Address, Certificate); // Pass certificate to updateCandidate method
 
         if (isUpdated) {
-            request.setAttribute("message", "Candidate updated successfully.");
+            request.setAttribute("message", "Profile updated successfully.");
+            response.getWriter().println("<script>alert('Profile updated successfully.'); window.location='CandidateProfile.jsp';</script>");
         } else {
             request.setAttribute("message", "Candidate not found or couldn't be updated.");
+            response.getWriter().println("<script>alert('Failed to updated.'); window.location='CandidateProfile.jsp';</script>");
         }
 
-        response.getWriter().println("<script>alert('Candidate updated successfully.'); window.location='CandidateProfile.jsp';</script>");
+        
 //        dispatcher.forward(request, response);
     }
 }

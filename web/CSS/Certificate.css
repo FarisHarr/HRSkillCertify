@@ -24,22 +24,7 @@ table {
     justify-content: center;
 }*/
 
-input {
-    display: flex;
-    justify-content: center;
-    padding: 5px 15px;
-    border-radius: 5px;
-    border: 1px solid #24252a;
-    background-color: #4CAF50;
-    cursor: pointer;
-    margin: 20px;
-}
 
-input:hover {
-    background-color: #45a049;
-    color: white;
-    transform: scale(1.01);
-}
 * {
     margin: 0;
     padding: 0;
@@ -317,6 +302,65 @@ button {
     transform: scale(1.01);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.upload-section {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.upload-section h4 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.upload-section input[type="file"] {
+    display: block;
+    margin: 5px auto 10px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 80%;
+    cursor: pointer;
+}
+
+.upload-section input[type="file"]:hover::after {
+    /*                content: "Image below 1MB Only";*/
+    position: absolute;
+    background-color: white;
+    color: #ff3333;
+    border-radius: 4px;
+    /*     transform: scale(1.01);*/
+}
+
+.upload-section button[type="submit"],
+.upload-section button[type="button"] {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.upload-section button[type="button"] {
+    background-color: #f44336;
+}
+
+.upload-section button[type="submit"]:hover,
+.upload-section button[type="button"]:hover {
+    opacity: 0.8;
+}
 
 footer {
     background-color: #bbd0bb;

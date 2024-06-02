@@ -19,12 +19,12 @@
             String imageBase64 = request.getParameter("image");
             if (imageBase64 != null && !imageBase64.isEmpty()) {
         %>
-            <img src="data:image/jpeg;base64, <%= imageBase64 %>" style="display: block; margin: 0 auto; width: 35%; height: 35%;">
+            <img src="data:image/jpeg;base64, <%= imageBase64 %>" style="display: block;  border: 1px solid black; margin: 0 auto; width: 45%; height: 45%;">
 
         <%
             } else {
         %>
-            <p>No image data available.</p>
+            <p>No data available.</p>
         <%
             }
         %>

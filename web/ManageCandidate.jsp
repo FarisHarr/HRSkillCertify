@@ -4,6 +4,7 @@
     Author     : FarisHarr
 --%>
 
+<%@page import="com.dao.CandidateDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 
@@ -130,7 +131,8 @@
                                     psCert.setString(1, ID);
                                     ResultSet rsCert = psCert.executeQuery();
 
-                                    boolean hasCertificate = rsCert.next();
+                                    CandidateDAO candidateDao = new CandidateDAO();
+                                    String certificate = candidateDao.getCertificate(ID); // Fetch the certificate value from the database
 
                                     out.println("<tr>");
                                     out.println("<td>" + IC + "</td>");
@@ -138,15 +140,22 @@
                                     out.println("<td>" + Email + "</td>");
                                     out.println("<td>" + Phone + "</td>");
                                     out.println("<td>" + Address + "</td>");
-                                    if (hasCertificate) {
+
+                                    // Debugging information
+                                    out.println("<!-- Certificate Value: " + certificate + " -->");
+
+                                    if (certificate != null && !certificate.isEmpty() && !certificate.equalsIgnoreCase("no certificate")) {
+                                        // Certificate exists and is not "no certificate"
                                         out.println("<td>");
-                                        out.println("<a href=\"Certificate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/editicon.png\" alt=\"edit\"></a>");
+                                        out.println("<a href=\"Certificate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/check.png\" alt=\"certificate\" title=\"View Certificate\"></a>");
                                         out.println("</td>");
                                     } else {
+                                        // Certificate is null or empty
                                         out.println("<td>");
-                                        out.println("<img src=\"IMG/cross.png\" alt=\"edit\" title=\"Not registered certificate\" style=\"pointer-events:none;\">");
+                                        out.println("<a href=\"Certificate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/editicon.png\" alt=\"certificate\" title=\"Update Certificate\"></a>");
                                         out.println("</td>");
                                     }
+
                                     out.println("<td>");
                                     out.println("<a href=\"DeleteCandidate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
                                     out.println("</td>");
