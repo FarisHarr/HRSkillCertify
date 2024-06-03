@@ -225,6 +225,7 @@ footer {
 .container1 {
     width: 60%;
     height: auto;
+    min-height: 50vh;
     margin: 30px auto;
     margin-bottom: 65px;
     padding: 20px;

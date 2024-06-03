@@ -34,7 +34,7 @@ h1 {
 }
 
 img {
-    max-width: 100%;
+    max-width: 110%;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -53,7 +53,8 @@ img {
     <div class="image-container">
         <img src="IMG/QR.PNG" alt="Image">
         
-        <h4>CIMB Bank : 7632797184</h4>
+        <h4>CIMB Bank : 7632797184 </h4>    
+        <h4> - Muhammad Faris - </h4>
     </div>
 </body>
 
