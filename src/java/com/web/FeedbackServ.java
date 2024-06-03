@@ -33,17 +33,19 @@ public class FeedbackServ extends HttpServlet {
         // Get form parameters
         String feedback = request.getParameter("feedback_ID");
         String message = request.getParameter("message");
+//        String reply = request.getParameter("response");
+        String reply = "--"; // Defaulting to "attend"
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String myURL = "jdbc:mysql://localhost/hrsc";
 
-            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); 
-                    PreparedStatement ps = myConnection.prepareStatement("INSERT INTO feedback(feedback_ID, cand_ID, message) VALUES (?, ?, ?)")) {
+            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); PreparedStatement ps = myConnection.prepareStatement("INSERT INTO feedback(feedback_ID, cand_ID, message,response) VALUES (?, ?, ?,?)")) {
 
                 ps.setString(1, feedback);
                 ps.setString(2, candidateID);
                 ps.setString(3, message);
+                ps.setString(4, reply);
 
                 // Execute the SQL statement
                 int rowsInserted = ps.executeUpdate();
@@ -58,7 +60,7 @@ public class FeedbackServ extends HttpServlet {
                     response.setContentType("text/html");
 
                     response.getWriter().println("<script>alert('Feedback submitted successfully!'); window.location='Feedback.jsp';</script>");
-                    
+
                 } else {
                     // Redirect to feedback page
                     response.sendRedirect("Feedback.jsp");

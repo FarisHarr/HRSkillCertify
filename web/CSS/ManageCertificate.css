@@ -193,6 +193,7 @@ button {
     overflow: hidden;
     width: 180px;
     /* Set a fixed width for the vertical bar */
+    min-height: 80vh;
     height: auto;
     transition: width 0.1s, opacity 0.1s;
     /* Add transition for smooth animation */

@@ -84,7 +84,7 @@
                 <br>
                 <h3><i><%= certificateType%></i></h3> 
                 <br>
-                <p>Your payment status : <%= status%> </p> 
+                <p>Your payment status : <b><%= status%></b></p> 
                 <br> 
                 <%-- Add conditional check for the Attend button --%>
                 <% if (status.equals("Pending") || status.equals("Rejected")) { %>

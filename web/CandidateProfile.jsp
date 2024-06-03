@@ -108,7 +108,10 @@
                         } else {
                         %>
                         <!-- Placeholder image -->
-                        <img src="IMG/BG.jpg" class="image-button" style="width: 400px; height: 250px;; margin: auto;">
+                        <!--<img src="IMG/White.png" class="image-button" style="width: 400px; height: 250px;; margin: auto;">-->
+                        <h4 style="text-align: center;">In Process</h4>
+                        
+                        
                         <%
                             }
                         %>

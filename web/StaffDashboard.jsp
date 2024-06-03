@@ -177,27 +177,29 @@
 
                 // Open a new window
                 var printWindow = window.open('', '_report');
+//                Write the HTML content to the new window
+                        printWindow.document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dashboard Report</title><style>body {font-family: Arial, sans-serif;padding: 20px;}h1 {text-align: center;}.chart-container {margin: 20px auto;text-align: center;}.button-container {text-align: center;margin-top: 20px;}.button-container button {display: inline-block;padding: 10px 20px;margin: 10px;font-size: 16px;color: #fff;background-color: #007BFF;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s ease;}.button-container button:hover {background-color: #0056b3;}.button-container button:active {background-color: #00408d;}.button-container button:focus {outline: none;box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);}.button-container a {text-decoration: none;}</style></head><body>');
 
-                // Write the HTML content to the new window
-                printWindow.document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Staff Dashboard Report</title><style>body {font-family: Arial, sans-serif;padding: 20px;}h1 {text-align: center;}.chart-container {margin: 20px auto;text-align: center;}</style></head><body>');
-
-                // Add title to the report
+// Add title to the report
                 printWindow.document.write('<h1>Staff Dashboard Report</h1>');
 
-                // Add some report content
+// Add some report content
                 printWindow.document.write('<p>This report provides an overview of certificates issued.</p>');
 
-                // Append the canvas element to the new window
+// Append the canvas element to the new window
                 printWindow.document.write('<div class="chart-container"><h2>Certificate Overview</h2><img src="' + canvas.toDataURL() + '"></div>');
 
-                // Add buttons for printing and downloading
-                printWindow.document.write('<div style="text-align:center;margin-top:20px;">');
-                printWindow.document.write('<button onclick="window.print()">Print</button>');
-                printWindow.document.write('<a href="' + canvas.toDataURL() + '" download="certificate_overview.png"><button>Download</button></a>');
+// Add buttons for printing and downloading
+                printWindow.document.write('<div class="button-container">');
+                printWindow.document.write('<button style="display: inline-block;padding: 10px 20px;margin: 10px;font-size: 16px;color: #fff;background-color: #007BFF;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s ease;" onclick="window.print()">Print</button>');
+                printWindow.document.write('<a href="' + canvas.toDataURL() + '" download="certificate_overview.png" style="text-decoration: none;"><button style="display: inline-block;padding: 10px 20px;margin: 10px;font-size: 16px;color: #fff;background-color: #007BFF;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s ease;">Download</button></a>');
                 printWindow.document.write('</div>');
 
-                // Close the HTML content
+// Close the HTML content
                 printWindow.document.write('</body></html>');
+
+// Focus on the new window to make it active
+                printWindow.focus();
 
                 // Close the document for IE compatibility
                 printWindow.document.close();

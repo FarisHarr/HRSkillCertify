@@ -75,7 +75,7 @@
                         <thead>
                             <tr>
                                 <th>Payment ID</th>
-                                <th>Candidate Name</th>
+                                <th>Name</th>
                                 <th>Certificate Type</th>
                                 <th>Price</th>
                                 <th>Date</th>

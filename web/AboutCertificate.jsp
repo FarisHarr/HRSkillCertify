@@ -35,7 +35,7 @@
         .cert {
             background-color: #f9f9f9;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            height: 500px;
+            height: auto;
             padding: 20px;
             margin: 20px;
             max-width: 450px; /* Adjust the maximum width as needed */
@@ -43,13 +43,15 @@
             text-align: center;
             display: flex;
             flex-direction: column;
-            /*justify-content: space-between;*/
-            position: relative;
-            transition: transform 0.9s ease; /* Add transition for smooth scaling */
+            justify-content: space-between;
+            /*position: relative;*/
+            transition: transform 0.9s ease;
+            /*Add transition for smooth scaling*/
         }
 
         .cert:hover {
-            transform: scale(1.02); /* Scale the element on hover */
+            transform: scale(1.02);
+            /*Scale the element on hover*/
         }
 
 
@@ -67,13 +69,10 @@
             background-color: #004080;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 4px;
             cursor: pointer;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            /*margin-top: 10vh;*/
         }
 
         .cert button:hover {
@@ -82,6 +81,16 @@
 
         .cert a {
             text-decoration: none;
+        }
+
+        .cert img {
+            /*max-width: 50%;*/
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Ensure image behaves as a block element */
+            margin-bottom: 10px; /* Add some space below the image */
+            border-radius: 5px; /* Add rounded corners to the image */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to the image */
+            border: 1px solid #000000
         }
 
         /*scroll button*/
@@ -160,6 +169,7 @@
             <div class="infoCert">
                 <div class="cert">
                     <h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2><br>
+                    <img src="IMG/SKMCert.png" alt="SKM Certificate Image">
                     <h4>- Skilled in performing a variety of routine and predictable work activities. </h4>
                     <h4>- Proficient in various tasks within a predictable scope. </h4>
                     <h4>- Limited autonomy and responsibility.</h4>
@@ -171,7 +181,8 @@
 
                 <div class="cert">
                     <h2>Diploma Kemahiran Malaysia (DKM)/ Tahap 4</h2><br>
-                    <h4>- Skilled in performing technical and professional work activities with a wide scope and context. </h4>
+                    <img src="IMG/DKMCert.png" alt="DKM Certificate Image">
+                    <h4>- Skilled in performing technical and professional work activities with a wide scope. </h4>
                     <h4>- Higher level of responsibility and autonomy compared to SKM. </h4>
                     <h4>- May oversee the work of others and manage resources.</h4>
                     <br>
@@ -182,6 +193,7 @@
 
                 <div class="cert">
                     <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM) / Tahap 5</h2><br>
+                    <img src="IMG/DLKMCert.png" alt="DLKM Certificate Image">
                     <h4>- Deeply skilled in applying basic principles and complex techniques across a broad and often unexpected scope of work. </h4>
                     <h4>- Highest level of responsibility and autonomy among the three qualifications. </h4>
                     <h4>- Engages in tasks such as analysis, diagnosis, design, planning, evaluation, and operation. </h4>

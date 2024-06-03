@@ -79,7 +79,7 @@
                 <table id="table">
                     <thead>
                         <tr>
-                            <th>Candidate IC</th>
+                            <th>IC Number</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone Number</th>

@@ -78,6 +78,7 @@
                                 <!--<th>Feedback ID</th>-->
                                 <th>Name</th>
                                 <th>Message</th>
+                                <th>Response</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -100,7 +101,7 @@
                                 }
 
                                 String searchFeedbackID = request.getParameter("feedback_ID");
-                                String query = "SELECT feedback.feedback_ID, candidate.cand_ID, candidate.cand_Name, feedback.message "
+                                String query = "SELECT feedback.feedback_ID, candidate.cand_ID, candidate.cand_Name, feedback.message, feedback.response "
                                         + "FROM feedback "
                                         + "INNER JOIN candidate ON feedback.cand_ID = candidate.cand_ID";
 
@@ -120,6 +121,7 @@
                                         String candidateID = rs.getString("cand_ID");
                                         String candidateName = rs.getString("cand_Name");
                                         String message = rs.getString("message");
+                                        String reply = rs.getString("response");
 
                                         // Output feedback details in table rows
                                         out.println("<tr>");
@@ -127,6 +129,7 @@
 //                                        out.println("<td>" + candidateID + "</td>");
                                         out.println("<td>" + candidateName + "</td>");
                                         out.println("<td>" + message + "</td>");
+                                        out.println("<td>" + reply + "</td>");
                                         out.println("</tr>");
                                     }
 
