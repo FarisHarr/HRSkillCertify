@@ -4,6 +4,8 @@
     Author     : FarisHarr
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
@@ -24,19 +26,20 @@
             margin: 0 auto;
             text-align: center;
             padding: 20px;
-            width: 80%;
-            height: 100vh;
-            background-color: #f0f0f0;
-            border: 1px solid #000000;
+            width: 85%;
+            background-color: #DDE6ED;
             display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
         }
 
         .cert1 {
             background-color: #f9f9f9;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            padding: 40px;
+            padding: 30px;
             /*            margin: 30px;
                         margin-left: 40px;*/
+            
             margin: auto;
             width: 40%;
             border-radius: 8px;
@@ -61,9 +64,21 @@
 
         }
 
+        .cert3 {
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px 40px; /* Shorthand for padding-right and padding-left */
+            margin-top: 50px;
+            width: 80%;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
         .container {
             width: 100%;
-            height: 100vh;
+            height: 150vh;
             margin: 0 auto;
             display: flex; /* Use flexbox to position children side by side */
         }
@@ -165,45 +180,75 @@
             border-radius: 4px;
         }
 
-
     </style>
 
     <body>
         <%
+            // Get candidateID from session
             String candidateID = (String) session.getAttribute("candidateID");
-            // Set the candidateID attribute to the session
-            session.setAttribute("candidateID", candidateID);
+            String Name = "", Email = "";
+            List<String> messages = new ArrayList<>();
 
             if (candidateID != null) {
                 try {
+                    // Load the JDBC driver
                     Class.forName("com.mysql.jdbc.Driver");
+                    // Establish connection to the database
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-                    PreparedStatement ps = con.prepareStatement("SELECT * FROM candidate WHERE cand_ID = ? ");
+
+                    // Prepare SQL query to fetch candidate and feedback details
+                    PreparedStatement ps = con.prepareStatement(
+                            "SELECT c.cand_Name, c.cand_Email, f.message "
+                            + "FROM candidate c "
+                            + "JOIN feedback f ON c.cand_ID = f.cand_ID "
+                            + "WHERE c.cand_ID = ?"
+                    );
                     ps.setString(1, candidateID);
                     ResultSet rs = ps.executeQuery();
 
-                    if (rs.next()) {
-                        String Name = rs.getString("cand_Name");
-                        String Email = rs.getString("cand_Email");
+                    // Process the result set
+                    while (rs.next()) {
+                        if (Name.isEmpty() && Email.isEmpty()) {
+                            // Fetch candidate's name and email once
+                            Name = rs.getString("cand_Name");
+                            Email = rs.getString("cand_Email");
+                        }
+                        // Fetch feedback message and add to the list
+                        messages.add(rs.getString("message"));
+                    }
 
+                    // Close the resources
+                    rs.close();
+                    ps.close();
+                    con.close();
+
+                } catch (Exception e) {
+                    // Handle exceptions
+                    out.println("Error: " + e.getMessage());
+                }
+            } else {
+                // Handle case where candidateID is null
+                out.println("Candidate ID is not available. Please log in again.");
+            }
         %>
+
         <header>
             <div class="main">
                 <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
                 <nav>
                     <ul class="nav_links">
-                        <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
+                        <button class="navbar-toggle" onclick="toggleNavbar()">☰</button>
                     </ul>
                 </nav>
             </div>
             <nav>
-                <li class="dropdown">
+                <div class="dropdown">
                     <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
                         <li><a href="CandidateProfile.jsp">Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
-                </li>
+                </div>
             </nav>
         </header>
 
@@ -217,57 +262,49 @@
                 <a href="StandardRegistry.jsp">Standard Registry</a>
             </div>
 
-            <div class="cert1">
-                <h2>Feedback</h2>
-                <form id="feedbackForm" action="FeedbackServ" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" value="<%= Name%>" readonly ><br>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="<%= Email%>" readonly><br>
-                    <label for="message" >Feedback:</label>
-                    <textarea id="message" name="message" required></textarea><br>
-                    <button type="submit">Submit Feedback</button>
-                </form>
-            </div>
-
-            <div class="cert2">
-                <h2>Contact Us</h2><br>
-                <div class="review">
-                    <!-- Embedded Google Map -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7958.560217539045!2d100.52152113677145!3d5.503182003707448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b002bb55aa7ff%3A0x3b7aefb6a76b91b3!2s1336%2C%20Jalan%20Serai%20Wangi%2013%2F6%2C%2009010%20Padang%20Serai%2C%20Kedah%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1684642959811!5m2!1sen!2smy" allowfullscreen="" loading="lazy"></iframe>
+            <div class="info">
+                <div class="cert1">
+                    <h2>Feedback</h2>
+                    <form id="feedbackForm" action="FeedbackServ" method="POST">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" value="<%= Name%>" readonly><br>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="<%= Email%>" readonly><br>
+                        <label for="message">Feedback:</label>
+                        <textarea id="message" name="message" required></textarea><br>
+                        <button type="submit">Submit Feedback</button>
+                    </form>
                 </div>
-                <form id="contactus">
-                    <label for="contactus"></label><br>
+
+                <div class="cert2">
+                    <h2>Contact Us</h2><br>
+                    <div class="review">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7958.560217539045!2d100.52152113677145!3d5.503182003707448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b002bb55aa7ff%3A0x3b7aefb6a76b91b3!2s1336%2C%20Jalan%20Serai%20Wangi%2013%2F6%2C%2009010%20Padang%20Serai%2C%20Kedah%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1684642959811!5m2!1sen!2smy" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                     <div class="contact-icons">
                         <a href="https://www.facebook.com/harris.hussain.58" target="_blank" title="Facebook"><i class="fab fa-facebook"></i><br> HR Skill Solutions</a>
                         <a href="https://pppkt.onpay.my/order/form/pppktonlinetajaan" target="_blank" title="Info"><i class="fas fa-envelope"></i><br> Information</a>
-                        <a href="https://api.whatsapp.com/send?phone=60197293275&text=PPKT24" target="_blank" title="WhatsApp">
-                            <i class="fab fa-whatsapp"></i> <br> WhatsApp </a>   
+                        <a href="https://api.whatsapp.com/send?phone=60197293275&text=PPKT24" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i> <br> WhatsApp</a>   
                     </div>
-                </form>
+                </div>
+
+
+                <div class="cert3">
+                    <h2>Previous Feedback</h2>
+                    <% if (!messages.isEmpty()) { %>
+                    <% for (String msg : messages) {%>
+                    <p><%= msg%></p>
+                    <% } %>
+                    <% } else {%>
+                    <p>No feedback found for candidate ID: <%= candidateID%></p>
+                    <% }%>
+                </div>
+
             </div>
         </div>
 
         <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
 
-
-
-        <%
-                    } else {
-                        out.println("Customer not found.");
-                    }
-
-                    rs.close();
-                    ps.close();
-                    con.close();
-                } catch (Exception e) {
-                    out.println("Error: " + e);
-                }
-            } else {
-                // If the session doesn't exist or customerID is not set, redirect to the login page
-                response.sendRedirect("Login.jsp");
-            }
-        %>
 
         <script>
             function toggleNavbar() {

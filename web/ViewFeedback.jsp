@@ -79,6 +79,7 @@
                                 <th>Name</th>
                                 <th>Message</th>
                                 <th>Response</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -130,6 +131,9 @@
                                         out.println("<td>" + candidateName + "</td>");
                                         out.println("<td>" + message + "</td>");
                                         out.println("<td>" + reply + "</td>");
+                                        out.println("<td>");
+                                        out.println("<a href=\"#?cand_ID=" + candidateID + "\"><img src=\"IMG/editicon.png\" alt=\"response\" title=\"Reply\"></a>");
+                                        out.println("</td>");
                                         out.println("</tr>");
                                     }
 
