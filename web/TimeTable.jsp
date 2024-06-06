@@ -76,36 +76,44 @@
                 <a href="AboutCertificate.jsp">About Certificate</a>
                 <a href="TimeTable.jsp">Time Table</a>
                 <a href="Feedback.jsp">Feedback</a>
+                <a href="StandardRegistry.jsp">Standard Registry</a>
             </div>
 
             <!--<div class="infoCert">-->
             <div class="cert">
-                <h2>Certificate Type</h2>
-                <br>
-                <h3><i><%= certificateType%></i></h3> 
+                <%-- Add conditional check for the Attend button --%>
+                <% if (status.equals("Pending") || status.equals("Rejected")) {%>
+                <h2>Certificate Type : <i><%= certificateType%></i></h2>
                 <br>
                 <p>Your payment status : <b><%= status%></b></p> 
                 <br> 
-                <%-- Add conditional check for the Attend button --%>
-                <% if (status.equals("Pending") || status.equals("Rejected")) { %>
+                <br>
                 <form action="Payment.jsp">
                     <button type="submit">Update Payment</button>
                 </form>
-                <% } else if (status.equals("Approved")) { %>
+                <% } else if (status.equals("Approved")) {%>
+                <h2>Certificate Type : <i><%= certificateType%></i></h2>
+                <br>
+                <p>Your payment status : <b><%= status%></b></p> 
+                <br> 
+                <br>
                 <form action="Class.jsp">
                     <button type="submit">Attend</button>
                 </form>
-                <% } else { %>
+                <% } else {%>
+                <h2>Certificate Type : <i>--</i></h2>
+                <br>
+                <p>Your payment status : <b>--</b></p> 
+                <br> 
+                <br>
                 <form action="CertificateForm.jsp">
                     <button type="submit">Register</button>
                 </form>
                 <% } %>
-
-
-            </div>
-
-            <div class="container1">
-                <h2>Attendance Table</h2>
+                <!--<div class="container1">-->
+                <br>
+                <br>
+                <h2>Upcoming Class</h2>
                 <div class="table">
                     <table>
                         <thead>
@@ -114,7 +122,7 @@
                                 <th>Date</th>
                                 <th>Start Time</th>
                                 <th>End Time</th>
-                                <th>Attendance</th>
+                                <!--<th>Attendance</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -132,7 +140,6 @@
                                 } else {
                                     response.sendRedirect("Login.jsp");
                                 }
-
                                 // Java code to fetch and display attendance data from the database
                                 try {
                                     Class.forName("com.mysql.jdbc.Driver");
@@ -141,6 +148,8 @@
                                     ps.setString(1, candidateID);
                                     ResultSet rs = ps.executeQuery();
 
+                                    boolean foundClass = false; // Flag to track if any classes were found
+
                                     while (rs.next()) {
                                         String className = rs.getString("class_Name");
                                         String date = rs.getString("date");
@@ -148,20 +157,100 @@
                                         String endTime = rs.getString("end_Time");
                                         String attendance = rs.getString("attendance");
 
-                                        out.println("<tr>");
-                                        out.println("<td>" + className + "</td>");
-                                        out.println("<td>" + date + "</td>");
-                                        out.println("<td>" + startTime + "</td>");
-                                        out.println("<td>" + endTime + "</td>");
-                                        out.println("<td>" + attendance + "</td>");
-                                        out.println("</tr>");
+                                        // Check if attendance is neither "Present" nor "Absent"
+                                        if (!attendance.equals("Present") && !attendance.equals("Absent")) {
+                                            out.println("<tr>");
+                                            out.println("<td>" + className + "</td>");
+                                            out.println("<td>" + date + "</td>");
+                                            out.println("<td>" + startTime + "</td>");
+                                            out.println("<td>" + endTime + "</td>");
+                                            // out.println("<td>" + attendance + "</td>");
+                                            out.println("</tr>");
+
+                                            foundClass = true; // Set flag to true if a class is found
+                                        } else {
+                                            // Handle the case where attendance is either "Present" or "Absent"
+                                            // You can add your else block here if you want to do something specific for "Present" or "Absent"
+                                        }
                                     }
+
+                                    // If no classes are found, display a message
+                                    if (!foundClass) {
+                                        out.println("<tr><td colspan='4' style='color:#666666;'>No upcoming class</td></tr>");
+                                    }
+
                                     rs.close();
                                     ps.close();
                                     con.close();
                                 } catch (Exception e) {
                                     out.println("Error: " + e.getMessage());
                                 }
+
+                            %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <div class="container1">
+                <h2>Attendance Table</h2>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Class Name</th>
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Attendance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%                                // Java code to fetch and display attendance data from the database
+                                try {
+                                    Class.forName("com.mysql.jdbc.Driver");
+                                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                                    PreparedStatement ps = con.prepareStatement("SELECT a.class_ID, c.class_Name, c.date, c.start_Time, c.end_Time, a.attendance FROM attendance a JOIN class c ON a.class_ID = c.class_ID WHERE a.cand_ID = ?");
+                                    ps.setString(1, candidateID);
+                                    ResultSet rs = ps.executeQuery();
+
+                                    boolean classesFound = false; // Flag to track if any classes are found
+
+                                    while (rs.next()) {
+                                        String className = rs.getString("class_Name");
+                                        String date = rs.getString("date");
+                                        String startTime = rs.getString("start_Time");
+                                        String endTime = rs.getString("end_Time");
+                                        String attendance = rs.getString("attendance");
+
+                                        // Check if attendance is either "Present" or "Absent"
+                                        if (attendance.equals("Present") || attendance.equals("Absent")) {
+                                            out.println("<tr>");
+                                            out.println("<td>" + className + "</td>");
+                                            out.println("<td>" + date + "</td>");
+                                            out.println("<td>" + startTime + "</td>");
+                                            out.println("<td>" + endTime + "</td>");
+                                            out.println("<td>" + attendance + "</td>");
+                                            out.println("</tr>");
+
+                                            classesFound = true; // Set flag to true if classes are found
+                                        }
+                                    }
+
+                                    // If no classes with attendance "Present" or "Absent" are found, display a message
+                                    if (!classesFound) {
+                                        out.println("<tr><td colspan='5' style='color: red;'>Register the certificate to join class</td></tr>");
+                                    }
+
+                                    rs.close();
+                                    ps.close();
+                                    con.close();
+                                } catch (Exception e) {
+                                    out.println("Error: " + e.getMessage());
+                                }
+
                             %>
                         </tbody>
                     </table>

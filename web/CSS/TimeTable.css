@@ -235,11 +235,12 @@ button {
 .cert {
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 20%;
-    height: 65vh;
+    width: 30%;
+    min-height: 70vh;
+    height: auto;
     padding: 20px;
     margin: 30px;
-    margin-left: 60px;
+    margin-left: 40px;
     /*margin: auto;*/
     border-radius: 8px;
     text-align: center;
@@ -249,8 +250,8 @@ button {
 }
 
 .container1 {
-    width: 50%;
-    height: 65vh;
+    width: 45%;
+    height: 70vh;
     padding: 20px;
     /*    margin: 30px;
         margin-right: 60px;*/
@@ -274,7 +275,7 @@ button {
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10vh;
+    /*margin-top: 30vh;*/
 }
 
 .cert button:hover {

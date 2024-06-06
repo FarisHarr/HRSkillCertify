@@ -15,7 +15,7 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 color: #505050;
-                font-family: "Rubik", Helvetica, Arial, sans-serif;
+                font-family: Georgia, 'Times New Roman', Times, serif;
                 font-size: 14px;
                 font-weight: normal;
                 line-height: 1.5;
@@ -149,9 +149,8 @@
             }
 
             .new a:hover {
-                color: #c2f9ff;
+                color: #70f1ff;
             }
-
 
 
         </style>

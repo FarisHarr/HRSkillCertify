@@ -79,6 +79,7 @@
                 <a href="AboutCertificate.jsp">About Certificate</a>
                 <a href="TimeTable.jsp">Time Table</a>
                 <a href="Feedback.jsp">Feedback</a>
+                <a href="StandardRegistry.jsp">Standard Registry</a>
             </div>
 
             <div class="container">
