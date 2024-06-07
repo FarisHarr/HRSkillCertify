@@ -94,7 +94,7 @@
         }
 
         .feedback {
-            background-color: #f0f0f0;
+            background-color: #eee;
             padding: 10px;
             border-bottom: 1px solid #ccc;
             margin-bottom: 10px;

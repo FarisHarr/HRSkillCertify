@@ -222,6 +222,7 @@ button {
 .title {
     padding: 30px;
     width: 50%;
+    height: 80vh;
     background-color: whitesmoke;
     border: 1px solid #ccc;
     border-radius: 30px;

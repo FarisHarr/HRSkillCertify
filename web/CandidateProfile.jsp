@@ -19,6 +19,41 @@
         <title>Candidate Profile</title>
     </head>
 
+    <style>
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+            /*width: 90%;*/
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-item label {
+            width: 160px;
+            /*border: 1px solid #000;*/
+            padding: 5px;
+            font-weight: bold;
+            color: #333;
+            margin-right: 20px; /* Adds spacing between the label and the span */
+            font-size: 1.05rem;
+        }
+
+        .info-item span {
+            width: 350px;
+            color: #555;
+            font-size: 1.05rem;
+            /*border: 1px solid #eee;*/
+        }
+    </style>
+
     <body>
 
         <%
@@ -86,13 +121,30 @@
                 <br>
                 <div class="title">
                     <h1>User Profile</h1>
-                    <h3 name="name"> Name : <%= Name%></h3>
-                    <h3 name="ic"> IC Number : <%= IC%></h3>
-                    <h3 name="email"> Email : <%= Email%></h3>
-                    <!--<h3 name="password"> Password : < Password%></h3>-->
-                    <h3 name="phone"> Phone Number : <%= Phone%></h3>
-                    <h3 name="address"> Address : <%= Address%></h3>
-                    
+                    <br>
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <label>Name :</label>
+                            <span><%= Name%></span>
+                        </div>
+                        <div class="info-item">
+                            <label>IC Number :</label>
+                            <span><%= IC%></span>
+                        </div>
+                        <div class="info-item">
+                            <label>Email :</label>
+                            <span><%= Email%></span>
+                        </div>
+                        <div class="info-item">
+                            <label>Phone Number :</label>
+                            <span><%= Phone%></span>
+                        </div>
+                        <div class="info-item">
+                            <label>Address :</label>
+                            <span><%= Address%></span>
+                        </div>
+                    </div>
+
                     <h3 style="text-align: center;">Certificate :</h3>
 
                     <h3 style="width: auto; text-align: center;">
@@ -111,20 +163,17 @@
                         <!-- Placeholder image -->
                         <!--<img src="IMG/White.png" class="image-button" style="width: 400px; height: 250px;; margin: auto;">-->
                         <h4 style="text-align: center;">In Process</h4>
-                        
-                        
+
+
                         <%
                             }
                         %>
                     </h3>
-
-
-                </div>
-
-                <a href="EditCandidate.jsp?id=<%= ID%>">
+                                    <a href="EditCandidate.jsp?id=<%= ID%>">
                     <button class="profile-update-button">EDIT</button>
                 </a> 
-                <br>
+                </div>
+                    <br>
             </div>
         </div>
 
