@@ -18,6 +18,32 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     </head>
+    
+        <style>
+/* Center the submit button */
+.submit-button {
+    width: 100%; /* Make sure the container spans the full width */
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 20px;
+}
+
+/* Submit button styling */
+input.submit {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    background-color: #4CAF50;
+    cursor: pointer;
+    text-align: center;
+}
+
+input.submit:hover {
+    background-color: #45a049;
+}
+    </style>
 
     <body>
 
@@ -79,6 +105,7 @@
                                 <th>Name</th>
                                 <th>Message</th>
                                 <th>Response</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -130,13 +157,12 @@
                                         out.println("<td>" + candidateName + "</td>");
                                         out.println("<td>" + message + "</td>");
                                         out.println("<td>" + reply + "</td>");
+                                        out.println("<td>");
+                                        out.println("<span onclick=\"showPopup('" + candidateID + "', '" + feedbackID + "', '" + message.replaceAll("'", "\\\\'") + "', '" + (reply != null ? reply.replaceAll("'", "\\\\'") : "") + "')\" style=\"cursor:pointer;\"><img src=\"IMG/editicon.png\" alt=\"response\" title=\"Reply\"></span>");
+                                        out.println("</td>");
                                         out.println("</tr>");
                                     }
 
-                                    con.close();
-                                } catch (Exception e) {
-                                    out.println("Error: " + e);
-                                }
                             %>
 
 
@@ -145,7 +171,38 @@
                 </div>
             </div>
 
+            <!--Popup Reply-->
+            <div class="popup" id="popup">
+                <div class="popup-content">
+                    <span class="close" onclick="hidePopup()">&times;</span>
+                    <h2>Response</h2>
+                    <form action="UpdateFeedbackServ " method="POST">
+                        <input type="hidden" id="popupCandidateID" name="candidateID">
+                        <input type="hidden" id="popupFeedbackID" name="feedbackID">
+                        <div class="form-group">
+                            <label for="popupMessage">Message :</label>
+                            <p id="popupMessage"></p>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="popupReply">Reply :</label>
+                            <textarea id="popupReply" name="reply"></textarea>
+                        </div>
+                        <br><br>
+                        <div class="submit-button">
+                            <input class="submit" type="submit" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
+
+        <%                                    con.close();
+            } catch (Exception e) {
+                out.println("Error: " + e);
+            }
+        %>
 
         <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
 
@@ -192,6 +249,19 @@
                     behavior: "smooth"
                 });
             }
+
+            function showPopup(candidateID, feedbackID, message, reply) {
+                document.getElementById("popup").style.display = "block";
+                document.getElementById("popupCandidateID").value = candidateID;
+                document.getElementById("popupFeedbackID").value = feedbackID;
+                document.getElementById("popupMessage").innerText = message;
+                document.getElementById("popupReply").value = reply;
+            }
+
+            function hidePopup() {
+                document.getElementById("popup").style.display = "none";
+            }
+
         </script>
 
         <footer>

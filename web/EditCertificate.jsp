@@ -175,9 +175,9 @@
 
                 <div class="upload-section">
                     <h4>Re-Upload Candidate Certificate</h4>
-                    <form action="SubmitCertificateServ" method="POST" enctype="multipart/form-data">
+                    <form action="SubmitCertificateServ" method="POST" enctype="multipart/form-data" >
                         <input type="hidden" name="candID" value="<%= candID%>">
-                        <input type="file" name="certificate" accept="image/*">
+                        <input type="file" name="certificate" accept="image/*" required>
                         <button type="submit" name="action" value="Upload">Upload</button>
                         <button type="button" onclick="window.location.href = 'ManageCandidate.jsp'">Cancel</button>
                     </form>

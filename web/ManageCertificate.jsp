@@ -77,10 +77,11 @@
                         <label for="class_Name">Class Name :</label>
                         <select id="class_Name" name="class_Name" required>
                             <option value="" disabled selected>Please Choose</option>
+                            <option value="Taklimat Sijil">Taklimat Sijil</option>
                             <option value="SKM">SKM - Sijil Kemahiran Malaysia</option>
                             <option value="DKM">DKM - Diploma Kemahiran Malaysia</option>
                             <option value="DLKM">DLKM - Diploma Lanjutan Kemahiran Malaysia</option>
-                            <option value="Taklimat Sijil">Taklimat Sijil</option>
+                            <option value="Penilaian Sijil">Penilaian Sijil</option>
                         </select>
                         <br><br>
                         <label for="date">Date :</label>

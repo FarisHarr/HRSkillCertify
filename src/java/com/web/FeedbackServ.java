@@ -40,7 +40,7 @@ public class FeedbackServ extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             String myURL = "jdbc:mysql://localhost/hrsc";
 
-            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); PreparedStatement ps = myConnection.prepareStatement("INSERT INTO feedback(feedback_ID, cand_ID, message,response) VALUES (?, ?, ?,?)")) {
+            try (Connection myConnection = DriverManager.getConnection(myURL, "root", "admin"); PreparedStatement ps = myConnection.prepareStatement("INSERT INTO feedback(feedback_ID, cand_ID, message, response) VALUES (?, ?, ?,?)")) {
 
                 ps.setString(1, feedback);
                 ps.setString(2, candidateID);

@@ -23,7 +23,7 @@
 
     <style>
         .info {
-            margin: 0 auto;
+            margin-top: 20px;
             text-align: center;
             padding: 20px;
             width: 85%;
@@ -31,6 +31,7 @@
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
+            height: auto;
         }
 
         .cert1 {
@@ -39,9 +40,9 @@
             padding: 30px;
             /*            margin: 30px;
                         margin-left: 40px;*/
-            
+
             margin: auto;
-            width: 40%;
+            width: 45%;
             border-radius: 8px;
             text-align: center;
             display: flex;
@@ -69,16 +70,45 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             padding: 20px 40px; /* Shorthand for padding-right and padding-left */
             margin-top: 50px;
-            width: 80%;
+            margin-bottom: 20px;
             border-radius: 8px;
             text-align: center;
             display: flex;
             flex-direction: column;
+            height: auto;
+            width: 88%;
         }
+
+        .feedback-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .feedback-item {
+            flex: 1 1 calc(50% - 20px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .feedback {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .response {
+            padding: 10px;
+            margin-left: 10px; /* Add margin between feedback and response */
+        }
+
 
         .container {
             width: 100%;
-            height: 150vh;
+            height: auto;
             margin: 0 auto;
             display: flex; /* Use flexbox to position children side by side */
         }
@@ -93,6 +123,7 @@
             display: block;
             margin-bottom: 10px;
             margin-top: 25px;
+            font-weight: bold;
         }
 
         /* Style for form inputs */
@@ -267,9 +298,9 @@
                     <h2>Feedback</h2>
                     <form id="feedbackForm" action="FeedbackServ" method="POST">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" value="<%= Name%>" readonly><br>
+                        <input type="text" id="name" name="name" value="- <%= Name%> -" readonly><br>
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" value="<%= Email%>" readonly><br>
+                        <input type="email" id="email" name="email" value="- <%= Email%> -" readonly><br>
                         <label for="message">Feedback:</label>
                         <textarea id="message" name="message" required></textarea><br>
                         <button type="submit">Submit Feedback</button>
@@ -281,6 +312,7 @@
                     <div class="review">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7958.560217539045!2d100.52152113677145!3d5.503182003707448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b002bb55aa7ff%3A0x3b7aefb6a76b91b3!2s1336%2C%20Jalan%20Serai%20Wangi%2013%2F6%2C%2009010%20Padang%20Serai%2C%20Kedah%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1684642959811!5m2!1sen!2smy" allowfullscreen="" loading="lazy"></iframe>
                     </div>
+                    
                     <div class="contact-icons">
                         <a href="https://www.facebook.com/harris.hussain.58" target="_blank" title="Facebook"><i class="fab fa-facebook"></i><br> HR Skill Solutions</a>
                         <a href="https://pppkt.onpay.my/order/form/pppktonlinetajaan" target="_blank" title="Info"><i class="fas fa-envelope"></i><br> Information</a>
@@ -291,12 +323,40 @@
 
                 <div class="cert3">
                     <h2>Previous Feedback</h2>
+                    <br>
                     <% if (!messages.isEmpty()) { %>
-                    <% for (String msg : messages) {%>
-                    <p><%= msg%></p>
-                    <% } %>
+                    <div class="feedback-container">
+                        <% for (String msg : messages) {%>
+                        <div class="feedback-item">
+                            <div class="feedback">
+                                <p><strong>Feedback:</strong> <%= msg%></p>
+                            </div>
+                            <div class="response">
+                                <% // Fetch response from the database based on the feedback message
+                                    String reply = "";
+                                    try {
+                                        Class.forName("com.mysql.jdbc.Driver");
+                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                                        PreparedStatement ps = con.prepareStatement("SELECT response FROM feedback WHERE message = ?");
+                                        ps.setString(1, msg);
+                                        ResultSet rs = ps.executeQuery();
+                                        if (rs.next()) {
+                                            reply = rs.getString("response"); // Get response from the database
+                                        }
+                                        rs.close();
+                                        ps.close();
+                                        con.close();
+                                    } catch (Exception e) {
+                                        out.println("Error fetching response: " + e.getMessage());
+                                    }
+                                %>
+                                <p><strong>Response:</strong> <%= reply%></p>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
                     <% } else {%>
-                    <p>No feedback found for candidate ID: <%= candidateID%></p>
+                    <p>No feedback found </p>
                     <% }%>
                 </div>
 
