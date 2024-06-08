@@ -55,20 +55,27 @@
                 justify-content: center;
             }
 
+            td, tr {
+                padding: 5px;
+            }
+
             form{
                 display: flex;
                 justify-content: center;
             }
 
             input {
-                display: flex;
-                justify-content: center;
-                padding: 5px 15px;
-                border-radius: 5px;
-                border: 1px solid #24252a;
-                background-color: #4CAF50;
-                cursor: pointer;
+                display: block;
+                float: right;
+                width: 120px;
+                height: 35px;
+                padding: 5px;
                 margin: 20px;
+                border-radius: 5px;
+                border: none;
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
             }
 
             input:hover {

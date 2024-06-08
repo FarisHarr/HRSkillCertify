@@ -37,11 +37,12 @@ public class DeleteClassServ extends HttpServlet {
                     int rowsUpdated = pst.executeUpdate();
 
                     if (rowsUpdated > 0) {
-                        response.getWriter().println("<script>alert('Class has been archived'); window.location='ManageCertificate.jsp';</script>");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/DeleteClass.jsp");
+                        dispatcher.forward(request, response);
+//                        response.getWriter().println("<script>alert('Class has been archived'); window.location='DeleteClass.jsp';</script>");
                     } else {
                         request.setAttribute("errorMessage", "Class not found or couldn't be archived.");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/TestPage.jsp");
-                        dispatcher.forward(request, response);
+                        response.getWriter().println("<script>alert('Class has not been archived'); window.location='DeleteClass.jsp';</script>");
                     }
                 }
             } catch (IOException | ClassNotFoundException | SQLException | ServletException e) {

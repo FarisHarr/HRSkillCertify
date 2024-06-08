@@ -55,6 +55,10 @@
                 justify-content: center;
             }
 
+            td, tr {
+                padding: 5px;
+            }
+
             form{
                 display: flex;
                 justify-content: center;

@@ -84,6 +84,10 @@
             flex-wrap: wrap;
             gap: 20px;
         }
+        
+/*                .feedback-container p {
+            text-align: center;
+        }*/
 
         .feedback-item {
             flex: 1 1 calc(50% - 20px);
@@ -218,7 +222,6 @@
             // Get candidateID from session
             String candidateID = (String) session.getAttribute("candidateID");
             String Name = "", Email = "";
-            List<String> messages = new ArrayList<>();
 
             if (candidateID != null) {
                 try {
@@ -227,40 +230,23 @@
                     // Establish connection to the database
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
 
-                    // Prepare SQL query to fetch candidate and feedback details
-                    PreparedStatement ps = con.prepareStatement(
-                            "SELECT c.cand_Name, c.cand_Email, f.message "
-                            + "FROM candidate c "
-                            + "JOIN feedback f ON c.cand_ID = f.cand_ID "
-                            + "WHERE c.cand_ID = ?"
+                    // Prepare SQL query to fetch candidate details
+                    PreparedStatement psCandidate = con.prepareStatement(
+                            "SELECT cand_Name, cand_Email FROM candidate WHERE cand_ID = ?"
                     );
-                    ps.setString(1, candidateID);
-                    ResultSet rs = ps.executeQuery();
+                    psCandidate.setString(1, candidateID);
+                    ResultSet rsCandidate = psCandidate.executeQuery();
 
-                    // Process the result set
-                    while (rs.next()) {
-                        if (Name.isEmpty() && Email.isEmpty()) {
-                            // Fetch candidate's name and email once
-                            Name = rs.getString("cand_Name");
-                            Email = rs.getString("cand_Email");
-                        }
-                        // Fetch feedback message and add to the list
-                        messages.add(rs.getString("message"));
+                    // Fetch candidate details
+                    if (rsCandidate.next()) {
+                        Name = rsCandidate.getString("cand_Name");
+                        Email = rsCandidate.getString("cand_Email");
                     }
 
-                    // Close the resources
-                    rs.close();
-                    ps.close();
-                    con.close();
+                    // Close resources related to candidate query
+                    rsCandidate.close();
+                    psCandidate.close();
 
-                } catch (Exception e) {
-                    // Handle exceptions
-                    out.println("Error: " + e.getMessage());
-                }
-            } else {
-                // Handle case where candidateID is null
-                out.println("Candidate ID is not available. Please log in again.");
-            }
         %>
 
         <header>
@@ -298,9 +284,9 @@
                     <h2>Feedback</h2>
                     <form id="feedbackForm" action="FeedbackServ" method="POST">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" value="- <%= Name%> -" readonly><br>
+                        <input type="text" id="name" name="name" value="<%= Name%>" readonly><br>
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" value="- <%= Email%> -" readonly><br>
+                        <input type="email" id="email" name="email" value="<%= Email%>" readonly><br>
                         <label for="message">Feedback:</label>
                         <textarea id="message" name="message" required></textarea><br>
                         <button type="submit">Submit Feedback</button>
@@ -312,7 +298,7 @@
                     <div class="review">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7958.560217539045!2d100.52152113677145!3d5.503182003707448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b002bb55aa7ff%3A0x3b7aefb6a76b91b3!2s1336%2C%20Jalan%20Serai%20Wangi%2013%2F6%2C%2009010%20Padang%20Serai%2C%20Kedah%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1684642959811!5m2!1sen!2smy" allowfullscreen="" loading="lazy"></iframe>
                     </div>
-                    
+
                     <div class="contact-icons">
                         <a href="https://www.facebook.com/harris.hussain.58" target="_blank" title="Facebook"><i class="fab fa-facebook"></i><br> HR Skill Solutions</a>
                         <a href="https://pppkt.onpay.my/order/form/pppktonlinetajaan" target="_blank" title="Info"><i class="fas fa-envelope"></i><br> Information</a>
@@ -324,44 +310,67 @@
                 <div class="cert3">
                     <h2>Previous Feedback</h2>
                     <br>
-                    <% if (!messages.isEmpty()) { %>
+                    <% // Check if Name and Email are not empty
+                        if (!Name.isEmpty() && !Email.isEmpty()) {
+                    %>
                     <div class="feedback-container">
-                        <% for (String msg : messages) {%>
+                        <%
+                            // Prepare SQL query to fetch feedback messages for the candidate
+                            PreparedStatement psFeedback = con.prepareStatement(
+                                    "SELECT message, response FROM feedback WHERE cand_ID = ?"
+                            );
+                            psFeedback.setString(1, candidateID);
+                            ResultSet rsFeedback = psFeedback.executeQuery();
+
+                            // Display feedback messages and responses
+                            boolean feedbackFound = false;
+                            while (rsFeedback.next()) {
+                                feedbackFound = true;
+                                String feedbackMessage = rsFeedback.getString("message");
+                                String reply = rsFeedback.getString("response");
+                        %>
                         <div class="feedback-item">
                             <div class="feedback">
-                                <p><strong>Feedback:</strong> <%= msg%></p>
+                                <p><strong>Feedback:</strong> <%= feedbackMessage%></p>
                             </div>
                             <div class="response">
-                                <% // Fetch response from the database based on the feedback message
-                                    String reply = "";
-                                    try {
-                                        Class.forName("com.mysql.jdbc.Driver");
-                                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-                                        PreparedStatement ps = con.prepareStatement("SELECT response FROM feedback WHERE message = ?");
-                                        ps.setString(1, msg);
-                                        ResultSet rs = ps.executeQuery();
-                                        if (rs.next()) {
-                                            reply = rs.getString("response"); // Get response from the database
-                                        }
-                                        rs.close();
-                                        ps.close();
-                                        con.close();
-                                    } catch (Exception e) {
-                                        out.println("Error fetching response: " + e.getMessage());
-                                    }
-                                %>
-                                <p><strong>Response:</strong> <%= reply%></p>
+                                <p><strong>Response:</strong> <%= reply != null ? reply : "No response available"%></p>
                             </div>
                         </div>
-                        <% } %>
+                        <% }
+                            // Close resources related to feedback query
+                            rsFeedback.close();
+                            psFeedback.close();
+
+                            // Check if feedback was found
+                            if (!feedbackFound) {
+                        %>
+                        </div>
+                        <p>No feedback found</p>
+                        <% }
+                        %>
                     </div>
-                    <% } else {%>
-                    <p>No feedback found </p>
-                    <% }%>
+                    <% } else { %>
+                    <p>Something is wrong</p>
+                    <% } %>
                 </div>
 
             </div>
         </div>
+        <%
+                    // Close database connection
+                    con.close();
+                } catch (Exception e) {
+                    // Handle exceptions
+                    out.println("Error: " + e.getMessage());
+                }
+            } else {
+                // Handle case where candidateID is null
+                out.println("Candidate ID is not available. Please log in again.");
+            }
+        %>
+
+
 
         <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
 

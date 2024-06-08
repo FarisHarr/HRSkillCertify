@@ -29,25 +29,9 @@
                     </ul>
                 </nav>
             </div>
-<!--            <nav>
-                <li class="dropdown">
-                    <a class="nav-link">Account</a>
-                    <ul class="dropdown-content">
-                        <li><a href="CandidateProfile.jsp">User Info</a></li>
-                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
-                    </ul>
-                </li>
-            </nav>-->
         </header>
 
         <div class="co">
-<!--            <div class="navbar" id="myNavbar">
-                <a href="HomePage.jsp">Home</a>
-                <a href="CandidateProfile.jsp">User Profile</a>
-                <a href="AboutCertificate.jsp">About Certificate</a>
-                <a href="TimeTable.jsp">Time Table</a>
-                <a href="Feedback.jsp">Feedback</a>
-            </div>-->
 
             <%
 //                HttpSession loginsession = request.getSession();

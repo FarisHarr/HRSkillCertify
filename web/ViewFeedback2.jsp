@@ -105,7 +105,7 @@ input.submit:hover {
                                 <th>Name</th>
                                 <th>Message</th>
                                 <th>Response</th>
-                                <th>Action</th>
+                                <!--<th>Action</th>-->
                             </tr>
                         </thead>
                         <tbody>
@@ -157,9 +157,9 @@ input.submit:hover {
                                         out.println("<td>" + candidateName + "</td>");
                                         out.println("<td>" + message + "</td>");
                                         out.println("<td>" + reply + "</td>");
-                                        out.println("<td>");
-                                        out.println("<span onclick=\"showPopup('" + candidateID + "', '" + feedbackID + "', '" + message.replaceAll("'", "\\\\'") + "', '" + (reply != null ? reply.replaceAll("'", "\\\\'") : "") + "')\" style=\"cursor:pointer;\"><img src=\"IMG/editicon.png\" alt=\"response\" title=\"Reply\"></span>");
-                                        out.println("</td>");
+//                                        out.println("<td>");
+//                                        out.println("<span onclick=\"showPopup('" + candidateID + "', '" + feedbackID + "', '" + message.replaceAll("'", "\\\\'") + "', '" + (reply != null ? reply.replaceAll("'", "\\\\'") : "") + "')\" style=\"cursor:pointer;\"><img src=\"IMG/editicon.png\" alt=\"response\" title=\"Reply\"></span>");
+//                                        out.println("</td>");
                                         out.println("</tr>");
                                     }
 
