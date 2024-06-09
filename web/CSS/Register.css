@@ -128,3 +128,11 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
+.password-toggle {
+    color: gray;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 347px;
+    margin-left: 310px;
+}

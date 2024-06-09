@@ -235,7 +235,8 @@ button {
 .cert {
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 36%;
+    /*width: auto;*/
+    width: 33.5%;
     min-height: 70vh;
     height: auto;
     padding: 20px;
@@ -244,18 +245,18 @@ button {
     /*margin: auto;*/
     border-radius: 8px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
+    /*display: flex;*/
+    /*flex-direction: column;*/
 
 }
 
 .container1 {
-    width: 43%;
+    width: 45%;
     height: 70vh;
     padding: 20px;
-        /*margin: 30px;*/
+    /*margin: 30px;*/
     margin: auto;
-        margin-right: 20px;
+    margin-right: 20px;
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
