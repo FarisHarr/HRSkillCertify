@@ -67,14 +67,26 @@ button {
 }
 
 .dropdown-content {
+    /*    display: none;
+    position: absolute;
+    list-style: none;
+    background-color: #455d5f;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #0088a9;*/
+
     display: none;
     position: absolute;
+    top: 200%; /* Center vertically relative to parent */
+    left: 40%; /* Center horizontally relative to parent */
+    transform: translate(-50%, -50%); /* Offset the position to center correctly */
     list-style: none;
     background-color: #455d5f;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px #0088a9;
     width: 70%; /* Set the width as needed */
+    max-width: 120px;
 }
 
 .dropdown:hover .dropdown-content {
