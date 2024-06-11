@@ -85,7 +85,7 @@
                     <label for="Role">Roles :</label>
                     <select id="Role" name="Role">
                         <option value="Administrator">Administrator</option>
-                        <option value="Manager">Manager</option>
+                        <option value="Coordinator">Coordinantor</option>
                     </select>
                     <br><br><br>
                     <div class="submit-button">
@@ -101,7 +101,7 @@
             <div class="navbar">
                 <a href="AdminProfile.jsp">User Profile</a>
                 <a href="AdminDashboard.jsp">Dashboard</a>
-                <a href="ManageStaff.jsp">Manage Manager</a>
+                <a href="ManageStaff.jsp">Manage Staff</a>
                 <a href="ViewFeedback2.jsp">View Feedback</a>
             </div>
 

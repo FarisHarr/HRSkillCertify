@@ -17,68 +17,6 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
-    <style>
-
-        .infoCert {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            margin: 20px auto;
-        }
-
-        .infoCert h3 {
-            text-align: center;
-        }
-
-        .cert {
-            background: #e6f2ff;
-            border: 1px solid #cce0ff;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .cert h2 {
-            color: #004080;
-        }
-
-        .cert h4 {
-            text-align: left;
-            color: #333;
-            font-family: "CustomFont", Arial, sans-serif;
-        }
-
-
-        .cert button {
-            background-color: #004080;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .cert button:hover {
-            background-color: #0059b3;
-        }
-
-        .cert img {
-            max-width: 50%; /* Ensure the image doesn't exceed its container's width */
-            height: auto; /* Maintain aspect ratio */
-            display: block; /* Ensure image behaves as a block element */
-            margin-bottom: 10px; /* Add some space below the image */
-            border-radius: 5px; /* Add rounded corners to the image */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to the image */
-        }
-
-    </style>
 
     <body>
         <%

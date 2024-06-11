@@ -107,7 +107,7 @@
             <div class="navbar">
                 <a href="AdminProfile.jsp">User Profile</a>
                 <a href="AdminDashboard.jsp">Dashboard</a>
-                <a href="ManageStaff.jsp">Manage Manager</a>
+                <a href="ManageStaff.jsp">Manage Staff</a>
                 <a href="ViewFeedback2.jsp">View Feedback</a>
             </div>
             <div class="container">

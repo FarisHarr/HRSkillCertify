@@ -144,7 +144,7 @@
                         </td>
 
                         <td>
-                            <form onsubmit="updateStatus(this, '<%= paymentID%>'); return false;">
+                            <form class="status" onsubmit="updateStatus(this, '<%= paymentID%>'); return false;">
                                 <select name='newStatus'>
                                     <option class="pending" value='Pending' <%= (status.equals("Pending") ? "selected" : "")%>>Pending</option>
                                     <option class="approved" value='Approved' <%= (status.equals("Approved") ? "selected" : "")%>>Approved</option>
@@ -153,7 +153,7 @@
 
                                 <input type="hidden" name="paymentID" value="<%= paymentID%>">
                                 <input type="submit" value="Update" onclick="showSuccessMessage()">
-                            </form>
+                            </form><!-- comment -->
                         </td>
                         <%
                                 }

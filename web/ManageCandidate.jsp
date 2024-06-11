@@ -4,6 +4,8 @@
     Author     : FarisHarr
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.dao.CandidateDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
@@ -118,6 +120,9 @@
                                 Statement st = con.createStatement();
                                 ResultSet rs = st.executeQuery(query);
 
+                                List<String> notEnrollCandidates = new ArrayList<>();
+                                List<String> otherCandidates = new ArrayList<>();
+
                                 while (rs.next()) {
                                     String ID = rs.getString("cand_ID");
                                     String IC = rs.getString("cand_IC");
@@ -126,49 +131,57 @@
                                     String Phone = rs.getString("cand_Phone");
                                     String Address = rs.getString("cand_Add");
 
-                                    // Check if the candidate has an associated certificate
-                                    PreparedStatement psCert = con.prepareStatement("SELECT * FROM certificate WHERE cand_ID = ?");
-                                    psCert.setString(1, ID);
-                                    ResultSet rsCert = psCert.executeQuery();
-
                                     CandidateDAO candidateDao = new CandidateDAO();
                                     String certificate = candidateDao.getCertificate(ID); // Fetch the certificate value from the database
 
-                                    out.println("<tr>");
-                                    out.println("<td>" + IC + "</td>");
-                                    out.println("<td>" + Name + "</td>");
-                                    out.println("<td>" + Email + "</td>");
-                                    out.println("<td>" + Phone + "</td>");
-                                    out.println("<td>" + Address + "</td>");
+                                    StringBuilder row = new StringBuilder();
+                                    row.append("<tr>");
+                                    row.append("<td>").append(IC).append("</td>");
+                                    row.append("<td>").append(Name).append("</td>");
+                                    row.append("<td>").append(Email).append("</td>");
+                                    row.append("<td>").append(Phone).append("</td>");
+                                    row.append("<td>").append(Address).append("</td>");
 
-                                    // Debugging information
-//                                    out.println("<!-- Certificate Value: " + certificate + " -->");
                                     if (certificate != null && !certificate.isEmpty() && !certificate.equalsIgnoreCase("no certificate")) {
                                         // Certificate exists and is not "no certificate"
-                                        out.println("<td>");
-                                        out.println("<a href=\"EditCertificate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/check.png\" alt=\"certificate\" title=\"View Certificate\"></a>");
-                                        out.println("</td>");
+                                        row.append("<td>");
+                                        row.append("<a href=\"EditCertificate.jsp?cand_ID=").append(ID).append("\"><img src=\"IMG/check.png\" alt=\"certificate\" title=\"View Certificate\"></a>");
+                                        row.append("</td>");
                                     } else if (candidateDao.hasCertificateType(ID, "desired_cert_type")) {
                                         // Candidate has a certificate of the specified type
-                                        out.println("<td>");
-                                        out.println("<img src=\"IMG/cross.png\" alt=\"certificate\" title=\"Not Enroll Certificate\"></a>");
-                                        out.println("</td>");
+                                        row.append("<td>");
+                                        row.append("<img src=\"IMG/cross.png\" alt=\"certificate\" title=\"Not Enroll Certificate\"></a>");
+                                        row.append("</td>");
                                     } else {
                                         // Certificate is null or empty
-                                        out.println("<td>");
-                                        out.println("<a href=\"Certificate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/editicon.png\" alt=\"certificate\" title=\"Update Certificate\"></a>");
-                                        out.println("</td>");
+                                        row.append("<td>");
+                                        row.append("<a href=\"Certificate.jsp?cand_ID=").append(ID).append("\"><img src=\"IMG/editicon.png\" alt=\"certificate\" title=\"Update Certificate\"></a>");
+                                        row.append("</td>");
                                     }
 
-                                    out.println("<td>");
-                                    out.println("<a href=\"DeleteCandidate.jsp?cand_ID=" + ID + "\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
-                                    out.println("</td>");
-                                    out.println("</tr>");
+                                    row.append("<td>");
+                                    row.append("<a href=\"DeleteCandidate.jsp?cand_ID=").append(ID).append("\"><img src=\"IMG/deleteicon.png\" alt=\"delete\"></a>");
+                                    row.append("</td>");
+                                    row.append("</tr>");
 
-                                    rsCert.close();
-                                    psCert.close();
+                                    if (certificate == null || certificate.isEmpty() || certificate.equalsIgnoreCase("no certificate")) {
+                                        notEnrollCandidates.add(row.toString());
+                                    } else {
+                                        otherCandidates.add(row.toString());
+                                    }
                                 }
 
+                                // Print the not enrolled candidates first
+                                for (String row : notEnrollCandidates) {
+                                    out.println(row);
+                                }
+
+                                // Then print the other candidates
+                                for (String row : otherCandidates) {
+                                    out.println(row);
+                                }
+
+                                rs.close();
                                 con.close();
                             } catch (Exception e) {
                                 out.println("Error: " + e);
@@ -219,5 +232,6 @@
         </footer>
     </body>
 </html>
+
 
 

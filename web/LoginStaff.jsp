@@ -35,10 +35,10 @@
                 <h2>LOGIN</h2>
                 <h5>Staff</h5>
                 <div class="radio">
-                    <input type="radio" id="admin" name="user-type" value="administrator" required>
+                    <input type="radio" id="administrator" name="user-type" value="administrator" required>
                     <label for="administrator">Administrator</label>
-                    <input type="radio" id="manager" name="user-type" value="manager" required>
-                    <label for="manager">Coordinator</label>
+                    <input type="radio" id="coordinator" name="user-type" value="coordinator" required>
+                    <label for="coordinator">Coordinator</label>
                 </div>
 
                 <input type="IC" name="IC" class="box" placeholder="Enter IC Number" oninput="restrictToNumbers(this);" maxlength="12" required>

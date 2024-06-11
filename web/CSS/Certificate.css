@@ -235,6 +235,11 @@ button {
     width: 250px;
 }
 
+.popup-content td {
+    width : 10%;
+    padding : 5px;
+}
+
 .container {
     width: 100%;
     margin: 0 auto;

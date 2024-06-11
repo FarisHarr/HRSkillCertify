@@ -49,7 +49,7 @@ public class LoginStaffServ extends HttpServlet {
 
                                 if (userType.equals("administrator")) {
                                     response.sendRedirect("AdminDashboard.jsp");
-                                } else if (userType.equals("manager")){
+                                } else if (userType.equals("coordinator")){
                                     response.sendRedirect("StaffDashboard.jsp");
                                 }
                             } else {
