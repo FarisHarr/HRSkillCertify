@@ -289,6 +289,10 @@
                         <input type="email" id="email" name="email" value="<%= Email%>" readonly><br>
                         <label for="message">Feedback:</label>
                         <textarea id="message" name="message" required></textarea><br>
+                        <div class="form-group">
+                    <!-- <label for="payment_date">Payment Date:</label> -->
+                    <input type="hidden" id="feedback_Date" name="feedback_Date" value="<%= java.time.LocalDate.now()%>">
+                </div>
                         <button type="submit">Submit Feedback</button>
                     </form>
                 </div>

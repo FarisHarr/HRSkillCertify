@@ -94,7 +94,7 @@ public class RegisterCertServ extends HttpServlet {
                                     // Redirect to homepage upon successful registration
                                     String alertMessage = "Register Successfully";
                                     response.setContentType("text/html");
-                                    String script = "<script>alert('" + alertMessage + "'); window.location.href='HomePage.jsp';</script>";
+                                    String script = "<script>alert('" + alertMessage + "'); window.location.href='AboutCertificate.jsp';</script>";
                                     response.getWriter().println(script);
                                 } else {
                                     String errorMessage = "Failed to add certificate details. Please try again.";

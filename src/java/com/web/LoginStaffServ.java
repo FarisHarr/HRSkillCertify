@@ -50,7 +50,7 @@ public class LoginStaffServ extends HttpServlet {
                                 if (userType.equals("administrator")) {
                                     response.sendRedirect("AdminDashboard.jsp");
                                 } else if (userType.equals("coordinator")){
-                                    response.sendRedirect("StaffDashboard.jsp");
+                                    response.sendRedirect("ManageCandidate.jsp");
                                 }
                             } else {
                                 // User not found, set error message attribute

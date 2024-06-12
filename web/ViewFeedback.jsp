@@ -20,29 +20,29 @@
     </head>
 
     <style>
-/* Center the submit button */
-.submit-button {
-    width: 100%; /* Make sure the container spans the full width */
-    display: flex;
-    justify-content: center; /* Center the button horizontally */
-    margin-top: 20px;
-}
+        /* Center the submit button */
+        .submit-button {
+            width: 100%; /* Make sure the container spans the full width */
+            display: flex;
+            justify-content: center; /* Center the button horizontally */
+            margin-top: 20px;
+        }
 
-/* Submit button styling */
-input.submit {
-    width: 100px;
-    height: 40px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    background-color: #4CAF50;
-    cursor: pointer;
-    text-align: center;
-}
+        /* Submit button styling */
+        input.submit {
+            width: 100px;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            background-color: #4CAF50;
+            cursor: pointer;
+            text-align: center;
+        }
 
-input.submit:hover {
-    background-color: #45a049;
-}
+        input.submit:hover {
+            background-color: #45a049;
+        }
     </style>
 
     <body>
@@ -102,6 +102,7 @@ input.submit:hover {
                         <thead>
                             <tr>
                                 <!--<th>Feedback ID</th>-->
+                                <th>Date</th>
                                 <th>Name</th>
                                 <th>Message</th>
                                 <th>Response</th>
@@ -128,7 +129,7 @@ input.submit:hover {
                                 }
 
                                 String searchFeedbackID = request.getParameter("feedback_ID");
-                                String query = "SELECT feedback.feedback_ID, candidate.cand_ID, candidate.cand_Name, feedback.message, feedback.response "
+                                String query = "SELECT feedback.feedback_ID, candidate.cand_ID, candidate.cand_Name, feedback.message, feedback.response, feedback.feedback_Date "
                                         + "FROM feedback "
                                         + "INNER JOIN candidate ON feedback.cand_ID = candidate.cand_ID";
 
@@ -149,11 +150,13 @@ input.submit:hover {
                                         String candidateName = rs.getString("cand_Name");
                                         String message = rs.getString("message");
                                         String reply = rs.getString("response");
+                                        String date = rs.getString("feedback_Date");
 
                                         // Output feedback details in table rows
                                         out.println("<tr>");
 //                                        out.println("<td>" + feedbackID + "</td>");
 //                                        out.println("<td>" + candidateID + "</td>");
+                                        out.println("<td>" + date + "</td>");
                                         out.println("<td>" + candidateName + "</td>");
                                         out.println("<td>" + message + "</td>");
                                         out.println("<td>" + reply + "</td>");

@@ -69,25 +69,25 @@
                 <div class="cert">
                     <h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2><br>
                     <img src="IMG/SKMCert.png" alt="SKM Certificate Image">
-                    <a href="AboutCertificate.jsp">
-                        <button>Explore</button>
+                    <a href="CertificateForm.jsp">
+                        <button>Register</button>
                     </a>                
                 </div>
 
                 <div class="cert">
                     <h2>Diploma Kemahiran Malaysia (DKM)/ Tahap 4</h2><br>
                     <img src="IMG/DKMCert.png" alt="DKM Certificate Image">
-                    <a href="AboutCertificate.jsp">
-                        <button>Explore</button>
-                    </a>
+                    <a href="CertificateForm.jsp">
+                        <button>Register</button>
+                    </a> 
                 </div>
 
                 <div class="cert">
                     <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM) / Tahap 5</h2><br>
                     <img src="IMG/DLKMCert.png" alt="DLKM Certificate Image">
-                    <a href="AboutCertificate.jsp">
-                        <button>Explore</button>
-                    </a>
+                    <a href="CertificateForm.jsp">
+                        <button>Register</button>
+                    </a> 
                 </div>
             </div>
 

@@ -60,6 +60,7 @@
         }
 
         .cert label {
+            font-weight : bold;
             display: block;
             margin-top: 10px;
         }
@@ -68,7 +69,7 @@
         .cert input[type="text"],
         .cert input[type="number"],
         .cert textarea {
-            width: 50%;
+            width: 70%;
             padding: 10px;
             margin: 10px;
             margin-bottom: 10px;
@@ -86,6 +87,7 @@
         .back-button {
             width: 5%;
             margin-top: 10px;
+            margin-right: 90%;
             background-color: #45a049;
             color: white;
             border: none;
@@ -95,24 +97,21 @@
             font-size: 14px;
             text-decoration: none;
             display: inline-block;
+            float: left;
         }
 
         .back-button:hover {
             background-color: #5f5f5f;
         }
 
-        .receipt {
-            margin: 20px;
-            /*            text-decoration: underline;*/
-            /*cursor: pointer;*/
-            position: relative; /* Set position relative for absolute positioning */
-        }
+
 
         .receipt:hover::after {
             content: "Image below 1MB Only";
             position: absolute;
             background-color:  #cccccc;
             color: #ff3333;
+            width : 200px;
             padding: 5px;
             border-radius: 4px;
             top: calc(100% + 5px); /* Position below the element */
@@ -121,10 +120,40 @@
             z-index: 999;
         }
 
-        input[type="file"] {
-            cursor: pointer;
-            border: 1px solid #ccc; /* Add a 1px solid border with color #ccc */
+
+        .receipt {
+            margin: 20px;
+            /*            text-decoration: underline;*/
+            /*cursor: pointer;*/
+            position: relative; /* Set position relative for absolute positioning */
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+            width : 300px;
+            margin-left: auto;
+            margin-right: auto;
         }
+
+        .receipt h4 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .receipt input[type="file"] {
+            display: block;
+            margin: 5px auto 10px auto;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            width: 80%;
+            cursor: pointer;
+        }
+
 
 
 
@@ -275,8 +304,8 @@
 
             <a href="javascript:history.back()" class="back-button">Back</a>
         </div>
-                
-                <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
+
+        <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
 
         <script>
             // Function to open the QR.jsp page in a new small popup window
@@ -349,7 +378,7 @@
                 // Redirect to the logout servlet or your logout logic
                 window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
             }
-            
+
             //scroll function
             var mybutton = document.getElementById("myBtn");
 
