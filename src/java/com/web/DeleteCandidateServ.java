@@ -44,14 +44,12 @@ public class DeleteCandidateServ extends HttpServlet {
                         response.getWriter().println("<script>alert('Deleted successfully!'); window.location='ManageCandidate.jsp';</script>");
                     } else {
                         request.setAttribute("errorMessage", "Candidate not found or couldn't be deleted.");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/TestPage.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/ManageCandidate.jsp");
                         dispatcher.forward(request, response);
                     }
                 }
             } catch (IOException | ClassNotFoundException | SQLException | ServletException e) {
-                request.setAttribute("errorMessage", "Error: " + e.getMessage());
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/ErrorPage.jsp");
-                dispatcher.forward(request, response);
+                response.getWriter().println("<script>alert('Candidate cannot be deleted because the Certificate is succesfully created'); window.location='ManageCandidate.jsp';</script>");
             }
         } else if (action != null && action.equals("Cancel")) {
             // Redirect back to the previous page

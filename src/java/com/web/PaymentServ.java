@@ -35,7 +35,7 @@ public class PaymentServ extends HttpServlet {
         
         if (!contentType.startsWith("image/")) {
             // Uploaded file is not an image
-            response.getWriter().println("<script>alert('Uploaded file is not an image. Please upload an image file.'); window.location='CandidateProfile.jsp';</script>");
+            response.getWriter().println("<script>alert('Uploaded file is not an image. Please upload an image file.'); window.location='Payment.jsp';</script>");
             return;
         }
 
@@ -70,10 +70,10 @@ public class PaymentServ extends HttpServlet {
         // Redirect to appropriate page based on update result
         if (message != null && message.equals("Price and receipt updated successfully!")) {
             // Redirect to TimeTable.jsp and display success message
-            response.getWriter().println("<script>alert('Price and receipt updated successfully!'); window.location='TimeTable.jsp';</script>");
+            response.getWriter().println("<script>alert('Price and receipt updated successfully!'); window.location='AboutCertificate.jsp';</script>");
         } else {
             // Redirect to CandidateProfile.jsp and display error message
-            response.getWriter().println("<script>alert('Failed to update price and receipt!'); window.location='HomePage.jsp';</script>");
+            response.getWriter().println("<script>alert('Failed to update price and receipt!'); window.location='Payment.jsp';</script>");
         }
     }
 }
