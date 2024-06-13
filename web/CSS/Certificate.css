@@ -236,8 +236,9 @@ button {
 }
 
 .popup-content td {
-    width : 10%;
-    padding : 5px;
+    width : auto;
+    padding : 10px;
+    /*margin: 50px;*/
 }
 
 .container {

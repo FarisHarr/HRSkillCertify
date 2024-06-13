@@ -249,7 +249,7 @@ button {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     /*width: auto;*/
     width: 33.5%;
-    min-height: 70vh;
+    min-height: 75vh;
     height: auto;
     padding: 20px;
     margin: 30px;
@@ -264,7 +264,7 @@ button {
 
 .container1 {
     width: 45%;
-    height: 70vh;
+    height: 75vh;
     padding: 20px;
     /*margin: 30px;*/
     margin: auto;

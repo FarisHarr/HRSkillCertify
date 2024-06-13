@@ -95,9 +95,9 @@
                     <!-- <a class="nav-link">Account</a> -->
                     <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
-                        <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="AdminProfile.jsp">User Profile</a></li>
-                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
+                                            <!--ada error logout kalau letak-->
+                        <li><a href="#" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
             </nav>

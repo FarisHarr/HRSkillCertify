@@ -95,7 +95,8 @@
                     <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
                         <li><a href="ManagerProfile.jsp">Profile</a></li>
-                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
+                                            <!--ada error logout kalau letak-->
+                        <li><a href="#" onclick="signOut()">Sign Out</a></li>
                     </ul>
                 </li>
             </nav>

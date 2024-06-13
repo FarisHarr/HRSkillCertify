@@ -74,7 +74,7 @@
             <div class="navbar">
                 <a href="HomePage.jsp">Home</a>
                 <a href="CandidateProfile.jsp">User Profile</a>
-                <a href="AboutCertificate.jsp">About Certificate</a>
+                <a href="AboutCertificate.jsp">Status</a>
                 <a href="TimeTable.jsp">Time Table</a>
                 <a href="Feedback.jsp">Feedback</a>
                 <a href="StandardRegistry.jsp">Standard Registry</a>
@@ -84,7 +84,7 @@
                 <div class="infoCert">
                     <h2>Standard Registry</h2>
                     <br>
-                    <iframe src="IMG/1. Daftar Standard 12 September 2022.pdf" width="675" height="500" style="border: none;"></iframe>
+                    <iframe src="IMG/1. Daftar Standard 12 September 2022.pdf" width="668" height="500" style="border: 5px solid #9DB2BF;"></iframe>
 
                 </div>
             </div>

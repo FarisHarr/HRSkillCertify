@@ -4,6 +4,7 @@
     Author     : FarisHarr
 --%>
 
+<%@page import="java.util.Base64"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
@@ -16,82 +17,140 @@
         <link rel="stylesheet" type="text/css" href="CSS/CandidateSkeleton.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     </head>
 
     <style>
-
-        .infoCert {
-            margin: 0 auto;
-            text-align: center;
-            padding: 20px;
-            width: 85%;
-            background-color: #DDE6ED;
+        .progress {
             display: flex;
-            justify-content: space-around; /* Distributes space between the .cert elements */
-            flex-wrap: wrap; /* Allows wrapping if there are too many .cert elements */
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            min-height: 80vh;
+            background-color: #DDE6ED;
+            flex-direction: column;
+            margin: 20px;
+            margin-left: 70px;
+
+        }
+        .title{
+            padding: 30px;
+            width: 50%;
+            background-color: whitesmoke;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .cert {
-            background-color: #f9f9f9;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            height: auto;
-            padding: 20px;
-            margin: 20px;
-            max-width: 450px; /* Adjust the maximum width as needed */
-            border-radius: 8px;
+        .title h2{
             text-align: center;
+        }
+
+        .progress-container {
+            background-color: #f3f3f3;
+            border-radius: 25px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center; /* Center the progress bar */
+        }
+
+        .progress-bar {
+            width: 220px; /* Fixed width for the progress bar */
+            height: 30px;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 30px;
+            color: black;
+        }
+
+        .profile-info {
+            width: 350px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            /*position: relative;*/
-            transition: transform 0.9s ease;
-            /*Add transition for smooth scaling*/
+            gap: 10px;
+            margin-bottom: 20px;
+            margin-left: 100px;
+            /*width: 90%;*/
         }
 
-        .cert:hover {
-            transform: scale(1.02);
-            /*Scale the element on hover*/
+        .info-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            /*border-top: 1px solid #ddd;*/
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-item label {
+            width: 170px;
+            /*border: 1px solid #000;*/
+            padding: 5px;
+            font-weight: bold;
+            color: #333;
+            margin-right: 20px; /* Adds spacing between the label and the span */
+            font-size: 1.05rem;
+        }
+
+        .info-item .status {
+            text-align: center;
+            width: 150px;
+            margin-left: 5px;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: green; /* Default color for status */
         }
 
 
-        .cert h2 {
-            margin-bottom: 10px;
-            font-size: 1.5em; /* Adjust font size as needed */
+        .info-item .status.not-completed  {
+            color: red; /* Color for not completed status */
+            background-color: #f8d7da; /* Optional: Red background for not completed status */
+
+        }
+        .info-item .status.not-completed a {
+            font-size: 20px;
+            font-weight: bold;
+            color: red; /* Color for not completed status */
         }
 
-        .cert h4 {
-            margin: 10px 0;
-            font-size: 1.1em; /* Adjust font size as needed */
+        .info-item .pending,
+        .info-item .in-progress {
+            color: orange; /* Color for pending and in progress status */
+            background-color: #fff3cd; /* Optional: Yellow background for pending and in progress status */
         }
 
-        .cert button {
-            background-color: #004080;
-            color: white;
+        .info-item .pending a,
+        .info-item .in-progress a {
+            font-size: 20px;
+            font-weight: bold;
+            color: orange; /* Color for not completed status */
+        }
+
+
+        /*        .info-item .status.completed {
+                    color: green;  Color for completed status 
+                    background-color: #d4edda;  Optional: Green background for completed status 
+                }*/
+
+        .get-certificate {
+            display: block;
+            width: fit-content; /* Adjust width to fit the content */
+            padding: 10px 30px; /* Adjust padding for better appearance */
+            margin: 20px auto 0; /* Center horizontally, 20px top margin */
             border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
             cursor: pointer;
-            /*margin-top: 10vh;*/
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        .cert button:hover {
+        .get-certificate:hover {
             background-color: #45a049;
+            transform: scale(1.01); /* Scale the button slightly on hover */
         }
 
-        .cert a {
-            text-decoration: none;
-        }
-
-        .cert img {
-            /*max-width: 50%;*/
-            height: auto; /* Maintain aspect ratio */
-            display: block; /* Ensure image behaves as a block element */
-            margin-bottom: 10px; /* Add some space below the image */
-            border-radius: 5px; /* Add rounded corners to the image */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to the image */
-            border: 1px solid #000000
-        }
 
         /*scroll button*/
         #myBtn {
@@ -99,7 +158,7 @@
             bottom: 20px;
             right: 30px;
             z-index: 99;
-            width : 40px;
+            width: 40px;
             border: none;
             background-color: #27374D;
             color: white;
@@ -121,21 +180,111 @@
 
     <body>
         <%
-            //                HttpSession loginsession = request.getSession();
             String candidateID = (String) session.getAttribute("candidateID");
 
             if (candidateID != null) {
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-                    PreparedStatement ps = con.prepareStatement("SELECT * FROM candidate WHERE cand_ID = ? ");
+
+                    // Step 1: Fetch candidate details and certificate
+                    PreparedStatement ps = con.prepareStatement("SELECT cand_Name, cand_Certificate FROM candidate WHERE cand_ID = ?");
                     ps.setString(1, candidateID);
                     ResultSet rs = ps.executeQuery();
 
-                    if (rs.next()) {
-                        String Name = rs.getString("cand_Name");
+                    String Name = "";
+                    String receiptBase64 = "";
 
+                    if (rs.next()) {
+                        Name = rs.getString("cand_Name");
+                        Blob certificateBlob = rs.getBlob("cand_Certificate");
+
+                        if (certificateBlob != null) {
+                            byte[] certificateBytes = certificateBlob.getBytes(1, (int) certificateBlob.length());
+                            receiptBase64 = Base64.getEncoder().encodeToString(certificateBytes);
+                        } else {
+                            // Handle case where certificateBlob is null (no certificate found)
+                            // For example, set a default image or display a message
+                        }
+                    } else {
+                        // Handle case where no candidate with candidateID is found
+                        // For example, set default values or display an error message
+                    }
+
+                    // Step 2: Fetch registration status
+                    ps = con.prepareStatement("SELECT cert_Type FROM certificate WHERE cand_ID = ?");
+                    ps.setString(1, candidateID);
+                    rs = ps.executeQuery();
+                    boolean isRegistered = rs.next();
+
+                    // Step 3: Fetch payment status
+                    ps = con.prepareStatement("SELECT status FROM payment WHERE cand_ID = ?");
+                    ps.setString(1, candidateID);
+                    rs = ps.executeQuery();
+                    boolean isPaid = false;
+                    boolean isPending = false; // Track pending status
+
+                    while (rs.next()) {
+                        String paymentStatus = rs.getString("status");
+                        if (paymentStatus.equalsIgnoreCase("Approved")) {
+                            isPaid = true;
+                        } else if (paymentStatus.equalsIgnoreCase("Pending")) {
+                            isPending = true;
+                        }
+                    }
+
+                    // Step 4: Fetch class attendance status
+                    ps = con.prepareStatement("SELECT attendance FROM attendance WHERE cand_ID = ?");
+                    ps.setString(1, candidateID);
+                    rs = ps.executeQuery();
+
+                    int attendanceCount = 0;
+                    while (rs.next()) {
+                        String attendance = rs.getString("attendance");
+                        if ("Present".equalsIgnoreCase(attendance) || "Absent".equalsIgnoreCase(attendance)) {
+                            attendanceCount++;
+                        }
+                    }
+                    boolean hasAttendedClass = attendanceCount >= 3;
+                    String attendanceStatus = hasAttendedClass ? "Completed" : "In Progress";
+
+                    // Step 5: Fetch certificate issuance status
+                    boolean hasCertificate = receiptBase64 != null && !receiptBase64.isEmpty();
+
+                    // Calculate progress percentage
+                    int progressCount = 0;
+                    if (isRegistered) {
+                        progressCount++;
+                    }
+                    if (isPaid || isPending) {
+                        progressCount++;
+                    }
+                    if (hasAttendedClass) {
+                        progressCount++;
+                    }
+                    if (hasCertificate) {
+                        progressCount++;
+                    }
+                    int progressPercentage = (progressCount * 100) / 4;
+
+                    // Determine progress bar color based on progressPercentage
+                    String progressColor;
+                    if (progressPercentage <= 25) {
+                        progressColor = "#f44336"; // Red
+                    } else if (progressPercentage <= 50) {
+                        progressColor = "#ff9800"; // Orange
+                    } else if (progressPercentage <= 75) {
+                        progressColor = "#ffeb3b"; // Yellow
+                    } else {
+                        progressColor = "#4caf50"; // Green
+                    }
+
+                    // Close resources
+                    rs.close();
+                    ps.close();
+                    con.close();
         %>
+
         <header>
             <div class="main">
                 <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
@@ -149,7 +298,6 @@
                 <li class="dropdown">
                     <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
-                        <!-- <li><a href="CustomerProfile.jsp">Edit Information</a></li> -->
                         <li><a href="CandidateProfile.jsp">Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
                     </ul>
@@ -161,51 +309,78 @@
             <div class="navbar">
                 <a href="HomePage.jsp">Home</a>
                 <a href="CandidateProfile.jsp">User Profile</a>
-                <a href="AboutCertificate.jsp">About Certificate</a>
+                <a href="AboutCertificate.jsp">Status</a>
                 <a href="TimeTable.jsp">Time Table</a>
                 <a href="Feedback.jsp">Feedback</a>
                 <a href="StandardRegistry.jsp">Standard Registry</a>
             </div>
 
-            <div class="infoCert">
-                <div class="cert">
-                    <h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2><br>
-                    <img src="IMG/SKMCert.png" alt="SKM Certificate Image">
-                    <h4>- Skilled in performing a variety of routine and predictable work activities. </h4>
-                    <h4>- Proficient in various tasks within a predictable scope. </h4>
-                    <h4>- Limited autonomy and responsibility.</h4>
-                    <br>
-                    <a href="CertificateForm.jsp">
-                        <button>Register</button>
-                    </a>                
-                </div>
+            <div class="progress">
+                <div class="title">
+                    <h2>Certification Progress</h2>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="background-color:<%= progressColor%>;"><%= progressPercentage%>%</div>
+                    </div>
 
-                <div class="cert">
-                    <h2>Diploma Kemahiran Malaysia (DKM)/ Tahap 4</h2><br>
-                    <img src="IMG/DKMCert.png" alt="DKM Certificate Image">
-                    <h4>- Skilled in performing technical and professional work activities with a wide scope. </h4>
-                    <h4>- Higher level of responsibility and autonomy compared to SKM. </h4>
-                    <h4>- May oversee the work of others and manage resources.</h4>
-                    <br>
-                    <a href="CertificateForm.jsp">
-                        <button>Register</button>
-                    </a>  
-                </div>
+                    <div class="profile-info">
+                        <div class="info-item" style="border-top: 1px solid #ddd; padding-top: 15px">
+                            <label>Registration :</label>
+                            <span class="status <%= isRegistered ? "" : "not-completed"%>">
+                                <% if (isRegistered) { %>
+                                Completed
+                                <% } else { %>
+                                <a href="CertificateForm.jsp">Not Completed</a>
+                                <% }%>
+                            </span>
+                        </div>
+                        <div class="info-item">
+                            <label>Payment :</label>
+                            <span class="status <%= isPaid ? "completed" : (isPending ? "pending" : "not-completed")%>">
+                                <% if (isPaid) { %>
+                                Completed
+                                <% } else if (isPending) { %>
+                                <a href="Payment.jsp">Status Pending</a>
+                                <% } else { %>
+                                <a href="TimeTable.jsp">Not Completed</a>
+                                <% }%>
+                            </span>
+                        </div>
+                        <div class="info-item">
+                            <label>Class :</label>
+                            <span class="status <%= hasAttendedClass ? "" : (attendanceCount < 3 ? "in-progress" : "not-completed")%>">
+                                <% if (hasAttendedClass) { %>
+                                Completed
+                                <% } else if (attendanceCount < 3) { %>
+                                <a href="TimeTable.jsp">In Progress</a>
+                                <% } else { %>
+                                <a href="TimeTable.jsp">Not Completed</a>
+                                <% }%>
+                            </span>
+                        </div>
+                        <div class="info-item">
+                            <label>Certificate :</label>
+                            <span class="status <%= hasCertificate ? "" : "not-completed"%>">
+                                <% if (hasCertificate) { %>
+                                Completed
+                                <% } else { %>
+                                <a href="CandidateProfile.jsp">Not Completed</a>
+                                <% } %>
+                            </span>
+                        </div>
+                    </div>
 
-                <div class="cert">
-                    <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM) / Tahap 5</h2><br>
-                    <img src="IMG/DLKMCert.png" alt="DLKM Certificate Image">
-                    <h4>- Deeply skilled in applying basic principles and complex techniques across a broad and often unexpected scope of work. </h4>
-                    <h4>- Highest level of responsibility and autonomy among the three qualifications. </h4>
-                    <h4>- Engages in tasks such as analysis, diagnosis, design, planning, evaluation, and operation. </h4>
-                    <h4>- Responsible for managing the work of others, allocating resources, and engaging in advanced tasks.</h4>
-                    <br>
-                    <a href="CertificateForm.jsp">
-                        <button>Register</button>
-                    </a>  
-                </div>
+                    <% if (hasCertificate) {%>
+                    <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
+                        <input type="hidden" name="image" value="<%= receiptBase64%>">
+                        <button class="get-certificate" type="submit">Get Certificate</button>
+                    </form>
+                    <% } %>
 
+                </div>
             </div>
+
+
+
         </div>
 
         <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
@@ -217,11 +392,9 @@
             }
 
             function signOut() {
-                // Redirect to the logout servlet or your logout logic
-                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+                window.location.href = 'LogOutServ';
             }
 
-            //scroll function
             var mybutton = document.getElementById("myBtn");
 
             window.onscroll = function () {
@@ -239,31 +412,18 @@
             }
 
             function topFunction() {
-                document.body.scrollTop = 1;
-                document.documentElement.scrollTop = 1;
-            }
-            function topFunction() {
                 window.scrollTo({
                     top: 1,
                     behavior: "smooth"
                 });
             }
-
         </script>
 
         <%
-                    } else {
-                        out.println("Customer not found.");
-                    }
-
-                    rs.close();
-                    ps.close();
-                    con.close();
                 } catch (Exception e) {
                     out.println("Error: " + e);
                 }
             } else {
-                // If the session doesn't exist or customerID is not set, redirect to the login page
                 response.sendRedirect("Login.jsp");
             }
         %>
