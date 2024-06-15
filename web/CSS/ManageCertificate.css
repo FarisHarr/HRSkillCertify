@@ -267,7 +267,7 @@ button {
 
 .info h2 {
     text-align: center;
-    margin-left: 70px;
+    margin-left: 100px;
     /*margin-bottom: 10px;*/
 }
 
@@ -384,6 +384,7 @@ div.table {
 
 table {
     border-collapse: collapse;
+    margin-bottom: 10px;
     width: 100%;
 
 }

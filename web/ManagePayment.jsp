@@ -9,7 +9,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
     <head>
         <title>Manage Payment</title>
         <meta charset="UTF-8">
@@ -18,11 +17,14 @@
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
-
     <body>
         <%
-            //           HttpSession loginsession = request.getSession();
             String staffID = (String) session.getAttribute("staffID");
+            int currentPage = 1;
+            int recordsPerPage = 5;
+            if (request.getParameter("page") != null) {
+                currentPage = Integer.parseInt(request.getParameter("page"));
+            }
 
             if (staffID != null) {
                 try {
@@ -34,17 +36,15 @@
 
                     if (rs.next()) {
                         String Name = rs.getString("staff_Name");
-
         %>
         <header>
             <div class="main">
                 <a href="StaffDashboard.jsp">
                     <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
                 </a>
-
                 <nav>
                     <ul class="nav_links">
-                        <button class="navbar-toggle" onclick="toggleNavbar()"> ☰ </button>
+                        <button class="navbar-toggle" onclick="toggleNavbar()">☰</button>
                     </ul>
                 </nav>
             </div>
@@ -67,7 +67,6 @@
                 <a href="ManageCandidate.jsp">Manage Candidate</a>
                 <a href="ViewFeedback.jsp">View Feedback</a>
             </div>
-
             <div class="info">
                 <h2>Manage Payment</h2>
                 <div class="table">
@@ -84,7 +83,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <%                                        } else {
+                            <%
+                                        } else {
                                             out.println("Coordinator not found.");
                                         }
 
@@ -95,18 +95,19 @@
                                         out.println("Error: " + e);
                                     }
                                 } else {
-                                    // If the session doesn't exist or customerID is not set, redirect to the login page
                                     response.sendRedirect("Login.jsp");
                                 }
 
                                 try {
                                     Class.forName("com.mysql.jdbc.Driver");
                                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                                    int start = (currentPage - 1) * recordsPerPage;
                                     Statement st = con.createStatement();
                                     ResultSet rs = st.executeQuery("SELECT p.payment_ID, c.cand_Name, p.cert_Type, p.price, p.date, p.receipt, p.status "
                                             + "FROM payment p "
                                             + "INNER JOIN candidate c ON p.cand_ID = c.cand_ID "
-                                            + "ORDER BY CASE p.status WHEN 'Pending' THEN 1 WHEN 'Rejected' THEN 2 ELSE 3 END, p.date");
+                                            + "ORDER BY CASE p.status WHEN 'Pending' THEN 1 WHEN 'Rejected' THEN 2 ELSE 3 END, p.date DESC "
+                                            + "LIMIT " + start + ", " + recordsPerPage);
 
                                     while (rs.next()) {
                                         String paymentID = rs.getString("payment_ID");
@@ -119,52 +120,92 @@
 
                                         if (receiptBytes != null) {
                                             receiptBase64 = Base64.getEncoder().encodeToString(receiptBytes);
-                                        } else {
-                                            // Handle null receipt value, if needed
-                                            // For example, you can set a default image or display a message
                                         }
 
                                         String status = rs.getString("status");
-
-                                        out.println("<tr>");
-                                        out.println("<td>" + paymentID + "</td>");
-                                        out.println("<td>" + candidateName + "</td>");
-                                        out.println("<td>" + certType + "</td>");
-                                        out.println("<td>" + price + "</td>");
-                                        out.println("<td>" + date + "</td>");
                             %>
+                            <tr>
+                                <td><%= paymentID%></td>
+                                <td><%= candidateName%></td>
+                                <td><%= certType%></td>
+                                <td><%= price%></td>
+                                <td><%= date%></td>
+                                <td style="width: 100px; text-align: center;">
+                                    <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
+                                        <input type="hidden" name="image" value="<%= receiptBase64%>">
+                                        <button type="submit" style="height: 10%; border: none; background: none; cursor: pointer">
+                                            <img src="data:image/jpeg;base64,<%= receiptBase64%>" class="image-button" style="width: 75px; height: 75px;">
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form class="status" onsubmit="updateStatus(this, '<%= paymentID%>'); return false;">
+                                        <select name='newStatus'>
+                                            <option class="pending" value='Pending' <%= (status.equals("Pending") ? "selected" : "")%>>Pending</option>
+                                            <option class="approved" value='Approved' <%= (status.equals("Approved") ? "selected" : "")%>>Approved</option>
+                                            <option class="rejected" value='Rejected' <%= (status.equals("Rejected") ? "selected" : "")%>>Rejected</option>
+                                        </select>
+                                        <input type="hidden" name="paymentID" value="<%= paymentID%>">
+                                        <input type="submit" value="Update" onclick="showSuccessMessage()">
+                                    </form>
+                                </td>
+                            </tr>
+                            <%
+                                    }
 
-                        <td style="width: 100px; text-align: center;">
-                            <form action="LargeImage.jsp" method="post" target="_blank" style="margin: 0;">
-                                <input type="hidden" name="image" value="<%= receiptBase64%>">
-                                <button type="submit" style="height: 10%; border: none; background: none; cursor: pointer">
-                                    <img src="data:image/jpeg;base64,<%= receiptBase64%>" class="image-button" style="width: 75px; height: 75px;">
-                                </button>
-                            </form>
-                        </td>
-
-                        <td>
-                            <form class="status" onsubmit="updateStatus(this, '<%= paymentID%>'); return false;">
-                                <select name='newStatus'>
-                                    <option class="pending" value='Pending' <%= (status.equals("Pending") ? "selected" : "")%>>Pending</option>
-                                    <option class="approved" value='Approved' <%= (status.equals("Approved") ? "selected" : "")%>>Approved</option>
-                                    <option class="rejected" value='Rejected' <%= (status.equals("Rejected") ? "selected" : "")%>>Rejected</option>
-                                </select>
-
-                                <input type="hidden" name="paymentID" value="<%= paymentID%>">
-                                <input type="submit" value="Update" onclick="showSuccessMessage()">
-                            </form><!-- comment -->
-                        </td>
-                        <%
+                                    rs.close();
+                                    st.close();
+                                    con.close();
+                                } catch (Exception e) {
+                                    out.println("Error: " + e);
                                 }
-
-                                con.close();
-                            } catch (Exception e) {
-                                out.println("Error: " + e);
-                            }
-                        %>
+                            %>
                         </tbody>
                     </table>
+                </div>
+
+                <%
+                    int numberOfRecords = 0;
+                    int numberOfPages = 0;
+
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
+                        Statement st = con.createStatement();
+                        ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM payment");
+                        if (rs.next()) {
+                            numberOfRecords = rs.getInt(1);
+                        }
+                        numberOfPages = (int) Math.ceil(numberOfRecords * 1.0 / recordsPerPage);
+                        rs.close();
+                        st.close();
+                        con.close();
+                    } catch (Exception e) {
+                        out.println("Error: " + e);
+                    }
+                %>
+
+                <div class="pagination">
+                    <%
+                        if (currentPage > 1) {
+                    %>
+                    <a href="ManagePayment.jsp?page=<%= (currentPage - 1)%>" style="color: #455d5f">&laquo; Previous</a>
+                    <%
+                        }
+
+                        for (int i = 1; i <= numberOfPages; i++) {
+                            if (i == currentPage) {
+
+                            } else {
+                            }
+                        }
+
+                        if (currentPage < numberOfPages) {
+                    %>
+                    <a href="ManagePayment.jsp?page=<%= (currentPage + 1)%>" style="color: #455d5f">Next &raquo;</a>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </div>
@@ -201,30 +242,25 @@
             function hideDeletePopup() {
                 document.getElementById("popupdelete").style.display = "none";
             }
-            function validateNumber(event) {
-                // Get the key code of the pressed key
-                var keyCode = event.which ? event.which : event.keyCode;
 
-                // Allow only numbers (0-9) and special keys like backspace, delete, etc.
+            function validateNumber(event) {
+                var keyCode = event.which ? event.which : event.keyCode;
                 if (keyCode >= 48 && keyCode <= 57 || keyCode === 8 || keyCode === 46 || keyCode === 37 || keyCode === 390) {
                     return true;
                 } else {
                     return false;
                 }
             }
-            // Refresh sales report by reloading the page
+
             function refresh() {
                 location.reload();
             }
 
             function signOut() {
-                // Redirect to the logout servlet or your logout logic
-                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+                window.location.href = 'LogOutServ';
             }
 
-            //scroll function
             var mybutton = document.getElementById("myBtn");
-
             window.onscroll = function () {
                 scrollFunction();
             };
@@ -243,23 +279,19 @@
                 document.body.scrollTop = 1;
                 document.documentElement.scrollTop = 1;
             }
+
             function topFunction() {
                 window.scrollTo({
                     top: 1,
                     behavior: "smooth"
                 });
             }
-
-//            function showSuccessMessage() {
-//                // Show a popup message
-//                alert("Update Successful");
-//            }
         </script>
 
         <footer>
             <p>&copy; HR SkillCertify 2023</p>
         </footer>
     </body>
-
 </html>
+
 

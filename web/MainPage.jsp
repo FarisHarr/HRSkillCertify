@@ -121,7 +121,7 @@
         <div class="hero-content-area">
             <h1>HR SkillCertify</h1>
             <h3> Enhance Your Certificate Now !!!</h3>
-            <!-- <a href="#" class="btn">Contact Us</a> -->
+             <!--<a href="#" class="btn">Contact Us</a>--> 
         </div>
 
     </section>
@@ -177,10 +177,10 @@
                 </div>
                 <div class="right-content">
                     <img src="IMG/PPPKT.png" alt="Right Image">
-                    <h3>PENDAFTARAN DEPOSIT YURAN PPPKT ONLINE-TAJAAN 50%</h3>
+                    <h3>PENDAFTARAN DEPOSIT YURAN PPPKT ONLINE</h3>
                 </div>
             </div>
-
+<hr>
         </div>
     </section>
 

@@ -275,6 +275,7 @@ header nav li{
     margin-bottom: 40px;
     color: #171a1d;
     animation: glow 5s infinite alternate;
+    transition: color 0.9s, text-shadow 0.9s;
 }
 
 .hero h3 {
@@ -282,12 +283,9 @@ header nav li{
     margin-bottom: 40px;
     color: #171a1d;
     animation: glow 5s infinite alternate;
+    transition: color 0.9s, text-shadow 0.9s;
 }
 
-
-.hero a.btn{
-    padding: 20px 46px;
-}
 .hero-content-area{
     opacity: 0;
     margin-top: 100px;
@@ -307,6 +305,18 @@ header nav li{
     }
 }
 
+.hero-content-area:hover h1,
+.hero-content-area:hover h3 {    
+    color: #fff;
+    text-shadow: 0 0 5px #03e9f4,
+                 0 0 25px #03e9f4,
+                 0 0 50px #03e9f4,
+                 0 0 100px #03e9f4;
+}
+
+.hero a.btn{
+    padding: 20px 46px;
+}
 
 .grid{
     width: 100%;

@@ -78,7 +78,7 @@ public class UpdateFeedbackServ extends HttpServlet {
             
             // Email content
             String subject = "Feedback Response Received";
-            String body = "Dear Candidate,\n\nYour feedback response has been received and processed.\n\nThank you.";
+            String body = "Dear Candidate,\n\nYour feedback response has been received and processed.\n\nPlease check on the website.";
 
             // Send email if candidate's email address is not empty
             if (!candidateEmail.isEmpty()) {

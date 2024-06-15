@@ -238,7 +238,7 @@ header {
 
 .popup-content input.submit {
     display: block;
-    width: 80%;
+    width: 40%;
     padding: 10px;
     margin: 20px auto 0; /* Center horizontally, 20px top margin */
     border: none;
