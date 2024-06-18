@@ -359,9 +359,11 @@
                         </div>
                         <div class="info-item">
                             <label>Certificate :</label>
-                            <span class="status <%= hasCertificate ? "" : "not-completed"%>">
+                            <span class="status <%= hasCertificate ? "" : (attendanceCount >= 3 ? "in-progress" : "not-completed")%>">
                                 <% if (hasCertificate) { %>
                                 Completed
+                                <% } else if (attendanceCount >= 3) { %>
+                                <a href="CandidateProfile.jsp">In Progress</a>
                                 <% } else { %>
                                 <a href="CandidateProfile.jsp">Not Completed</a>
                                 <% } %>
