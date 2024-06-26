@@ -246,7 +246,7 @@
                             out.println("<tr><td colspan='5' style='color: red;'>Register the certificate to join class</td></tr>");
                         } else {
                             // Display count of classes attended out of 3
-                            out.println("<tr><td colspan='5'>Attended " + attendedCount + " out of 3 classes</td></tr>");
+                            out.println("<tr><td colspan='5'>Joined " + attendedCount + " out of 3 classes</td></tr>");
                         }
 
                         rs.close();

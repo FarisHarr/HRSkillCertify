@@ -175,10 +175,10 @@
                     <img src="IMG/PPPKT2.png" alt="Left Image">
                     <h3>PROSES PERLAKSANAAN PPPKT</h3>
                 </div>
-                <div class="right-content">
+<!--                <div class="right-content">
                     <img src="IMG/PPPKT.png" alt="Right Image">
                     <h3>PENDAFTARAN DEPOSIT YURAN PPPKT ONLINE</h3>
-                </div>
+                </div>-->
             </div>
 <hr>
         </div>

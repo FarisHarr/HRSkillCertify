@@ -160,6 +160,7 @@ button {
     width: 165px;
     /* Set a fixed width for the vertical bar */
     height: auto;
+    min-height: 80vh;
     transition: width 0.1s, opacity 0.1s;
     /* Add transition for smooth animation */
 }

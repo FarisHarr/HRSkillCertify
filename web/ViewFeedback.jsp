@@ -92,7 +92,7 @@
             <div class="navbar">
                 <a href="ManagerProfile.jsp">User Profile</a>
                 <a href="ManagePayment.jsp">Manage Payment</a>
-                <a href="ManageCertificate.jsp">Manage Certificate</a>
+                <a href="ManageCertificate.jsp">Manage Attendance</a>
                 <a href="ManageCandidate.jsp">Manage Candidate</a>
                 <a href="ViewFeedback.jsp">View Feedback</a>
             </div>
