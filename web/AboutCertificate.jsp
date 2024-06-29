@@ -347,10 +347,10 @@
                         </div>
                         <div class="info-item">
                             <label>Class :</label>
-                            <span class="status <%= hasAttendedClass ? "" : (attendanceCount < 3 && attendanceCount > 1 ? "in-progress" : "not-completed")%>">
+                            <span class="status <%= hasAttendedClass ? "" : (attendanceCount < 3 && attendanceCount >= 1 ? "in-progress" : "not-completed")%>">
                                 <% if (hasAttendedClass) { %>
                                 Completed
-                                <% } else if (attendanceCount < 3 && attendanceCount > 1) { %>
+                                <% } else if (attendanceCount < 3 && attendanceCount >= 1) { %>
                                 <a href="TimeTable.jsp">In Progress</a>
                                 <% } else { %>
                                 <a href="TimeTable.jsp">Not Completed</a>

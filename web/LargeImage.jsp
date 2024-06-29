@@ -52,6 +52,33 @@
             .button-container a {
                 text-decoration: none;
             }
+
+            @media print {
+                body * {
+                    visibility: hidden;
+                }
+                .chart-container, .chart-container * {
+                    visibility: visible;
+                }
+                .button-container, .button-container * {
+                    display: none;
+                }
+                .chart-container {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    margin: 0 ;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .chart-container img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
         </style>
     </head>
 
@@ -81,3 +108,5 @@
         </div>
     </body>
 </html>
+
+
