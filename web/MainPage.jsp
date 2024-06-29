@@ -254,12 +254,6 @@
                         <td>Supervisory/managerial positions</td>
                     </tr>
                     <tr>
-                        <td><strong>Educational Pathway</strong></td>
-                        <td>Leads to DKM</td>
-                        <td>Leads to DLKM</td>
-                        <td>Leads to degree programs</td>
-                    </tr>
-                    <tr>
                         <td><strong>Recognition</strong></td>
                         <td>Industry entry-level certification</td>
                         <td>Professional recognition</td>
@@ -270,12 +264,6 @@
                         <td>Extensive hands-on experience</td>
                         <td>Combination of theory and practical</td>
                         <td>Advanced practical and theoretical training</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Prerequisites</strong></td>
-                        <td>None or basic education</td>
-                        <td>SKM or equivalent</td>
-                        <td>DKM or equivalent</td>
                     </tr>
                 </tbody>
             </table>
