@@ -129,6 +129,11 @@ footer {
     justify-content: center;
 }
 
+footer p {
+    margin: 0;
+    font-size: 16px;
+}
+
 .password-toggle {
     color: gray;
     cursor: pointer;

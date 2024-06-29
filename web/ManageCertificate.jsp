@@ -98,7 +98,7 @@
                         <br><br>
                         <label for="end_Time">End Time :</label>
                         <input type="time" id="end_Time" name="end_Time" required>
-                        <br><br>
+                        <br><br><br>
                         <div class="submit-button">
                             <input class="submit" type="submit" value="Save">
                         </div>
@@ -271,7 +271,7 @@
         </script>
 
         <footer>
-            <p>&copy; HR SkillCertify 2023</p>
+            <p>&copy; 2024 <strong>HR SkillCertify</strong>. All rights reserved </p>
         </footer>
         <%
                 } else {

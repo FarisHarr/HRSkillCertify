@@ -234,6 +234,11 @@ footer {
     justify-content: center;
 }
 
+footer p {
+    margin: 0;
+    font-size: 16px;
+}
+
 .container1 {
     width: 60%;
     height: auto;

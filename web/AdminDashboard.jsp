@@ -132,7 +132,7 @@
                                             'rgba(153, 102, 255, 1)',
                                             'rgba(255, 159, 64, 1)'
                                         ],
-                                        borderWidth: 1.5
+                                        borderWidth: 2.0
                                     }]
                             };
                             var ctxPayment = document.getElementById('paymentChart').getContext('2d');
@@ -141,8 +141,18 @@
                                 data: paymentData,
                                 options: {
                                     scales: {
+                                        x: {
+                                            title: {
+                                                display: true,
+                                                text: 'Certificate Type'
+                                            }
+                                        },
                                         y: {
-                                            beginAtZero: true
+                                            beginAtZero: true,
+                                            title: {
+                                                display: true,
+                                                text: 'Count'
+                                            }
                                         }
                                     }
                                 }
@@ -217,7 +227,7 @@
         </script>
 
         <footer>
-            <p>&copy; HR SkillCertify 2023</p>
+            <p>&copy; 2024 <strong>HR SkillCertify</strong>. All rights reserved </p>
         </footer>
     </body>
 </html>

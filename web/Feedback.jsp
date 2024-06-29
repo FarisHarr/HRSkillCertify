@@ -263,7 +263,7 @@
                     <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
                         <li><a href="CandidateProfile.jsp">Profile</a></li>
-                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
+                        <li><a href="LogOutServ">Sign Out</a></li>
                     </ul>
                 </div>
             </nav>
@@ -385,10 +385,10 @@
                 navbar.classList.toggle('minimized');
             }
 
-            function signOut() {
-                // Redirect to the logout servlet or your logout logic
-                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
-            }
+//            function signOut() {
+//                // Redirect to the logout servlet or your logout logic
+//                window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
+//            }
 
             //scroll function
             var mybutton = document.getElementById("myBtn");
@@ -421,7 +421,7 @@
         </script>
 
         <footer>
-            <p>&copy; HR SkillCertify 2023</p>
+            <p>&copy; 2024 <strong>HR SkillCertify</strong>. All rights reserved </p>
         </footer>
 
     </body>

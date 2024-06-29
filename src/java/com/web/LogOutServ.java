@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/LogOutServ")
 public class LogOutServ extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,13 +30,14 @@ public class LogOutServ extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Invalidate the user's session
         HttpSession session = request.getSession(false);
         if (session != null) {
+            System.out.println("Invalidating session for: " + session.getAttribute("candidateID"));
             session.invalidate();
+        } else {
+            System.out.println("No session found.");
         }
-
-        // Redirect to the login page or any other page after logout
-        response.sendRedirect("Login.jsp");
+        response.sendRedirect("MainPage.jsp");
     }
+
 }

@@ -46,18 +46,28 @@
         font-size: 1.5em; /* Adjust font size as needed */
     }
 
-    .cert h4 {
-        margin: 10px 0;
-        font-size: 1.1em; /* Adjust font size as needed */
+    .cert ul {
+        color: black;
+        text-align: left; /* Align text to the left for better readability */
+        padding-left: 10px; /* Add some padding to the left */
+        margin: 5px;
+        font-size: 18px;
+        list-style-type: none; /* Remove bullet points */
+    }
+
+    .cert li {
+        margin-bottom: 15px;
     }
 
     .cert button {
         background-color: #004080;
         color: white;
         border: none;
-        padding: 8px 16px;
+        padding: 10px 20px;
         border-radius: 4px;
         cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
     }
 
     .cert button:hover {
@@ -69,12 +79,39 @@
     }
 
     .cert img {
-        height: auto; /* Maintain aspect ratio */
-        display: block; /* Ensure image behaves as a block element */
-        margin-bottom: 10px; /* Add some space below the image */
-        border-radius: 5px; /* Add rounded corners to the image */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to the image */
-        border: 1px solid #000000;
+        max-width: 100%; /* Ensure image fits within the container */
+        height: auto;
+        display: block;
+        margin: 10px auto;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border: 1px solid #000;
+    }
+
+    table {
+        width: 100%;
+        margin: 20px 0;
+        border-collapse: collapse;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #004080;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
     }
 
     /* Scroll button */
@@ -121,7 +158,7 @@
         <div class="hero-content-area">
             <h1>HR SkillCertify</h1>
             <h3> Enhance Your Certificate Now !!!</h3>
-             <!--<a href="#" class="btn">Contact Us</a>--> 
+            <!--<a href="#" class="btn">Contact Us</a>--> 
         </div>
 
     </section>
@@ -129,28 +166,34 @@
     <section class="destinations">
         <br>
         <h3 class="title">PROGRAM PENTAULIAHAN PENGALAMAN KETERAMPILAN TERDAHULU</h3>
-        <p>Program Persijilan melalui kaedah pengalaman kemahiran untuk dapatkan DIPLOMA secara santai</p>
+        <!--<p>The Certification Program through the skill experience method to obtain a DIPLOMA in a relaxed manner.!</p>-->
         <hr>
         <div class="infoCert">
             <div class="cert">
-                <h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2><br>
+                <br><h2>Sijil Kemahiran Malaysia (SKM) Tahap 1, 2 dan 3</h2><br>
                 <img src="IMG/SKMCert.png" alt="SKM Certificate Image">
-                <h4>- Skilled in performing a variety of routine and predictable work activities. </h4>
-                <h4>- Proficient in various tasks within a predictable scope. </h4>
-                <h4>- Limited autonomy, responsibility and engaging in advanced tasks.</h4>
-                <br>
+                <ul>
+                    <li><strong>Basic Skill Certification :</strong> Recognizes foundational skills in a specific trade.</li>
+                    <li><strong>Employment Opportunities :</strong> Increases employability in technical and vocational fields.</li>
+                    <li><strong>Career Advancement :</strong> Provides a pathway to higher qualifications like DKM and DLKM.</li>
+                    <li><strong>Hands-on Experience :</strong> Focuses on practical skills and on-the-job training.</li>
+                </ul>
+
                 <a href="Login.jsp">
                     <button>Register</button>
                 </a>                
             </div>
 
             <div class="cert">
-                <h2>Diploma Kemahiran Malaysia (DKM)/ Tahap 4</h2><br>
+                <br><h2>Diploma Kemahiran Malaysia (DKM) / Tahap 4</h2><br>
                 <img src="IMG/DKMCert.png" alt="DKM Certificate Image">
-                <h4>- Skilled in performing technical and professional work activities with a wide scope. </h4>
-                <h4>- Higher level of responsibility and autonomy compared to SKM. </h4>
-                <h4>- May oversee the work of others and manage resources.</h4>
-                <br>
+                <ul>
+                    <li><strong>Advanced Skills :</strong> Offers more in-depth training and higher-level skills compared to SKM.</li>
+                    <li><strong>Higher Employability :</strong> Enhances job prospects in more specialized and technical roles.</li>
+                    <li><strong>Professional Recognition :</strong> Provides recognition and credibility in the chosen field.</li>
+                    <li><strong>Further Education :</strong> Acts as a bridge to higher qualifications, including DLKM and potentially university degrees.</li>
+                </ul>
+
                 <a href="Login.jsp">
                     <button>Register</button>
                 </a>  
@@ -159,29 +202,119 @@
             <div class="cert">
                 <h2>Diploma Lanjutan Kemahiran Malaysia (DLKM) / Tahap 5</h2><br>
                 <img src="IMG/DLKMCert.png" alt="DLKM Certificate Image">
-                <h4>- Deeply skilled in applying basic principles and complex techniques across a broad and often unexpected scope of work. </h4>
-                <h4>- Highest level of responsibility and autonomy among the three qualifications. </h4>
-                <h4>- Engages in tasks such as analysis, diagnosis, design, planning, evaluation, and operation. </h4>
-                <!--<h4>- Responsible for managing the work of others, allocating resources, and engaging in advanced tasks.</h4>-->
-                <br>
+                <ul>
+                    <li><strong>Expert-Level Training :</strong> Delivers advanced and specialized skills for professional mastery.</li>
+                    <li><strong>Leadership Opportunities :</strong> Prepares individuals for supervisory or managerial roles.</li>
+                    <li><strong>Industry Recognition :</strong> Offers high professional credibility and acceptance in the industry.</li>
+                    <li><strong>Pathway to Degree Programs :</strong> Facilitates entry into university programs and higher education.</li>
+                </ul>
+
                 <a href="Login.jsp">
                     <button>Register</button>
                 </a>  
             </div>
-            <!--<br>-->
-        <hr>
+
+
+            <hr>
+
+
+            <h2><br>Comparison Table: SKM vs DKM vs DLKM</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature/Criteria</th>
+                        <th>SKM (Sijil Kemahiran Malaysia)</th>
+                        <th>DKM (Diploma Kemahiran Malaysia)</th>
+                        <th>DLKM (Diploma Lanjutan Kemahiran Malaysia)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Level</strong></td>
+                        <td>Basic Certification</td>
+                        <td>Intermediate Diploma</td>
+                        <td>Advanced Diploma</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Focus</strong></td>
+                        <td>Foundational skills</td>
+                        <td>In-depth technical and vocational skills</td>
+                        <td>Specialized and advanced skills</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Typical Duration</strong></td>
+                        <td>1-2 years</td>
+                        <td>2-3 years</td>
+                        <td>1-2 years post-DKM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Career Opportunities</strong></td>
+                        <td>Entry-level positions</td>
+                        <td>Skilled technician roles</td>
+                        <td>Supervisory/managerial positions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Educational Pathway</strong></td>
+                        <td>Leads to DKM</td>
+                        <td>Leads to DLKM</td>
+                        <td>Leads to degree programs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recognition</strong></td>
+                        <td>Industry entry-level certification</td>
+                        <td>Professional recognition</td>
+                        <td>High professional credibility</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Practical Training</strong></td>
+                        <td>Extensive hands-on experience</td>
+                        <td>Combination of theory and practical</td>
+                        <td>Advanced practical and theoretical training</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prerequisites</strong></td>
+                        <td>None or basic education</td>
+                        <td>SKM or equivalent</td>
+                        <td>DKM or equivalent</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr>
+
+            <div class="content1">
+                <h2>PROGRAM PPPKT ANJURAN HR SKILLS SOLUTION</h2>
+                <div class="content">
+                    <div class="left-content1">
+                        <a href="Login.jsp">
+                            <img src="IMG/HRSCP1.jpg" alt="Left Image">
+                        </a>
+                    </div>
+                    <div class="right-content1">
+                        <a href="Login.jsp">
+                            <img src="IMG/HRSCP2.jpg" alt="Right Image">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
             <div class="content">
                 <div class="left-content">
                     <img src="IMG/PPPKT2.png" alt="Left Image">
-                    <h3>PROSES PERLAKSANAAN PPPKT</h3>
+                    <h3>PROSES PERLAKSANAAN PPPKT</h3><br>
                 </div>
-<!--                <div class="right-content">
-                    <img src="IMG/PPPKT.png" alt="Right Image">
-                    <h3>PENDAFTARAN DEPOSIT YURAN PPPKT ONLINE</h3>
-                </div>-->
             </div>
-<hr>
+
+            <hr>
+
+            <div class="contentFeedback">
+                
+            </div>
         </div>
+
+
     </section>
 
     <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
@@ -241,7 +374,7 @@
 
 
     <footer>
-        <p class="footer-text">&copy; HR SkillCertify 2023</p>
+        <p class="footer-text">&copy; 2024 <strong>HR SkillCertify</strong>. All rights reserved </p>
         <div class="contact-icons">
             <a href="https://www.facebook.com/harris.hussain.58" target="_blank" title="Facebook"><i class="fab fa-facebook"></i> HR Skill Solutions</a>
             <a href="https://pppkt.onpay.my/order/form/pppktonlinetajaan" target="_blank" title="Info"><i class="fas fa-envelope"></i> Information</a>

@@ -125,7 +125,7 @@
                                             'rgba(153, 102, 255, 1)',
                                             'rgba(255, 159, 64, 1)'
                                         ],
-                                        borderWidth: 1.5
+                                        borderWidth: 2.0
                                     }]
                             };
                             var ctxPayment = document.getElementById('paymentChart').getContext('2d');
@@ -134,8 +134,18 @@
                                 data: paymentData,
                                 options: {
                                     scales: {
+                                        x: {
+                                            title: {
+                                                display: true,
+                                                text: 'Certificate Type'
+                                            }
+                                        },
                                         y: {
-                                            beginAtZero: true
+                                            beginAtZero: true,
+                                            title: {
+                                                display: true,
+                                                text: 'Count'
+                                            }
                                         }
                                     }
                                 }
@@ -178,7 +188,7 @@
                 // Open a new window
                 var printWindow = window.open('', '_report');
 //                Write the HTML content to the new window
-                        printWindow.document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dashboard Report</title><style>body {font-family: Arial, sans-serif;padding: 20px;}h1 {text-align: center;}.chart-container {margin: 20px auto;text-align: center;}.button-container {text-align: center;margin-top: 20px;}.button-container button {display: inline-block;padding: 10px 20px;margin: 10px;font-size: 16px;color: #fff;background-color: #007BFF;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s ease;}.button-container button:hover {background-color: #0056b3;}.button-container button:active {background-color: #00408d;}.button-container button:focus {outline: none;box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);}.button-container a {text-decoration: none;}</style></head><body>');
+                printWindow.document.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Dashboard Report</title><style>body {font-family: Arial, sans-serif;padding: 20px;}h1 {text-align: center;}.chart-container {margin: 20px auto;text-align: center;}.button-container {text-align: center;margin-top: 20px;}.button-container button {display: inline-block;padding: 10px 20px;margin: 10px;font-size: 16px;color: #fff;background-color: #007BFF;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s ease;}.button-container button:hover {background-color: #0056b3;}.button-container button:active {background-color: #00408d;}.button-container button:focus {outline: none;box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);}.button-container a {text-decoration: none;}</style></head><body>');
 
 // Add title to the report
                 printWindow.document.write('<h1>Staff Dashboard Report</h1>');
@@ -206,7 +216,7 @@
             }
         </script>
         <footer>
-            <p>&copy; HR SkillCertify 2023</p>
+            <p>&copy; 2024 <strong>HR SkillCertify</strong>. All rights reserved </p>
         </footer>
     </body>
 </html>

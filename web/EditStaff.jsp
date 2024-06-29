@@ -168,7 +168,7 @@
 </body>
 
 <footer>
-    <p>© HR SkillCertify 2023</p>
+    <p>&copy; 2024 <strong>HR SkillCertify</strong>. All rights reserved </p>
 </footer>
 
 </html>

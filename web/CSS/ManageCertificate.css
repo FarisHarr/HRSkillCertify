@@ -500,6 +500,11 @@ footer {
     justify-content: center;
 }
 
+footer p {
+    margin: 0;
+    font-size: 16px;
+}
+
 .certificate-options {
     display: flex;
     margin: 10px;

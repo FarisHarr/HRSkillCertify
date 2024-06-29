@@ -24,15 +24,15 @@
             <div class="main">
                 <img class="logo" src="IMG/HRSCLogo.png" alt="logo">
             </div>
-<!--            <nav>
-                <li class="dropdown">
-                    <a class="nav-link">Admin</a>
-                    <ul class="dropdown-content">
-                        <li><a href="AdminProfile.jsp">User Info</a></li>
-                        <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
-                    </ul>
-                </li>
-            </nav>-->
+            <!--            <nav>
+                            <li class="dropdown">
+                                <a class="nav-link">Admin</a>
+                                <ul class="dropdown-content">
+                                    <li><a href="AdminProfile.jsp">User Info</a></li>
+                                    <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
+                                </ul>
+                            </li>
+                        </nav>-->
         </header>
 
 
@@ -83,12 +83,12 @@
 
 
                 <input class="submit" type="submit" value="Update">
-                
+
                 <p class="new"><a href="AdminProfile.jsp">Back</a></p>
             </form>
         </div>
-                       
-                       <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
+
+        <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
 
         <%
                     } else {
@@ -118,45 +118,45 @@
             var navbar = document.querySelector('.navbar');
             navbar.classList.toggle('minimized');
         }
-        
+
         function signOut() {
             // Redirect to the logout servlet or your logout logic
             window.location.href = 'LogOutServ'; // Replace 'LogoutServlet' with your actual logout servlet
         }
-        
+
         //scroll function
-            var mybutton = document.getElementById("myBtn");
+        var mybutton = document.getElementById("myBtn");
 
-            window.onscroll = function () {
-                scrollFunction();
-            };
+        window.onscroll = function () {
+            scrollFunction();
+        };
 
-            function scrollFunction() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    mybutton.style.visibility = "visible";
-                    mybutton.style.opacity = "1";
-                } else {
-                    mybutton.style.visibility = "hidden";
-                    mybutton.style.opacity = "0";
-                }
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.visibility = "visible";
+                mybutton.style.opacity = "1";
+            } else {
+                mybutton.style.visibility = "hidden";
+                mybutton.style.opacity = "0";
             }
+        }
 
-            function topFunction() {
-                document.body.scrollTop = 1;
-                document.documentElement.scrollTop = 1;
-            }
-            function topFunction() {
-                window.scrollTo({
-                    top: 1,
-                    behavior: "smooth"
-                });
-            }
-            
+        function topFunction() {
+            document.body.scrollTop = 1;
+            document.documentElement.scrollTop = 1;
+        }
+        function topFunction() {
+            window.scrollTo({
+                top: 1,
+                behavior: "smooth"
+            });
+        }
+
     </script>
 </body>
 
 <footer>
-    <p>© HR SkillCertify 2023</p>
+    <p>&copy; 2024 <strong>HR SkillCertify</strong>. All rights reserved </p>
 </footer>
 
 </html>

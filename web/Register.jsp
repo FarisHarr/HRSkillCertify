@@ -20,6 +20,7 @@
             width: 70%;
             color: red;
         }
+
     </style>
 
     <body>
@@ -34,7 +35,7 @@
                 <div id="passwordError" class="error"></div>
                 <div class="terms">
                     <input type="checkbox" id="checkbox" required>
-                    <label for="checkbox">I agree to these <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:90eee9d7-8512-4a6f-8d1f-f21ff5372a31" target="_blank">Terms & Conditions</a></label>
+                    <label for="checkbox">I agree to these <a href="IMG/Akta pembangunan kemahiran kebangsaan Akta652.pdf" target="_blank">Terms & Conditions</a></label>
                 </div>
                 <br>
                 <%
@@ -121,6 +122,6 @@
         </script>
     </body>
     <footer>
-        <p>&copy; HR SkillCertify 2023</p>
+        <p>&copy; 2024 <strong>HR SkillCertify</strong>. All rights reserved </p>
     </footer>
 </html>

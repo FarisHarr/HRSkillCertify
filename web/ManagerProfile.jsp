@@ -33,18 +33,18 @@
             align-items: center;
             padding: 10px;
             border-bottom: 1px solid #ddd;
-            font-size: 1.1rem;
+            /*font-size: 1.1rem;*/
         }
 
         .info-item label {
-            width: 260px;
+            width: 240px;
             /*border: 1px solid #000;*/
             padding: 5px;
             font-size: 1.1rem;
             font-weight: bold;
             color: #333;
             margin-right: 50px;
-            margin-left: 80px; /* Adds spacing between the label and the span */
+            margin-left: 60px; /* Adds spacing between the label and the span */
         }
 
         .info-item span {
@@ -164,7 +164,7 @@
 
 
         <footer>
-            <p>© HR SkillCertify 2023</p>
+            <p>&copy; 2024 <strong>HR SkillCertify</strong>. All rights reserved </p>
         </footer>
 
         <script>
