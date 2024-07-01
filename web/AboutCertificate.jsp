@@ -241,7 +241,7 @@
                     int attendanceCount = 0;
                     while (rs.next()) {
                         String attendance = rs.getString("attendance");
-                        if ("Present".equalsIgnoreCase(attendance) || "Absent".equalsIgnoreCase(attendance)) {
+                        if ("Present".equalsIgnoreCase(attendance)) {
                             attendanceCount++;
                         }
                     }

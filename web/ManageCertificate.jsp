@@ -55,7 +55,7 @@
             </div>
             <nav>
                 <li class="dropdown">
-                    <a class="nav-link"><%= Name %></a>
+                    <a class="nav-link"><%= Name%></a>
                     <ul class="dropdown-content">
                         <li><a href="ManagerProfile.jsp">User Profile</a></li>
                         <li><a href="MainPage.jsp" onclick="signOut()">Sign Out</a></li>
@@ -129,12 +129,12 @@
                             ps.close();
 
                             PreparedStatement ps2 = con.prepareStatement("SELECT a.attendance_ID, cl.class_Name, c.cand_Name, a.attendance "
-                                        + "FROM attendance a "
-                                        + "JOIN candidate c ON a.cand_ID = c.cand_ID "
-                                        + "JOIN class cl ON a.class_ID = cl.class_ID "
-                                        + "WHERE cl.is_archived = FALSE "
-                                        + "ORDER BY CASE a.attendance WHEN '--' THEN 1 ELSE 2 END, cl.class_Name, c.cand_Name "
-                                        + "LIMIT ? OFFSET ?");
+                                    + "FROM attendance a "
+                                    + "JOIN candidate c ON a.cand_ID = c.cand_ID "
+                                    + "JOIN class cl ON a.class_ID = cl.class_ID "
+                                    + "WHERE cl.is_archived = FALSE "
+                                    + "ORDER BY CASE a.attendance WHEN '--' THEN 1 ELSE 2 END, cl.class_Name, c.cand_Name "
+                                    + "LIMIT ? OFFSET ?");
                             ps2.setInt(1, recordsPerPage);
                             ps2.setInt(2, start);
                             ResultSet rs2 = ps2.executeQuery();
@@ -146,17 +146,17 @@
                                 String attendanceStatus = rs2.getString("attendance");
                         %>
                         <tr>
-                            <td><%= attendanceID %></td>
-                            <td><%= className %></td>
-                            <td><%= candidateName %></td>
+                            <td><%= attendanceID%></td>
+                            <td><%= className%></td>
+                            <td><%= candidateName%></td>
                             <td>
-                                <form onsubmit="updateStatus(this, '<%= attendanceID %>'); return false;">
+                                <form onsubmit="updateStatus(this, '<%= attendanceID%>'); return false;">
                                     <select name="attendanceStatus">
-                                        <option value="--" <%= attendanceStatus.equals("--") ? "selected" : "" %>>--</option>
-                                        <option value="Absent" <%= attendanceStatus.equals("Absent") ? "selected" : "" %>>Absent</option>
-                                        <option value="Present" <%= attendanceStatus.equals("Present") ? "selected" : "" %>>Present</option>
+                                        <option value="--" <%= attendanceStatus.equals("--") ? "selected" : ""%>>--</option>
+                                        <option value="Absent" <%= attendanceStatus.equals("Absent") ? "selected" : ""%>>Absent</option>
+                                        <option value="Present" <%= attendanceStatus.equals("Present") ? "selected" : ""%>>Present</option>
                                     </select>
-                                    <input type="hidden" name="attendanceID" value="<%= attendanceID %>">
+                                    <input type="hidden" name="attendanceID" value="<%= attendanceID%>">
                                     <input type="submit" value="Update" onclick="showSuccessMessage()">
                                 </form>
                             </td>
@@ -169,9 +169,9 @@
                             // Count total records for pagination
                             Statement countStmt = con.createStatement();
                             ResultSet countRs = countStmt.executeQuery("SELECT COUNT(*) FROM attendance a "
-                                        + "JOIN candidate c ON a.cand_ID = c.cand_ID "
-                                        + "JOIN class cl ON a.class_ID = cl.class_ID "
-                                        + "WHERE cl.is_archived = FALSE");
+                                    + "JOIN candidate c ON a.cand_ID = c.cand_ID "
+                                    + "JOIN class cl ON a.class_ID = cl.class_ID "
+                                    + "WHERE cl.is_archived = FALSE");
                             countRs.next();
                             int totalRecords = countRs.getInt(1);
                             int totalPages = (int) Math.ceil(totalRecords * 1.0 / recordsPerPage);
@@ -186,12 +186,12 @@
                     <%
                         if (currentPage > 1) {
                     %>
-                    <a href="ManageCertificate.jsp?page=<%= currentPage - 1 %>" style="color: #455d5f">&laquo; Previous</a>
+                    <a href="ManageCertificate.jsp?page=<%= currentPage - 1%>" style="color: #455d5f">&laquo; Previous</a>
                     <%
                         }
                         if (currentPage < totalPages) {
                     %>
-                    <a href="ManageCertificate.jsp?page=<%= currentPage + 1 %>" style="color: #455d5f">Next &raquo;</a>
+                    <a href="ManageCertificate.jsp?page=<%= currentPage + 1%>" style="color: #455d5f">Next &raquo;</a>
                     <%
                         }
                     %>
@@ -274,15 +274,15 @@
             <p>&copy; 2024 <strong>HR SkillCertify</strong>. All rights reserved </p>
         </footer>
         <%
-                } else {
-                    out.println("Coordinator not found.");
+                    } else {
+                        out.println("Coordinator not found.");
+                    }
+                } catch (Exception e) {
+                    out.println("Error: " + e.getMessage());
                 }
-            } catch (Exception e) {
-                out.println("Error: " + e.getMessage());
+            } else {
+                response.sendRedirect("Login.jsp");
             }
-        } else {
-            response.sendRedirect("Login.jsp");
-        }
         %>
     </body>
 </html>

@@ -23,6 +23,14 @@
     <body>
         <%
             String staffID = (String) session.getAttribute("staffID");
+            int currentPage = 1;
+            int recordsPerPage = 5;
+
+            if (request.getParameter("page") != null) {
+                currentPage = Integer.parseInt(request.getParameter("page"));
+            }
+
+            int start = (currentPage - 1) * recordsPerPage;
 
             if (staffID != null) {
                 try {
@@ -114,11 +122,33 @@
                                 query = "SELECT * FROM candidate WHERE cand_Name LIKE '%" + searchName + "%'";
                             }
 
+                            // Count total records for pagination
+                            String countQuery = "SELECT COUNT(*) FROM candidate";
+                            if (searchName != null && !searchName.isEmpty()) {
+                                countQuery = "SELECT COUNT(*) FROM candidate WHERE cand_Name LIKE '%" + searchName + "%'";
+                            }
+
+                            int totalRecords = 0;
+                            int totalPages = 0;
+
                             try {
                                 Class.forName("com.mysql.jdbc.Driver");
                                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsc", "root", "admin");
-                                Statement st = con.createStatement();
-                                ResultSet rs = st.executeQuery(query);
+                                
+                                Statement countStmt = con.createStatement();
+                                ResultSet countRs = countStmt.executeQuery(countQuery);
+                                if (countRs.next()) {
+                                    totalRecords = countRs.getInt(1);
+                                }
+                                totalPages = (int) Math.ceil(totalRecords * 1.0 / recordsPerPage);
+                                countRs.close();
+                                countStmt.close();
+
+                                query += " LIMIT ? OFFSET ?";
+                                PreparedStatement ps = con.prepareStatement(query);
+                                ps.setInt(1, recordsPerPage);
+                                ps.setInt(2, start);
+                                ResultSet rs = ps.executeQuery();
 
                                 List<String> notEnrollCandidates = new ArrayList<>();
                                 List<String> otherCandidates = new ArrayList<>();
@@ -182,6 +212,7 @@
                                 }
 
                                 rs.close();
+                                ps.close();
                                 con.close();
                             } catch (Exception e) {
                                 out.println("Error: " + e);
@@ -189,6 +220,21 @@
                         %>
                     </tbody>
                 </table>
+
+                    <div class="pagination"><br>
+                    <%
+                        if (currentPage > 1) {
+                    %>
+                    <a href="ManageCandidate.jsp?page=<%= currentPage - 1 %>" style="color: #455d5f">&laquo; Previous</a>
+                    <%
+                        }
+                        if (currentPage < totalPages) {
+                    %>
+                    <a href="ManageCandidate.jsp?page=<%= currentPage + 1 %>" style="color: #455d5f">Next &raquo;</a>
+                    <%
+                        }
+                    %>
+                </div>
             </div>
         </div>
         <button onclick="topFunction()" id="myBtn" title="top"><i class="fa-solid fa-chevron-up"></i></button>
@@ -232,6 +278,3 @@
         </footer>
     </body>
 </html>
-
-
-

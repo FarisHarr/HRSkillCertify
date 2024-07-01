@@ -61,23 +61,23 @@
                     <input type="hidden" name="id" value="<%= ID%>">
 
                     <label for="ic">IC Number :</label>
-                    <input type="text" name="ic" value="<%= IC%>">
+                    <input type="text" name="ic" value="<%= IC%>" required>
 
                     <label for="name">Name :</label>
-                    <input type="text" name="name" value="<%= Name%>">
+                    <input type="text" name="name" value="<%= Name%>" required>
 
                     <label for="email">Email :</label>
-                    <input type="email" name="email" value="<%= Email%>">
+                    <input type="email" name="email" value="<%= Email%>" required>
 
                     <label for="password">Password :</label>
-                    <input type="text" name="password" value="<%= Password%>">
+                    <input type="text" name="password" value="<%= Password%>" required>
 
                     <label for="phone">Phone Number :</label>
                     <input type="text" name="phone" value="<%= Phone%>" oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="12" 
                            placeholder="Enter Phone Number" required>
 
                     <label for="address">Address :</label>
-                    <input type="text" name="address" value="<%= Address%>">
+                    <input type="text" name="address" value="<%= Address%>" required>
 
                     <input class="submit" type="submit" value="Update">
                     <p class="new"><a href="CandidateProfile.jsp">Back</a></p>
